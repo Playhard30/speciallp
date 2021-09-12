@@ -1,5 +1,5 @@
 <?php
-require_once '../../../includes/conn.php';
+require '../../../includes/conn.php';
 session_start();
 
 if (isset($_POST['signin'])) {

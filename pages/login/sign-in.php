@@ -14,7 +14,11 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <?php
-session_start(); ?>
+session_start();
+if (!empty($_SESSION['role'])) {
+    header("location: ../dashboard/dashboard.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -131,7 +135,7 @@ session_start(); ?>
                                     <p class="mb-0">Enter your email and password to sign in</p>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form" action="userData/sign-in_data.php" method="POST">
+                                    <form role="form" action="userData/ctrl.sign-in.php" method="POST">
                                         <label>Username</label>
                                         <div class="mb-3">
                                             <input type="text" class="form-control" placeholder="Username"
