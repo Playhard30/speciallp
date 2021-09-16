@@ -32,17 +32,20 @@
                                         <div class="avatar avatar-lg">
                                             <?php
                                             if ($_SESSION['role'] == "Super Administrator") {
-                                                $getUserImage = mysqli_query($db, "SELECT * FROM tbl_super_admins WHERE sa_id = $sa_id");
+                                                $getUserImage = mysqli_query($db, "SELECT * FROM tbl_super_admins WHERE
+                                            sa_id = $sa_id");
                                                 while ($row = mysqli_fetch_array($getUserImage)) {
-                                                    echo '<img class="avatar rounded-circle" alt="Image placeholder" src="data:image/jpeg;base64, ' . base64_encode($row['img']) . '" style="height: 50px; width:50px;">
+                                                    echo '<img class="avatar rounded-circle" alt="Image placeholder"
+                                                src="data:image/jpeg;base64, ' . base64_encode($row['img']) . '"
+                                                style="height: 50px; width:50px;">
                                         </div>
-                                            <div class="ms-2 my-auto">
-                                                <h6 class="mb-0">' . $row['username'] . '</h6>
-                                                <p class="text-xs mb-0">Username</p>
-                                            </div>
+                                        <div class="ms-2 my-auto">
+                                            <h6 class="mb-0">' . $row['username'] . '</h6>
+                                            <p class="text-xs mb-0">Username</p>
+                                        </div>
                                     </div>
-                                        <br>
-                                        <p class="mb-0 text-sm">';
+                                    <br>
+                                    <p class="mb-0 text-sm">';
                                                     if (!empty($row['email'])) {
                                                         echo $row['email'];
                                                     } else {
@@ -50,17 +53,20 @@
                                                     }
                                                 }
                                             } else if ($_SESSION['role'] == "Dean") {
-                                                $getUserImage = mysqli_query($db, "SELECT * FROM tbl_deans WHERE dean_id = '$dean_id'");
+                                                $getUserImage = mysqli_query($db, "SELECT * FROM tbl_deans WHERE dean_id =
+                                        '$dean_id'");
                                                 while ($row = mysqli_fetch_array($getUserImage)) {
-                                                    echo '<img class="avatar rounded-circle" alt="Image placeholder" src="data:image/jpeg;base64, ' . base64_encode($row['img']) . '" style="height: 50px; width:50px;">
-                                        </div>
-                                            <div class="ms-2 my-auto">
-                                                <h6 class="mb-0">' . $row['username'] . '</h6>
-                                                <p class="text-xs mb-0">Username</p>
-                                            </div>
-                                    </div>
-                                        <br>
-                                        <p class="mb-0 text-sm">';
+                                                    echo '<img class="avatar rounded-circle" alt="Image placeholder"
+                                            src="data:image/jpeg;base64, ' . base64_encode($row['img']) . '"
+                                            style="height: 50px; width:50px;">
+                                </div>
+                                <div class="ms-2 my-auto">
+                                    <h6 class="mb-0">' . $row['username'] . '</h6>
+                                    <p class="text-xs mb-0">Username</p>
+                                </div>
+                            </div>
+                            <br>
+                            <p class="mb-0 text-sm">';
                                                     if (!empty($row['email'])) {
                                                         echo $row['email'];
                                                     } else {

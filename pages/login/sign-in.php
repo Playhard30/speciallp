@@ -162,7 +162,7 @@ if (!empty($_SESSION['role'])) {
                                         <label>Username</label>
                                         <div class="mb-3">
                                             <input type="text" class="form-control" placeholder="Username"
-                                                aria-label="Email" aria-describedby="email-addon" name="username">
+                                                aria-label="Username" aria-describedby="username-addon" name="username">
                                         </div>
                                         <label>Password</label>
                                         <div class="mb-3">

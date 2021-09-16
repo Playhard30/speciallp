@@ -31,12 +31,12 @@
             <?php
             if ($_SESSION['role'] == "Super Administrator") {
                 echo '<li class="nav-item">
-                <a class="nav-link  active" href="../dashboard/dashboard.php">
+                <a class="nav-link  active" href="../dashboard/index.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            
+
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g transform="translate(-1716.000000, -439.000000)" fill="#FFFFFF" fill-rule="nonzero">
                                     <g transform="translate(1716.000000, 291.000000)">
@@ -60,7 +60,7 @@
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Accounts List</h6>
             </li>
-            
+
             <li class="nav-item">
                 <a class="nav-link  " href="../super_admin/list.dean.php">
                     <div
@@ -74,26 +74,26 @@
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Add Accounts</h6>
             </li>
-            
+
             <li class="nav-item">
-            <a class="nav-link  " href="../super_admin/add.dean.php">
-                <div
-                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="fas fa-user-plus text-dark"></i>
-                </div>
-                <span class="nav-link-text ms-1">Add Dean</span>
-            </a>
-        </li>
-        
-        ';
+                <a class="nav-link  " href="../super_admin/add.dean.php">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-user-plus text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Add Dean</span>
+                </a>
+            </li>
+
+            ';
             } else if ($_SESSION['role'] == "Dean") {
                 echo '<li class="nav-item">
-                <a class="nav-link  active" href="../dashboard/dashboard.php">
+                <a class="nav-link  active" href="../dashboard/index.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            
+
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g transform="translate(-1716.000000, -439.000000)" fill="#FFFFFF" fill-rule="nonzero">
                                     <g transform="translate(1716.000000, 291.000000)">
@@ -112,7 +112,46 @@
                     </div>
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
-            </li>';
+            </li>
+
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Add Menu</h6>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-link  " href="../adviser/add.adviser.php">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-user-plus text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Enrollment Adviser</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link  " href="#">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-plus text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Department</span>
+                </a>
+            </li>
+
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Forms</h6>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link  " href="../forms/enroll_stats.php">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-file-alt text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Enrollment Breakdown</span>
+                </a>
+            </li>
+            ';
             }
             ?>
 

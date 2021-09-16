@@ -25,7 +25,7 @@ if (isset($_POST['signin'])) {
                 $_SESSION['role'] = "Super Administrator";
                 $_SESSION['userid'] = $row['sa_id'];
             }
-            header("location: ../../dashboard/dashboard.php");
+            header("location: ../../dashboard/index.php");
         }
     } elseif ($numrow1 > 0) {
         while ($row = mysqli_fetch_array($dean)) {
@@ -37,7 +37,7 @@ if (isset($_POST['signin'])) {
                 $_SESSION['role'] = "Dean";
                 $_SESSION['userid'] = $row['dean_id'];
             }
-            header("location: ../../dashboard/dashboard.php");
+            header("location: ../../dashboard/index.php");
         }
     } else {
         header("location: ../sign-in.php?sessionUP");
