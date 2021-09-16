@@ -134,6 +134,29 @@ if (!empty($_SESSION['role'])) {
                                         Welcome Franciscans</h3>
                                     <p class="mb-0">Enter your email and password to sign in</p>
                                 </div>
+
+                                <?php if (isset($_GET['sessionP'])) {
+                                    echo '<div class="alert alert-dismissible text-white mt-2 mb-0 " role="alert"
+                                    style="background-color:#f74567;"><span class="alert-icon text-sm"><i
+                                            class="fas fa-exclamation-triangle"> </i> The password you entered is
+                                        incorrect.</span>
+                                    <button type="button" class="btn-close text-lg py-3 opacity-10"
+                                        data-bs-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>';
+                                } else if (isset($_GET['sessionUP'])) {
+                                    echo '<div class="alert alert-dismissible text-white mt-2 mb-0 " role="alert"
+                                    style="background-color:#f74567;"><span class="alert-icon text-sm"><i
+                                            class="fas fa-exclamation-triangle"> </i> Invalid username and password.</span>
+                                    <button type="button" class="btn-close text-lg py-3 opacity-10"
+                                        data-bs-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>';
+                                }
+
+                                ?>
                                 <div class="card-body">
                                     <form role="form" action="userData/ctrl.sign-in.php" method="POST">
                                         <label>Username</label>

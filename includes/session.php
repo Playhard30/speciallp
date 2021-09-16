@@ -4,8 +4,16 @@ if (!empty($_SESSION['role'])) {
         $sa_id = $_SESSION['userid'];
         if ($sa_id == false) {
             header("location: ../login/sign-in.php");
+            exit();
+        }
+    } elseif ($_SESSION['role'] == "Dean") {
+        $dean_id = $_SESSION['userid'];
+        if ($dean_id == false) {
+            header("location: ../login/sign-in.php");
+            exit();
         }
     }
 } else {
     header("location: ../login/sign-in.php");
+    exit();
 }
