@@ -24,6 +24,7 @@ if (isset($_POST['signin'])) {
             } elseif ($hashedPwdCheck == true) {
                 $_SESSION['role'] = "Super Administrator";
                 $_SESSION['userid'] = $row['sa_id'];
+                $_SESSION['name'] = $row['name'];
             }
             header("location: ../../dashboard/index.php");
         }
@@ -36,6 +37,7 @@ if (isset($_POST['signin'])) {
             } elseif ($hashedPwdCheck == true) {
                 $_SESSION['role'] = "Dean";
                 $_SESSION['userid'] = $row['dean_id'];
+                $_SESSION['name'] = $row['dean_lastname'] . ", " . $row['dean_firstname'];
             }
             header("location: ../../dashboard/index.php");
         }

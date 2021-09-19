@@ -10,6 +10,22 @@
 <script src="../../assets/js/plugins/dragula/dragula.min.js"></script>
 <script src="../../assets/js/plugins/jkanban/jkanban.js"></script>
 <script>
+if (document.getElementById('department')) {
+    var element = document.getElementById('department');
+    const example = new Choices(element, {
+        searchEnabled: false,
+    });
+};
+</script>
+<script>
+if (document.getElementById('status')) {
+    var element = document.getElementById('status');
+    const example = new Choices(element, {
+        searchEnabled: false,
+    });
+};
+</script>
+<script>
 window.onload = function() {
     document.getElementById('autoClickBtn').click();
 }
@@ -17,9 +33,9 @@ window.onload = function() {
 <script>
 const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
     searchable: true,
-    fixedHeight: true,
+    fixedHeight: false,
     sortable: false,
-    fixcolumns: true
+    fixedColumns: true
 });
 
 const dataTableSearch = new simpleDatatables.DataTable("#datatable-search", {

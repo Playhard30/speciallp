@@ -51,7 +51,17 @@ require '../../includes/conn.php';
 
     .form-control:focus {
         border-color: #e08994 !important;
+        box-shadow: 0 0 0 1px #ea7381 !important;
+    }
+
+    .navbar-vertical.navbar-expand-xs .navbar-collapse {
+        height: calc(120vh - 360px);
+    }
+
+    .is-focused .choices__inner,
+    .is-open .choices__inner {
         box-shadow: 0 0 0 2px #ea7381 !important;
+        border-color: #e08994 !important;
     }
     </style>
 </head>

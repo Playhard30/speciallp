@@ -20,7 +20,7 @@ include '../../includes/session.php';
                         </li>
                         <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">View Deans List</h6>
+                    <h6 class="font-weight-bolder mb-0">View Advisers List</h6>
                 </nav>
                 <?php include '../../includes/navbar.php'; ?>
                 <!-- End Navbar -->
@@ -28,10 +28,10 @@ include '../../includes/session.php';
                 <div class="container-fluid py-4">
                     <div class="row mb-5">
                         <div class="col-12">
-                            <div class="card">
+                            <div class="card shadow shadow-xl">
                                 <!-- Card header -->
                                 <div class="card-header">
-                                    <h5 class="mb-0">Deans List</h5>
+                                    <h5 class="mb-0">Advisers List</h5>
                                     <!-- <p class="text-sm mb-0">
                                         A lightweight, extendable, dependency-free javascript HTML table plugin.
                                     </p> -->
@@ -42,16 +42,22 @@ include '../../includes/session.php';
                                             <tr>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Image</th>
+                                                    I.D. No.</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Lastname</th>
+                                                    Fullname</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Firstname</th>
+                                                    Position</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Middlename</th>
+                                                    Role</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                    Department</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                    Status</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Email</th>
@@ -60,35 +66,52 @@ include '../../includes/session.php';
                                                     Username</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Option</th>
+                                                    Created At</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                    Last Updated</th>
+
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                    Updated By</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $listDean = mysqli_query($db, "SELECT *, CONCAT(tbl_deans.dean_lastname, ', ', tbl_deans.dean_firstname, ' ', tbl_deans.dean_middlename) AS fullname FROM tbl_deans");
-                                            while ($row = mysqli_fetch_array($listDean)) {
-                                                $id = $row['dean_id'];
+                                            $listAdviser = mysqli_query($db, "SELECT *, CONCAT(facul.faculty_lastname, ', ', facul.faculty_firstname, ' ', facul.faculty_middlename) AS fullname 
+                                            FROM tbl_faculties AS facul
+                                            LEFT JOIN tbl_departments AS dep ON dep.department_id = facul.department_id
+                                            WHERE role = 'Adviser'");
+                                            while ($row = mysqli_fetch_array($listAdviser)) {
+                                                $id = $row['faculty_id'];
                                             ?>
 
                                             <tr>
-                                                <td><?php if (empty($row['img'])) {
-                                                            echo '<img class="border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="../../assets/img/illustrations/user_prof.jpg"/>';
-                                                        } else {
-                                                            echo ' <img class=" border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" "/>';
-                                                        } ?>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['faculty_no'] ?>
                                                 </td>
                                                 <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['dean_lastname']; ?></td>
+                                                    <?php echo $row['fullname']; ?></td>
                                                 <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['dean_firstname']; ?></td>
+                                                    <?php echo $row['position']; ?></td>
                                                 <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['dean_middlename']; ?></td>
+                                                    <?php echo $row['role']; ?></td>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['department_name']; ?></td>
+                                                <td class="text-sm font-weight-normal"><?php echo $row['status']; ?>
+                                                </td>
                                                 <td class="text-sm font-weight-normal"><?php echo $row['email']; ?></td>
                                                 <td class="text-sm font-weight-normal"><?php echo $row['username']; ?>
                                                 </td>
+                                                <td class="text-sm font-weight-normal"><?php echo $row['created_at']; ?>
+                                                </td>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['last_updated']; ?></td>
+                                                <td class="text-sm font-weight-normal"><?php echo $row['updated_by']; ?>
+                                                </td>
                                                 <td class="text-sm font-weight-normal">
                                                     <a class="btn bg-gradient-primary text-xs"
-                                                        href="edit.dean.php?dean_id=<?php echo $id; ?>"><i
+                                                        href="edit.adviser.php?faculty_id=<?php echo $id; ?>"><i
                                                             class="text-xs fas fa-edit"></i> Edit</a>
 
                                                     <a class="btn btn-block bg-gradient-danger mb-3 text-xs"
@@ -121,12 +144,14 @@ include '../../includes/session.php';
                                                                             Delete Account!</h4>
                                                                         <p>Are you sure you want to delete
                                                                             <br>
-                                                                            <?php echo $row['fullname']; ?>?
+                                                                            <i><b><?php echo $row['fullname']; ?></b></i>
+                                                                            from
+                                                                            <i><b><?php echo $row['department_name'] ?></b></i>?
                                                                         </p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <a href="userData/ctrl.del.dean.php?dean_id=<?php echo $id; ?>"
+                                                                    <a href="userData/ctrl.del.adviser.php?faculty_id=<?php echo $id; ?>"
                                                                         class="btn btn-white text-white bg-danger">Delete</a>
                                                                     <button type="button"
                                                                         class="btn btn-link text-secondary btn-outline-dark ml-auto"
@@ -135,9 +160,6 @@ include '../../includes/session.php';
                                                             </div>
                                                         </div>
                                                     </div>
-
-
-
                                                 </td>
                                             </tr>
                                             <?php } ?>

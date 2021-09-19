@@ -28,7 +28,7 @@ include '../../includes/session.php';
                     <div class="row">
                         <div class="col-12">
                             <div class="text-center">
-                                <h3>Input Your Information</h3>
+                                <h3>Input the adviser information</h3>
                                 <h5 class="text-secondary font-weight-normal">Please fill out the fields</h5>
                             </div>
                             <div class="multisteps-form mb-5">
@@ -53,13 +53,15 @@ include '../../includes/session.php';
                                 <div class="row">
                                     <div class="col-12 col-lg-8 m-auto">
                                         <form class="multisteps-form__form mb-8" method="POST"
-                                            enctype="multipart/form-data" action="userData/ctrl.add.dean.php">
+                                            enctype="multipart/form-data" action="userData/ctrl.add.adviser.php">
                                             <!--single form panel-->
                                             <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
                                                 data-animation="FadeIn">
                                                 <h5 class="font-weight-bolder mb-0">Add Enrollment Adviser</h5>
                                                 <p class="mb-0 text-sm">Personal Data</p>
                                                 <div class="multisteps-form__content">
+
+
                                                     <div class="row mt-3 justify-content-center">
                                                         <div class="col-12 col-sm-4 mt-3 mt-sm-0">
                                                             <label>Last Name</label>
@@ -78,6 +80,7 @@ include '../../includes/session.php';
                                                         </div>
                                                     </div>
 
+
                                                     <div class="row mt-3 justify-content-center">
                                                         <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                             <label>Email Address</label>
@@ -88,10 +91,54 @@ include '../../includes/session.php';
                                                         <div class="col-12 col-sm-6">
                                                             <label>Faculty Number</label>
                                                             <input class="multisteps-form__input form-control"
-                                                                type="email" placeholder="example@gmail.com"
-                                                                name="email" />
+                                                                type="text" placeholder="Enter a faculty number"
+                                                                name="faculty_no" />
                                                         </div>
                                                     </div>
+
+
+                                                    <div class="row mt-3 justify-content-center">
+                                                        <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                                            <label>Department</label>
+                                                            <select class="form-control" name="department"
+                                                                id="department">
+                                                                <option value="" disabled selected>Select Department
+                                                                </option>
+                                                                <?php $getDepartment = mysqli_query($db, "SELECT * FROM tbl_departments");
+                                                                while ($row = mysqli_fetch_array($getDepartment)) {
+                                                                ?>
+                                                                <option value="<?php echo $row['department_id']; ?>">
+                                                                    <?php echo $row['department_name'];
+                                                                } ?></option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-12 col-sm-6">
+                                                            <label>Role</label>
+                                                            <input class="multisteps-form__input form-control"
+                                                                type="text" placeholder="Enter a role" name="role" />
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row mt-3 justify-content-center">
+                                                        <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                                            <label>Position</label>
+                                                            <input class="multisteps-form__input form-control"
+                                                                type="text" placeholder="Enter position"
+                                                                name="position" />
+                                                        </div>
+                                                        <div class="col-12 col-sm-6">
+                                                            <label>Employment Status</label>
+                                                            <select class="form-control" name="status" id="status">
+                                                                <option value="" disabled selected>Select Employment
+                                                                    Status
+                                                                </option>
+                                                                <option value="Full-time">Full-time</option>
+                                                                <option value="Part-time">Part-time</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
 
                                                     <div class="button-row d-flex mt-4">
                                                         <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next"
@@ -184,7 +231,8 @@ include '../../includes/session.php';
                                                         <button class="btn bg-gradient-light mb-0 js-btn-prev"
                                                             type="button" title="Prev">Prev</button>
                                                         <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
-                                                            title="Send" name="submit">Add Dean</button>
+                                                            title="Send" name="submit">Add
+                                                            Adviser</button>
                                                     </div>
                                                 </div>
                                             </div>

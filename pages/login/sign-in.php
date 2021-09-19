@@ -16,7 +16,7 @@
 <?php
 session_start();
 if (!empty($_SESSION['role'])) {
-    header("location: ../dashboard/dashboard.php");
+    header("location: ../dashboard/index.php");
 }
 ?>
 <!DOCTYPE html>
