@@ -53,7 +53,7 @@ if (isset($_POST['signin'])) {
                 $_SESSION['role'] = "Admission";
                 $_SESSION['userid'] = $row['admission_id'];
             }
-            header("location: ../../dashboard/dashboard.php");
+            header("location: ../../dashboard/index.php");
         }
     }  else {
         header("location: ../sign-in.php?sessionUP");
