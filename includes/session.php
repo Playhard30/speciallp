@@ -12,6 +12,12 @@ if (!empty($_SESSION['role'])) {
             header("location: ../login/sign-in.php");
             exit();
         }
+    } elseif ($_SESSION['role'] == "Admission") {
+        $admission_id = $_SESSION['userid'];
+        if ($admission_id == false) {
+            header("location: ../login/sign-in.php");
+            exit();
+        }
     }
 } else {
     header("location: ../login/sign-in.php");

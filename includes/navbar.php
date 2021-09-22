@@ -60,8 +60,28 @@
                                         <p class="text-sm mt-3">' . $row['email'] . '</p>
                                                     ';
                                                 }
-                                            }
-                                            ?>
+                                            } else if ($_SESSION['role'] == "Admission") {
+                                                $getUserImage = mysqli_query($db, "SELECT * FROM tbl_admissions WHERE admission_id = '$admission_id'");
+                                                while ($row = mysqli_fetch_array($getUserImage)) {
+                                                    echo '<img class="avatar rounded-circle" alt="Image placeholder" src="data:image/jpeg;base64, ' . base64_encode($row['img']) . '" style="height: 50px; width:50px;">
+                                        </div>
+                                            <div class="ms-2 my-auto">
+                                                <h6 class="mb-0">' . $row['username'] . '</h6>
+                                                <p class="text-xs mb-0">Username</p>
+                                            </div>
+                                    </div>
+                                        <br>
+                                        <p class="mb-0 text-sm">';
+                                                    if (!empty($row['email'])) {
+                                                        echo $row['email'];
+                                                    } else {
+                                                        echo 'Please insert your Email.';
+                                                    }
+                                                }
+                                            }  ?>
+
+
+                                            </p>
                                             <hr class="horizontal dark">
                                             <div class="row justify-content-center">
                                                 <!-- <div class="col-6">

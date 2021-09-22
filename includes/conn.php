@@ -2,6 +2,6 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "enrollment";
+$dbname = "new_enrollment";
 
 $db = mysqli_connect($servername, $username, $password, $dbname) or die(mysqli_error($db));
