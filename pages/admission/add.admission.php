@@ -28,7 +28,7 @@ include '../../includes/session.php';
                     <div class="row">
                         <div class="col-12">
                             <div class="text-center">
-                                <h3>Input Your Information</h3>
+                                <h3>Input the admission information</h3>
                                 <h5 class="text-secondary font-weight-normal">Please fill out the fields</h5>
                             </div>
                             <div class="multisteps-form mb-5">

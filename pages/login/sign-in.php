@@ -57,6 +57,11 @@ if (!empty($_SESSION['role'])) {
     .form-switch {
         padding-left: unset !important;
     }
+
+    .form-control:focus {
+        border-color: #e08994 !important;
+        box-shadow: 0 0 0 1px #ea7381 !important;
+    }
     </style>
 </head>
 

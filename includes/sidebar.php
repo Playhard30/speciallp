@@ -81,7 +81,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link  " href="../super_admin/list.admission.php">
+                <a class="nav-link  " href="../admission/list.admission.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="far fa-list-alt text-dark" style="height: 12px; width: 12px;"></i>
@@ -106,7 +106,7 @@
        
 
             <li class="nav-item">
-            <a class="nav-link  " href="../super_admin/add.admission.php">
+            <a class="nav-link  " href="../admission/add.admission.php">
                 <div
                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="fas fa-user-plus text-dark"></i>

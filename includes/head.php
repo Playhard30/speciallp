@@ -60,7 +60,7 @@ require '../../includes/conn.php';
 
     .is-focused .choices__inner,
     .is-open .choices__inner {
-        box-shadow: 0 0 0 2px #ea7381 !important;
+        box-shadow: 0 0 0 1px #ea7381 !important;
         border-color: #e08994 !important;
     }
     </style>

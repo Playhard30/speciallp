@@ -56,14 +56,17 @@ $_SESSION['admission_id'] = $admission_id;
                                 <div class="col-sm-auto col-8 my-auto">
                                     <div class="h-100">
                                         <h5 class="mb-1 font-weight-bolder">
-                                            <?php echo $row['fullname'];  ?>
+                                            <?php
+                                            echo $row['fullname'];
+                                            ?>
                                         </h5>
                                         <p class="mb-0 font-weight-bold text-sm">
                                             Admission
                                         </p>
                                     </div>
                                 </div>
-                                <form method="POST" enctype="multipart/form-data" action="userData/ctrl.edit.admission.php"
+                                <form method="POST" enctype="multipart/form-data"
+                                    action="userData/ctrl.edit.admission.php"
                                     class="col-sm-auto ms-lg-auto mt-sm-0 ms-sm-0 mt-3 justify-content-sm-center">
 
                                     <button class="btn btn-outline-primary me-2 mb-0"><input type="file"
@@ -86,9 +89,9 @@ $_SESSION['admission_id'] = $admission_id;
                                         <label class="form-label">Last Name</label>
                                         <div class="input-group">
                                             <input id="lastName" name="lname" class="form-control" type="text"
-                                                placeholder="Lastname"
+                                                placeholder="Lastname" required
                                                 value="<?php echo $row['admission_lastname'];
-                                                                                                                                                ?>">
+                                                                                                                                                        ?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -104,7 +107,8 @@ $_SESSION['admission_id'] = $admission_id;
                                         <label class="form-label">Middlename</label>
                                         <div class="input-group">
                                             <input id="middlename" name="mname" class="form-control" type="text"
-                                                placeholder="Middlename" value="<?php echo $row['admission_middlename']; ?>">
+                                                placeholder="Middlename"
+                                                value="<?php echo $row['admission_middlename']; ?>">
                                         </div>
                                     </div>
 
@@ -139,7 +143,8 @@ $_SESSION['admission_id'] = $admission_id;
                         </form>
 
                         <!-- Card Change Password -->
-                        <form class="card mt-4 mb-5" id="password" method="POST" action="userData/ctrl.edit.admission.php">
+                        <form class="card mt-4 mb-5" id="password" method="POST"
+                            action="userData/ctrl.edit.admission.php">
                             <div class="card-header">
                                 <h5>Change Password</h5>
                             </div>
