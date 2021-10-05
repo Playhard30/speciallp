@@ -90,6 +90,16 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+            <a class="nav-link  " href="../accounting/list.accounting.php">
+                <div
+                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="far fa-list-alt text-dark" style="height: 12px; width: 12px;"></i>
+                </div>
+                <span class="nav-link-text ms-1">Accounting List</span>
+            </a>
+        </li>
+
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Add Accounts</h6>
             </li>
@@ -112,6 +122,16 @@
                     <i class="fas fa-user-plus text-dark"></i>
                 </div>
                 <span class="nav-link-text ms-1">Add Admission</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link  " href="../accounting/add.accounting.php">
+                <div
+                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fas fa-user-plus text-dark"></i>
+                </div>
+                <span class="nav-link-text ms-1">Add Accounting</span>
             </a>
         </li>
 
