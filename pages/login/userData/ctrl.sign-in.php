@@ -16,6 +16,9 @@ if (isset($_POST['signin'])) {
     $admission = mysqli_query($db, "SELECT * FROM tbl_admissions WHERE username = '$username'");
     $numrow2 = mysqli_num_rows($admission);
 
+    $admin = mysqli_query($db, "SELECT * FROM tbl_admins WHERE username = '$username'");
+    $numrow3 = mysqli_num_rows($admin);
+
 
 
     if ($numrow > 0) {
@@ -44,8 +47,7 @@ if (isset($_POST['signin'])) {
             }
             header("location: ../../dashboard/index.php");
         }
-    } 
-    elseif ($numrow2 > 0) {
+    } elseif ($numrow2 > 0) {
         while ($row = mysqli_fetch_array($admission)) {
             $hashedPwdCheck = password_verify($password, $row['password']);
             if ($hashedPwdCheck == false) {
@@ -57,7 +59,19 @@ if (isset($_POST['signin'])) {
             }
             header("location: ../../dashboard/index.php");
         }
-    }  else {
+    }  elseif ($numrow3 > 0) {
+        while ($row = mysqli_fetch_array($admin)) {
+            $hashedPwdCheck = password_verify($password, $row['password']);
+            if ($hashedPwdCheck == false) {
+                header("location: ../sign-in.php?sessionP");
+                exit();
+            } elseif ($hashedPwdCheck == true) {
+                $_SESSION['role'] = "Registrar";
+                $_SESSION['userid'] = $row['admin_id'];
+            }
+            header("location: ../../dashboard/index.php");
+        }
+    } else {
         header("location: ../sign-in.php?sessionUP");
         exit();
     }

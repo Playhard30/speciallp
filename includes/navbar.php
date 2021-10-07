@@ -78,7 +78,19 @@
                                                         echo 'Please insert your Email.';
                                                     }
                                                 }
-                                            }  ?>
+                                            } elseif ($_SESSION['role'] == "Registrar") {
+                                                $getImg = mysqli_query($db, "SELECT * FROM tbl_admins WHERE admin_id = '$admin_id'");
+                                                while ($row = mysqli_fetch_array($getImg)) {
+                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
+                                                    <div class="ms-3 my-auto">
+                                                <h6 class="text-white mb-0">' . $row['username'] . '</h6>
+                                                <p class="text-xs text-white">Username</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-sm mt-3">' . $row['email'] . '</p>
+                                                    ';
+                                                }
+                                            } ?>
 
 
                                             </p>
