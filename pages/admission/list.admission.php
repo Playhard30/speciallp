@@ -20,7 +20,7 @@ include '../../includes/session.php';
                         </li>
                         <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">View Admission List</h6>
+                    <h6 class="font-weight-bolder mb-0">View Admissions List</h6>
                 </nav>
                 <?php include '../../includes/navbar.php'; ?>
                 <!-- End Navbar -->
@@ -28,10 +28,10 @@ include '../../includes/session.php';
                 <div class="container-fluid py-4">
                     <div class="row mb-5">
                         <div class="col-12">
-                            <div class="card">
+                            <div class="card shadow shadow-xl">
                                 <!-- Card header -->
                                 <div class="card-header">
-                                    <h5 class="mb-0">Admission List</h5>
+                                    <h5 class="mb-0">Admissions List</h5>
                                     <!-- <p class="text-sm mb-0">
                                         A lightweight, extendable, dependency-free javascript HTML table plugin.
                                     </p> -->
@@ -60,7 +60,17 @@ include '../../includes/session.php';
                                                     Username</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Option</th>
+                                                    Created at</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                    Last Updated</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                    Updated By</th>
+
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                    Options</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -85,6 +95,12 @@ include '../../includes/session.php';
                                                     <?php echo $row['admission_middlename']; ?></td>
                                                 <td class="text-sm font-weight-normal"><?php echo $row['email']; ?></td>
                                                 <td class="text-sm font-weight-normal"><?php echo $row['username']; ?>
+                                                </td>
+                                                <td class="text-sm font-weight-normal"><?php echo $row['created_at']; ?>
+                                                </td>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['last_updated']; ?></td>
+                                                <td class="text-sm font-weight-normal"><?php echo $row['updated_by']; ?>
                                                 </td>
                                                 <td class="text-sm font-weight-normal">
                                                     <a class="btn bg-gradient-primary text-xs"
@@ -121,7 +137,7 @@ include '../../includes/session.php';
                                                                             Delete Account!</h4>
                                                                         <p>Are you sure you want to delete
                                                                             <br>
-                                                                            <?php echo $row['fullname']; ?>?
+                                                                            <i><b><?php echo $row['fullname']; ?></b></i>?
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -135,7 +151,6 @@ include '../../includes/session.php';
                                                             </div>
                                                         </div>
                                                     </div>
-
 
 
                                                 </td>

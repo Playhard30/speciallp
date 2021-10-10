@@ -225,7 +225,35 @@
             </li>
 
             <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Add Menu</h6>
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Forms</h6>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link  " href="../forms/enroll_stats.php">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-file-alt text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Enrollment Breakdown</span>
+                </a>
+            </li>
+
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Lists</h6>
+            </li>
+
+            <li class="nav-item">
+            <a class="nav-link  " href="../adviser/list.adviser.php">
+                <div
+                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fas fa-list-alt text-dark"></i>
+                </div>
+                <span class="nav-link-text ms-1">Enrollment Advisers</span>
+            </a>
+           </li>
+
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Add</h6>
             </li>
         
             <li class="nav-item">
@@ -247,20 +275,6 @@
                     <span class="nav-link-text ms-1">Department</span>
                 </a>
             </li>
-
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Forms</h6>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link  " href="../forms/enroll_stats.php">
-                    <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-file-alt text-dark"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Enrollment Breakdown</span>
-                </a>
-            </li>
             ';
             }
             ?>
@@ -280,6 +294,12 @@
             echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../dean/send.report.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
             <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../dean/edit.dean.php" data-bs-toggle="tooltip"
+            data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
+                class="fas fa-user-edit"></i></a>';
+        } elseif ($_SESSION['role'] == "Admission") {
+            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../admission/send.report.php" data-bs-toggle="tooltip"
+            data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
+            <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../admission/edit.admission.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
         } ?>
