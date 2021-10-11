@@ -5,9 +5,8 @@ include '../../includes/head.php';
 include '../../includes/session.php';
 if ($_SESSION['role'] == "Super Administrator") {
     $admission_id = $_GET['admission_id'];
-    $_SESSION['admission_id'] = $admission_id;
 }
-
+$_SESSION['admission_id'] = $admission_id;
 
 ?>
 
@@ -66,7 +65,8 @@ if ($_SESSION['role'] == "Super Administrator") {
                                         </p>
                                     </div>
                                 </div>
-                                <form method="POST" enctype="multipart/form-data" action="userData/ctrl.edit.admission.php"
+                                <form method="POST" enctype="multipart/form-data"
+                                    action="userData/ctrl.edit.admission.php"
                                     class="col-sm-auto ms-lg-auto mt-sm-0 ms-sm-0 mt-3 justify-content-sm-center">
 
                                     <button class="btn btn-outline-primary me-2 mb-0"><input type="file"
@@ -107,7 +107,8 @@ if ($_SESSION['role'] == "Super Administrator") {
                                         <label class="form-label">Middlename</label>
                                         <div class="input-group">
                                             <input id="middlename" name="mname" class="form-control" type="text"
-                                                placeholder="Middlename" value="<?php echo $row['admission_middlename']; ?>">
+                                                placeholder="Middlename"
+                                                value="<?php echo $row['admission_middlename']; ?>">
                                         </div>
                                     </div>
 
@@ -143,16 +144,20 @@ if ($_SESSION['role'] == "Super Administrator") {
 
 
                         <!-- Card Change Password -->
-                        <form class="card mt-4 mb-5" id="password" method="POST" action="userData/ctrl.edit.admission.php">
+                        <form class="card mt-4 mb-5" id="password" method="POST"
+                            action="userData/ctrl.edit.admission.php">
                             <div class="card-header">
                                 <h5>Change Password</h5>
                             </div>
                             <div class="card-body pt-0">
-                                <label class="form-label">Current password</label>
+                                <?php if ($_SESSION['role'] == "Admission") {
+                                    echo '<label class="form-label">Current password</label>
                                 <div class="form-group">
                                     <input class="form-control" type="password" name="oldPass"
                                         placeholder="Current password" required>
-                                </div>
+                                </div>';
+                                } ?>
+
                                 <label class="form-label">New password</label>
                                 <div class="form-group">
                                     <input class="form-control" type="password" name="password"

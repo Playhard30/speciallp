@@ -44,9 +44,12 @@
                                                 <h6 class="text-white mb-0">' . $row['username'] . '</h6>
                                                 <p class="text-xs text-white">Username</p>
                                             </div>
-                                        </div>
-                                        <p class="text-sm mt-3">' . $row['email'] . '</p>
-                                                    ';
+                                        </div>';
+                                                    if (!empty($row['email'])) {
+                                                        echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
+                                                    } else {
+                                                        echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
+                                                    }
                                                 }
                                             } elseif ($_SESSION['role'] == "Dean") {
                                                 $getImg = mysqli_query($db, "SELECT * FROM tbl_deans WHERE dean_id = '$dean_id'");
@@ -56,9 +59,12 @@
                                                 <h6 class="text-white mb-0">' . $row['username'] . '</h6>
                                                 <p class="text-xs text-white">Username</p>
                                             </div>
-                                        </div>
-                                        <p class="text-sm mt-3">' . $row['email'] . '</p>
-                                                    ';
+                                        </div>';
+                                                    if (!empty($row['email'])) {
+                                                        echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
+                                                    } else {
+                                                        echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
+                                                    }
                                                 }
                                             } elseif ($_SESSION['role'] == "Admission") {
                                                 $getImg = mysqli_query($db, "SELECT * FROM tbl_admissions WHERE admission_id = '$admission_id'");
@@ -68,11 +74,29 @@
                                                 <h6 class="text-white mb-0">' . $row['username'] . '</h6>
                                                 <p class="text-xs text-white">Username</p>
                                             </div>
-                                        </div>
-                                        <p class="text-sm mt-3">' . $row['email'] . '</p>
-                                                    ';
+                                        </div>';
+                                                    if (!empty($row['email'])) {
+                                                        echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
+                                                    } else {
+                                                        echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
+                                                    }
                                                 }
-                                            }  ?>
+                                            } elseif ($_SESSION['role'] == "Accounting") {
+                                                $getImg = mysqli_query($db, "SELECT * FROM tbl_accounting WHERE account_id = '$account_id'");
+                                                while ($row = mysqli_fetch_array($getImg)) {
+                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
+                                                    <div class="ms-3 my-auto">
+                                                <h6 class="text-white mb-0">' . $row['username'] . '</h6>
+                                                <p class="text-xs text-white">Username</p>
+                                            </div>
+                                        </div>';
+                                                    if (!empty($row['email'])) {
+                                                        echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
+                                                    } else {
+                                                        echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
+                                                    }
+                                                }
+                                            } ?>
 
 
                                             </p>
@@ -83,7 +107,7 @@
                                                 <p class="text-secondary text-sm font-weight-bold mb-0">Participants
                                                 </p>
                                             </div> -->
-                                                <div class="col-7 text-end">
+                                                <div class="col-12  text-center">
                                                     <a href="../login/userData/ctrl.logout.php"
                                                         class="btn btn-outline-white mb-0">Sign out</a>
                                                 </div>

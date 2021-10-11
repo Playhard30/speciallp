@@ -31,7 +31,7 @@ include '../../includes/session.php';
                             <div class="card">
                                 <!-- Card header -->
                                 <div class="card-header">
-                                    <h5 class="mb-0">Accounting.. List</h5>
+                                    <h5 class="mb-0">Accounting List</h5>
                                     <!-- <p class="text-sm mb-0">
                                         A lightweight, extendable, dependency-free javascript HTML table plugin.
                                     </p> -->
@@ -63,6 +63,12 @@ include '../../includes/session.php';
                                                     Created at</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                    Last Updated</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                    Updated by</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Option</th>
                                             </tr>
                                         </thead>
@@ -90,6 +96,11 @@ include '../../includes/session.php';
                                                 <td class="text-sm font-weight-normal"><?php echo $row['username']; ?>
                                                 </td>
                                                 <td class="text-sm font-weight-normal"><?php echo $row['created_at']; ?>
+                                                </td>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['last_updated']; ?>
+                                                </td>
+                                                <td class="text-sm font-weight-normal"><?php echo $row['updated_by']; ?>
                                                 </td>
                                                 <td class="text-sm font-weight-normal">
                                                     <a class="btn bg-gradient-primary text-xs"
@@ -131,8 +142,9 @@ include '../../includes/session.php';
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <a href="userData/ctrl.del.admission.php?admission_id=<?php echo $id; ?>"
-                                                                        class="btn btn-white text-white bg-danger">Delete</a>
+                                                                    <a href="userData/ctrl.del.accounting.php?account_id=
+                                                                        <?php echo $id; ?>" class=" btn btn-white text-white
+                                                                        bg-danger">Delete</a>
                                                                     <button type="button"
                                                                         class="btn btn-link text-secondary btn-outline-dark ml-auto"
                                                                         data-bs-dismiss="modal">Close</button>

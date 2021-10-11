@@ -29,7 +29,7 @@
                 <h6 class="mb-0 text-sm">' . $row['fullname'] . '</h6>
                 <p class="mb-0 text-xs">' . $_SESSION['role'];
                 }
-            } else if ($_SESSION['role'] == "accounting") {
+            } else if ($_SESSION['role'] == "Accounting") {
                 $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_accounting.account_lastname, ', ', tbl_accounting.account_firstname) AS fullname FROM tbl_accounting WHERE account_id = '$account_id'");
                 while ($row = mysqli_fetch_array($getUserName)) {
                     echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
@@ -37,7 +37,7 @@
                 <h6 class="mb-0 text-sm">' . $row['fullname'] . '</h6>
                 <p class="mb-0 text-xs">' . $_SESSION['role'];
                 }
-            }?></p>
+            } ?></p>
         </div>
 
     </div>
@@ -304,7 +304,7 @@
                 </a>
             </li>
             ';
-            } else if ($_SESSION['role'] == "accounting") {
+            } else if ($_SESSION['role'] == "Accounting") {
                 echo '<li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">
                     <div

@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
         if (!empty($_POST['username']) && !empty($_POST['password'])) {
             if ($password == $confirmPass) {
                 $hashedPwd = password_hash($confirmPass, PASSWORD_DEFAULT);
-                $insertAccounting = mysqli_query($db, "INSERT INTO tbl_accounting(img, account_firstname, account_middlename, account_lastname, activation_code, email, username, password) VALUES ('$image', '$fname', '$mname', '$lname', '', '$email', '$username', '$hashedPwd')") or die(mysqli_error($db));
+                $insertAccounting = mysqli_query($db, "INSERT INTO tbl_accounting(img, account_firstname, account_middlename, account_lastname, activation_code, email, username, password, created_at) VALUES ('$image', '$fname', '$mname', '$lname', '', '$email', '$username', '$hashedPwd', CURRENT_TIMESTAMP)") or die(mysqli_error($db));
                 $_SESSION['successAdd'] = true;
                 header("location: ../add.accounting.php");
             } else {

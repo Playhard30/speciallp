@@ -47,8 +47,7 @@ if (isset($_POST['signin'])) {
             }
             header("location: ../../dashboard/index.php");
         }
-    } 
-    elseif ($numrow2 > 0) {
+    } elseif ($numrow2 > 0) {
         while ($row = mysqli_fetch_array($admission)) {
             $hashedPwdCheck = password_verify($password, $row['password']);
             if ($hashedPwdCheck == false) {
@@ -57,25 +56,24 @@ if (isset($_POST['signin'])) {
             } elseif ($hashedPwdCheck == true) {
                 $_SESSION['role'] = "Admission";
                 $_SESSION['userid'] = $row['admission_id'];
+                $_SESSION['name'] = $row['admission_lastname'] . ", " . $row['admission_firstname'];
             }
             header("location: ../../dashboard/index.php");
         }
-    }  elseif ($numrow3 > 0) {
+    } elseif ($numrow3 > 0) {
         while ($row = mysqli_fetch_array($accounting)) {
             $hashedPwdCheck = password_verify($password, $row['password']);
             if ($hashedPwdCheck == false) {
                 header("location: ../sign-in.php?sessionP");
                 exit();
             } elseif ($hashedPwdCheck == true) {
-                $_SESSION['role'] = "accounting";
+                $_SESSION['role'] = "Accounting";
                 $_SESSION['userid'] = $row['account_id'];
             }
             header("location: ../../dashboard/index.php");
         }
-    }
-    
-    else {
+    } else {
         header("location: ../sign-in.php?sessionUP");
         exit();
     }
-} ?>
+}

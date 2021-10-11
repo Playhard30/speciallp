@@ -149,11 +149,14 @@ $_SESSION['account_id'] = $account_id;
                                 <h5>Change Password</h5>
                             </div>
                             <div class="card-body pt-0">
-                                <label class="form-label">Current password</label>
+                                <?php if ($_SESSION['role'] == "Accounting") {
+                                    echo '<label class="form-label">Current password</label>
                                 <div class="form-group">
                                     <input class="form-control" type="password" name="oldPass"
                                         placeholder="Current password" required>
-                                </div>
+                                </div>';
+                                } ?>
+
                                 <label class="form-label">New password</label>
                                 <div class="form-group">
                                     <input class="form-control" type="password" name="password"

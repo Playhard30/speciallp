@@ -181,7 +181,7 @@ include '../../includes/session.php';
                                                         <button class="btn bg-gradient-light mb-0 js-btn-prev"
                                                             type="button" title="Prev">Prev</button>
                                                         <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
-                                                            title="Send" name="submit">Add Admission</button>
+                                                            title="Send" name="submit">Add Accounting</button>
                                                     </div>
                                                 </div>
                                             </div>
