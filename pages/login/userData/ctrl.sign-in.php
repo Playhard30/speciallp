@@ -19,6 +19,9 @@ if (isset($_POST['signin'])) {
     $accounting = mysqli_query($db, "SELECT * FROM tbl_accounting WHERE username = '$username'");
     $numrow3 = mysqli_num_rows($accounting);
 
+    $admin = mysqli_query($db, "SELECT * FROM tbl_admins WHERE username = '$username'");
+    $numrow4 = mysqli_num_rows($admin);
+
 
 
     if ($numrow > 0) {
@@ -69,6 +72,18 @@ if (isset($_POST['signin'])) {
             } elseif ($hashedPwdCheck == true) {
                 $_SESSION['role'] = "Accounting";
                 $_SESSION['userid'] = $row['account_id'];
+            }
+            header("location: ../../dashboard/index.php");
+        }
+    } elseif ($numrow4 > 0) {
+        while ($row = mysqli_fetch_array($admin)) {
+            $hashedPwdCheck = password_verify($password, $row['password']);
+            if ($hashedPwdCheck == false) {
+                header("location: ../sign-in.php?sessionP");
+                exit();
+            } elseif ($hashedPwdCheck == true) {
+                $_SESSION['role'] = "Registrar";
+                $_SESSION['userid'] = $row['admin_id'];
             }
             header("location: ../../dashboard/index.php");
         }
