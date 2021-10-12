@@ -70,7 +70,7 @@ unset($_SESSION['subjAdded']);
 
 ?>
 
-<div class="position-fixed top-2 end-1 z-index-2">
+<div class="position-fixed top-2 end-1 z-index-3">
     <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="fill-Uinfo"
         aria-atomic="true">
         <div class="toast-header border-0">

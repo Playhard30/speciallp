@@ -47,42 +47,49 @@ if (isset($_POST['save'])) {
 
 if (isset($_POST['savePass'])) {
 
-    $oldpassword = mysqli_real_escape_string($db, $_POST['oldPass']);
+    if ($_SESSION['role'] == "Registrar") {
 
-    $checkPass = mysqli_query($db, "SELECT * FROM tbl_admins WHERE admin_id = '$admin_id'");
-    while ($row = mysqli_fetch_array($checkPass)) {
-        $checkHashPass = password_verify($oldpassword, $row['password']);
-        if ($checkHashPass == false) {
-            $_SESSION['oldNotMatch'] = true;
-            if ($_SESSION['role'] == "Super Administrator") {
-                header("location: ../edit.registrar.php?admin_id=" . $admin_id);
-            } else {
+        $oldpassword = mysqli_real_escape_string($db, $_POST['oldPass']);
+
+        $checkPass = mysqli_query($db, "SELECT * FROM tbl_admins WHERE admin_id = '$admin_id'");
+        while ($row = mysqli_fetch_array($checkPass)) {
+            $checkHashPass = password_verify($oldpassword, $row['password']);
+            if ($checkHashPass == false) {
+                $_SESSION['oldNotMatch'] = true;
                 header("location: ../edit.registrar.php");
-            }
-        } elseif ($checkHashPass == true) {
+            } elseif ($checkHashPass == true) {
 
-            $password = mysqli_real_escape_string($db, $_POST['password']);
-            $confirmPass = mysqli_real_escape_string($db, $_POST['confirmPass']);
-            $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
+                $password = mysqli_real_escape_string($db, $_POST['password']);
+                $confirmPass = mysqli_real_escape_string($db, $_POST['confirmPass']);
+                $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
 
-            if ($password == $confirmPass) {
-                $hashedPwd = password_hash($confirmPass, PASSWORD_DEFAULT);
+                if ($password == $confirmPass) {
+                    $hashedPwd = password_hash($confirmPass, PASSWORD_DEFAULT);
 
-                $updatePass = mysqli_query($db, " UPDATE tbl_admins SET password='$hashedPwd', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE admin_id = '$admin_id'") or die(mysqli_error($db));
-                $_SESSION['successPass'] = true;
-                if ($_SESSION['role'] == "Super Administrator") {
-                    header("location: ../edit.registrar.php?admin_id=" . $admin_id);
-                } else {
+                    $updatePass = mysqli_query($db, " UPDATE tbl_admins SET password='$hashedPwd', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE admin_id = '$admin_id'") or die(mysqli_error($db));
+                    $_SESSION['successPass'] = true;
                     header("location: ../edit.registrar.php");
-                }
-            } else {
-                $_SESSION['newNotMatch'] = true;
-                if ($_SESSION['role'] == "Super Administrator") {
-                    header("location: ../edit.registrar.php?admin_id=" . $admin_id);
                 } else {
+                    $_SESSION['newNotMatch'] = true;
                     header("location: ../edit.registrar.php");
                 }
             }
+        }
+    } else {
+
+        $password = mysqli_real_escape_string($db, $_POST['password']);
+        $confirmPass = mysqli_real_escape_string($db, $_POST['confirmPass']);
+        $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
+
+        if ($password == $confirmPass) {
+            $hashedPwd = password_hash($confirmPass, PASSWORD_DEFAULT);
+
+            $updatePass = mysqli_query($db, " UPDATE tbl_admins SET password='$hashedPwd', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE admin_id = '$admin_id'") or die(mysqli_error($db));
+            $_SESSION['successPass'] = true;
+            header("location: ../edit.registrar.php?admin_id=" . $admin_id);
+        } else {
+            $_SESSION['newNotMatch'] = true;
+            header("location: ../edit.registrar.php?admin_id=" . $admin_id);
         }
     }
 }
