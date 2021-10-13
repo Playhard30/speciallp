@@ -547,6 +547,9 @@
                     <span class="nav-link-text ms-1">Add Old Subject</span>
                 </a>
             </li>
+
+        
+
            
             ';
             }
@@ -584,7 +587,7 @@
         } elseif ($_SESSION['role'] == "Adviser") {
             echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../dean/send.report.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
-            <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../registrar/edit.registrar.php" data-bs-toggle="tooltip"
+            <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../adviser/edit.adviser.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
         } ?>
