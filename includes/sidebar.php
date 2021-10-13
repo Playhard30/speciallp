@@ -444,28 +444,48 @@
                 </a>
             </li>
 
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Forms</h6>
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link"
+                    aria-controls="applicationsExamples" role="button" aria-expanded="false">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-list-alt text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Maintenance</span>
+                </a>
+
+                <div class="collapse  show " id="applicationsExamples">
+                    <ul class="nav ms-4 ps-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../registrar/add.department.php">
+                                <span class="sidenav-mini-icon"> K </span>
+                                <span class="sidenav-normal text-dark"> Add Department </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
+
+
 
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Lists</h6>
             </li>
 
             <li class="nav-item">
-            <a class="nav-link  " href="../adviser/list.adviser.php">
-                <div
-                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="fas fa-list-alt text-dark"></i>
-                </div>
-                <span class="nav-link-text ms-1">Enrollment Advisers</span>
-            </a>
-           </li>
+                <a class="nav-link  " href="../adviser/list.adviser.php">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-list-alt text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Enrollment Advisers</span>
+                </a>
+            </li>
 
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Add</h6>
             </li>
-        
+
             <li class="nav-item">
                 <a class="nav-link  " href="../subject/add.subject.php">
                     <div

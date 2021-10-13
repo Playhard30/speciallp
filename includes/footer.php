@@ -52,7 +52,12 @@ if (isset($_SESSION['emptyImg'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="subjAdded"
     id="autoClickBtn" hidden>
 </a>';
+} elseif (isset($_SESSION['successAdd'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="successAdd"
+    id="autoClickBtn" hidden>
+</a>';
 }
+
 unset($_SESSION['emptyImg']);
 unset($_SESSION['successImg']);
 unset($_SESSION['successUpdate']);
@@ -66,11 +71,25 @@ unset($_SESSION['fill']);
 unset($_SESSION['fill-Uinfo']);
 unset($_SESSION['subjExisting']);
 unset($_SESSION['subjAdded']);
+unset($_SESSION['successAdd']);
 
 
 ?>
 
 <div class="position-fixed top-2 end-1 z-index-3">
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="successAdd"
+        aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-success me-2"></i>
+            <span class="me-auto text-gradient text-success font-weight-bold">Successfully Added!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Successfully Added!
+        </div>
+    </div>
     <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="fill-Uinfo"
         aria-atomic="true">
         <div class="toast-header border-0">
