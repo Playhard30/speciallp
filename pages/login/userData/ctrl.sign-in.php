@@ -22,6 +22,9 @@ if (isset($_POST['signin'])) {
     $admin = mysqli_query($db, "SELECT * FROM tbl_admins WHERE username = '$username'");
     $numrow4 = mysqli_num_rows($admin);
 
+    $adviser = mysqli_query($db, "SELECT * FROM tbl_faculties WHERE username = '$username'");
+    $numrow5 = mysqli_num_rows($adviser);
+
 
 
     if ($numrow > 0) {
@@ -87,7 +90,20 @@ if (isset($_POST['signin'])) {
             }
             header("location: ../../dashboard/index.php");
         }
-    } else {
+    }  elseif ($numrow5 > 0) {
+        while ($row = mysqli_fetch_array($adviser)) {
+            $hashedPwdCheck = password_verify($password, $row['password']);
+            if ($hashedPwdCheck == false) {
+                header("location: ../sign-in.php?sessionP");
+                exit();
+            } elseif ($hashedPwdCheck == true) {
+                $_SESSION['role'] = "Adviser";
+                $_SESSION['userid'] = $row['faculty_id'];
+            }
+            header("location: ../../dashboard/index.php");
+        }
+    }
+    else {
         header("location: ../sign-in.php?sessionUP");
         exit();
     }
