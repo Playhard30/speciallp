@@ -1,6 +1,9 @@
-<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-white shadow-xl shadow" id="sidenav-main" data-color="danger">
+<aside
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-white shadow-xl shadow"
+    id="sidenav-main" data-color="danger">
     <div class="sidenav-header">
-        <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+        <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+            aria-hidden="true" id="iconSidenav"></i>
         <div class="border-0 d-flex align-items-center px-0 mt-3">
             <?php if ($_SESSION['role'] == "Super Administrator") {
                 $getUserName = mysqli_query($db, "SELECT * FROM tbl_super_admins WHERE sa_id = '$sa_id'");
@@ -230,7 +233,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link  " href="../forms/enroll_stats.php">
+                <a class="nav-link  " href="../forms/data/enroll_stats.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-file-alt text-dark"></i>
@@ -424,7 +427,8 @@
             </li>
             ';
             } else if ($_SESSION['role'] == "Registrar") {
-                echo '<li class="nav-item">
+                echo '
+            <li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -451,68 +455,174 @@
                 </a>
             </li>
 
+
             <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link"
-                    aria-controls="applicationsExamples" role="button" aria-expanded="false">
+                <a data-bs-toggle="collapse" href="#listFranciscans" class="nav-link" aria-controls="listFranciscans"
+                    role="button" aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-list-alt text-dark"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Maintenance</span>
+                    <span class="nav-link-text ms-1">List Franciscans</span>
                 </a>
 
-                <div class="collapse  show " id="applicationsExamples">
+                <div class="collapse" id="listFranciscans">
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="../registrar/add.department.php">
-                                <span class="sidenav-mini-icon"> K </span>
-                                <span class="sidenav-normal text-dark"> Add Department </span>
+                            <a class="nav-link" href="../adviser/list.adviser.php">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal text-dark ">Adviser List</span>
                             </a>
                         </li>
                     </ul>
                 </div>
             </li>
 
-
-
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Lists</h6>
-            </li>
-
             <li class="nav-item">
-                <a class="nav-link  " href="../adviser/list.adviser.php">
+                <a data-bs-toggle="collapse" href="#maintenance" class="nav-link" aria-controls="maintenance"
+                    role="button" aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-list-alt text-dark"></i>
+                        <i class="fas fa-tools text-dark"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Enrollment Advisers</span>
+                    <span class="nav-link-text ms-1">Maintenance</span>
                 </a>
+
+                <div class="collapse" id="maintenance">
+                    <ul class="nav ms-4 ps-3">
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#profileExample">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal text-dark">Add</span>
+                            </a>
+                            <div class="collapse" id="profileExample">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../registrar/add.department.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50"> Add Department </span>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item mt-2">
+                                        <h6 class="ps-4 ms-4 text-xs font-weight-bolder opacity-6">Subjects</h6>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../subject/add.subject.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50"> Add New Subject </span>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../subject/add.subject.old.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50"> Add Old Subject </span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </li>
 
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Add</h6>
-            </li>
 
             <li class="nav-item">
-                <a class="nav-link  " href="../subject/add.subject.php">
+                <a data-bs-toggle="collapse" href="#forms" class="nav-link" aria-controls="forms" role="button"
+                    aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-user-plus text-dark"></i>
+                        <i class="fas fa-file-pdf text-dark"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Add New Subject</span>
+                    <span class="nav-link-text ms-1">Forms</span>
                 </a>
-            </li>
 
+                <div class="collapse" id="forms">
+                    <ul class="nav ms-4 ps-3">
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#blankForms">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal text-dark">Blank Forms</span>
+                            </a>
+                            <div class="collapse" id="blankForms">
+                                <ul class="nav nav-sm flex-column">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../forms/blank/dars.php">
+                                            <span class="sidenav-mini-icon text-xs"></span>
+                                            <span class="sidenav-normal text-black-50">Registration Forms</span>
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#formsData">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal text-dark">Forms w/ Data</span>
+                            </a>
+                            <div class="collapse" id="formsData">
+                                <ul class="nav nav-sm flex-column">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50"></span>
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+            
+            
             <li class="nav-item">
-                <a class="nav-link  " href="../subject/add.subject.old.php">
+                <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum" role="button"
+                    aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-user-plus text-dark"></i>
+                        <i class="fas fa-book-reader text-dark"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Add Old Subject</span>
+                    <span class="nav-link-text ms-1">Curriculum</span>
                 </a>
-            </li>
-            ';
+
+                <div class="collapse" id="curriculum">
+                    <ul class="nav ms-4 ps-3">
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curr2020">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal text-dark">2020 Curriculum</span>
+                            </a>
+                            <div class="collapse" id="curr2020">
+                                <ul class="nav nav-sm flex-column">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../curriculum/curr2020/stem_curr.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">STEM</span>
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>';
             } else if ($_SESSION['role'] == "Adviser") {
                 echo '<li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">
@@ -541,7 +651,7 @@
                 </a>
             </li>
 
-            
+
             <li class="nav-item">
                 <a class="nav-link  " href="../subject/add.subject.php">
                     <div
@@ -562,9 +672,9 @@
                 </a>
             </li>
 
-        
 
-           
+
+
             ';
             }
             ?>
