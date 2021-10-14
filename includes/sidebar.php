@@ -462,6 +462,16 @@ if ("Super Administrator" == $_SESSION['role']) {
             </a>
            </li>
 
+           <li class="nav-item">
+            <a class="nav-link  " href="../course/list.course.php">
+                <div
+                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fas fa-list-alt text-dark"></i>
+                </div>
+                <span class="nav-link-text ms-1">Course Lists</span>
+            </a>
+           </li>
+
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Add</h6>
             </li>
@@ -473,6 +483,16 @@ if ("Super Administrator" == $_SESSION['role']) {
                         <i class="fas fa-user-plus text-dark"></i>
                     </div>
                     <span class="nav-link-text ms-1">Add Student</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link  " href="../course/add.course.php">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-user-plus text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Add Course</span>
                 </a>
             </li>
 
