@@ -585,11 +585,11 @@
                     </ul>
                 </div>
             </li>
-            
-            
+
+
             <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum" role="button"
-                    aria-expanded="false">
+                <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
+                    role="button" aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-book-reader text-dark"></i>
@@ -599,7 +599,7 @@
 
                 <div class="collapse" id="curriculum">
                     <ul class="nav ms-4 ps-3">
-                    
+
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curr2020">
                                 <span class="sidenav-mini-icon"> </span>
