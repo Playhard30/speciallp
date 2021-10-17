@@ -53,7 +53,15 @@
                    <h6 class="mb-0 text-sm">' . $row['fullname'] . '</h6>
                    <p class="mb-0 text-xs">' . $_SESSION['role'];
  }
-} ?></p>
+} elseif ("Faculty" == $_SESSION['role']) {
+    $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties.faculty_lastname, ', ', tbl_faculties.faculty_firstname) AS fullname FROM tbl_faculties WHERE faculty_id = '$faculty_id'");
+    while ($row = mysqli_fetch_array($getUserName)) {
+     echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
+                  <div class="d-flex align-items-start flex-column justify-content-center">
+                      <h6 class="mb-0 text-sm">' . $row['fullname'] . '</h6>
+                      <p class="mb-0 text-xs">' . $_SESSION['role'];
+    }
+   }?></p>
         </div>
 
     </div>
@@ -472,7 +480,17 @@ if ("Super Administrator" == $_SESSION['role']) {
             </a>
            </li>
 
+           <li class="nav-item">
+            <a class="nav-link  " href="../faculty/list.faculty.php">
+                <div
+                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fas fa-list-alt text-dark"></i>
+                </div>
+                <span class="nav-link-text ms-1">Faculty Lists</span>
+            </a>
+           </li>
             <li class="nav-item mt-3">
+
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Add</h6>
             </li>
 
@@ -594,6 +612,10 @@ if ("Super Administrator" == $_SESSION['role']) {
  echo '<a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../student/edit.student.php" data-bs-toggle="tooltip"
           data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
-} ?>
+} elseif ("Faculty" == $_SESSION['role']) {
+    echo '<a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../faculty/edit.faculty.php" data-bs-toggle="tooltip"
+             data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
+                   class="fas fa-user-edit"></i></a>';
+   }?>
     </div>
 </aside>

@@ -20,7 +20,7 @@ include '../../includes/session.php';
                         </li>
                         <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">View Students List</h6>
+                    <h6 class="font-weight-bolder mb-0">View Faculty List</h6>
                 </nav>
                 <?php include '../../includes/navbar.php'; ?>
                 <!-- End Navbar -->
@@ -30,110 +30,86 @@ include '../../includes/session.php';
                         <div class="col-12">
                             <div class="card shadow shadow-xl">
                                 <!-- Card header -->
-                                <div class="card-header m-1">
-                                    <h5 class="mb-0 ">Students List</h5>
-                                    <div class="col-5 m-1" >
-                                        <form method="GET" action="list.student.php">
-                                        <div class="ms-md-auto pe-md-3 d-flex align-items-center" >
-                                            <div class="input-group">
-                                            <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                                            <input type="text" class="form-control" name="search_text" placeholder="Search Student">
-                                                        <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
-                                                            title="Send" name="search">Search</button>
-                                            </div>
-                                         </div>
-                                     </div>
-                                        </form>
+                                <div class="card-header">
+                                    <h5 class="mb-0">Faculty List</h5>
                                     <!-- <p class="text-sm mb-0">
                                         A lightweight, extendable, dependency-free javascript HTML table plugin.
                                     </p> -->
                                 </div>
                                 <div class="table-responsive">
-                                    <table class="table table-flush table-hover m-0" id="datatable-basic">
+                                    <table class="table table-flush table-hover" id="datatable-basic">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Picture</th>
+                                                    I.D. No.</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Student No.</th>
+                                                    Full Name</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Fullname</th>
+                                                    Position</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Course</th>
+                                                    Role</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Gender</th>
+                                                    Status</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Email</th>
-                                                    <th
+                                                <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Created at</th>
-                                                    <th
+                                                    Username</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                    Created At</th>
+                                                <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Last Updated</th>
-                                                    <th
+
+                                                <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Updated by</th>
+                                                    Updated By</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Option</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-if (isset($_GET['search'])) {
- $_GET['search_text'] = addslashes($_GET['search_text']);
-
- $studentList = mysqli_query($db,
-  "SELECT *,CONCAT(tbl_students.lastname, ', ', tbl_students.firstname, ' ', tbl_students.middlename)  as fullname
-                                         FROM tbl_students
-                                        LEFT JOIN tbl_courses ON tbl_courses.course_id = tbl_students.course_id
-                                        LEFT JOIN tbl_genders ON tbl_genders.gender_id = tbl_students.gender_id
-                                        WHERE
-                                        (firstname LIKE '%$_GET[search_text]%' OR
-                                        middlename LIKE '%$_GET[search_text]%' OR
-                                        lastname LIKE '%$_GET[search_text]%' OR
-                                        course_abv LIKE '%$_GET[search_text]%' OR
-                                        stud_no LIKE '%$_GET[search_text]%')
-                                         ORDER BY stud_no DESC") or die(mysqli_error($db));
-
- while ($row = mysqli_fetch_array($studentList)) {
-  $id = $row['stud_id'];
-  ?>
+                                            $listAdviser = mysqli_query($db, "SELECT *, CONCAT(facul.faculty_lastname, ', ', facul.faculty_firstname, ' ', facul.faculty_middlename) AS fullname 
+                                            FROM tbl_faculties AS facul
+                                            LEFT JOIN tbl_departments AS dep ON dep.department_id = facul.department_id
+                                            WHERE role = 'Adviser'");
+                                            while ($row = mysqli_fetch_array($listAdviser)) {
+                                                $id = $row['faculty_id'];
+                                            ?>
 
                                             <tr>
                                                 <td class="text-sm font-weight-normal">
-                                                <?php if (empty($row['img'])) {
-   echo '<img class="border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="../../assets/img/illustrations/user_prof.jpg"/>';
-  } else {
-   echo ' <img class=" border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" "/>';
-  } ?>
+                                                    <?php echo $row['faculty_no'] ?>
                                                 </td>
-
-                                                <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['stud_no']; ?></td>
                                                 <td class="text-sm font-weight-normal">
                                                     <?php echo $row['fullname']; ?></td>
                                                 <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['course_abv']; ?></td>
-                                                <td class="text-sm font-weight-normal"><?php echo $row['gender']; ?>
+                                                    <?php echo $row['position']; ?></td>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['role']; ?></td>
+                                                <td class="text-sm font-weight-normal"><?php echo $row['status']; ?>
                                                 </td>
                                                 <td class="text-sm font-weight-normal"><?php echo $row['email']; ?></td>
+                                                <td class="text-sm font-weight-normal"><?php echo $row['username']; ?>
+                                                </td>
                                                 <td class="text-sm font-weight-normal"><?php echo $row['created_at']; ?>
                                                 </td>
-                                                <td class="text-sm font-weight-normal"><?php echo $row['last_updated']; ?>
-                                                </td>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['last_updated']; ?></td>
                                                 <td class="text-sm font-weight-normal"><?php echo $row['updated_by']; ?>
                                                 </td>
                                                 <td class="text-sm font-weight-normal">
                                                     <a class="btn bg-gradient-primary text-xs"
-                                                        href="edit.student.php?stud_id=<?php echo $id; ?>"><i
+                                                        href="edit.faculty.php?faculty_id=<?php echo $id; ?>"><i
                                                             class="text-xs fas fa-edit"></i> Edit</a>
 
                                                     <a class="btn btn-block bg-gradient-danger mb-3 text-xs"
@@ -167,13 +143,13 @@ if (isset($_GET['search'])) {
                                                                         <p>Are you sure you want to delete
                                                                             <br>
                                                                             <i><b><?php echo $row['fullname']; ?></b></i>
-                                                                            from <br>
-                                                                            <i><b><?php echo $row['course']; ?></b></i>?
+                                                                            from
+                                                                            <i><b><?php echo $row['department_name'] ?></b></i>?
                                                                         </p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <a href="userData/ctrl.del.student.php?stud_id=<?php echo $id; ?>"
+                                                                    <a href="userData/ctrl.del.faculty.php?faculty_id=<?php echo $id; ?>"
                                                                         class="btn btn-white text-white bg-danger">Delete</a>
                                                                     <button type="button"
                                                                         class="btn btn-link text-secondary btn-outline-dark ml-auto"
@@ -184,7 +160,7 @@ if (isset($_GET['search'])) {
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <?php }} ?>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>

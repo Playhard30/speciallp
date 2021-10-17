@@ -126,7 +126,7 @@
                                                         echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
                                                     }
                                                 } 
-                                            } ?>
+                                            }?>
 
 
                                             </p>
