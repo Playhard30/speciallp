@@ -467,6 +467,30 @@
                     <span class="nav-link-text ms-1">Add Old Subject</span>
                 </a>
             </li>
+
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">SETTINGS</h6>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link  " href="../registrar/add.acad.year.php">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-user-plus text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Add Academic Year</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link  " href="../registrar/set.acad.calendar.php">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-user-plus text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Set Academic Calendar</span>
+                </a>
+            </li>
             ';
             }
             ?>

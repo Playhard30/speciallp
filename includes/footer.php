@@ -52,7 +52,16 @@ if (isset($_SESSION['emptyImg'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="subjAdded"
     id="autoClickBtn" hidden>
 </a>';
+} elseif (isset($_SESSION['successCalendar'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="successCalendar"
+    id="autoClickBtn" hidden>
+</a>';
+} elseif (isset($_SESSION['successYear'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="successYear"
+    id="autoClickBtn" hidden>
+</a>';
 }
+
 unset($_SESSION['emptyImg']);
 unset($_SESSION['successImg']);
 unset($_SESSION['successUpdate']);
@@ -66,6 +75,8 @@ unset($_SESSION['fill']);
 unset($_SESSION['fill-Uinfo']);
 unset($_SESSION['subjExisting']);
 unset($_SESSION['subjAdded']);
+unset($_SESSION['successCalendar']);
+unset($_SESSION['successYear']);
 
 
 ?>
@@ -231,6 +242,30 @@ unset($_SESSION['subjAdded']);
         <hr class="horizontal dark m-0">
         <div class="toast-body">
             You've successfull added a subject.
+        </div>
+    </div>
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="successCalendar" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Calendar Updated!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            You've successfully updated Academic Calendar!
+        </div>
+    </div>
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="successYear" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Academic Year Added!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            You've successfully added an Academic Year!
         </div>
     </div>
 </div>
