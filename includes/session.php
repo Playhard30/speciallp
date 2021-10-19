@@ -18,6 +18,12 @@ if (!empty($_SESSION['role'])) {
    header("location: ../login/sign-in.php");
    exit();
   }
+   } elseif ("President" == $_SESSION['role']) {
+  $pres_id = $_SESSION['userid'];
+  if (false == $pres_id) {
+   header("location: ../login/sign-in.php");
+   exit();
+  }
  } elseif ("Accounting" == $_SESSION['role']) {
   $account_id = $_SESSION['userid'];
   if (false == $account_id) {
