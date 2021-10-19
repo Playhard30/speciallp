@@ -37,10 +37,11 @@ if (isset($_POST['save'])) {
 
     if ($check == 0) {
         $q = $db->query("SELECT * FROM tbl_faculties WHERE username = '$username'") or die($db->error);
+        $check2 = mysqli_num_rows($q);
         while ($row = mysqli_fetch_array($q)) {
             $getID = $row['faculty_id'];
         }
-        if ($getID == $faculty_id) {
+        if ($getID == $faculty_id || $check2 < 1) {
             $updateInfo = mysqli_query($db, " UPDATE tbl_faculties SET faculty_lastname='$lname',faculty_firstname='$fname', faculty_middlename='$mname', faculty_no = '$faculty_no', position = '$position', department_id = '$department', role = '$role', status = '$status', email='$email', username='$username', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
             $_SESSION['successUpdate'] = true;
             if ($_SESSION['role'] == "Super Administrator") {
