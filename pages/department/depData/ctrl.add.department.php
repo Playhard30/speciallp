@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
         header("location: ../add.department.php");
     } else {
         $q = mysqli_query($db, "INSERT INTO tbl_departments (department_name) VALUES ('$dep')");
-        $_SESSION['successAdd'] = true;
+        $_SESSION['successAddDep'] = true;
         header("location: ../add.department.php");
     }
 }
