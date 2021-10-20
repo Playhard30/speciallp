@@ -3,6 +3,10 @@ session_start();
 include '../../includes/head.php';
 include '../../includes/session.php';
 ?>
+<title>
+    Add Subjects Old | SFAC - Las Piñas
+</title>
+</head>
 
 <body class="g-sidenav-show  bg-gray-100">
     <?php include '../../includes/sidebar.php'; ?>
@@ -74,30 +78,33 @@ include '../../includes/session.php';
                                                         <div class="col-12 col-sm-3 mt-3 mt-sm-0">
                                                             <label>Lecture Units</label>
                                                             <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="Enter no. of units" name="unit_lec" />
+                                                                type="text" placeholder="Enter no. of units"
+                                                                name="unit_lec" />
                                                         </div>
                                                         <div class="col-12 col-sm-3">
                                                             <label>Laboratory Units</label>
                                                             <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="Enter no. of units" name="unit_lab" />
+                                                                type="text" placeholder="Enter no. of units"
+                                                                name="unit_lab" />
                                                         </div>
                                                         <div class="col-12 col-sm-3">
                                                             <label>Total Units</label>
                                                             <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="Enter no. of units" name="unit_total" />
+                                                                type="text" placeholder="Enter no. of units"
+                                                                name="unit_total" />
                                                         </div>
                                                         <div class="col-12 col-sm-3">
                                                             <label>Pre Requisite</label>
                                                             <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="Enter pre requisite" name="prereq" />
+                                                                type="text" placeholder="Enter pre requisite"
+                                                                name="prereq" />
                                                         </div>
                                                     </div>
 
                                                     <div class="row mt-3 justify-content-center">
                                                         <div class="col-12 col-sm-4 mt-3 mt-sm-0">
                                                             <label>Course</label>
-                                                            <select class="form-control" name="course"
-                                                                id="course">
+                                                            <select class="form-control" name="course" id="course">
                                                                 <option value="" disabled selected>Select Course
                                                                 </option>
                                                                 <?php $getCourse = mysqli_query($db, "SELECT * FROM tbl_courses");
@@ -111,8 +118,7 @@ include '../../includes/session.php';
 
                                                         <div class="col-12 col-sm-4">
                                                             <label>Year Level</label>
-                                                            <select class="form-control" name="year"
-                                                                id="year">
+                                                            <select class="form-control" name="year" id="year">
                                                                 <option value="" disabled selected>Select Year Level
                                                                 </option>
                                                                 <?php $getYear = mysqli_query($db, "SELECT * FROM tbl_year_levels");
@@ -126,8 +132,7 @@ include '../../includes/session.php';
 
                                                         <div class="col-12 col-sm-4">
                                                             <label>Semester</label>
-                                                            <select class="form-control" name="semester"
-                                                                id="semester">
+                                                            <select class="form-control" name="semester" id="semester">
                                                                 <option value="" disabled selected>Select Semester
                                                                 </option>
                                                                 <?php $getSem = mysqli_query($db, "SELECT * FROM tbl_semesters");
@@ -138,14 +143,14 @@ include '../../includes/session.php';
                                                                 } ?></option>
                                                             </select>
                                                         </div>
-                                                        
+
                                                     </div>
 
-                                                        
-                                               
+
+
                                                     <div class="button-row d-flex mt-7">
-                                                        <button class="btn bg-gradient-dark ms-auto mb-0" type="submit_old"
-                                                            title="Send" name="submit">Add
+                                                        <button class="btn bg-gradient-dark ms-auto mb-0"
+                                                            type="submit_old" title="Send" name="submit">Add
                                                             Subject</button>
                                                     </div>
                                                 </div>

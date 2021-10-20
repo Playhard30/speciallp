@@ -7,8 +7,8 @@ if (isset($_POST['submit'])) {
     $semester = mysqli_real_escape_string($db, $_POST['semester']);
     $academic_year = mysqli_real_escape_string($db, $_POST['academic_year']);
 
-    $updateSem = mysqli_query ($db, "UPDATE tbl_active_sem SET sem_id = '$semester' ") or die (mysqli_error($db));
-    $updateAcad = mysqli_query ($db, "UPDATE tbl_active_acads SET ay_id = '$academic_year' ") or die (mysqli_error($db));
+    $updateSem = mysqli_query($db, "UPDATE tbl_active_sem SET sem_id = '$semester' WHERE active_sem_id = '1' ") or die(mysqli_error($db));
+    $updateAcad = mysqli_query($db, "UPDATE tbl_active_acads SET ay_id = '$academic_year' WHERE active_acad_id = '1'  ") or die(mysqli_error($db));
 
     if ($updateSem == true && $updateAcad == true) {
         $_SESSION['successCalendar'] = true;
@@ -17,7 +17,4 @@ if (isset($_POST['submit'])) {
         $_SESSION['fill'] = true;
         header("location: ../set.acad.calendar.php");
     }
-
-       
-    
 }

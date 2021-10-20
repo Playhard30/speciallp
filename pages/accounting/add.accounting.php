@@ -1,8 +1,13 @@
 <?php
 session_start();
 include '../../includes/head.php';
+
 include '../../includes/session.php';
 ?>
+<title>
+    Add Accounting | SFAC - Las Piñas
+</title>
+</head>
 
 <body class="g-sidenav-show  bg-gray-100">
     <?php include '../../includes/sidebar.php'; ?>

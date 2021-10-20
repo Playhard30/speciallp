@@ -9,9 +9,7 @@ require '../../includes/conn.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../../assets/img/logos/logo.png">
-    <title>
-        Dashboard | Saint Francis of Assisi College - Las Piñas
-    </title>
+
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
@@ -64,4 +62,3 @@ require '../../includes/conn.php';
         border-color: #e08994 !important;
     }
     </style>
-</head>

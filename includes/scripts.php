@@ -10,6 +10,20 @@
 <script src="../../assets/js/plugins/dragula/dragula.min.js"></script>
 <script src="../../assets/js/plugins/jkanban/jkanban.js"></script>
 <script>
+if (document.getElementById('academic_year')) {
+    var element = document.getElementById('academic_year');
+    const example = new Choices(element, {
+        searchEnabled: false,
+    });
+}
+if (document.getElementById('semester')) {
+    var element = document.getElementById('semester');
+    const example = new Choices(element, {
+        searchEnabled: false,
+    });
+};
+</script>
+<script>
 if (document.getElementById('department')) {
     var element = document.getElementById('department');
     const example = new Choices(element, {

@@ -1,5 +1,5 @@
 <aside
-    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-white shadow-xl shadow"
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 shadow-xl shadow bg-white"
     id="sidenav-main" data-color="danger">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
@@ -121,7 +121,7 @@
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="far fa-list-alt text-dark" style="height: 12px; width: 12px;"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Admission List</span>
+                    <span class="nav-link-text ms-1">Admissions List</span>
                 </a>
             </li>
 
@@ -141,7 +141,7 @@
                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="far fa-list-alt text-dark" style="height: 12px; width: 12px;"></i>
             </div>
-            <span class="nav-link-text ms-1">Adviser List</span>
+            <span class="nav-link-text ms-1">Advisers List</span>
         </a>
     </li>
 
@@ -471,7 +471,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="../adviser/list.adviser.php">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal text-dark ">Adviser List</span>
+                                <span class="sidenav-normal font-weight-bolder">Adviser List</span>
                             </a>
                         </li>
                     </ul>
@@ -493,19 +493,27 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#profileExample">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal text-dark">Add</span>
+                                <span class="sidenav-normal font-weight-bolder">Add</span>
                             </a>
                             <div class="collapse" id="profileExample">
                                 <ul class="nav nav-sm flex-column">
+
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../registrar/add.department.php">
+                                        <a class="nav-link" href="../acad/add.acad.year.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50"> Add Academic Year </span>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../department/add.department.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
                                             <span class="sidenav-normal text-black-50"> Add Department </span>
                                         </a>
                                     </li>
 
                                     <li class="nav-item mt-2">
-                                        <h6 class="ps-4 ms-4 text-xs font-weight-bolder opacity-6">Subjects</h6>
+                                        <h6 class="ps-3 ms-4 text-xs font-weight-bolder opacity-6">Subjects</h6>
                                     </li>
 
                                     <li class="nav-item">
@@ -545,7 +553,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#blankForms">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal text-dark">Blank Forms</span>
+                                <span class="sidenav-normal font-weight-bolder">Blank Forms</span>
                             </a>
                             <div class="collapse" id="blankForms">
                                 <ul class="nav nav-sm flex-column">
@@ -565,7 +573,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#formsData">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal text-dark">Forms w/ Data</span>
+                                <span class="sidenav-normal font-weight-bolder">Forms w/ Data</span>
                             </a>
                             <div class="collapse" id="formsData">
                                 <ul class="nav nav-sm flex-column">
@@ -603,7 +611,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curr2020">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal text-dark">2020 Curriculum</span>
+                                <span class="sidenav-normal font-weight-bolder">2020 Curriculum</span>
                             </a>
                             <div class="collapse" id="curr2020">
                                 <ul class="nav nav-sm flex-column">
@@ -672,30 +680,6 @@
                 </a>
             </li>
 
-
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">SETTINGS</h6>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link  " href="../registrar/add.acad.year.php">
-                    <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-user-plus text-dark"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Add Academic Year</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link  " href="../registrar/set.acad.calendar.php">
-                    <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-user-plus text-dark"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Set Academic Calendar</span>
-                </a>
-            </li>
             ';
             }
             ?>
@@ -712,7 +696,7 @@
             data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
         } elseif ($_SESSION['role'] == "Dean") {
-            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../dean/send.report.php" data-bs-toggle="tooltip"
+            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../report/send.report.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
             <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../dean/edit.dean.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
@@ -724,8 +708,8 @@
             data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
         } elseif ($_SESSION['role'] == "Registrar") {
-            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../dean/send.report.php" data-bs-toggle="tooltip"
-            data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
+            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../settings/set.acad.calendar.php" data-bs-toggle="tooltip"
+            data-bs-placement="top" title="Set A.Y. & Semester" data-container="body" data-animation="true"><i class="fas fa-calendar-alt"></i></a>
             <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../registrar/edit.registrar.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';

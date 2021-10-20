@@ -7,6 +7,10 @@ $account_id = $_GET['account_id'];
 $_SESSION['account_id'] = $account_id;
 
 ?>
+<title>
+    Edit Account | SFAC - Las Piñas
+</title>
+</head>
 
 
 <body class="g-sidenav-show  bg-gray-100">
