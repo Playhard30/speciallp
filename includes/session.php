@@ -36,6 +36,12 @@ if (!empty($_SESSION['role'])) {
             header("location: ../login/sign-in.php");
             exit();
         }
+    } elseif ($_SESSION['role'] == "Faculty") {
+        $faculty_id = $_SESSION['userid'];
+        if ($faculty_id == false) {
+            header("location: ../login/sign-in.php");
+            exit();
+        }
     }
 } else {
     header("location: ../login/sign-in.php");

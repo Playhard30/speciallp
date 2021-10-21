@@ -40,7 +40,7 @@ $_SESSION['faculty_id'] = $faculty_id;
                                 <div class="col-sm-auto col-4">
                                     <div class="avatar avatar-xl position-relative">
                                         <?php
-                                        $getUserData = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties.faculty_firstname, ' ', tbl_faculties.faculty_middlename, ' ', tbl_faculties.faculty_lastname) AS fullname FROM tbl_faculties WHERE faculty_id = '$faculty_id'");
+                                        $getUserData = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties_staff.faculty_firstname, ' ', tbl_faculties_staff.faculty_middlename, ' ', tbl_faculties_staff.faculty_lastname) AS fullname FROM tbl_faculties_staff WHERE faculty_id = '$faculty_id'");
                                         while ($row = mysqli_fetch_array($getUserData)) {
                                             if (!empty($row['img'])) {
                                                 echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" alt="bruce"
@@ -61,12 +61,12 @@ $_SESSION['faculty_id'] = $faculty_id;
                                             <?php echo $row['fullname'];  ?>
                                         </h5>
                                         <p class="mb-0 font-weight-bold text-sm">
-                                            Faculty
+                                            Faculty Staff
                                         </p>
                                     </div>
                                 </div>
                                 <form method="POST" enctype="multipart/form-data"
-                                    action="userData/ctrl.edit.adviser.php"
+                                    action="userData/ctrl.edit.faculty.php"
                                     class="col-sm-auto ms-lg-auto mt-sm-0 ms-sm-0 mt-3 justify-content-sm-center">
 
                                     <button class="btn btn-outline-primary me-2 mb-0"><input type="file"
@@ -78,7 +78,7 @@ $_SESSION['faculty_id'] = $faculty_id;
                             </div>
                         </div>
                         <!-- Card Basic Info -->
-                        <form method="POST" enctype="multipart/form-data" action="userData/ctrl.edit.adviser.php"
+                        <form method="POST" enctype="multipart/form-data" action="userData/ctrl.edit.faculty.php"
                             class="card mt-4" id="basic-info">
                             <div class="card-header">
                                 <h5>Basic Info</h5>
@@ -145,7 +145,7 @@ $_SESSION['faculty_id'] = $faculty_id;
 
                         <!-- Card Change Password -->
                         <form class="card mt-4 mb-5" id="password" method="POST"
-                            action="userData/ctrl.edit.adviser.php">
+                            action="userData/ctrl.edit.faculty.php">
                             <div class="card-header">
                                 <h5>Change Password</h5>
                             </div>
