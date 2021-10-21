@@ -1,13 +1,12 @@
 <?php
 session_start();
 require '../../includes/conn.php';
-include '../../includes/head.php';
 include '../../includes/session.php';
-if ($_SESSION['role'] == "Super Administrator") {
+include '../../includes/head.php';
+if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Registrar") {
     $faculty_id = $_GET['faculty_id'];
 }
 $_SESSION['faculty_id'] = $faculty_id;
-
 ?>
 <title>
     Edit Account | SFAC - Las Piñas

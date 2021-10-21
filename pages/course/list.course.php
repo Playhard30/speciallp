@@ -3,6 +3,10 @@ session_start();
 include '../../includes/head.php';
 include '../../includes/session.php';
 ?>
+<title>
+    Courses List | SFAC - Las Piñas
+</title>
+</head>
 
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -36,8 +40,9 @@ include '../../includes/session.php';
                                         A lightweight, extendable, dependency-free javascript HTML table plugin.
                                     </p> -->
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="table table-flush table-hover" id="datatable-basic">
+                                <div class="table-responsive px-4 my-4">
+                                    <table class="table table-flush table-hover m-0 responsive nowrap"
+                                        style="width: 100%;" id="datatable-basic">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th
@@ -56,12 +61,12 @@ include '../../includes/session.php';
                                         </thead>
                                         <tbody>
                                             <?php
-$listCourse = mysqli_query($db, "SELECT *, CONCAT(cour.course, ', ', cour.course_abv) AS fullname
+                                            $listCourse = mysqli_query($db, "SELECT *, CONCAT(cour.course, ', ', cour.course_abv) AS fullname
                                             FROM tbl_courses AS cour
                                             LEFT JOIN tbl_departments AS dep ON dep.department_id = cour.department_id");
-while ($row = mysqli_fetch_array($listCourse)) {
-    $id = $row['course_id'];
-    ?>
+                                            while ($row = mysqli_fetch_array($listCourse)) {
+                                                $id = $row['course_id'];
+                                            ?>
 
                                             <tr>
                                                 <td class="text-sm font-weight-normal">

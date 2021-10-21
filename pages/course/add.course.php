@@ -3,6 +3,10 @@ session_start();
 include '../../includes/head.php';
 include '../../includes/session.php';
 ?>
+<title>
+    Add Course | SFAC - Las Piñas
+</title>
+</head>
 
 <body class="g-sidenav-show  bg-gray-100">
     <?php include '../../includes/sidebar.php'; ?>
@@ -74,11 +78,11 @@ include '../../includes/session.php';
                                                                 <option value="" disabled selected>Select Department
                                                                 </option>
                                                                 <?php $getDept = mysqli_query($db, "SELECT * FROM tbl_departments");
-while ($row = mysqli_fetch_array($getDept)) {
- ?>
+                                                                while ($row = mysqli_fetch_array($getDept)) {
+                                                                ?>
                                                                 <option value="<?php echo $row['department_id']; ?>">
                                                                     <?php echo $row['department_name'];
-} ?></option>
+                                                                } ?></option>
                                                             </select>
                                                         </div>
                                                     </div>

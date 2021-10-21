@@ -2,7 +2,40 @@
 session_start();
 include '../../includes/head.php';
 include '../../includes/session.php';
+
+
+
+
+
+// BOIIIIIIII WAG NYU MUNA KOPYAHIN aayusin ko pa.
+// BOIIIIIIII WAG NYU MUNA KOPYAHIN aayusin ko pa.
+// BOIIIIIIII WAG NYU MUNA KOPYAHIN aayusin ko pa.
+// BOIIIIIIII WAG NYU MUNA KOPYAHIN aayusin ko pa.
+// BOIIIIIIII WAG NYU MUNA KOPYAHIN aayusin ko pa.
+// BOIIIIIIII WAG NYU MUNA KOPYAHIN aayusin ko pa.
+// BOIIIIIIII WAG NYU MUNA KOPYAHIN aayusin ko pa.
+
+
+
+
+
+
+
+
+
+
+// BOIIIIIIII WAG NYU MUNA KOPYAHIN aayusin ko pa.
+// BOIIIIIIII WAG NYU MUNA KOPYAHIN aayusin ko pa.
+// BOIIIIIIII WAG NYU MUNA KOPYAHIN aayusin ko pa.
+// BOIIIIIIII WAG NYU MUNA KOPYAHIN aayusin ko pa.
+// BOIIIIIIII WAG NYU MUNA KOPYAHIN aayusin ko pa.
+// BOIIIIIIII WAG NYU MUNA KOPYAHIN aayusin ko pa.
+// BOIIIIIIII WAG NYU MUNA KOPYAHIN aayusin ko pa.
 ?>
+<title>
+    Students List | SFAC - Las Piñas
+</title>
+</head>
 
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -20,7 +53,7 @@ include '../../includes/session.php';
                         </li>
                         <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">View Advisers List</h6>
+                    <h6 class="font-weight-bolder mb-0">View Students List</h6>
                 </nav>
                 <?php include '../../includes/navbar.php'; ?>
                 <!-- End Navbar -->
@@ -30,28 +63,38 @@ include '../../includes/session.php';
                         <div class="col-12">
                             <div class="card shadow shadow-xl">
                                 <!-- Card header -->
-                                <div class="card-header m-1">
-                                    <h5 class="mb-0 ">Advisers List</h5>
-                                    <div class="col-5 m-1" >
-                                        <form method="GET" action="list.student.php">
-                                        <div class="ms-md-auto pe-md-3 d-flex align-items-center" >
-                                            <div class="input-group">
-                                            <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                                            <input type="text" class="form-control" name="search_text" placeholder="Search Student">
-                                                        <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
-                                                            title="Send" name="search">Search</button>
-                                            </div>
-                                         </div>
-                                     </div>
-                                        </form>
-                                    <!-- <p class="text-sm mb-0">
-                                        A lightweight, extendable, dependency-free javascript HTML table plugin.
-                                    </p> -->
+                                <div class="card-header m-1 my-0">
+                                    <h5 class="mb-0 ">Students List</h5>
+                                    <p class="text-sm mb-0">Enter Student Number or Name in Search box</p>
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="table table-flush table-hover m-0" id="datatable-basic">
+                                <hr class="horizontal dark mt-0">
+                                <div class="row d-flex justify-content-center mx-4">
+                                    <div class="col-md-6 m-1 ">
+                                        <form method="GET" action="list.student.php">
+                                            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                                                <div class="input-group">
+                                                    <!-- <span class="input-group-text text-body"><i class  ="fas fa-search"
+                                                            aria-hidden="true"></i></span> -->
+                                                    <input type="text" class="form-control" name="search_text"
+                                                        placeholder="Search Student"
+                                                        <?php if (!empty($_GET['search_text'])) {
+                                                                                                                                                echo 'value="' . $_GET['search_text'] . '"';
+                                                                                                                                            }  ?>>
+                                                    <button class="btn-sm btn bg-gradient-dark ms-auto mb-0"
+                                                        type="submit" title="Send" name="search"><i
+                                                            class="fas fa-search text-lg"
+                                                            aria-hidden="true"></i></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="table-responsive px-4 my-4">
+                                    <table class=" table table-hover responsive nowrap m-0" id="datatable-basic"
+                                        style="width: 100%;">
                                         <thead class="thead-light">
                                             <tr>
+                                                <th></th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Picture</th>
@@ -70,13 +113,13 @@ include '../../includes/session.php';
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Email</th>
-                                                    <th
+                                                <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Created at</th>
-                                                    <th
+                                                <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Last Updated</th>
-                                                    <th
+                                                <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Updated by</th>
                                                 <th
@@ -87,11 +130,12 @@ include '../../includes/session.php';
                                         </thead>
                                         <tbody>
                                             <?php
-if (isset($_GET['search'])) {
- $_GET['search_text'] = addslashes($_GET['search_text']);
+                                            if (isset($_GET['search'])) {
+                                                $_GET['search_text'] = addslashes($_GET['search_text']);
 
- $studentList = mysqli_query($db,
-  "SELECT *,CONCAT(tbl_students.lastname, ', ', tbl_students.firstname, ' ', tbl_students.middlename)  as fullname
+                                                $studentList = mysqli_query(
+                                                    $db,
+                                                    "SELECT *,CONCAT(tbl_students.lastname, ', ', tbl_students.firstname, ' ', tbl_students.middlename)  as fullname
                                          FROM tbl_students
                                         LEFT JOIN tbl_courses ON tbl_courses.course_id = tbl_students.course_id
                                         LEFT JOIN tbl_genders ON tbl_genders.gender_id = tbl_students.gender_id
@@ -101,19 +145,21 @@ if (isset($_GET['search'])) {
                                         lastname LIKE '%$_GET[search_text]%' OR
                                         course_abv LIKE '%$_GET[search_text]%' OR
                                         stud_no LIKE '%$_GET[search_text]%')
-                                         ORDER BY stud_no DESC") or die(mysqli_error($db));
+                                         ORDER BY stud_no DESC"
+                                                ) or die(mysqli_error($db));
 
- while ($row = mysqli_fetch_array($studentList)) {
-  $id = $row['stud_id'];
-  ?>
+                                                while ($row = mysqli_fetch_array($studentList)) {
+                                                    $id = $row['stud_id'];
+                                            ?>
 
                                             <tr>
+                                                <td></td>
                                                 <td class="text-sm font-weight-normal">
-                                                <?php if (empty($row['img'])) {
-   echo '<img class="border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="../../assets/img/illustrations/user_prof.jpg"/>';
-  } else {
-   echo ' <img class=" border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" "/>';
-  } ?>
+                                                    <?php if (empty($row['img'])) {
+                                                                echo '<img class="border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="../../assets/img/illustrations/user_prof.jpg"/>';
+                                                            } else {
+                                                                echo ' <img class=" border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" "/>';
+                                                            } ?>
                                                 </td>
 
                                                 <td class="text-sm font-weight-normal">
@@ -122,14 +168,19 @@ if (isset($_GET['search'])) {
                                                     <?php echo $row['fullname']; ?></td>
                                                 <td class="text-sm font-weight-normal">
                                                     <?php echo $row['course_abv']; ?></td>
-                                                <td class="text-sm font-weight-normal"><?php echo $row['gender']; ?>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['gender']; ?>
                                                 </td>
-                                                <td class="text-sm font-weight-normal"><?php echo $row['email']; ?></td>
-                                                <td class="text-sm font-weight-normal"><?php echo $row['created_at']; ?>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['email']; ?></td>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['created_at']; ?>
                                                 </td>
-                                                <td class="text-sm font-weight-normal"><?php echo $row['last_updated']; ?>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['last_updated']; ?>
                                                 </td>
-                                                <td class="text-sm font-weight-normal"><?php echo $row['updated_by']; ?>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['updated_by']; ?>
                                                 </td>
                                                 <td class="text-sm font-weight-normal">
                                                     <a class="btn bg-gradient-primary text-xs"
@@ -141,7 +192,6 @@ if (isset($_GET['search'])) {
                                                         data-bs-target="#modal-notification<?php echo $id; ?>"><i
                                                             class="text-xs fas fa-trash-alt"></i> Delete</a>
 
-
                                                     <div class="modal fade" id="modal-notification<?php echo $id; ?>"
                                                         tabindex="-1" role="dialog" aria-labelledby="modal-notification"
                                                         aria-hidden="true">
@@ -151,7 +201,8 @@ if (isset($_GET['search'])) {
                                                                 <div class="modal-header">
                                                                     <h6 class="modal-title text-danger"
                                                                         id="modal-title-notification"><i
-                                                                            class="fas fa-exclamation-triangle"> </i>
+                                                                            class="fas fa-exclamation-triangle">
+                                                                        </i>
                                                                         Warning
                                                                     </h6>
                                                                     <button type="button" class="btn-close"
@@ -184,7 +235,8 @@ if (isset($_GET['search'])) {
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <?php }} ?>
+                                            <?php }
+                                            } ?>
                                         </tbody>
                                     </table>
                                 </div>

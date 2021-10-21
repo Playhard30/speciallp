@@ -464,21 +464,35 @@
 
 
             <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#listFranciscans" class="nav-link" aria-controls="listFranciscans"
-                    role="button" aria-expanded="false">
+                <a data-bs-toggle="collapse" href="#lists" class="nav-link" aria-controls="lists" role="button"
+                    aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-list-alt text-dark"></i>
                     </div>
-                    <span class="nav-link-text ms-1">List Franciscans</span>
+                    <span class="nav-link-text ms-1">Lists</span>
                 </a>
 
-                <div class="collapse" id="listFranciscans">
+                <div class="collapse" id="lists">
                     <ul class="nav ms-4 ps-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../student/list.student.php">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal font-weight-bold">Students List</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="../course/list.course.php">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal font-weight-bold">Courses List</span>
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="../adviser/list.adviser.php">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bolder">Adviser List</span>
+                                <span class="sidenav-normal font-weight-bold">Advisers List</span>
                             </a>
                         </li>
                     </ul>
@@ -497,43 +511,57 @@
 
                 <div class="collapse" id="maintenance">
                     <ul class="nav ms-4 ps-3">
+
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#profileExample">
-                                <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bolder">Add</span>
+                            <a class="nav-link" href="../student/add.student.php">
+                                <span class="sidenav-mini-icon text-xs"> </span>
+                                <span class="sidenav-normal font-weight-bold">Add Student</span>
                             </a>
-                            <div class="collapse" id="profileExample">
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="../course/add.course.php">
+                                <span class="sidenav-mini-icon text-xs"> </span>
+                                <span class="sidenav-normal font-weight-bold"> Add Course </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="../acad/add.acad.year.php">
+                                <span class="sidenav-mini-icon text-xs"> </span>
+                                <span class="sidenav-normal font-weight-bold"> Add Academic Year </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="../department/add.department.php">
+                                <span class="sidenav-mini-icon text-xs"> </span>
+                                <span class="sidenav-normal font-weight-bold"> Add Department </span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#addSubject">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal font-weight-bold">Add Subject</span>
+                            </a>
+                            <div class="collapse" id="addSubject">
                                 <ul class="nav nav-sm flex-column">
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="../acad/add.acad.year.php">
-                                            <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50"> Add Academic Year </span>
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="../department/add.department.php">
-                                            <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50"> Add Department </span>
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item mt-2">
-                                        <h6 class="ps-3 ms-4 text-xs font-weight-bolder opacity-6">Subjects</h6>
-                                    </li>
 
                                     <li class="nav-item">
                                         <a class="nav-link" href="../subject/add.subject.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50"> Add New Subject </span>
+                                            <span class="sidenav-normal text-black-50"> Add New Subject
+                                            </span>
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="nav-link" href="../subject/add.subject.old.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50"> Add Old Subject </span>
+                                            <span class="sidenav-normal text-black-50"> Add Old Subject
+                                            </span>
                                         </a>
                                     </li>
 
@@ -560,7 +588,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#blankForms">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bolder">Blank Forms</span>
+                                <span class="sidenav-normal font-weight-bold">Blank Forms</span>
                             </a>
                             <div class="collapse" id="blankForms">
                                 <ul class="nav nav-sm flex-column">
@@ -568,7 +596,8 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="../forms/blank/dars.php">
                                             <span class="sidenav-mini-icon text-xs"></span>
-                                            <span class="sidenav-normal text-black-50">Registration Forms</span>
+                                            <span class="sidenav-normal text-black-50">Registration
+                                                Forms</span>
                                         </a>
                                     </li>
 
@@ -580,7 +609,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#formsData">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bolder">Forms w/ Data</span>
+                                <span class="sidenav-normal font-weight-bold">Forms w/ Data</span>
                             </a>
                             <div class="collapse" id="formsData">
                                 <ul class="nav nav-sm flex-column">
@@ -618,7 +647,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curr2020">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bolder">2020 Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
                             </a>
                             <div class="collapse" id="curr2020">
                                 <ul class="nav nav-sm flex-column">
@@ -638,51 +667,7 @@
                     </ul>
                 </div>
             </li>
-
-            
-            <li class="nav-item">
-            <a class="nav-link  " href="../student/list.student.php">
-                <div
-                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="fas fa-list-alt text-dark"></i>
-                </div>
-                <span class="nav-link-text ms-1">Student Lists</span>
-            </a>
-           </li>
-
-           <li class="nav-item">
-            <a class="nav-link  " href="../course/list.course.php">
-                <div
-                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="fas fa-list-alt text-dark"></i>
-                </div>
-                <span class="nav-link-text ms-1">Course Lists</span>
-            </a>
-           </li>
-
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Add</h6>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link  " href="../student/add.student.php">
-                    <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-user-plus text-dark"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Add Student</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link  " href="../course/add.course.php">
-                    <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-user-plus text-dark"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Add Course</span>
-                </a>
-            </li>';
+            ';
             } else if ($_SESSION['role'] == "Adviser") {
                 echo '<li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">

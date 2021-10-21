@@ -44,8 +44,7 @@ include '../../includes/session.php';
                                     <div class="row justify-content-center">
                                         <div class="col-12 col-sm-6">
                                             <label>Academic Year</label>
-                                            <select class="form-control" name="academic_year" id="academic_year"
-                                                required>
+                                            <select class="form-control" name="academic_year" id="academic_year">
 
                                                 <option value="" disabled selected>Select Academic Year
                                                 </option>
@@ -63,7 +62,7 @@ include '../../includes/session.php';
 
                                         <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                             <label>Semester</label>
-                                            <select class="form-control" name="semester" id="semester" required>
+                                            <select class="form-control" name="semester" id="semester">
                                                 <option value="" disabled selected>Select Semester
                                                 </option>
                                                 <?php $getSem = mysqli_query($db, "SELECT * FROM tbl_semesters");

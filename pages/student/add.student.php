@@ -1,8 +1,12 @@
         <?php
-session_start();
-include '../../includes/head.php';
-include '../../includes/session.php';
-?>
+        session_start();
+        include '../../includes/head.php';
+        include '../../includes/session.php';
+        ?>
+        <title>
+            Add Student | SFAC - Las Piñas
+        </title>
+        </head>
 
         <body class="g-sidenav-show  bg-gray-100">
             <?php include '../../includes/sidebar.php'; ?>
@@ -28,18 +32,13 @@ include '../../includes/session.php';
                             <div class="row">
                                 <div class="col-12">
                                     <div class="text-center">
-                                        <h3>Enter details for the Student you want to add</h3>
-                                        <h5 class="text-secondary font-weight-normal">Please fill out the fields</h5>
                                     </div>
                                     <div class="multisteps-form mb-5">
                                         <!--progress bar-->
                                         <div class="row">
                                             <div class="col-12 col-lg-8 mx-auto my-5">
                                                 <div class="multisteps-form__progress">
-                                                    <button class="multisteps-form__progress-btn js-active"
-                                                        type="button" title="User Info">
-                                                        <span>Student Info</span>
-                                                    </button>
+
                                                 </div>
                                             </div>
                                         </div>

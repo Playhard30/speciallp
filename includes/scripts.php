@@ -1,14 +1,39 @@
+<script src="../../assets/js/jquery.dataTables.min.js"></script>
+<script src="../../assets/js/plugins/dataTables.responsive.min.js"> </script>
 <script src="../../assets/js/core/popper.min.js"></script>
 <script src="../../assets/js/core/bootstrap.min.js"></script>
 <script src="../../assets/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="../../assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="../../assets/js/plugins/chartjs.min.js"></script>
-<script src="../../assets/js/plugins/datatables.js"></script>
 <script src="../../assets/js/plugins/choices.min.js"></script>
 <script src="../../assets/js/plugins/multistep-form.js"></script>
 <script src="../../assets/js/plugins/dropzone.min.js"></script>
 <script src="../../assets/js/plugins/dragula/dragula.min.js"></script>
 <script src="../../assets/js/plugins/jkanban/jkanban.js"></script>
+<script>
+$(document).ready(function() {
+    $('#datatable-basic').DataTable({
+        "paging": true,
+        "ordering": false,
+        "info": true,
+        language: {
+            paginate: {
+                previous: '‹',
+                next: '›'
+            },
+            aria: {
+                paginate: {
+                    previous: 'Previous',
+                    next: 'Next'
+                }
+            },
+            search: "_INPUT_",
+            searchPlaceholder: "Search..."
+        }
+
+    });
+});
+</script>
 <script>
 if (document.getElementById('academic_year')) {
     var element = document.getElementById('academic_year');
@@ -44,19 +69,7 @@ window.onload = function() {
     document.getElementById('autoClickBtn').click();
 }
 </script>
-<script>
-const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
-    searchable: true,
-    fixedHeight: false,
-    sortable: false,
-    fixedColumns: true
-});
 
-const dataTableSearch = new simpleDatatables.DataTable("#datatable-search", {
-    searchable: true,
-    fixedHeight: true
-});
-</script>
 <script>
 var ctx = document.getElementById("chart-bars").getContext("2d");
 

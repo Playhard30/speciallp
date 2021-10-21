@@ -88,6 +88,14 @@ if (isset($_SESSION['emptyImg'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="courExist"
           id="autoClickBtn" hidden>
       </a>';
+} elseif (isset($_SESSION['fill-select'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="fill-select"
+          id="autoClickBtn" hidden>
+      </a>';
+} elseif (isset($_SESSION['stud_noExist'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="stud_noExist"
+          id="autoClickBtn" hidden>
+      </a>';
 }
 
 unset($_SESSION['emptyImg']);
@@ -112,17 +120,33 @@ unset($_SESSION['studAdded']);
 unset($_SESSION['studExist']);
 unset($_SESSION['courAdded']);
 unset($_SESSION['courExist']);
+unset($_SESSION['fill-select']);
+unset($_SESSION['stud_noExist']);
 
 ?>
 
 <div class="position-fixed top-2 end-1 z-index-3">
 
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="fill-select"
+        aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Required Fields!</span>
+            <small class="text-body"></small> <i class="fas fa-times text-md ms-3 cursor-pointer"
+                data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Please complete all Select fields.
+        </div>
+    </div>
+
     <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="studExist" aria-atomic="true">
         <div class="toast-header border-0">
             <i class="ni ni-notification-70 text-danger me-2"></i>
             <span class="me-auto text-gradient text-danger font-weight-bold">Already exist!</span>
-            <small class="text-body"></small <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast"
-                aria-label="Close"></i>
+            <small class="text-body"></small> <i class="fas fa-times text-md ms-3 cursor-pointer"
+                data-bs-dismiss="toast" aria-label="Close"></i>
         </div>
         <hr class="horizontal dark m-0">
         <div class="toast-body">
@@ -166,6 +190,20 @@ unset($_SESSION['courExist']);
         <hr class="horizontal dark m-0">
         <div class="toast-body">
             The course you're trying to input already exists.
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="stud_noExist"
+        aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Failed to Save!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Student Number is already exist.
         </div>
     </div>
 
