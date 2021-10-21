@@ -149,8 +149,8 @@ include '../../includes/session.php';
 
 
                                                     <div class="button-row d-flex mt-7">
-                                                        <button class="btn bg-gradient-dark ms-auto mb-0"
-                                                            type="submit_new" title="Send" name="submit">Add
+                                                        <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
+                                                            title="Send" name="submit">Add
                                                             Subject</button>
                                                     </div>
                                                 </div>
