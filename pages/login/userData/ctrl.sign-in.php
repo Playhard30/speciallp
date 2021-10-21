@@ -25,6 +25,9 @@ if (isset($_POST['signin'])) {
  $student = mysqli_query($db, "SELECT * FROM tbl_students WHERE username = '$username'");
  $numrow5 = mysqli_num_rows($student);
 
+ $teacher = mysqli_query($db, "SELECT * FROM tbl_faculties_staff WHERE username = '$username'");
+ $numrow6 = mysqli_num_rows($teacher);
+
  if ($numrow > 0) {
   while ($row = mysqli_fetch_array($super_admin)) {
    $hashedPwdCheck = password_verify($password, $row['password']);
@@ -102,7 +105,20 @@ if (isset($_POST['signin'])) {
    }
    header("location: ../../dashboard/index.php");
   }
- } else {
+ }  elseif ($numrow6 > 0) {
+    while ($row = mysqli_fetch_array($teacher)) {
+     $hashedPwdCheck = password_verify($password, $row['password']);
+     if (false == $hashedPwdCheck) {
+      header("location: ../sign-in.php?sessionP");
+      exit();
+     } elseif (true == $hashedPwdCheck) {
+      $_SESSION['role']   = "Teacher";
+      $_SESSION['userid'] = $row['faculty_id'];
+      $_SESSION['name']   = $row['lastname'] . ", " . $row['firstname'];
+     }
+     header("location: ../../dashboard/index.php");
+    }
+   } else {
   header("location: ../sign-in.php?sessionUP");
   exit();
  }
