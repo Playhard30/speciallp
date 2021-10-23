@@ -141,6 +141,27 @@ $_SESSION['faculty_id'] = $id;
 
 
                             
+                                   
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="form-label mt-4">Department</label>
+                                        <select class="form-control" required name="department" id="department">
+                                            <?php $getDepartment = mysqli_query($db, "SELECT * FROM tbl_departments WHERE department_id IN ('$row[department_id]')");
+                                            while ($row2 = mysqli_fetch_array($getDepartment)) {
+                                            ?>
+                                            <option selected value="<?php echo $row2['department_id']; ?>">
+                                                <?php echo $row2['department_name'];
+                                            } ?>
+                                            </option>
+
+                                            <?php $getDepartment = mysqli_query($db, "SELECT * FROM tbl_departments WHERE department_id NOT IN ('$row[department_id]')");
+                                                while ($row1 = mysqli_fetch_array($getDepartment)) {
+                                                ?>
+                                            <option value="<?php echo $row1['department_id']; ?>">
+                                                <?php echo $row1['department_name'];
+                                                } ?></option>
+                                        </select>
+                                    </div>
                                     <div class="col-sm-6">
                                         <label class="form-label mt-4">Role</label>
                                         <div class="input-group">
@@ -149,7 +170,6 @@ $_SESSION['faculty_id'] = $id;
                                         </div>
                                     </div>
                                 </div>
-
 
                                 <div class="row">
                                     <div class="col-sm-4">

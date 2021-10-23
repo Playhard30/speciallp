@@ -3,9 +3,11 @@ session_start();
 require '../../includes/conn.php';
 include '../../includes/head.php';
 include '../../includes/session.php';
-$id = $_GET['faculty_id'];
-$_SESSION['faculty_id'] = $id;
+if ($_SESSION['role'] == "Super Administrator") {
+    $faculty_id = $_GET['faculty_id'];
+}
 
+$_SESSION['faculty_id'] = $faculty_id;
 ?>
 
 
@@ -38,9 +40,7 @@ $_SESSION['faculty_id'] = $id;
                                 <div class="col-sm-auto col-4">
                                     <div class="avatar avatar-xl position-relative">
                                         <?php
-                                        $getUserData = mysqli_query($db, "SELECT *, CONCAT(facul.faculty_firstname, ' ', facul.faculty_middlename, ' ', facul.faculty_lastname) AS fullname 
-                                        FROM tbl_faculties_staff AS facul
-                                        WHERE faculty_id = '$id'");
+                                        $getUserData = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties_staff.faculty_firstname, ' ', tbl_faculties_staff.faculty_middlename, ' ', tbl_faculties_staff.faculty_lastname) AS fullname FROM tbl_faculties_staff WHERE faculty_id = '$faculty_id'");
                                         while ($row = mysqli_fetch_array($getUserData)) {
                                             if (!empty($row['img'])) {
                                                 echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" alt="bruce"
@@ -152,9 +152,10 @@ $_SESSION['faculty_id'] = $id;
                                     <div class="col-sm-4">
                                         <label class="form-label mt-4">Employment Status</label>
                                         <select class="form-control" required name="status" id="status">
-                                            <?php $getstatus = mysqli_query($db, "SELECT status FROM tbl_faculties_staff WHERE faculty_id = '$id'");
-                                            while ($row3 = mysqli_fetch_array($getstatus)) {
-                                                if ($row3['status'] == "Full-time") {
+                                            
+                                            <?php $getUserData = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties_staff.faculty_firstname, ' ', tbl_faculties_staff.faculty_middlename, ' ', tbl_faculties_staff.faculty_lastname) AS fullname FROM tbl_faculties_staff WHERE faculty_id = '$faculty_id'");
+                                                while ($row3 = mysqli_fetch_array($getUserData)) {
+                                                    if ($row3['status'] == "Full-time") {
                                                     echo '<option value="' . $row3['status'] . '" selected>' . $row3['status'] . '
                                             </option>
                                             <option value="Part-time">Part-time</option>';

@@ -624,6 +624,9 @@ if ("Super Administrator" == $_SESSION['role']) {
                    </a>
                </li>
    
+               <li class="nav-item mt-3">
+                   <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Update</h6>
+               </li>
                ';
    }
 ?>
