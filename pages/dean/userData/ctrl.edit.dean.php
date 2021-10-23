@@ -36,12 +36,38 @@ if (isset($_POST['save'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);;
     $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
 
-    $updateInfo = mysqli_query($db, " UPDATE tbl_deans SET dean_lastname='$lname',dean_firstname='$fname', dean_middlename='$mname', email='$email', username='$username', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE dean_id = '$dean_id'") or die(mysqli_error($db));
-    $_SESSION['successUpdate'] = true;
-    if ($_SESSION['role'] == "Super Administrator") {
-        header("location: ../edit.dean.php?dean_id=" . $dean_id);
+    $getAllUsername = mysqli_query($db, "SELECT username FROM tbl_admissions WHERE username = '$username' UNION ALL SELECT username FROM tbl_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_faculties WHERE username = '$username' UNION ALL SELECT username FROM tbl_super_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_accounting WHERE username = '$username'") or die(mysqli_error($db));
+    $check = mysqli_num_rows($getAllUsername);
+
+    if ($check == 0) {
+        $q = $db->query("SELECT * FROM tbl_deans WHERE username = '$username'") or die($db->error);
+        $check2 = mysqli_num_rows($q);
+        while ($row = mysqli_fetch_array($q)) {
+            $getID = $row['dean_id'];
+        }
+        if ($getID == $dean_id || $check2 < 1) {
+            $updateInfo = mysqli_query($db, " UPDATE tbl_deans SET dean_lastname='$lname',dean_firstname='$fname', dean_middlename='$mname', email='$email', username='$username', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE dean_id = '$dean_id'") or die(mysqli_error($db));
+            $_SESSION['successUpdate'] = true;
+            if ($_SESSION['role'] == "Super Administrator") {
+                header("location: ../edit.dean.php?dean_id=" . $dean_id);
+            } else {
+                header("location: ../edit.dean.php");
+            }
+        } else {
+            $_SESSION['usernameExist'] = true;
+            if ($_SESSION['role'] == "Super Administrator") {
+                header("location: ../edit.dean.php?dean_id=" . $dean_id);
+            } else {
+                header("location: ../edit.dean.php");
+            }
+        }
     } else {
-        header("location: ../edit.dean.php");
+        $_SESSION['usernameExist'] = true;
+        if ($_SESSION['role'] == "Super Administrator") {
+            header("location: ../edit.dean.php?dean_id=" . $dean_id);
+        } else {
+            header("location: ../edit.dean.php");
+        }
     }
 }
 

@@ -3,6 +3,10 @@ session_start();
 include '../../includes/head.php';
 include '../../includes/session.php';
 ?>
+<title>
+    Advisers List | SFAC - Las Piñas
+</title>
+</head>
 
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -36,10 +40,12 @@ include '../../includes/session.php';
                                         A lightweight, extendable, dependency-free javascript HTML table plugin.
                                     </p> -->
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="table table-flush table-hover" id="datatable-basic">
+                                <div class="table-responsive px-4 my-4">
+                                    <table class="table table-flush table-hover m-0 responsive nowrap"
+                                        id="datatable-basic" style="width: 100%;">
                                         <thead class="thead-light">
                                             <tr>
+                                                <th></th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     I.D. No.</th>
@@ -74,6 +80,10 @@ include '../../includes/session.php';
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Updated By</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                    Options</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -87,6 +97,7 @@ include '../../includes/session.php';
                                             ?>
 
                                             <tr>
+                                                <td></td>
                                                 <td class="text-sm font-weight-normal">
                                                     <?php echo $row['faculty_no'] ?>
                                                 </td>
@@ -117,7 +128,8 @@ include '../../includes/session.php';
                                                     <a class="btn btn-block bg-gradient-danger mb-3 text-xs"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#modal-notification<?php echo $id; ?>"><i
-                                                            class="text-xs fas fa-trash-alt"></i> Delete</a>
+                                                            class="text-xs fas fa-trash-alt"></i>
+                                                        Delete</a>
 
 
                                                     <div class="modal fade" id="modal-notification<?php echo $id; ?>"
@@ -144,14 +156,12 @@ include '../../includes/session.php';
                                                                             Delete Account!</h4>
                                                                         <p>Are you sure you want to delete
                                                                             <br>
-                                                                            <i><b><?php echo $row['fullname']; ?></b></i>
-                                                                            from
-                                                                            <i><b><?php echo $row['department_name'] ?></b></i>?
+                                                                            <i><b><?php echo $row['fullname']; ?></b></i>?
                                                                         </p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <a href="userData/ctrl.del.adviser.php?faculty_id=<?php echo $id; ?>"
+                                                                    <a href="userData/ctrl.del.admission.php?admission_id=<?php echo $id; ?>"
                                                                         class="btn btn-white text-white bg-danger">Delete</a>
                                                                     <button type="button"
                                                                         class="btn btn-link text-secondary btn-outline-dark ml-auto"
@@ -169,12 +179,6 @@ include '../../includes/session.php';
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
                     <?php include '../../includes/footer.php'; ?>
                     <!-- End footer -->
                 </div>

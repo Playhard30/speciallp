@@ -10,6 +10,10 @@ if ($_SESSION['role'] == "Super Administrator") {
 $_SESSION['dean_id'] = $dean_id;
 
 ?>
+<title>
+    Edit Account | SFAC - Las Piñas
+</title>
+</head>
 
 
 <body class="g-sidenav-show  bg-gray-100">

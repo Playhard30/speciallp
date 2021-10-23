@@ -8,22 +8,25 @@ if (isset($_POST['signin'])) {
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
     $super_admin = mysqli_query($db, "SELECT * FROM tbl_super_admins WHERE username = '$username'");
-    $numrow = mysqli_num_rows($super_admin);
+    $numrow      = mysqli_num_rows($super_admin);
 
-    $dean = mysqli_query($db, "SELECT * FROM tbl_deans WHERE username = '$username'");
+    $dean    = mysqli_query($db, "SELECT * FROM tbl_deans WHERE username = '$username'");
     $numrow1 = mysqli_num_rows($dean);
 
     $admission = mysqli_query($db, "SELECT * FROM tbl_admissions WHERE username = '$username'");
-    $numrow2 = mysqli_num_rows($admission);
+    $numrow2   = mysqli_num_rows($admission);
 
     $accounting = mysqli_query($db, "SELECT * FROM tbl_accounting WHERE username = '$username'");
-    $numrow3 = mysqli_num_rows($accounting);
+    $numrow3    = mysqli_num_rows($accounting);
 
-    $admin = mysqli_query($db, "SELECT * FROM tbl_admins WHERE username = '$username'");
+    $admin   = mysqli_query($db, "SELECT * FROM tbl_admins WHERE username = '$username'");
     $numrow4 = mysqli_num_rows($admin);
 
     $adviser = mysqli_query($db, "SELECT * FROM tbl_faculties WHERE username = '$username'");
     $numrow5 = mysqli_num_rows($adviser);
+
+    $student = mysqli_query($db, "SELECT * FROM tbl_students WHERE username = '$username'");
+    $numrow6 = mysqli_num_rows($student);
 
 
 
@@ -90,7 +93,7 @@ if (isset($_POST['signin'])) {
             }
             header("location: ../../dashboard/index.php");
         }
-    }  elseif ($numrow5 > 0) {
+    } elseif ($numrow5 > 0) {
         while ($row = mysqli_fetch_array($adviser)) {
             $hashedPwdCheck = password_verify($password, $row['password']);
             if ($hashedPwdCheck == false) {
@@ -102,8 +105,20 @@ if (isset($_POST['signin'])) {
             }
             header("location: ../../dashboard/index.php");
         }
-    }
-    else {
+    } elseif ($numrow6 > 0) {
+        while ($row = mysqli_fetch_array($student)) {
+            $hashedPwdCheck = password_verify($password, $row['password']);
+            if (false == $hashedPwdCheck) {
+                header("location: ../sign-in.php?sessionP");
+                exit();
+            } elseif (true == $hashedPwdCheck) {
+                $_SESSION['role']   = "Student";
+                $_SESSION['userid'] = $row['stud_id'];
+                $_SESSION['name']   = $row['lastname'] . ", " . $row['firstname'];
+            }
+            header("location: ../../dashboard/index.php");
+        }
+    } else {
         header("location: ../sign-in.php?sessionUP");
         exit();
     }

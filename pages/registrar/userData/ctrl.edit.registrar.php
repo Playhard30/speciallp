@@ -36,12 +36,39 @@ if (isset($_POST['save'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);;
     $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
 
-    $updateInfo = mysqli_query($db, " UPDATE tbl_admins SET admin_lastname='$lname',admin_firstname='$fname', admin_middlename='$mname', email='$email', username='$username', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE admin_id = '$admin_id'") or die(mysqli_error($db));
-    $_SESSION['successUpdate'] = true;
-    if ($_SESSION['role'] == "Super Administrator") {
-        header("location: ../edit.registrar.php?admin_id=" . $admin_id);
+    $getAllUsername = mysqli_query($db, "SELECT username FROM tbl_admissions WHERE username = '$username' UNION ALL SELECT username FROM tbl_deans WHERE username = '$username' UNION ALL SELECT username FROM tbl_faculties WHERE username = '$username' UNION ALL SELECT username FROM tbl_super_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_accounting WHERE username = '$username'") or die(mysqli_error($db));
+    $check = mysqli_num_rows($getAllUsername);
+
+    if ($check == 0) {
+        $q = $db->query("SELECT * FROM tbl_admins WHERE username = '$username'") or die($db->error);
+        $check2 = mysqli_num_rows($q);
+        while ($row = mysqli_fetch_array($q)) {
+            $getID = $row['admin_id'];
+        }
+        if ($getID == $admin_id || $check2 < 1) {
+
+            $updateInfo = mysqli_query($db, " UPDATE tbl_admins SET admin_lastname='$lname',admin_firstname='$fname', admin_middlename='$mname', email='$email', username='$username', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE admin_id = '$admin_id'") or die(mysqli_error($db));
+            $_SESSION['successUpdate'] = true;
+            if ($_SESSION['role'] == "Super Administrator") {
+                header("location: ../edit.registrar.php?admin_id=" . $admin_id);
+            } else {
+                header("location: ../edit.registrar.php");
+            }
+        } else {
+            $_SESSION['usernameExist'] = true;
+            if ($_SESSION['role'] == "Super Administrator") {
+                header("location: ../edit.registrar.php?admin_id=" . $admin_id);
+            } else {
+                header("location: ../edit.registrar.php");
+            }
+        }
     } else {
-        header("location: ../edit.registrar.php");
+        $_SESSION['usernameExist'] = true;
+        if ($_SESSION['role'] == "Super Administrator") {
+            header("location: ../edit.registrar.php?admin_id=" . $admin_id);
+        } else {
+            header("location: ../edit.registrar.php");
+        }
     }
 }
 

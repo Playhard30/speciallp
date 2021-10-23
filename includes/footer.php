@@ -32,8 +32,8 @@ if (isset($_SESSION['emptyImg'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="successDel"
     id="autoClickBtn" hidden>
 </a>';
-} elseif (isset($_SESSION['successAdd'])) {
-    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="successAdd"
+} elseif (isset($_SESSION['successAddDep'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="successAddDep"
     id="autoClickBtn" hidden>
 </a>';
 } elseif (isset($_SESSION['fill'])) {
@@ -52,7 +52,52 @@ if (isset($_SESSION['emptyImg'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="subjAdded"
     id="autoClickBtn" hidden>
 </a>';
+} elseif (isset($_SESSION['successAdd'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="successAdd"
+    id="autoClickBtn" hidden>
+</a>';
+} elseif (isset($_SESSION['depExist'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="depExist"
+    id="autoClickBtn" hidden>
+</a>';
+} elseif (isset($_SESSION['usernameExist'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="usernameExist"
+    id="autoClickBtn" hidden>
+</a>';
+} elseif (isset($_SESSION['successCalendar'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="successCalendar"
+    id="autoClickBtn" hidden>
+</a>';
+} elseif (isset($_SESSION['successYear'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="successYear"
+    id="autoClickBtn" hidden>
+</a>';
+} elseif (isset($_SESSION['studAdded'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="studAdded"
+       id="autoClickBtn" hidden>
+   </a>';
+} elseif (isset($_SESSION['studExist'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="studExist"
+          id="autoClickBtn" hidden>
+      </a>';
+} elseif (isset($_SESSION['courAdded'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="courAdded"
+          id="autoClickBtn" hidden>
+      </a>';
+} elseif (isset($_SESSION['courExist'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="courExist"
+          id="autoClickBtn" hidden>
+      </a>';
+} elseif (isset($_SESSION['fill-select'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="fill-select"
+          id="autoClickBtn" hidden>
+      </a>';
+} elseif (isset($_SESSION['stud_noExist'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="stud_noExist"
+          id="autoClickBtn" hidden>
+      </a>';
 }
+
 unset($_SESSION['emptyImg']);
 unset($_SESSION['successImg']);
 unset($_SESSION['successUpdate']);
@@ -60,17 +105,145 @@ unset($_SESSION['oldNotMatch']);
 unset($_SESSION['newNotMatch']);
 unset($_SESSION['successPass']);
 unset($_SESSION['successDel']);
-unset($_SESSION['successAdd']);
+unset($_SESSION['successAddDep']);
 unset($_SESSION['notMatch']);
 unset($_SESSION['fill']);
 unset($_SESSION['fill-Uinfo']);
 unset($_SESSION['subjExisting']);
 unset($_SESSION['subjAdded']);
-
+unset($_SESSION['successAdd']);
+unset($_SESSION['depExist']);
+unset($_SESSION['usernameExist']);
+unset($_SESSION['successCalendar']);
+unset($_SESSION['successYear']);
+unset($_SESSION['studAdded']);
+unset($_SESSION['studExist']);
+unset($_SESSION['courAdded']);
+unset($_SESSION['courExist']);
+unset($_SESSION['fill-select']);
+unset($_SESSION['stud_noExist']);
 
 ?>
 
 <div class="position-fixed top-2 end-1 z-index-3">
+
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="fill-select"
+        aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Required Fields!</span>
+            <small class="text-body"></small> <i class="fas fa-times text-md ms-3 cursor-pointer"
+                data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Please complete all Select fields.
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="studExist" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Already exist!</span>
+            <small class="text-body"></small> <i class="fas fa-times text-md ms-3 cursor-pointer"
+                data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Student number already exist!
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="studAdded" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Student Added!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Student Successfully Added!
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="courAdded" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Course Added!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            You've successfull added a course.
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="courExist" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Course is Existing!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            The course you're trying to input already exists.
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="stud_noExist"
+        aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Failed to Save!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Student Number is already exist.
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="usernameExist"
+        aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Failed to Save!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Username is already exist.
+        </div>
+    </div>
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="depExist" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Failed!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            This Department is Already Exist.
+        </div>
+    </div>
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="successAddDep" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Success!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            New Department Successfully Added.
+        </div>
+    </div>
     <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="fill-Uinfo"
         aria-atomic="true">
         <div class="toast-header border-0">
@@ -231,6 +404,31 @@ unset($_SESSION['subjAdded']);
         <hr class="horizontal dark m-0">
         <div class="toast-body">
             You've successfull added a subject.
+        </div>
+    </div>
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="successCalendar"
+        aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Calendar Updated!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            You've successfully updated Academic Calendar!
+        </div>
+    </div>
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="successYear" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Academic Year Added!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            You've successfully added an Academic Year!
         </div>
     </div>
 </div>
