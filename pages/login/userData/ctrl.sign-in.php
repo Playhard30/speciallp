@@ -90,6 +90,7 @@ if (isset($_POST['signin'])) {
             } elseif ($hashedPwdCheck == true) {
                 $_SESSION['role'] = "Registrar";
                 $_SESSION['userid'] = $row['admin_id'];
+                $_SESSION['name'] = $row['admin_lastname'] . ", " . $row['admin_firstname'];
             }
             header("location: ../../dashboard/index.php");
         }

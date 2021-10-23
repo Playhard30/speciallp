@@ -46,7 +46,7 @@ include '../../includes/session.php';
                                         placeholder="Enter department name" required>
                                     <div class="d-flex justify-content-end mt-4">
                                         <button type="submit" name="submit"
-                                            class="btn bg-gradient-primary text-white m-0 ms-2">Add Department</button>
+                                            class="btn bg-gradient-dark text-white m-0 ms-2">Add Department</button>
                                     </div>
                                 </form>
                             </div>

@@ -32,133 +32,76 @@ $_SESSION['course_id'] = $id;
                 <!-- End Navbar -->
 
                 <div class="container-fluid py-4">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="text-center">
-                                <h3>Enter details for the course you want to edit</h3>
-                                <h5 class="text-secondary font-weight-normal">Please fill out the fields</h5>
-                            </div>
-                            <div class="multisteps-form mb-5">
-                                <!--progress bar-->
-                                <div class="row">
-                                    <div class="col-12 col-lg-8 mx-auto my-5">
-                                        <div class="multisteps-form__progress">
+                    <div class="row mb-10">
+                        <div class="col-lg-9 col-12 mx-auto">
+                            <div class="card card-body mt-4 shadow-sm">
+                                <h5 class="mb-0">Edit Course</h5>
+                                <p class="text-sm mb-0">Course Details</p>
+                                <hr class="horizontal dark my-3">
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--form panels-->
-                                <div class="row">
-                                    <div class="col-12 col-lg-8 m-auto">
-                                        <form class="multisteps-form__form mb-8" method="POST"
-                                            enctype="multipart/form-data" action="userData/ctrl.edit.course.php">
-                                            <!--single form panel-->
-                                            <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
-                                                data-animation="FadeIn">
-                                                <h5 class="font-weight-bolder mb-0">Edit Course</h5>
-                                                <div class="multisteps-form__content">
-                                                    <?php
-                                                    $listCourse = mysqli_query($db, "SELECT *, CONCAT(cour.course, ', ', cour.course_abv) AS fullname
+                                <form method="POST" action="userData/ctrl.edit.course.php">
+                                    <!--single form panel-->
+                                    <?php
+                                    $listCourse = mysqli_query($db, "SELECT *, CONCAT(cour.course, ', ', cour.course_abv) AS fullname
                                             FROM tbl_courses AS cour
                                             LEFT JOIN tbl_departments AS dep ON dep.department_id = cour.department_id
                                             WHERE course_id = '$id'");
-                                                    while ($row = mysqli_fetch_array($listCourse)) {
-                                                    ?>
-                                                    <div class="row mt-3 justify-content-center">
-                                                        <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                                            <label>Course Name</label>
-                                                            <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="Course Name" name="course"
-                                                                value="<?php echo $row['course'];
-                                                                                                                                                                                ?>" />
-                                                        </div>
-                                                        <div class="col-12 col-sm-6">
-                                                            <label>Course Abbrev.</label>
-                                                            <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="Course Abbrevation"
-                                                                name="course_abv"
-                                                                value="<?php echo $row['course_abv']; ?>" />
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row mt-3 justify-content-center">
-                                                        <div class="col-12 col-sm-6 mt-3 mt-sm-0 text-center">
-                                                            <label>Department</label>
-                                                            <select class="form-control" name="department"
-                                                                id="department">
-                                                                <?php $getDept = mysqli_query($db, "SELECT * FROM tbl_departments WHERE department_id IN ('$row[department_id]')");
-                                                                    while ($row2 = mysqli_fetch_array($getDept)) {
-                                                                    ?>
-                                                                <option selected
-                                                                    value="<?php echo $row2['department_id']; ?>">
-                                                                    <?php echo $row2['department_name'];
-                                                                    } ?>
-                                                                </option>
-
-                                                                <?php $getDept = mysqli_query($db, "SELECT * FROM tbl_departments WHERE department_id NOT IN ('$row[department_id]')");
-                                                                        while ($row1 = mysqli_fetch_array($getDept)) {
-                                                                        ?>
-                                                                <option value="<?php echo $row1['department_id']; ?>">
-                                                                    <?php echo $row1['department_name'];
-                                                                        } ?></option>
-                                                            </select>
-                                                        </div>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <?php } ?>
-                                                <div class="button-row d-flex mt-7">
-                                                    <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
-                                                        title="Update Course" name="update">Update
-                                                        Course</button>
-                                                </div>
-                                            </div>
+                                    while ($row = mysqli_fetch_array($listCourse)) {
+                                    ?>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label>Course Name</label>
+                                            <input class="form-control" type="text" placeholder="Course Name"
+                                                name="course"
+                                                value="<?php echo $row['course'];
+                                                                                                                                        ?>" />
+                                        </div>
                                     </div>
-                                    <!--single form panel-->
-                                    <!--single form panel-->
-                                    <!-- <div class="card multisteps-form__panel p-3 border-radius-xl bg-white"
-                                                data-animation="FadeIn">
-                                                <h5 class="font-weight-bolder">Socials</h5>
-                                                <div class="multisteps-form__content">
-                                                    <div class="row mt-3">
-                                                        <div class="col-12">
-                                                            <label>Twitter Handle</label>
-                                                            <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="@soft" />
-                                                        </div>
-                                                        <div class="col-12 mt-3">
-                                                            <label>Facebook Account</label>
-                                                            <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="https://..." />
-                                                        </div>
-                                                        <div class="col-12 mt-3">
-                                                            <label>Instagram Account</label>
-                                                            <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="https://..." />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="button-row d-flex mt-4 col-12">
-                                                            <button class="btn bg-gradient-light mb-0 js-btn-prev"
-                                                                type="button" title="Prev">Prev</button>
-                                                            <button
-                                                                class="btn bg-gradient-dark ms-auto mb-0 js-btn-next"
-                                                                type="button" title="Next">Next</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                    <!--single form panel-->
-                                    </form>
-                                </div>
+
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="mt-3">Course Abbrev.</label>
+                                            <input class="form-control" type="text" placeholder="Course Abbrevation"
+                                                name="course_abv" value="<?php echo $row['course_abv']; ?>" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="mt-3">Department</label>
+                                            <select class="form-control" name="department" id="department">
+                                                <?php $getDept = mysqli_query($db, "SELECT * FROM tbl_departments WHERE department_id IN ('$row[department_id]')");
+                                                    while ($row2 = mysqli_fetch_array($getDept)) {
+                                                    ?>
+                                                <option selected value="<?php echo $row2['department_id']; ?>">
+                                                    <?php echo $row2['department_name'];
+                                                    } ?>
+                                                </option>
+
+                                                <?php $getDept = mysqli_query($db, "SELECT * FROM tbl_departments WHERE department_id NOT IN ('$row[department_id]')");
+                                                        while ($row1 = mysqli_fetch_array($getDept)) {
+                                                        ?>
+                                                <option value="<?php echo $row1['department_id']; ?>">
+                                                    <?php echo $row1['department_name'];
+                                                        } ?></option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <?php } ?>
+                                    <div class="d-flex justify-content-end mt-4">
+                                        <button class="btn bg-gradient-primary text-white m-0 ms-2" type="submit"
+                                            title="Update Course" name="update">Update</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <?php include '../../includes/footer.php'; ?>
-                <!-- End footer -->
-            </div>
+
+
+                    <?php include '../../includes/footer.php'; ?>
+                    <!-- End footer -->
+                </div>
     </main>
     <!--   Core JS Files   -->
     <?php include '../../includes/scripts.php'; ?>

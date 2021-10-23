@@ -24,5 +24,12 @@ require '../../includes/conn.php';
     <link rel="stylesheet" href="../../assets/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="../../assets/css/responsive.dataTables.min.css">
     <script src="../../assets/js/jquery-3.5.1.js"></script>
+    <!-- select2 -->
+
     <!-- edited CSS -->
     <link rel="stylesheet" href="../../assets/css/addons/edited.css">
+    <style>
+    body {
+        font-weight: 400;
+    }
+    </style>

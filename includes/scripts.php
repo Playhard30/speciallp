@@ -35,24 +35,52 @@ $(document).ready(function() {
 });
 </script>
 <script>
+if (document.getElementById('year_lvl')) {
+    var element = document.getElementById('year_lvl');
+    const example = new Choices(element, {
+        searchPlaceholderValue: "Search...",
+    });
+}
+if (document.getElementById('courses')) {
+    var element = document.getElementById('courses');
+    const example = new Choices(element, {
+        searchPlaceholderValue: "Search...",
+    });
+}
+if (document.getElementById('curri')) {
+    var element = document.getElementById('curri');
+    const example = new Choices(element, {
+        searchPlaceholderValue: "Search...",
+    });
+}
+if (document.getElementById('gender')) {
+    var element = document.getElementById('gender');
+    const example = new Choices(element, {
+        searchPlaceholderValue: "Search...",
+    });
+}
 if (document.getElementById('academic_year')) {
     var element = document.getElementById('academic_year');
     const example = new Choices(element, {
-        searchEnabled: false,
+        searchPlaceholderValue: "Search...",
     });
 }
 if (document.getElementById('semester')) {
     var element = document.getElementById('semester');
     const example = new Choices(element, {
-        searchEnabled: false,
+        searchPlaceholderValue: "Search...",
     });
 };
-</script>
-<script>
 if (document.getElementById('department')) {
     var element = document.getElementById('department');
     const example = new Choices(element, {
-        searchEnabled: false,
+        searchPlaceholderValue: "Search...",
+    });
+};
+if (document.getElementById('dep')) {
+    var element = document.getElementById('dep');
+    const example = new Choices(element, {
+        searchPlaceholderValue: "Search...",
     });
 };
 </script>
@@ -60,7 +88,7 @@ if (document.getElementById('department')) {
 if (document.getElementById('status')) {
     var element = document.getElementById('status');
     const example = new Choices(element, {
-        searchEnabled: false,
+        searchPlaceholderValue: "Search...",
     });
 };
 </script>

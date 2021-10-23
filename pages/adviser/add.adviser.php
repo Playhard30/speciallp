@@ -104,16 +104,15 @@ include '../../includes/session.php';
                                                     <div class="row mt-3 justify-content-center">
                                                         <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                             <label>Department</label>
-                                                            <select class="form-control" name="department"
-                                                                id="department">
-                                                                <option value="" disabled selected>Select Department
+                                                            <select class="form-control" name="department" id="dep">
+                                                                <option selected disabled value="">Select Department
                                                                 </option>
                                                                 <?php $getDepartment = mysqli_query($db, "SELECT * FROM tbl_departments");
-                                                                while ($row = mysqli_fetch_array($getDepartment)) {
-                                                                ?>
-                                                                <option value="<?php echo $row['department_id']; ?>">
-                                                                    <?php echo $row['department_name'];
-                                                                } ?></option>
+                                                                while ($row1 = mysqli_fetch_array($getDepartment)) {
+                                                                    echo '<option value="' . $row1['department_id'] . '">
+                                                ' . $row1['department_name'] . '
+                                            </option>';
+                                                                } ?>
                                                             </select>
                                                         </div>
                                                         <div class="col-12 col-sm-6">
