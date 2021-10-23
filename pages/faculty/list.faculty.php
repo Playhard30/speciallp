@@ -67,18 +67,14 @@ include '../../includes/session.php';
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Last Updated</th>
-
-                                                <th
-                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Updated By</th>
-                                            </tr>
+    
                                         </thead>
                                         <tbody>
                                             <?php
                                             $listFaculty = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties_staff.faculty_lastname, ', ', tbl_faculties_staff.faculty_firstname, ' ', tbl_faculties_staff.faculty_middlename) AS fullname 
                                             FROM tbl_faculties_staff");
                                             while ($row = mysqli_fetch_array($listFaculty)) {
-                                                $id = $row['faculty_id'];
+                                                $faculty_id = $row['faculty_id'];
                                             ?>
 
                                             <tr>
@@ -106,16 +102,16 @@ include '../../includes/session.php';
                                                 </td>
                                                 <td class="text-sm font-weight-normal">
                                                     <a class="btn bg-gradient-primary text-xs"
-                                                        href="edit.faculty.php?faculty_id=<?php echo $id; ?>"><i
+                                                        href="edit.faculty.php?faculty_id=<?php echo $faculty_id; ?>"><i
                                                             class="text-xs fas fa-edit"></i> Edit</a>
 
                                                     <a class="btn btn-block bg-gradient-danger mb-3 text-xs"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#modal-notification<?php echo $id; ?>"><i
+                                                        data-bs-target="#modal-notification<?php echo $faculty_id; ?>"><i
                                                             class="text-xs fas fa-trash-alt"></i> Delete</a>
 
 
-                                                    <div class="modal fade" id="modal-notification<?php echo $id; ?>"
+                                                    <div class="modal fade" id="modal-notification<?php echo $faculty_id; ?>"
                                                         tabindex="-1" role="dialog" aria-labelledby="modal-notification"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog modal-danger modal-dialog-centered modal-"
@@ -146,7 +142,7 @@ include '../../includes/session.php';
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <a href="userData/ctrl.del.faculty.php?faculty_id=<?php echo $id; ?>"
+                                                                    <a href="userData/ctrl.del.faculty.php?faculty_id=<?php echo $faculty_id; ?>"
                                                                         class="btn btn-white text-white bg-danger">Delete</a>
                                                                     <button type="button"
                                                                         class="btn btn-link text-secondary btn-outline-dark ml-auto"

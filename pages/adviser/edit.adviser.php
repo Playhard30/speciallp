@@ -3,7 +3,7 @@ session_start();
 require '../../includes/conn.php';
 include '../../includes/head.php';
 include '../../includes/session.php';
-if ($_SESSION['role'] == "Super Administrator") {
+if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Adviser"   ) {
     $faculty_id = $_GET['faculty_id'];
 }
 $_SESSION['faculty_id'] = $faculty_id;

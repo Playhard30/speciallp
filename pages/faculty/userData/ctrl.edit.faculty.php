@@ -7,9 +7,9 @@ if (isset($_POST['saveImg'])) {
 
     if (!empty($_FILES['image']['tmp_name'])) {
         $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-        $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
+        $updated_at= $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
 
-        $updateImg = mysqli_query($db, "UPDATE tbl_faculties_staff SET img = '$image', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
+        $updateImg = mysqli_query($db, "UPDATE tbl_faculties_staff SET img = '$image', updated_at= '$updated_at', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
         $_SESSION['successImg'] = true;
         header("location: ../edit.faculty.php?faculty_id=" . $faculty_id);
     } else {
@@ -28,9 +28,9 @@ if (isset($_POST['save'])) {
     $mname = mysqli_real_escape_string($db, $_POST['mname']);
     $email = mysqli_real_escape_string($db, $_POST['email']);
     $username = mysqli_real_escape_string($db, $_POST['username']);;
-    $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
+    $updated_at = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
 
-    $updateInfo = mysqli_query($db, " UPDATE tbl_faculties_staff SET faculty_lastname='$lname',faculty_firstname='$fname', faculty_middlename='$mname', faculty_no = '$faculty_no', position = '$position', role = '$role', status = '$status', email='$email', username='$username', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
+    $updateInfo = mysqli_query($db, " UPDATE tbl_faculties_staff SET faculty_lastname='$lname',faculty_firstname='$fname', faculty_middlename='$mname', faculty_no = '$faculty_no', position = '$position', status = '$status', email='$email', username='$username', updated_at= '$updated_at', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
     $_SESSION['successUpdate'] = true;
     header("location: ../edit.faculty.php?faculty_id=" . $faculty_id);
 }
@@ -49,12 +49,12 @@ if (isset($_POST['savePass'])) {
 
             $password = mysqli_real_escape_string($db, $_POST['password']);
             $confirmPass = mysqli_real_escape_string($db, $_POST['confirmPass']);
-            $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
+            $updated_at= $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
 
             if ($password == $confirmPass) {
                 $hashedPwd = password_hash($confirmPass, PASSWORD_DEFAULT);
 
-                $updatePass = mysqli_query($db, "UPDATE tbl_faculties_staff SET password='$hashedPwd', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
+                $updatePass = mysqli_query($db, "UPDATE tbl_faculties_staff SET password='$hashedPwd', updated_at= '$updated_at', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
                 $_SESSION['successPass'] = true;
                 header("location: ../edit.faculty.php?faculty_id=" . $faculty_id);
             } else {

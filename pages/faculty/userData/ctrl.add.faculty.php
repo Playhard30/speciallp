@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
                 if ($password == $confirmPass) {
 
                     $hashedPwd = password_hash($confirmPass, PASSWORD_DEFAULT);
-                    $insertFaculty = mysqli_query($db, "INSERT INTO tbl_faculties_staff (img, faculty_firstname, faculty_middlename, faculty_lastname, faculty_no, position, role, status, activation_code, email, username, password, created_at) VALUES ('$image', '$fname', '$mname', '$lname', '$faculty_no', '$position', '$status', '', '$email', '$username', '$hashedPwd', CURRENT_TIMESTAMP)") or die(mysqli_error($db));
+                    $insertFaculty = mysqli_query($db, "INSERT INTO tbl_faculties_staff (img, faculty_firstname, faculty_middlename, faculty_lastname, faculty_no, position, status, activation_code, email, username, password, created_at) VALUES ('$image', '$fname', '$mname', '$lname', '$faculty_no', '$position', '$status', '', '$email', '$username', '$hashedPwd', CURRENT_TIMESTAMP)") or die(mysqli_error($db));
                     $_SESSION['successAdd'] = true;
                     header("location: ../add.faculty.php");
                 } else {
