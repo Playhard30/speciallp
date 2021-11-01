@@ -1,9 +1,6 @@
-<aside
-    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 shadow-xl shadow bg-white"
-    id="sidenav-main" data-color="danger">
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 shadow-xl shadow bg-white" id="sidenav-main" data-color="danger">
     <div class="sidenav-header">
-        <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
-            aria-hidden="true" id="iconSidenav"></i>
+        <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
         <div class="border-0 d-flex align-items-center px-0 mt-3">
             <?php if ("Super Administrator" == $_SESSION['role']) {
                 $getUserName = mysqli_query($db, "SELECT * FROM tbl_super_admins WHERE sa_id = '$sa_id'");
@@ -695,7 +692,6 @@
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link  " href="../subject/add.subject.php">
                     <div
@@ -714,6 +710,42 @@
                     </div>
                     <span class="nav-link-text ms-1">Add Old Subject</span>
                 </a>
+            </li>
+            
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#maintenance" class="nav-link" aria-controls="maintenance"
+                    role="button" aria-expanded="false">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-tools text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Maintenance</span>
+                </a>
+
+                <div class="collapse" id="maintenance">
+                    <a data-bs-toggle="collapse" href="#offer" class="nav-link" aria-controls="offer"
+                    role="button" aria-expanded="false">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-tools text-dark"></i>
+                </div>
+                <span class="nav-link-text ms-1">Offer/Open Subjects</span>
+                    </a>
+                 <div class="collapse" id="offer">
+                    <ul class="nav ms-4 ps-3">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="../student/add.student.php">
+                                <span class="sidenav-mini-icon text-xs"> </span>
+                                <span class="sidenav-normal font-weight-bold">EDUC</span>
+                            </a>
+                        </li>
+                                   
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </li>
 
             ';
