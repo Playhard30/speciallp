@@ -731,6 +731,16 @@
                 </div>
                 <span class="nav-link-text ms-1">Offer/Open Subjects</span>
                     </a>
+                
+                <div class="collapse" id="maintenance">
+                    <a data-bs-toggle="collapse" href="#list" class="nav-link" aria-controls="offer"
+                    role="button" aria-expanded="false">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-tools text-dark"></i>
+                </div>
+                <span class="nav-link-text ms-1">List Class Schedules</span>
+                    </a>
                  <div class="collapse" id="offer">
                     <ul class="nav ms-4 ps-3">
 
