@@ -130,48 +130,46 @@ include '../../includes/session.php';
                                                         data-bs-target="#modal-notification<?php echo $id; ?>"><i
                                                             class="text-xs fas fa-trash-alt"></i>
                                                         Delete</a>
-
-
-                                                    <div class="modal fade" id="modal-notification<?php echo $id; ?>"
-                                                        tabindex="-1" role="dialog" aria-labelledby="modal-notification"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog modal-danger modal-dialog-centered modal-"
-                                                            role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h6 class="modal-title text-danger"
-                                                                        id="modal-title-notification"><i
-                                                                            class="fas fa-exclamation-triangle"> </i>
-                                                                        Warning
-                                                                    </h6>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">×</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="py-3 text-center">
-                                                                        <i class="fas fa-trash-alt text-9xl"></i>
-                                                                        <h4 class="text-gradient text-danger mt-4">
-                                                                            Delete Account!</h4>
-                                                                        <p>Are you sure you want to delete
-                                                                            <br>
-                                                                            <i><b><?php echo $row['fullname']; ?></b></i>?
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <a href="userData/ctrl.del.admission.php?admission_id=<?php echo $id; ?>"
-                                                                        class="btn btn-white text-white bg-danger">Delete</a>
-                                                                    <button type="button"
-                                                                        class="btn btn-link text-secondary btn-outline-dark ml-auto"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </td>
                                             </tr>
+                                            <div class="modal fade" id="modal-notification<?php echo $id; ?>"
+                                                tabindex="-1" role="dialog" aria-labelledby="modal-notification"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog modal-danger modal-dialog-centered modal-"
+                                                    role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h6 class="modal-title text-danger"
+                                                                id="modal-title-notification"><i
+                                                                    class="fas fa-exclamation-triangle"> </i>
+                                                                Warning
+                                                            </h6>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="py-3 text-center">
+                                                                <i class="fas fa-trash-alt text-9xl"></i>
+                                                                <h4 class="text-gradient text-danger mt-4">
+                                                                    Delete Account!</h4>
+                                                                <p>Are you sure you want to delete
+                                                                    <br>
+                                                                    <i><b><?php echo $row['fullname']; ?></b></i>?
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="userData/ctrl.del.admission.php?admission_id=<?php echo $id; ?>"
+                                                                class="btn btn-white text-white bg-danger">Delete</a>
+                                                            <button type="button"
+                                                                class="btn btn-link text-secondary btn-outline-dark ml-auto"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <?php } ?>
                                         </tbody>
                                     </table>
