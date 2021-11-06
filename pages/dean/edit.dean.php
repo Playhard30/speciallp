@@ -5,11 +5,15 @@ include '../../includes/head.php';
 include '../../includes/session.php';
 if ($_SESSION['role'] == "Super Administrator") {
     $dean_id = $_GET['dean_id'];
-    $_SESSION['dean_id'] = $dean_id;
 }
 
+$_SESSION['dean_id'] = $dean_id;
 
 ?>
+<title>
+    Edit Account | SFAC - Las Piñas
+</title>
+</head>
 
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -50,8 +54,6 @@ if ($_SESSION['role'] == "Super Administrator") {
                                                 echo '<img src="../../assets/img/illustrations/user_prof.jpg" alt="bruce"
                                             class="border-radius-lg shadow-sm">';
                                             }
-
-
                                         ?>
 
                                     </div>
@@ -148,11 +150,14 @@ if ($_SESSION['role'] == "Super Administrator") {
                                 <h5>Change Password</h5>
                             </div>
                             <div class="card-body pt-0">
-                                <label class="form-label">Current password</label>
+                                <?php if ($_SESSION['role'] == "Dean") {
+                                    echo '<label class="form-label">Current password</label>
                                 <div class="form-group">
                                     <input class="form-control" type="password" name="oldPass"
                                         placeholder="Current password" required>
-                                </div>
+                                </div>';
+                                }  ?>
+
                                 <label class="form-label">New password</label>
                                 <div class="form-group">
                                     <input class="form-control" type="password" name="password"

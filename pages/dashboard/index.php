@@ -13,13 +13,17 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
-
 <!-- Head -->
 <?php
 session_start();
 include '../../includes/session.php';
 // End Session 
-include '../../includes/head.php'; ?>
+include '../../includes/head.php';
+?>
+<title>
+    Dashboard | SFAC - Las Piñas
+</title>
+</head>
 <!-- End Head -->
 
 
@@ -27,8 +31,7 @@ include '../../includes/head.php'; ?>
     <?php include '../../includes/sidebar.php'; ?>
     <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
         <!-- Navbar -->
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
-            navbar-scroll="true">
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl">
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -130,8 +133,7 @@ include '../../includes/head.php'; ?>
                                             </div>
                                         </div>
                                         <div class="col-4 text-end">
-                                            <div
-                                                class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
                                                 <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
                                             </div>
                                         </div>
@@ -140,6 +142,35 @@ include '../../includes/head.php'; ?>
                             </div>
                         </div>
                     </div>
+                    <?php
+                    if ("Registrar" == $_SESSION['role'] || "Admission" == $_SESSION['role']) {
+                    ?>
+                    <div class="row mb-9">
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="card bg-gradient-dark move-on-hover">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                            <h5 class="mb-0 text-white">Online Inquiry</h5>
+                                            <div class="ms-auto">
+                                                <?php
+                                                $orCount = mysqli_query($db, "SELECT COUNT(or_id) FROM tbl_online_registrations WHERE status = 'Pending'");
+                                                $actualCount = mysqli_fetch_array($orCount);
+                                                ?>
+                                                <h1 class="text-white text-end mb-0 mt-n2"><?php echo $actualCount[0];?></h1>
+                                                <p class="text-sm mb-0 text-white">Items</p>
+                                            </div>
+
+                                    </div>
+                                </div>
+                                <a href="../inquiry/list.inquiry.php" class="w-100 text-center py-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
+                                <i class="fas fa-chevron-down text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    }
+                    ?>
 
                     <div class="container-fluid py-4">
                         <div class="row">

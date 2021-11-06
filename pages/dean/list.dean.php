@@ -3,6 +3,10 @@ session_start();
 include '../../includes/head.php';
 include '../../includes/session.php';
 ?>
+<title>
+    Deans List | SFAC - Las Piñas
+</title>
+</head>
 
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -36,10 +40,12 @@ include '../../includes/session.php';
                                         A lightweight, extendable, dependency-free javascript HTML table plugin.
                                     </p> -->
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="table table-flush table-hover" id="datatable-basic">
+                                <div class="table-responsive px-4 my-4">
+                                    <table class="table table-flush table-hover responsive nowrap" style="width: 100%;"
+                                        id="datatable-basic">
                                         <thead class="thead-light">
                                             <tr>
+                                                <th></th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Image</th>
@@ -81,6 +87,7 @@ include '../../includes/session.php';
                                             ?>
 
                                             <tr>
+                                                <td></td>
                                                 <td><?php if (empty($row['img'])) {
                                                             echo '<img class="border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="../../assets/img/illustrations/user_prof.jpg"/>';
                                                         } else {

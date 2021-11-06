@@ -36,53 +36,85 @@ if (isset($_POST['save'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);;
     $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
 
-    $updateInfo = mysqli_query($db, " UPDATE tbl_deans SET dean_lastname='$lname',dean_firstname='$fname', dean_middlename='$mname', email='$email', username='$username', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE dean_id = '$dean_id'") or die(mysqli_error($db));
-    $_SESSION['successUpdate'] = true;
-    if ($_SESSION['role'] == "Super Administrator") {
-        header("location: ../edit.dean.php?dean_id=" . $dean_id);
-    } else {
-        header("location: ../edit.dean.php");
-    }
-}
+    $getAllUsername = mysqli_query($db, "SELECT username FROM tbl_admissions WHERE username = '$username' UNION ALL SELECT username FROM tbl_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_faculties WHERE username = '$username' UNION ALL SELECT username FROM tbl_super_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_accounting WHERE username = '$username'") or die(mysqli_error($db));
+    $check = mysqli_num_rows($getAllUsername);
 
-if (isset($_POST['savePass'])) {
-
-    $oldpassword = mysqli_real_escape_string($db, $_POST['oldPass']);
-
-    $checkPass = mysqli_query($db, "SELECT * FROM tbl_deans WHERE dean_id = '$dean_id'");
-    while ($row = mysqli_fetch_array($checkPass)) {
-        $checkHashPass = password_verify($oldpassword, $row['password']);
-        if ($checkHashPass == false) {
-            $_SESSION['oldNotMatch'] = true;
+    if ($check == 0) {
+        $q = $db->query("SELECT * FROM tbl_deans WHERE username = '$username'") or die($db->error);
+        $check2 = mysqli_num_rows($q);
+        while ($row = mysqli_fetch_array($q)) {
+            $getID = $row['dean_id'];
+        }
+        if ($getID == $dean_id || $check2 < 1) {
+            $updateInfo = mysqli_query($db, " UPDATE tbl_deans SET dean_lastname='$lname',dean_firstname='$fname', dean_middlename='$mname', email='$email', username='$username', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE dean_id = '$dean_id'") or die(mysqli_error($db));
+            $_SESSION['successUpdate'] = true;
             if ($_SESSION['role'] == "Super Administrator") {
                 header("location: ../edit.dean.php?dean_id=" . $dean_id);
             } else {
                 header("location: ../edit.dean.php");
             }
-        } elseif ($checkHashPass == true) {
-
-            $password = mysqli_real_escape_string($db, $_POST['password']);
-            $confirmPass = mysqli_real_escape_string($db, $_POST['confirmPass']);
-            $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
-
-            if ($password == $confirmPass) {
-                $hashedPwd = password_hash($confirmPass, PASSWORD_DEFAULT);
-
-                $updatePass = mysqli_query($db, " UPDATE tbl_deans SET password='$hashedPwd', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE dean_id = '$dean_id'") or die(mysqli_error($db));
-                $_SESSION['successPass'] = true;
-                if ($_SESSION['role'] == "Super Administrator") {
-                    header("location: ../edit.dean.php?dean_id=" . $dean_id);
-                } else {
-                    header("location: ../edit.dean.php");
-                }
+        } else {
+            $_SESSION['usernameExist'] = true;
+            if ($_SESSION['role'] == "Super Administrator") {
+                header("location: ../edit.dean.php?dean_id=" . $dean_id);
             } else {
-                $_SESSION['newNotMatch'] = true;
-                if ($_SESSION['role'] == "Super Administrator") {
-                    header("location: ../edit.dean.php?dean_id=" . $dean_id);
+                header("location: ../edit.dean.php");
+            }
+        }
+    } else {
+        $_SESSION['usernameExist'] = true;
+        if ($_SESSION['role'] == "Super Administrator") {
+            header("location: ../edit.dean.php?dean_id=" . $dean_id);
+        } else {
+            header("location: ../edit.dean.php");
+        }
+    }
+}
+
+if (isset($_POST['savePass'])) {
+
+    if ($_SESSION['role'] == "Dean") {
+
+        $oldpassword = mysqli_real_escape_string($db, $_POST['oldPass']);
+
+        $checkPass = mysqli_query($db, "SELECT * FROM tbl_deans WHERE dean_id = '$dean_id'");
+        while ($row = mysqli_fetch_array($checkPass)) {
+            $checkHashPass = password_verify($oldpassword, $row['password']);
+            if ($checkHashPass == false) {
+                $_SESSION['oldNotMatch'] = true;
+                header("location: ../edit.dean.php");
+            } elseif ($checkHashPass == true) {
+
+                $password = mysqli_real_escape_string($db, $_POST['password']);
+                $confirmPass = mysqli_real_escape_string($db, $_POST['confirmPass']);
+                $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
+
+                if ($password == $confirmPass) {
+                    $hashedPwd = password_hash($confirmPass, PASSWORD_DEFAULT);
+
+                    $updatePass = mysqli_query($db, " UPDATE tbl_deans SET password='$hashedPwd', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE dean_id = '$dean_id'") or die(mysqli_error($db));
+                    $_SESSION['successPass'] = true;
+                    header("location: ../edit.dean.php");
                 } else {
+                    $_SESSION['newNotMatch'] = true;
                     header("location: ../edit.dean.php");
                 }
             }
+        }
+    } else {
+        $password = mysqli_real_escape_string($db, $_POST['password']);
+        $confirmPass = mysqli_real_escape_string($db, $_POST['confirmPass']);
+        $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
+
+        if ($password == $confirmPass) {
+            $hashedPwd = password_hash($confirmPass, PASSWORD_DEFAULT);
+
+            $updatePass = mysqli_query($db, " UPDATE tbl_deans SET password='$hashedPwd', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE dean_id = '$dean_id'") or die(mysqli_error($db));
+            $_SESSION['successPass'] = true;
+            header("location: ../edit.dean.php?dean_id=" . $dean_id);
+        } else {
+            $_SESSION['newNotMatch'] = true;
+            header("location: ../edit.dean.php?dean_id=" . $dean_id);
         }
     }
 }

@@ -3,10 +3,16 @@ session_start();
 require '../../includes/conn.php';
 include '../../includes/head.php';
 include '../../includes/session.php';
-$admission_id = $_GET['admission_id'];
+if ($_SESSION['role'] == "Super Administrator") {
+    $admission_id = $_GET['admission_id'];
+}
 $_SESSION['admission_id'] = $admission_id;
 
 ?>
+<title>
+    Edit Account | SFAC - Las Piñas
+</title>
+</head>
 
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -56,9 +62,7 @@ $_SESSION['admission_id'] = $admission_id;
                                 <div class="col-sm-auto col-8 my-auto">
                                     <div class="h-100">
                                         <h5 class="mb-1 font-weight-bolder">
-                                            <?php
-                                            echo $row['fullname'];
-                                            ?>
+                                            <?php echo $row['fullname'];  ?>
                                         </h5>
                                         <p class="mb-0 font-weight-bold text-sm">
                                             Admission
@@ -89,9 +93,9 @@ $_SESSION['admission_id'] = $admission_id;
                                         <label class="form-label">Last Name</label>
                                         <div class="input-group">
                                             <input id="lastName" name="lname" class="form-control" type="text"
-                                                placeholder="Lastname" required
+                                                placeholder="Lastname"
                                                 value="<?php echo $row['admission_lastname'];
-                                                                                                                                                        ?>">
+                                                                                                                                                ?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -142,6 +146,7 @@ $_SESSION['admission_id'] = $admission_id;
                             </div>
                         </form>
 
+
                         <!-- Card Change Password -->
                         <form class="card mt-4 mb-5" id="password" method="POST"
                             action="userData/ctrl.edit.admission.php">
@@ -149,11 +154,14 @@ $_SESSION['admission_id'] = $admission_id;
                                 <h5>Change Password</h5>
                             </div>
                             <div class="card-body pt-0">
-                                <label class="form-label">Current password</label>
+                                <?php if ($_SESSION['role'] == "Admission") {
+                                    echo '<label class="form-label">Current password</label>
                                 <div class="form-group">
                                     <input class="form-control" type="password" name="oldPass"
                                         placeholder="Current password" required>
-                                </div>
+                                </div>';
+                                } ?>
+
                                 <label class="form-label">New password</label>
                                 <div class="form-group">
                                     <input class="form-control" type="password" name="password"
@@ -175,6 +183,7 @@ $_SESSION['admission_id'] = $admission_id;
                         <?php include '../../includes/footer.php'; ?>
                         <!-- End footer -->
                     </div>
+                </div>
     </main>
     <!--   Core JS Files   -->
     <?php include '../../includes/scripts.php'; ?>

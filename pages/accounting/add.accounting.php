@@ -1,8 +1,13 @@
 <?php
 session_start();
 include '../../includes/head.php';
+
 include '../../includes/session.php';
 ?>
+<title>
+    Add Accounting | SFAC - Las Piñas
+</title>
+</head>
 
 <body class="g-sidenav-show  bg-gray-100">
     <?php include '../../includes/sidebar.php'; ?>
@@ -19,7 +24,7 @@ include '../../includes/session.php';
                         </li>
                         <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">Add Old Subject</h6>
+                    <h6 class="font-weight-bolder mb-0">Add Accounts</h6>
                 </nav>
                 <?php include '../../includes/navbar.php'; ?>
                 <!-- End Navbar -->
@@ -28,7 +33,7 @@ include '../../includes/session.php';
                     <div class="row">
                         <div class="col-12">
                             <div class="text-center">
-                                <h3>Enter details for the subject you want to add</h3>
+                                <h3>Input the accounting information</h3>
                                 <h5 class="text-secondary font-weight-normal">Please fill out the fields</h5>
                             </div>
                             <div class="multisteps-form mb-5">
@@ -38,8 +43,14 @@ include '../../includes/session.php';
                                         <div class="multisteps-form__progress">
                                             <button class="multisteps-form__progress-btn js-active" type="button"
                                                 title="User Info">
-                                                <span>Subject Info</span>
+                                                <span>User Info</span>
                                             </button>
+                                            <button class="multisteps-form__progress-btn" type="button"
+                                                title="User Accounts">User Account</button>
+                                            <!-- <button class="multisteps-form__progress-btn" type="button"
+                                                title="Socials">Socials</button> -->
+                                            <button class="multisteps-form__progress-btn" type="button"
+                                                title="Profile">Profile</button>
                                         </div>
                                     </div>
                                 </div>
@@ -47,110 +58,85 @@ include '../../includes/session.php';
                                 <div class="row">
                                     <div class="col-12 col-lg-8 m-auto">
                                         <form class="multisteps-form__form mb-8" method="POST"
-                                            enctype="multipart/form-data" action="userData/ctrl.add.subject.old.php">
+                                            enctype="multipart/form-data" action="userData/ctrl.add.accounting.php">
                                             <!--single form panel-->
                                             <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
                                                 data-animation="FadeIn">
-                                                <h5 class="font-weight-bolder mb-0">Add Subject</h5>
-                                                <p class="mb-0 text-sm">Subject Details</p>
+                                                <h5 class="font-weight-bolder mb-0">Add Accounting</h5>
+                                                <p class="mb-0 text-sm">Personal Data</p>
                                                 <div class="multisteps-form__content">
-
                                                     <div class="row mt-3 justify-content-center">
-                                                        <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                                            <label>Subject Code</label>
+                                                        <div class="col-12 col-sm-9 mt-3 mt-sm-0">
+                                                            <label>Last Name</label>
                                                             <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="Subject Code"
-                                                                name="subj_code" />
+                                                                type="text" placeholder="Lastname" name="lname" />
                                                         </div>
-                                                        <div class="col-12 col-sm-6">
-                                                            <label>Subject Description</label>
+                                                    </div>
+                                                    <div class="row mt-3 justify-content-center">
+                                                        <div class="col-12 col-sm-9">
+                                                            <label>First Name</label>
                                                             <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="Subject Description"
-                                                                name="subj_desc" />
+                                                                type="text" placeholder="Firstname" name="fname" />
                                                         </div>
                                                     </div>
 
                                                     <div class="row mt-3 justify-content-center">
-                                                        <div class="col-12 col-sm-3 mt-3 mt-sm-0">
-                                                            <label>Lecture Units</label>
+                                                        <div class="col-12 col-sm-9">
+                                                            <label>Middlename</label>
                                                             <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="Enter no. of units" name="unit_lec" />
-                                                        </div>
-                                                        <div class="col-12 col-sm-3">
-                                                            <label>Laboratory Units</label>
-                                                            <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="Enter no. of units" name="unit_lab" />
-                                                        </div>
-                                                        <div class="col-12 col-sm-3">
-                                                            <label>Total Units</label>
-                                                            <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="Enter no. of units" name="unit_total" />
-                                                        </div>
-                                                        <div class="col-12 col-sm-3">
-                                                            <label>Pre Requisite</label>
-                                                            <input class="multisteps-form__input form-control"
-                                                                type="text" placeholder="Enter pre requisite" name="prereq" />
+                                                                type="text" placeholder="Middlename" name="mname" />
                                                         </div>
                                                     </div>
-
                                                     <div class="row mt-3 justify-content-center">
-                                                        <div class="col-12 col-sm-4 mt-3 mt-sm-0">
-                                                            <label>Course</label>
-                                                            <select class="form-control" name="course"
-                                                                id="course">
-                                                                <option value="" disabled selected>Select Course
-                                                                </option>
-                                                                <?php $getCourse = mysqli_query($db, "SELECT * FROM tbl_courses");
-                                                                while ($row = mysqli_fetch_array($getCourse)) {
-                                                                ?>
-                                                                <option value="<?php echo $row['course_id']; ?>">
-                                                                    <?php echo $row['course'];
-                                                                } ?></option>
-                                                            </select>
+                                                        <div class="col-12 col-sm-9 mt-3 mt-sm-0">
+                                                            <label>Email Address</label>
+                                                            <input class="multisteps-form__input form-control"
+                                                                type="email" placeholder="example@gmail.com"
+                                                                name="email" />
                                                         </div>
-
-                                                        <div class="col-12 col-sm-4">
-                                                            <label>Year Level</label>
-                                                            <select class="form-control" name="year"
-                                                                id="year">
-                                                                <option value="" disabled selected>Select Year Level
-                                                                </option>
-                                                                <?php $getYear = mysqli_query($db, "SELECT * FROM tbl_year_levels");
-                                                                while ($row = mysqli_fetch_array($getYear)) {
-                                                                ?>
-                                                                <option value="<?php echo $row['year_id']; ?>">
-                                                                    <?php echo $row['year_level'];
-                                                                } ?></option>
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="col-12 col-sm-4">
-                                                            <label>Semester</label>
-                                                            <select class="form-control" name="semester"
-                                                                id="semester">
-                                                                <option value="" disabled selected>Select Semester
-                                                                </option>
-                                                                <?php $getSem = mysqli_query($db, "SELECT * FROM tbl_semesters");
-                                                                while ($row = mysqli_fetch_array($getSem)) {
-                                                                ?>
-                                                                <option value="<?php echo $row['sem_id']; ?>">
-                                                                    <?php echo $row['semester'];
-                                                                } ?></option>
-                                                            </select>
-                                                        </div>
-                                                        
                                                     </div>
-
-                                                        
-                                               
-                                                    <div class="button-row d-flex mt-7">
-                                                        <button class="btn bg-gradient-dark ms-auto mb-0" type="submit_old"
-                                                            title="Send" name="submit">Add
-                                                            Subject</button>
+                                                    <div class="button-row d-flex mt-4">
+                                                        <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next"
+                                                            type="button" title="Next">Next</button>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!--single form panel-->
+                                            <div class="card multisteps-form__panel p-3 border-radius-xl bg-white"
+                                                data-animation="FadeIn">
+                                                <h5 class="font-weight-bolder">Account Details</h5>
+                                                <div class="multisteps-form__content">
+                                                    <div class="row mt-3">
+                                                        <div class="col">
+                                                            <label>Username</label>
+                                                            <input class="multisteps-form__input form-control"
+                                                                type="text" placeholder="Username" name="username" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-3">
+                                                        <div class="col">
+                                                            <label>Password</label>
+                                                            <input class="multisteps-form__input form-control"
+                                                                type="password" placeholder="Password"
+                                                                name="password" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-3">
+                                                        <div class="col">
+                                                            <label>Confirm Password</label>
+                                                            <input class="multisteps-form__input form-control"
+                                                                type="password" placeholder="Password"
+                                                                name="confirmPass" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="button-row d-flex mt-4">
+                                                        <button class="btn bg-gradient-light mb-0 js-btn-prev"
+                                                            type="button" title="Prev">Prev</button>
+                                                        <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next"
+                                                            type="button" title="Next">Next</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <!--single form panel-->
                                             <!-- <div class="card multisteps-form__panel p-3 border-radius-xl bg-white"
                                                 data-animation="FadeIn">
@@ -185,6 +171,25 @@ include '../../includes/session.php';
                                                 </div>
                                             </div> -->
                                             <!--single form panel-->
+                                            <div class="card multisteps-form__panel p-3 border-radius-xl bg-white h-100"
+                                                data-animation="FadeIn">
+                                                <h5 class="font-weight-bolder">Profile</h5>
+                                                <div class="multisteps-form__content mt-1">
+                                                    <div class="row">
+                                                        <div class="col-12 mb-1">
+                                                            <label>Profile Picture</label>
+                                                            <input class="form-control dropzone" type="file"
+                                                                name="image" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="button-row d-flex mt-7">
+                                                        <button class="btn bg-gradient-light mb-0 js-btn-prev"
+                                                            type="button" title="Prev">Prev</button>
+                                                        <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
+                                                            title="Send" name="submit">Add Accounting</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
