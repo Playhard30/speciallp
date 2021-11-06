@@ -33,6 +33,30 @@ $(document).ready(function() {
 
     });
 });
+
+$(document).ready(function() {
+    $('#datatable-simple').DataTable({
+        "searching": false,
+        "paging": false,
+        "ordering": false,
+        "info": false,
+        language: {
+            paginate: {
+                previous: '‹',
+                next: '›'
+            },
+            aria: {
+                paginate: {
+                    previous: 'Previous',
+                    next: 'Next'
+                }
+            },
+            search: "_INPUT_",
+            searchPlaceholder: "Search..."
+        }
+
+    });
+});
 </script>
 <script>
 if (document.getElementById('year_lvl')) {

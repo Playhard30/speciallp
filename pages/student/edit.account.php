@@ -3,11 +3,8 @@ session_start();
 require '../../includes/conn.php';
 include '../../includes/head.php';
 include '../../includes/session.php';
-if ($_SESSION['role'] == "Super Administrator") {
-    $admission_id = $_GET['admission_id'];
-}
-$_SESSION['admission_id'] = $admission_id;
 
+$_SESSION['stud_id'] = $stud_id;
 ?>
 <title>
     Edit Account | SFAC - Las Piñas
@@ -37,15 +34,17 @@ $_SESSION['admission_id'] = $admission_id;
 
 
                 <div class="container-fluid py-4">
-                    <div class="col-lg-11 mt-lg-0 mt-4 mx-auto">
+                    <div class="col-lg-11 mt-lg-0 mt-4 mx-auto mb-5">
                         <!-- Card Profile -->
                         <div class="card card-body" id="profile">
                             <div class="row justify-content-center align-items-center">
                                 <div class="col-sm-auto col-4">
                                     <div class="avatar avatar-xl position-relative">
                                         <?php
-                                        $getUserData = mysqli_query($db, "SELECT *, CONCAT(tbl_admissions.admission_firstname, ' ', tbl_admissions.admission_middlename, ' ', tbl_admissions.admission_lastname) AS fullname FROM tbl_admissions WHERE admission_id = '$admission_id'");
-                                        while ($row = mysqli_fetch_array($getUserData)) {
+                                        $getStudData = mysqli_query($db, "SELECT *, CONCAT(stud.firstname, ' ', stud.middlename, ' ', stud.lastname) AS fullname
+                                        FROM tbl_students AS stud
+                                        WHERE stud_id = '$stud_id'");
+                                        while ($row = mysqli_fetch_array($getStudData)) {
                                             if (!empty($row['img'])) {
                                                 echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" alt="bruce"
                                                 class="border-radius-lg shadow-sm" style="height: 80px; width: 80px;">';
@@ -54,7 +53,6 @@ $_SESSION['admission_id'] = $admission_id;
                                             class="border-radius-lg shadow-sm">';
                                             }
 
-
                                         ?>
 
                                     </div>
@@ -62,15 +60,19 @@ $_SESSION['admission_id'] = $admission_id;
                                 <div class="col-sm-auto col-8 my-auto">
                                     <div class="h-100">
                                         <h5 class="mb-1 font-weight-bolder">
-                                            <?php echo $row['fullname'];  ?>
+                                            <?php if (empty($row['firstname']) || empty($row['middlename']) || empty($row['lastname'])) {
+                                                echo $row['stud_no'];
+                                            } else {
+                                                echo $row['fullname'];
+                                            } ?>
                                         </h5>
                                         <p class="mb-0 font-weight-bold text-sm">
-                                            Admission
+                                            Student
                                         </p>
                                     </div>
                                 </div>
                                 <form method="POST" enctype="multipart/form-data"
-                                    action="userData/ctrl.edit.admission.php"
+                                    action="userData/ctrl.edit.account.php"
                                     class="col-sm-auto ms-lg-auto mt-sm-0 ms-sm-0 mt-3 justify-content-sm-center">
 
                                     <button class="btn btn-outline-primary me-2 mb-0"><input type="file"
@@ -81,109 +83,106 @@ $_SESSION['admission_id'] = $admission_id;
                                 </form>
                             </div>
                         </div>
-                        <!-- Card Basic Info -->
-                        <form method="POST" enctype="multipart/form-data" action="userData/ctrl.edit.admission.php"
-                            class="card mt-4" id="basic-info">
+                        <!-- Card Account Details -->
+                        <form method="POST" enctype="multipart/form-data" action="userData/ctrl.edit.account.php"
+                            class="card mt-4" id="account_details">
                             <div class="card-header">
-                                <h5>Basic Info</h5>
+                                <h5>Account Details</h5>
                             </div>
+
                             <div class="card-body pt-0">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="form-label">Last Name</label>
+                                        <label class="form-label mt-3">Lastname</label>
                                         <div class="input-group">
-                                            <input id="lastName" name="lname" class="form-control" type="text"
-                                                placeholder="Lastname"
-                                                value="<?php echo $row['admission_lastname'];
-                                                                                                                                                ?>">
+                                            <input id="lastname" name="lname" class="form-control" type="text"
+                                                placeholder="Lastname" value="<?php echo $row['lastname']; ?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
-                                        <label class="form-label">First Name</label>
+                                        <label class="form-label mt-3">Firstname</label>
                                         <div class="input-group">
-                                            <input id="firstName" name="fname" class="form-control" type="text"
-                                                placeholder="Firstname"
-                                                value="<?php echo $row['admission_firstname'];
-                                                                                                                                                ?>">
+                                            <input id="firstname" name="fname" class="form-control" type="text"
+                                                placeholder="Firstname" value="<?php echo $row['firstname']; ?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
-                                        <label class="form-label">Middlename</label>
+                                        <label class="form-label mt-3">Middlename</label>
                                         <div class="input-group">
                                             <input id="middlename" name="mname" class="form-control" type="text"
-                                                placeholder="Middlename"
-                                                value="<?php echo $row['admission_middlename']; ?>">
+                                                placeholder="Middlename" value="<?php echo $row['middlename']; ?>">
                                         </div>
                                     </div>
-
                                 </div>
+
                                 <div class="row">
                                     <div class="col-sm-8">
-                                        <label class="form-label mt-4">Email</label>
+                                        <label class="form-label mt-3">Email</label>
                                         <div class="input-group">
-                                            <input id="email" name="email" class="form-control" type="email"
-                                                placeholder="example@email.com"
-                                                value="<?php echo $row['email'];
-                                                                                                                                                    ?>">
+                                            <input id="email" name="email" class="form-control" type="text"
+                                                placeholder="Email" value="<?php echo $row['email']; ?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
-                                        <label class="form-label mt-4">Username</label>
+                                        <label class="form-label mt-3">Username</label>
                                         <div class="input-group">
-                                            <input id="text" name="username" class="form-control" type="text"
-                                                placeholder="Username"
-                                                value="<?php echo $row['username'];
-                                                                                                                                        } ?>"
-                                                required>
+                                            <input id="username" required name="username" class="form-control"
+                                                placeholder="Username" type="text"
+                                                value="<?php echo $row['username']; ?>">
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-12 button-row d-flex mt-4">
                                     <button type="submit" name="save"
                                         class="btn bg-gradient-primary ms-auto">Save</button>
                                 </div>
                             </div>
                         </form>
+                        <?php }
+                    ?>
 
-
-                        <!-- Card Change Password -->
-                        <form class="card mt-4 mb-5" id="password" method="POST"
-                            action="userData/ctrl.edit.admission.php">
+                        <!-- card change password -->
+                        <form method="POST" enctype="multipart/form-data" action="userData/ctrl.edit.account.php"
+                            class="card mt-4" id="account_details">
                             <div class="card-header">
                                 <h5>Change Password</h5>
                             </div>
                             <div class="card-body pt-0">
-                                <?php if ($_SESSION['role'] == "Admission") {
-                                    echo '<label class="form-label">Current Password</label>
-                                <div class="form-group">
-                                    <input class="form-control" type="password" name="oldPass"
-                                        placeholder="Current password" required>
-                                </div>';
-                                } ?>
+                                <div class="row">
 
-                                <label class="form-label">New Password</label>
-                                <div class="form-group">
-                                    <input class="form-control" type="password" name="password"
-                                        placeholder="New password" required>
-                                </div>
-                                <label class="form-label">Confirm new Password</label>
-                                <div class="form-group">
-                                    <input class="form-control" type="password" name="confirmPass"
-                                        placeholder="Confirm password" required>
+                                    <label class="form-label mt-3">Current Password</label>
+                                    <div class="input-group">
+                                        <input id="old_password" required name="oldPass" class="form-control"
+                                            type="password" placeholder="Current password">
+                                    </div>
+
+                                    <label class="form-label mt-3">New Password</label>
+                                    <div class="input-group">
+                                        <input id="password" required name="password" class="form-control"
+                                            placeholder="New password" type="password">
+                                    </div>
+
+                                    <label class="form-label mt-3">Confirm New Password </label>
+                                    <div class="input-group">
+                                        <input id="confirm_password" required name="confirmPass" class="form-control"
+                                            placeholder="Confirm password" type="password">
+                                    </div>
                                 </div>
 
                                 <div class="col-12 button-row d-flex mt-4">
                                     <button type="submit" name="savePass"
-                                        class="btn bg-gradient-primary ms-auto">Update</button>
+                                        class="btn bg-gradient-primary ms-auto">Save</button>
                                 </div>
                             </div>
                         </form>
 
-                        <?php include '../../includes/footer.php'; ?>
-                        <!-- End footer -->
+
+
                     </div>
+                    <?php include '../../includes/footer.php'; ?>
+                    <!-- End footer -->
                 </div>
+
     </main>
     <!--   Core JS Files   -->
     <?php include '../../includes/scripts.php'; ?>

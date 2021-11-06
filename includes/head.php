@@ -30,4 +30,8 @@ require '../../includes/conn.php';
     body {
         font-weight: 400;
     }
+
+    .bg-gradient-red-orange {
+        background-image: linear-gradient(310deg, #d77700, #ab0808);
+    }
     </style>

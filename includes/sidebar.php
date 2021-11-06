@@ -56,10 +56,22 @@
             } elseif ("Student" == $_SESSION['role']) {
                 $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_students.lastname, ', ', tbl_students.firstname) AS fullname FROM tbl_students WHERE stud_id = '$stud_id'");
                 while ($row = mysqli_fetch_array($getUserName)) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
-               <div class="d-flex align-items-start flex-column justify-content-center">
-                   <h6 class="mb-0 text-sm">' . $row['fullname'] . '</h6>
-                   <p class="mb-0 text-xs">' . $_SESSION['role'];
+                    if (!empty(base64_encode($row['img']))) {
+                        echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
+               ';
+                    } else {
+                        echo '<img src="../../assets/img/illustrations/user_prof.jpg" class="border-radius-lg mx-3 shadow zoom"
+                alt="main_logo" style="height: 40px; width: 40px;">';
+                    }
+                    if (!empty($row['lastname']) && !empty($row['firstname'])) {
+                        echo '<div class="d-flex align-items-start flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">' . $row['fullname'] . '</h6>
+                        <p class="mb-0 text-xs">' . $_SESSION['role'];
+                    } else {
+                        echo '<div class="d-flex align-items-start flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">' . $row['stud_no'] . '</h6>
+                        <p class="mb-0 text-xs">' . $_SESSION['role'];
+                    }
                 }
             } ?></p>
         </div>
@@ -70,6 +82,9 @@
     <div class="collapse navbar-collapse  w-auto max-height-vh-90" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <?php
+            $q = $db->query("SELECT * FROM tbl_schoolyears SY WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AYear]' AND sem_id = '$_SESSION[ASem]'") or die($db->error);
+            $count = $q->num_rows;
+
             if ("Super Administrator" == $_SESSION['role']) {
                 echo '<li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">
@@ -315,55 +330,39 @@
                 </a>
             </li>
 
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Forms</h6>
-            </li>
 
             <li class="nav-item">
-                <a class="nav-link  " href="../forms/enroll_stats.php">
+                <a data-bs-toggle="collapse" href="#enrollment" class="nav-link" aria-controls="enrollment"
+                    role="button" aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-file-alt text-dark"></i>
+                        <i class="fas fa-sign-in-alt text-dark"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Enrollment Breakdown</span>
+                    <span class="nav-link-text ms-1">Enrollment</span>
                 </a>
+
+                <div class="collapse" id="enrollment">
+                    <ul class="nav ms-4 ps-3">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal font-weight-bold">Pending Students</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
             </li>
 
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Lists</h6>
-            </li>
 
             <li class="nav-item">
-                <a class="nav-link  " href="../adviser/list.adviser.php">
-                    <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-list-alt text-dark"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Enrollment Advisers</span>
-                </a>
-            </li>
-
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Add</h6>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link  " href="../adviser/add.adviser.php">
+                <a class="nav-link" href="../student/add.student.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-user-plus text-dark"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Enrollment Adviser</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link  " href="#">
-                    <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-plus text-dark"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Department</span>
+                    <span class="nav-link-text ms-1">Add Student</span>
                 </a>
             </li>
             ';
@@ -745,20 +744,37 @@
                 </a>
             </li>
 
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Update</h6>
-            </li>
-
             <li class="nav-item">
-                <a class="nav-link  " href="../student/edit.student.php">
+                <a class="nav-link" href="../student/edit.student.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-user-plus text-dark"></i>
+                        <i class="fas fa-user-alt text-dark"></i>
                     </div>
-                    <span class="nav-link-text ms-1">User Profile</span>
+                    <span class="nav-link-text ms-1">Personal Info.</span>
                 </a>
             </li>
             ';
+                if ($count > 0) {
+                    echo '<li class="nav-item">
+                    <a class="nav-link" href="../enrollment/enrollmentInfo.php">
+                        <div
+                            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-globe text-dark"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Enrollment Info.</span>
+                    </a>
+                </li>';
+                } else {
+                    echo '<li class="nav-item">
+                    <a class="nav-link" href="../enrollment/enrollNow.php">
+                        <div
+                            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-globe text-dark"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Enroll Now</span>
+                    </a>
+                </li>';
+                }
             }
             ?>
 
@@ -771,35 +787,35 @@
             echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="#" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Sidebar Settings" data-container="body" data-animation="true"><i class="fa fa-cog"></i></a>
         <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../super_admin/edit.SA.php" data-bs-toggle="tooltip"
-            data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
+            data-bs-placement="top" title="Edit Account" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
         } elseif ($_SESSION['role'] == "Dean") {
             echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../report/send.report.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
             <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../dean/edit.dean.php" data-bs-toggle="tooltip"
-            data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
+            data-bs-placement="top" title="Edit Account" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
         } elseif ("Admission" == $_SESSION['role']) {
             echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../admission/send.report.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
             <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../admission/edit.admission.php" data-bs-toggle="tooltip"
-            data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
+            data-bs-placement="top" title="Edit Account" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
         } elseif ($_SESSION['role'] == "Registrar") {
             echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../settings/set.acad.calendar.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Set A.Y. & Semester" data-container="body" data-animation="true"><i class="fas fa-calendar-alt"></i></a>
             <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../registrar/edit.registrar.php" data-bs-toggle="tooltip"
-            data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
+            data-bs-placement="top" title="Edit Account" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
         } elseif ($_SESSION['role'] == "Adviser") {
             echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../dean/send.report.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
             <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../adviser/edit.adviser.php" data-bs-toggle="tooltip"
-            data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
+            data-bs-placement="top" title="Edit Account" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
         } elseif ("Student" == $_SESSION['role']) {
-            echo '<a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../student/edit.student.php" data-bs-toggle="tooltip"
-          data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
+            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md w-75 mx-4" href="../student/edit.account.php" data-bs-toggle="tooltip"
+          data-bs-placement="top" title="Edit Account" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
         } ?>
     </div>

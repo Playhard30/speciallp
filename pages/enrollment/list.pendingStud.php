@@ -4,7 +4,7 @@ include '../../includes/head.php';
 include '../../includes/session.php';
 ?>
 <title>
-    Students List | SFAC - Las Piñas
+    Pending Students | SFAC - Las Piñas
 </title>
 </head>
 
@@ -24,11 +24,10 @@ include '../../includes/session.php';
                         </li>
                         <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">View Students List</h6>
+                    <h6 class="font-weight-bolder mb-0">View Pending Students</h6>
                 </nav>
                 <?php include '../../includes/navbar.php'; ?>
                 <!-- End Navbar -->
-
                 <div class="container-fluid py-4">
                     <div class="row mb-5">
                         <div class="col-12">
@@ -36,30 +35,9 @@ include '../../includes/session.php';
                                 <!-- Card header -->
                                 <div class="card-header m-1 my-0">
                                     <h5 class="mb-0 ">Students List</h5>
-                                    <p class="text-sm mb-0">Enter Student Number or Name in Search box</p>
+                                    <p class="text-sm mb-0">of Pending Students</p>
                                 </div>
                                 <hr class="horizontal dark mt-0">
-                                <div class="row d-flex justify-content-center mx-4">
-                                    <div class="col-md-6 m-1 ">
-                                        <form method="GET" action="list.student.php">
-                                            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                                                <div class="input-group">
-                                                    <!-- <span class="input-group-text text-body"><i class  ="fas fa-search"
-                                                            aria-hidden="true"></i></span> -->
-                                                    <input type="text" class="form-control" name="search_text"
-                                                        placeholder="Search Student"
-                                                        <?php if (!empty($_GET['search_text'])) {
-                                                                                                                                                echo 'value="' . $_GET['search_text'] . '"';
-                                                                                                                                            }  ?>>
-                                                    <button class="btn-sm btn bg-gradient-dark ms-auto mb-0"
-                                                        type="submit" title="Send" name="search"><i
-                                                            class="fas fa-search text-lg"
-                                                            aria-hidden="true"></i></button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
                                 <div class="table-responsive px-4 my-4">
                                     <table class=" table table-hover responsive nowrap m-0" id="datatable-basic"
                                         style="width: 100%;">
@@ -110,12 +88,7 @@ include '../../includes/session.php';
                                          FROM tbl_students
                                         LEFT JOIN tbl_courses ON tbl_courses.course_id = tbl_students.course_id
                                         LEFT JOIN tbl_genders ON tbl_genders.gender_id = tbl_students.gender_id
-                                        WHERE
-                                        (firstname LIKE '%$_GET[search_text]%' OR
-                                        middlename LIKE '%$_GET[search_text]%' OR
-                                        lastname LIKE '%$_GET[search_text]%' OR
-                                        course_abv LIKE '%$_GET[search_text]%' OR
-                                        stud_no LIKE '%$_GET[search_text]%')
+                                        WHERE 
                                          ORDER BY stud_no DESC"
                                                 ) or die(mysqli_error($db));
 

@@ -51,7 +51,6 @@ if (isset($_POST['submit'])) {
     $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
 
 
-
     $result = $db->query("SELECT * FROM tbl_students WHERE stud_no = '$stud_no'") or die($db->error);
     $count = $result->num_rows;
     while ($row = $result->fetch_array()) {
@@ -60,17 +59,21 @@ if (isset($_POST['submit'])) {
 
     if ($count < 1 || $checkStud == $stud_id) {
         if ('Registrar' == $_SESSION['role']) {
-            $query = mysqli_query($db, "UPDATE tbl_students SET stud_no = '$stud_no', course_id = '$course', gender_id = '$gender', lastname = '$lastname', firstname = '$firstname', middlename = '$middlename', address = '$address', birthdate = '$birthdate', birthplace = '$birthplace', age = '$age', religion = '$religion', citizenship = '$citizenship', civilstatus = '$civilstatus', contact = '$contact', email = '$email', flastname = '$flastname', ffirstname = '$ffirstname',fmiddlename = '$fmiddlename', fage = '$fage', foccupation = '$foccupation', mlastname = '$mlastname', mfirstname = '$mfirstname', mmiddlename = '$mmiddlename', mage ='$mage', moccupation = '$moccupation', familyincome = '$familyincome', nosiblings = '$nosiblings', glastname = '$glastname', gfirstname = '$gfirstname', gmiddlename = '$gmiddlename', relationship = '$relationship', gaddress = '$gaddress', elem = '$elem', elemSY = '$elemSY', elemAddress = '$elemAddress', hs = '$hs', hsSY = '$hsSY', hsAddress = '$hsAddress', lastschool = '$lastschool', course_year = '$course_year', lastSY = '$lastSY', lastAddress = '$lastAddress', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE stud_id = '$stud_id' ") or die(mysqli_error($db));
+            $query = mysqli_query($db, "UPDATE tbl_students SET stud_no = '$stud_no', gender_id = '$gender', lastname = '$lastname', firstname = '$firstname', middlename = '$middlename', address = '$address', birthdate = '$birthdate', birthplace = '$birthplace', age = '$age', religion = '$religion', citizenship = '$citizenship', civilstatus = '$civilstatus', contact = '$contact', email = '$email', flastname = '$flastname', ffirstname = '$ffirstname',fmiddlename = '$fmiddlename', fage = '$fage', foccupation = '$foccupation', mlastname = '$mlastname', mfirstname = '$mfirstname', mmiddlename = '$mmiddlename', mage ='$mage', moccupation = '$moccupation', familyincome = '$familyincome', nosiblings = '$nosiblings', glastname = '$glastname', gfirstname = '$gfirstname', gmiddlename = '$gmiddlename', relationship = '$relationship', gaddress = '$gaddress', elem = '$elem', elemSY = '$elemSY', elemAddress = '$elemAddress', hs = '$hs', hsSY = '$hsSY', hsAddress = '$hsAddress', lastschool = '$lastschool', course_year = '$course_year', lastSY = '$lastSY', lastAddress = '$lastAddress', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE stud_id = '$stud_id' ") or die(mysqli_error($db));
             $_SESSION['successUpdate'] = true;
             header("location: ../edit.student.php?stud_id=" . $stud_id);
         } else {
             $query = mysqli_query($db, "UPDATE tbl_students SET course_id = '$course', gender_id = '$gender', lastname = '$lastname', firstname = '$firstname', middlename = '$middlename', address = '$address', birthdate = '$birthdate', birthplace = '$birthplace', age = '$age', religion = '$religion', citizenship = '$citizenship', civilstatus = '$civilstatus', contact = '$contact', email = '$email', flastname = '$flastname', ffirstname = '$ffirstname',fmiddlename = '$fmiddlename', fage = '$fage', foccupation = '$foccupation', mlastname = '$mlastname', mfirstname = '$mfirstname', mmiddlename = '$mmiddlename', mage ='$mage', moccupation = '$moccupation', familyincome = '$familyincome', nosiblings = '$nosiblings', glastname = '$glastname', gfirstname = '$gfirstname', gmiddlename = '$gmiddlename', relationship = '$relationship', gaddress = '$gaddress', elem = '$elem', elemSY = '$elemSY', elemAddress = '$elemAddress', hs = '$hs', hsSY = '$hsSY', hsAddress = '$hsAddress', lastschool = '$lastschool', course_year = '$course_year', lastSY = '$lastSY', lastAddress = '$lastAddress', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE stud_id = '$stud_id' ") or die(mysqli_error($db));
             $_SESSION['successUpdate'] = true;
-            header("location: ../edit.student.php?stud_id=" . $stud_id);
+            header("location: ../edit.student.php");
         }
     } else {
         $_SESSION['stud_noExist'] = true;
-        header("location: ../edit.student.php?stud_id=" . $stud_id);
+        if ($_SESSION['role'] == "Registrar") {
+            header("location: ../edit.student.php?stud_id=" . $stud_id);
+        } else {
+            header("location: ../edit.student.php");
+        }
     }
 }
 
@@ -84,10 +87,18 @@ if (isset($_POST['saveImg'])) {
 
         $query1 = mysqli_query($db, "UPDATE tbl_students SET img = '$image', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE stud_id = '$stud_id' ") or die(mysqli_error($db));
         $_SESSION['successImg'] = true;
-        header("location: ../edit.student.php?stud_id=" . $stud_id);
+        if ($_SESSION['role'] == "Registrar") {
+            header("location: ../edit.student.php?stud_id=" . $stud_id);
+        } else {
+            header("location: ../edit.student.php");
+        }
     } else {
         $_SESSION['emptyImg'] = true;
-        header("location: ../edit.student.php?stud_id=" . $stud_id);
+        if ($_SESSION['role'] == "Registrar") {
+            header("location: ../edit.student.php?stud_id=" . $stud_id);
+        } else {
+            header("location: ../edit.student.php");
+        }
     }
 }
 
@@ -107,9 +118,17 @@ if (isset($_POST['save_account'])) {
     if ($count2 < 1 || $checkID == $stud_id) {
         $query = $db->query("UPDATE tbl_students SET username = '$username', password = '$hashedPwd' , updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE stud_id = '$stud_id'") or die($db->error);
         $_SESSION['successUpdate'] = true;
-        header("location: ../edit.student.php?stud_id=" . $stud_id);
+        if ($_SESSION['role'] == "Registrar") {
+            header("location: ../edit.student.php?stud_id=" . $stud_id);
+        } else {
+            header("location: ../edit.student.php");
+        }
     } else {
         $_SESSION['usernameExist'] = true;
-        header("location: ../edit.student.php?stud_id=" . $stud_id);
+        if ($_SESSION['role'] == "Registrar") {
+            header("location: ../edit.student.php?stud_id=" . $stud_id);
+        } else {
+            header("location: ../edit.student.php");
+        }
     }
 }

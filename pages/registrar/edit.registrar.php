@@ -155,7 +155,7 @@ $_SESSION['admin_id'] = $admin_id;
                             </div>
                             <div class="card-body pt-0">
                                 <?php if ($_SESSION['role'] == "Registrar") {
-                                    echo '<label class="form-label">Current password</label>
+                                    echo '<label class="form-label">Current Password</label>
                                 <div class="form-group">
                                     <input class="form-control" type="password" name="oldPass"
                                         placeholder="Current password" required>
@@ -167,7 +167,7 @@ $_SESSION['admin_id'] = $admin_id;
                                     <input class="form-control" type="password" name="password"
                                         placeholder="New password" required>
                                 </div>
-                                <label class="form-label">Confirm new password</label>
+                                <label class="form-label">Confirm New Password</label>
                                 <div class="form-group">
                                     <input class="form-control" type="password" name="confirmPass"
                                         placeholder="Confirm password" required>

@@ -39,31 +39,13 @@
 
 
                                             <div class="row">
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-4">
                                                     <label>Student Code</label>
                                                     <input class="form-control" type="text" placeholder="Student Code"
                                                         required name="stud_no" />
                                                 </div>
 
-
-                                                <div class="col-sm-6">
-                                                    <label>Select Curriculum</label>
-                                                    <select class="form-control" type="text"
-                                                        placeholder="Select Curriculum" name="curri" id="curri">
-                                                        <option selected disabled>Select Curriculum
-                                                        </option>
-                                                        <option value="Old Curri">Old
-                                                            Curriculum(Effective A.Y. 2008-2009)
-                                                        </option>
-                                                        <option value="New Curri">New
-                                                            Curriculum(Effective A.Y. 2018-2019)
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="row justify-content-center">
-                                                <div class="col-sm-9">
+                                                <div class="col-sm-8">
                                                     <label>Username</label>
                                                     <input class="form-control" type="text" placeholder="Username"
                                                         required name="username" />

@@ -96,6 +96,10 @@ if (isset($_SESSION['emptyImg'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="stud_noExist"
           id="autoClickBtn" hidden>
       </a>';
+} elseif (isset($_SESSION['enroll_success'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="enroll_success"
+          id="autoClickBtn" hidden>
+      </a>';
 }
 
 unset($_SESSION['emptyImg']);
@@ -122,10 +126,24 @@ unset($_SESSION['courAdded']);
 unset($_SESSION['courExist']);
 unset($_SESSION['fill-select']);
 unset($_SESSION['stud_noExist']);
+unset($_SESSION['enroll_success'])
 
 ?>
 
 <div class="position-fixed top-2 end-1 z-index-3">
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="enroll_success" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Success!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Successfully Registered!
+        </div>
+    </div>
 
     <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="fill-select"
         aria-atomic="true">
@@ -433,8 +451,65 @@ unset($_SESSION['stud_noExist']);
     </div>
 </div>
 <!-- End alert -->
+<hr class="horizontal dark mb-2">
 <footer class="footer pt-3">
     <div class="container-fluid">
+        <div class="row justify-content-lg-evenly">
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="card bg-gradient-dark">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers">
+                                    <p class="text-white text-sm mb-0 opacity-7">Academic Year</p>
+                                    <?php $getAAcadYear = $db->query("SELECT * FROM tbl_active_acads AC LEFT JOIN tbl_acadyears A ON A.ay_id = AC.ay_id") or die($db->error());
+                                    while ($row = $getAAcadYear->fetch_array()) {
+                                        echo '<h6 class="text-white font-weight-bold mb-0">
+                                        ' . $row['academic_year'] . '
+                                    </h6>';
+                                        $_SESSION['AYear'] = $row['ay_id'];
+                                    } ?>
+
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-white shadow text-center border-radius-md">
+                                    <i class="fas fa-bookmark text-dark text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card bg-gradient-dark">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers">
+                                    <p class="text-white text-sm mb-0 opacity-7">Semester</p>
+                                    <?php $getASem = $db->query("SELECT * FROM tbl_active_sem ASEM LEFT JOIN tbl_semesters S ON S.sem_id = ASEM.sem_id") or die($db->error());
+                                    while ($row = $getASem->fetch_array()) {
+                                        echo '<h6 class="text-white font-weight-bold mb-0">
+                                        ' . $row['semester'] . '
+                                    </h6>';
+                                        $_SESSION['ASem'] = $row['sem_id'];
+                                    } ?>
+
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-white shadow text-center border-radius-md">
+                                    <i class="fab fa-font-awesome-flag text-dark text-lg opacity-10"
+                                        aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="info-horizontal dark mt-md-2">
         <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">
                 <div class="copyright text-center text-sm text-muted text-lg-start">

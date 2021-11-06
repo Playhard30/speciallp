@@ -31,7 +31,7 @@
                             <div class="card card-background dropdown-item text-">
                                 <div class="full-background cursor-pointer top-0"
                                     style="background-image: url('../../assets/img/curved-images/curved2.jpg');"></div>
-                                <div class="col-lg-12 col-md-6">
+                                <div class="col-lg-12 col-md-6 w-100">
                                     <div class="card-body p-3">
                                         <div class="d-flex">
 
@@ -111,21 +111,31 @@
                                                         echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
                                                     }
                                                 }
-                                            }  elseif ($_SESSION['role'] == "Student") {
+                                            } elseif ($_SESSION['role'] == "Student") {
                                                 $getImg = mysqli_query($db, "SELECT * FROM tbl_students WHERE stud_id = '$stud_id'");
                                                 while ($row = mysqli_fetch_array($getImg)) {
-                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
+                                                    if (!empty(base64_encode($row['img']))) {
+                                                        echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
                                                     <div class="ms-3 my-auto">
                                                 <h6 class="text-white mb-0">' . $row['username'] . '</h6>
                                                 <p class="text-xs text-white">Username</p>
                                             </div>
                                         </div>';
+                                                    } else {
+                                                        echo '<img src="../../assets/img/illustrations/user_prof.jpg" class="avatar avatar-xl border-radius-md">
+                                                        <div class="ms-3 my-auto">
+                                                    <h6 class="text-white mb-0">' . $row['username'] . '</h6>
+                                                    <p class="text-xs text-white">Username</p>
+                                                </div>
+                                            </div>';
+                                                    }
+
                                                     if (!empty($row['email'])) {
                                                         echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
                                                     } else {
                                                         echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
                                                     }
-                                                } 
+                                                }
                                             } ?>
 
 

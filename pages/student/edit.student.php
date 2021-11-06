@@ -6,12 +6,19 @@ include '../../includes/session.php';
 
 if ('Registrar' == $_SESSION['role']) {
     $stud_id = $_GET['stud_id'];
+    echo '<title>
+    Edit Student | SFAC - Las Piñas
+</title>';
+} elseif ($_SESSION['role'] == "Student") {
+    echo '<title>
+    Personal info | SFAC - Las Piñas
+</title>';
 }
 $_SESSION['stud_id'] = $stud_id;
+
+
+
 ?>
-<title>
-    Edit Student | SFAC - Las Piñas
-</title>
 </head>
 
 
@@ -30,33 +37,39 @@ $_SESSION['stud_id'] = $stud_id;
                         </li>
                         <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">Edit Student Information</h6>
+                    <?php if ($_SESSION['role'] == "Registrar") {
+                        echo '<h6 class="font-weight-bolder mb-0">Edit Student Information</h6>';
+                    } elseif ($_SESSION['role'] == "Student") {
+                        echo '<h6 class="font-weight-bolder mb-0">Personal Information</h6>';
+                    } ?>
+
                 </nav>
                 <?php include '../../includes/navbar.php'; ?>
                 <!-- End Navbar -->
 
 
                 <div class="container-fluid py-4">
-                    <div class="col-lg-11 mt-lg-0 mt-4 mx-auto">
+                    <div class="col-lg-11 mt-lg-0 my-4 mx-auto mb-5">
                         <!-- Card Profile -->
+                        <?php if ($_SESSION['role'] == "Registrar") { ?>
                         <div class="card card-body" id="profile">
                             <div class="row justify-content-center align-items-center">
                                 <div class="col-sm-auto col-4">
                                     <div class="avatar avatar-xl position-relative">
                                         <?php
-                                        $getStudData = mysqli_query($db, "SELECT *, CONCAT(stud.firstname, ' ', stud.middlename, ' ', stud.lastname) AS fullname
+                                            $getStudData = mysqli_query($db, "SELECT *, CONCAT(stud.firstname, ' ', stud.middlename, ' ', stud.lastname) AS fullname
                                         FROM tbl_students AS stud
                                         WHERE stud_id = '$stud_id'");
-                                        while ($row = mysqli_fetch_array($getStudData)) {
-                                            if (!empty($row['img'])) {
-                                                echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" alt="bruce"
+                                            while ($row = mysqli_fetch_array($getStudData)) {
+                                                if (!empty($row['img'])) {
+                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" alt="bruce"
                                                 class="border-radius-lg shadow-sm" style="height: 80px; width: 80px;">';
-                                            } else {
-                                                echo '<img src="../../assets/img/illustrations/user_prof.jpg" alt="bruce"
+                                                } else {
+                                                    echo '<img src="../../assets/img/illustrations/user_prof.jpg" alt="bruce"
                                             class="border-radius-lg shadow-sm">';
-                                            }
+                                                }
 
-                                        ?>
+                                            ?>
 
                                     </div>
                                 </div>
@@ -64,10 +77,10 @@ $_SESSION['stud_id'] = $stud_id;
                                     <div class="h-100">
                                         <h5 class="mb-1 font-weight-bolder">
                                             <?php if (empty($row['firstname']) || empty($row['middlename']) || empty($row['lastname'])) {
-                                                echo $row['stud_no'];
-                                            } else {
-                                                echo $row['fullname'];
-                                            } ?>
+                                                    echo $row['stud_no'];
+                                                } else {
+                                                    echo $row['fullname'];
+                                                } ?>
                                         </h5>
                                         <p class="mb-0 font-weight-bold text-sm">
                                             Student
@@ -86,6 +99,12 @@ $_SESSION['stud_id'] = $stud_id;
                                 </form>
                             </div>
                         </div>
+                        <?php }
+                                        }
+                                        $getStudData = mysqli_query($db, "SELECT *, CONCAT(stud.firstname, ' ', stud.middlename, ' ', stud.lastname) AS fullname
+                                        FROM tbl_students AS stud
+                                        WHERE stud_id = '$stud_id'");
+                                        while ($row = mysqli_fetch_array($getStudData)) { ?>
                         <!-- Card Basic Info -->
                         <form method="POST" enctype="multipart/form-data" action="userData/ctrl.edit.student.php"
                             class="card mt-4" id="basic-info">
@@ -108,34 +127,12 @@ $_SESSION['stud_id'] = $stud_id;
                                         </div>
                                     </div>
                                     <div class="col-sm-8">
-                                        <label class="form-label mt-4">Department</label>
-                                        <select class="form-control" required name="courses" id="department">
-
-                                            <?php if (!empty($row['course_id'])) {
-                                                $getCourses = mysqli_query($db, "SELECT * FROM tbl_courses WHERE course_id IN ('$row[course_id]')");
-                                                while ($row2 = mysqli_fetch_array($getCourses)) {
-                                            ?>
-                                            <option selected value="<?php echo $row2['course_id']; ?>">
-                                                <?php echo $row2['course'];
-                                                } ?>
-                                            </option>
-
-                                            <?php $getCourses = mysqli_query($db, "SELECT * FROM tbl_courses WHERE course_id NOT IN ('$row[course_id]')");
-                                                    while ($row1 = mysqli_fetch_array($getCourses)) {
-                                                    ?>
-                                            <option value="<?php echo $row1['course_id']; ?>">
-                                                <?php echo $row1['course'];
-                                                    } ?></option>
-                                            <?php } else {
-                                                    echo '<option value="" selected disabled>Select Department</option>';
-                                                    $getCourses = mysqli_query($db, "SELECT * FROM tbl_courses");
-                                                    while ($row3 = mysqli_fetch_array($getCourses)) {
-                                                        echo '<option value="' . $row3['course_id'] . '">' . $row3['course'] . '</option>';
-                                                    }
-                                                } ?>
-                                        </select>
+                                        <label class="form-label mt-4">Email Address</label>
+                                        <div class="input-group">
+                                            <input id="email" name="email" class="form-control" type="text"
+                                                placeholder="example@gmail.com" value="<?php echo $row['email']; ?>">
+                                        </div>
                                     </div>
-
 
                                 </div>
                                 <div class="row">
@@ -186,7 +183,7 @@ $_SESSION['stud_id'] = $stud_id;
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <label class="form-label mt-4">Gender</label>
-                                        <select class="form-control" required name="gender" id="gender">
+                                        <select class="form-control" name="gender" id="gender" required>
                                             <?php if (!empty($row['gender_id'])) {
                                                 $getGenders = mysqli_query($db, "SELECT * FROM tbl_genders WHERE gender_id IN ('$row[gender_id]')");
                                                 while ($row2 = mysqli_fetch_array($getGenders)) {
@@ -211,18 +208,19 @@ $_SESSION['stud_id'] = $stud_id;
                                                 } ?>
                                         </select>
                                     </div>
-                                    <div class="col-sm-2">
-                                        <label class="form-label mt-4">Age</label>
-                                        <div class="input-group">
-                                            <input id="age" name="age" class="form-control" type="text"
-                                                value="<?php echo $row['age']; ?>">
-                                        </div>
-                                    </div>
+
                                     <div class="col-sm-3">
                                         <label class="form-label mt-4">Date of Birth</label>
                                         <div class="input-group">
                                             <input id="birthdate" name="birthdate" class="form-control" type="date"
                                                 value="<?php echo $row['birthdate']; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="form-label mt-4">Age</label>
+                                        <div class="input-group">
+                                            <input id="age" name="age" class="form-control" type="text"
+                                                value="<?php echo $row['age']; ?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -267,14 +265,6 @@ $_SESSION['stud_id'] = $stud_id;
                                                 placeholder="Contact Number" value="<?php echo $row['contact']; ?>">
                                         </div>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <label class="form-label mt-4">Email Address</label>
-                                        <div class="input-group">
-                                            <input id="email" name="email" class="form-control" type="text"
-                                                placeholder="example@gmail.com" value="<?php echo $row['email']; ?>">
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
 
@@ -546,7 +536,7 @@ $_SESSION['stud_id'] = $stud_id;
                             </div>
                         </form>
 
-
+                        <?php if ($_SESSION['role'] == "Registrar") { ?>
                         <form method="POST" enctype="multipart/form-data" action="userData/ctrl.edit.student.php"
                             class="card mt-4" id="account_details">
                             <div class="card-header text-center">
@@ -578,7 +568,8 @@ $_SESSION['stud_id'] = $stud_id;
                             </div>
                         </form>
 
-                        <?php } ?>
+                        <?php }
+                                        } ?>
 
                     </div>
                     <?php include '../../includes/footer.php'; ?>

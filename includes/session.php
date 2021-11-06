@@ -42,6 +42,10 @@ if (!empty($_SESSION['role'])) {
             header("location: ../login/sign-in.php");
             exit();
         }
+    } else {
+        session_destroy();
+        header("location: ../login/sign-in.php");
+        exit();
     }
 } else {
     header("location: ../login/sign-in.php");
