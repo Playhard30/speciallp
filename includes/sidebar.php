@@ -161,6 +161,16 @@
         </a>
     </li>
 
+         <li class="nav-item">
+         <a class="nav-link  " href="../teacher/list.teacher.php">
+              <div
+                  class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                  <i class="far fa-list-alt text-dark" style="height: 12px; width: 12px;"></i>
+              </div>
+            <span class="nav-link-text ms-1">Teachers List</span>
+        </a>
+    </li>
+
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Add Accounts</h6>
             </li>
@@ -728,7 +738,7 @@
         </li>
            
         <li class="nav-item">
-        <a class="nav-link  " href="../faculty/list.faculty.php">
+        <a class="nav-link  " href="../teacher/list.teacher.php">
             <div
                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="far fa-list-alt text-dark" style="height: 12px; width: 12px;"></i>
@@ -738,7 +748,7 @@
     </li>   
 
     <li class="nav-item">
-    <a class="nav-link  " href="../faculty/add.faculty.php">
+    <a class="nav-link  " href="../teacher/add.teacher.php">
         <div
             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-user-plus text-dark"></i>
@@ -746,17 +756,6 @@
         <span class="nav-link-text ms-1">Add Faculty Staff</span>
     </a>
 </li>
-
-            <li class="nav-item">
-                <a class="nav-link  " href="../subject/add.subject.php">
-                    <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-user-plus text-dark"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Add New Subject</span>
-                </a>
-            </li>
-
 
             ';
             } elseif ("Student" == $_SESSION['role']) {
