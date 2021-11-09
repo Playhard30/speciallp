@@ -100,6 +100,22 @@ if (isset($_SESSION['emptyImg'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="enroll_success"
           id="autoClickBtn" hidden>
       </a>';
+} elseif (isset($_SESSION['delSubjects'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="delSubjects"
+          id="autoClickBtn" hidden>
+      </a>';
+} elseif (isset($_SESSION['FDSub'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="FDSub"
+          id="autoClickBtn" hidden>
+      </a>';
+} elseif (isset($_SESSION['SASub'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="SASub"
+          id="autoClickBtn" hidden>
+      </a>';
+} elseif (isset($_SESSION['FASub'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="FASub"
+          id="autoClickBtn" hidden>
+      </a>';
 }
 
 unset($_SESSION['emptyImg']);
@@ -126,11 +142,70 @@ unset($_SESSION['courAdded']);
 unset($_SESSION['courExist']);
 unset($_SESSION['fill-select']);
 unset($_SESSION['stud_noExist']);
-unset($_SESSION['enroll_success'])
+unset($_SESSION['enroll_success']);
+unset($_SESSION['delSubjects']);
+unset($_SESSION['FDSub']);
+unset($_SESSION['SASub']);
+unset($_SESSION['FASub']);
+
+
 
 ?>
 
 <div class="position-fixed top-2 end-1 z-index-3">
+
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="FASub" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Failed to Add Subject/s</span>
+            <small class="text-body"></small> <i class="fas fa-times text-md ms-3 cursor-pointer"
+                data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Please select a subject/s
+        </div>
+    </div>
+
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="SASub" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Added!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            The selected Subject/s has been successfully Added.
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="FDSub" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Failed to delete subject/s!</span>
+            <small class="text-body"></small> <i class="fas fa-times text-md ms-3 cursor-pointer"
+                data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Please select a subject/s
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="delSubjects" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Deleted!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            The selected Subject/s has been successfully deleted.
+        </div>
+    </div>
 
     <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="enroll_success" aria-atomic="true">
         <div class="toast-header border-0">
@@ -462,14 +537,9 @@ unset($_SESSION['enroll_success'])
                             <div class="col-8">
                                 <div class="numbers">
                                     <p class="text-white text-sm mb-0 opacity-7">Academic Year</p>
-                                    <?php $getAAcadYear = $db->query("SELECT * FROM tbl_active_acads AC LEFT JOIN tbl_acadyears A ON A.ay_id = AC.ay_id") or die($db->error());
-                                    while ($row = $getAAcadYear->fetch_array()) {
-                                        echo '<h6 class="text-white font-weight-bold mb-0">
-                                        ' . $row['academic_year'] . '
-                                    </h6>';
-                                        $_SESSION['AYear'] = $row['ay_id'];
-                                    } ?>
-
+                                    <h6 class="text-white font-weight-bold mb-0">
+                                        <?php echo $_SESSION['AC'] ?>
+                                    </h6>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
@@ -488,14 +558,9 @@ unset($_SESSION['enroll_success'])
                             <div class="col-8">
                                 <div class="numbers">
                                     <p class="text-white text-sm mb-0 opacity-7">Semester</p>
-                                    <?php $getASem = $db->query("SELECT * FROM tbl_active_sem ASEM LEFT JOIN tbl_semesters S ON S.sem_id = ASEM.sem_id") or die($db->error());
-                                    while ($row = $getASem->fetch_array()) {
-                                        echo '<h6 class="text-white font-weight-bold mb-0">
-                                        ' . $row['semester'] . '
-                                    </h6>';
-                                        $_SESSION['ASem'] = $row['sem_id'];
-                                    } ?>
-
+                                    <h6 class="text-white font-weight-bold mb-0">
+                                        <?php echo $_SESSION['S']; ?>
+                                    </h6>
                                 </div>
                             </div>
                             <div class="col-4 text-end">

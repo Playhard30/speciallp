@@ -29,7 +29,7 @@ $(document).ready(function() {
             },
             search: "_INPUT_",
             searchPlaceholder: "Search..."
-        }
+        },
 
     });
 });
@@ -53,8 +53,55 @@ $(document).ready(function() {
             },
             search: "_INPUT_",
             searchPlaceholder: "Search..."
-        }
+        },
+    });
+});
 
+$(document).ready(function() {
+    $('#datatable-info').DataTable({
+        "searching": false,
+        "paging": false,
+        "ordering": false,
+        "info": true,
+        "pageLength": 50,
+        language: {
+            paginate: {
+                previous: '‹',
+                next: '›'
+            },
+            aria: {
+                paginate: {
+                    previous: 'Previous',
+                    next: 'Next'
+                }
+            },
+            search: "_INPUT_",
+            searchPlaceholder: "Search..."
+        },
+    });
+});
+
+$(document).ready(function() {
+    $('#datatable-modal').DataTable({
+        "searching": true,
+        "paging": false,
+        "ordering": false,
+        "info": false,
+        "pageLength": 50,
+        language: {
+            paginate: {
+                previous: '‹',
+                next: '›'
+            },
+            aria: {
+                paginate: {
+                    previous: 'Previous',
+                    next: 'Next'
+                }
+            },
+            search: "_INPUT_",
+            searchPlaceholder: "Search..."
+        },
     });
 });
 </script>

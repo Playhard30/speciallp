@@ -81,10 +81,10 @@
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto max-height-vh-90" id="sidenav-collapse-main">
         <ul class="navbar-nav">
-            <?php
-            $q = $db->query("SELECT * FROM tbl_schoolyears SY WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AYear]' AND sem_id = '$_SESSION[ASem]'") or die($db->error);
-            $count = $q->num_rows;
-
+            <?php if ($_SESSION['role'] == "Student") {
+                $q = $db->query("SELECT * FROM tbl_schoolyears SY WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AYear]' AND sem_id = '$_SESSION[ASem]'") or die($db->error);
+                $count = $q->num_rows;
+            }
             if ("Super Administrator" == $_SESSION['role']) {
                 echo '<li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">

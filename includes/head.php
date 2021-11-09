@@ -27,6 +27,10 @@ require '../../includes/conn.php';
     <!-- edited CSS -->
     <link rel="stylesheet" href="../../assets/css/addons/edited.css">
     <style>
+    html {
+        overflow: hidden;
+    }
+
     body {
         font-weight: 400;
     }
