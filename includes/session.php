@@ -44,9 +44,9 @@ if (!empty($_SESSION['role'])) {
             header("location: ../login/sign-in.php");
             exit();
         }
-    } elseif ($_SESSION['role'] == "Faculty") {
+    } elseif ("Teacher" == $_SESSION['role']) {
         $faculty_id = $_SESSION['userid'];
-        if ($faculty_id == false) {
+        if (false == $faculty_id) {
             header("location: ../login/sign-in.php");
             exit();
         }

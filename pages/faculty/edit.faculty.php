@@ -3,11 +3,9 @@ session_start();
 require '../../includes/conn.php';
 include '../../includes/head.php';
 include '../../includes/session.php';
-if ($_SESSION['role'] == "Super Administrator") {
-    $faculty_id = $_GET['faculty_id'];
-}
+$id = $_GET['faculty_id'];
+$_SESSION['faculty_id'] = $id;
 
-$_SESSION['faculty_id'] = $faculty_id;
 ?>
 
 
@@ -40,7 +38,9 @@ $_SESSION['faculty_id'] = $faculty_id;
                                 <div class="col-sm-auto col-4">
                                     <div class="avatar avatar-xl position-relative">
                                         <?php
-                                        $getUserData = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties_staff.faculty_firstname, ' ', tbl_faculties_staff.faculty_middlename, ' ', tbl_faculties_staff.faculty_lastname) AS fullname FROM tbl_faculties_staff WHERE faculty_id = '$faculty_id'");
+                                        $getUserData = mysqli_query($db, "SELECT *, CONCAT(facul.faculty_firstname, ' ', facul.faculty_middlename, ' ', facul.faculty_lastname) AS fullname 
+                                        FROM tbl_faculties AS facul
+                                        WHERE faculty_id = '$id'");
                                         while ($row = mysqli_fetch_array($getUserData)) {
                                             if (!empty($row['img'])) {
                                                 echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" alt="bruce"
@@ -61,12 +61,12 @@ $_SESSION['faculty_id'] = $faculty_id;
                                             <?php echo $row['fullname'];  ?>
                                         </h5>
                                         <p class="mb-0 font-weight-bold text-sm">
-                                            Faculty
+                                            Adviser
                                         </p>
                                     </div>
                                 </div>
                                 <form method="POST" enctype="multipart/form-data"
-                                    action="userData/ctrl.edit.teacher.php"
+                                    action="userData/ctrl.edit.faculty.php"
                                     class="col-sm-auto ms-lg-auto mt-sm-0 ms-sm-0 mt-3 justify-content-sm-center">
 
                                     <button class="btn btn-outline-primary me-2 mb-0"><input type="file"
@@ -78,7 +78,7 @@ $_SESSION['faculty_id'] = $faculty_id;
                             </div>
                         </div>
                         <!-- Card Basic Info -->
-                        <form method="POST" enctype="multipart/form-data" action="userData/ctrl.edit.teacher.php"
+                        <form method="POST" enctype="multipart/form-data" action="userData/ctrl.edit.faculty.php"
                             class="card mt-4" id="basic-info">
                             <div class="card-header">
                                 <h5>Basic Info</h5>
@@ -96,6 +96,7 @@ $_SESSION['faculty_id'] = $faculty_id;
                                                                                                                                                 ?>">
                                         </div>
                                     </div>
+
                                     <div class="col-sm-4">
                                         <label class="form-label">First Name</label>
                                         <div class="input-group">
@@ -105,6 +106,7 @@ $_SESSION['faculty_id'] = $faculty_id;
                                                                                                                                                 ?>">
                                         </div>
                                     </div>
+
                                     <div class="col-sm-4">
                                         <label class="form-label">Middlename</label>
                                         <div class="input-group">
@@ -138,6 +140,37 @@ $_SESSION['faculty_id'] = $faculty_id;
                                 </div>
 
 
+                            
+                                   
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="form-label mt-4">Department</label>
+                                        <select class="form-control" required name="department" id="department">
+                                            <?php $getDepartment = mysqli_query($db, "SELECT * FROM tbl_departments WHERE department_id IN ('$row[department_id]')");
+                                            while ($row2 = mysqli_fetch_array($getDepartment)) {
+                                            ?>
+                                            <option selected value="<?php echo $row2['department_id']; ?>">
+                                                <?php echo $row2['department_name'];
+                                            } ?>
+                                            </option>
+
+                                            <?php $getDepartment = mysqli_query($db, "SELECT * FROM tbl_departments WHERE department_id NOT IN ('$row[department_id]')");
+                                                while ($row1 = mysqli_fetch_array($getDepartment)) {
+                                                ?>
+                                            <option value="<?php echo $row1['department_id']; ?>">
+                                                <?php echo $row1['department_name'];
+                                                } ?></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="form-label mt-4">Role</label>
+                                        <div class="input-group">
+                                            <input id="Role" name="role" class="form-control" type="text"
+                                                placeholder="Enter a role" required value="<?php echo $row['role']; ?>">
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <label class="form-label mt-4">Position</label>
@@ -150,9 +183,8 @@ $_SESSION['faculty_id'] = $faculty_id;
                                     <div class="col-sm-4">
                                         <label class="form-label mt-4">Employment Status</label>
                                         <select class="form-control" required name="status" id="status">
-
-                                            <?php $getUserData = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties_staff.faculty_firstname, ' ', tbl_faculties_staff.faculty_middlename, ' ', tbl_faculties_staff.faculty_lastname) AS fullname FROM tbl_faculties_staff WHERE faculty_id = '$faculty_id'");
-                                            while ($row3 = mysqli_fetch_array($getUserData)) {
+                                            <?php $getstatus = mysqli_query($db, "SELECT status FROM tbl_faculties WHERE faculty_id = '$id'");
+                                            while ($row3 = mysqli_fetch_array($getstatus)) {
                                                 if ($row3['status'] == "Full-time") {
                                                     echo '<option value="' . $row3['status'] . '" selected>' . $row3['status'] . '
                                             </option>
@@ -188,7 +220,7 @@ $_SESSION['faculty_id'] = $faculty_id;
 
                         <!-- Card Change Password -->
                         <form class="card mt-4 mb-5" id="password" method="POST"
-                            action="userData/ctrl.edit.teacher.php">
+                            action="userData/ctrl.edit.faculty.php">
                             <div class="card-header">
                                 <h5>Change Password</h5>
                             </div>

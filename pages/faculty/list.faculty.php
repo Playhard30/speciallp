@@ -3,10 +3,7 @@ session_start();
 include '../../includes/head.php';
 include '../../includes/session.php';
 ?>
-<title>
-    Faculty Staff List | SFAC - Las Piñas
-</title>
-</head>
+
 
 <body class="g-sidenav-show  bg-gray-100">
     <?php include '../../includes/sidebar.php'; ?>
@@ -48,10 +45,13 @@ include '../../includes/session.php';
                                                     I.D. No.</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Fullname</th>
+                                                    Full Name</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Position</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                    Role</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Status</th>
@@ -73,14 +73,16 @@ include '../../includes/session.php';
                                                     Updated By</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    options</th>
+                                                    Option</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $listTeacher = mysqli_query($db, "SELECT *, CONCAT(facul.faculty_lastname, ', ', facul.faculty_firstname, ' ', facul.faculty_middlename) AS fullname 
-                                            FROM tbl_faculties_staff AS facul");
-                                            while ($row = mysqli_fetch_array($listTeacher)) {
+                                            $listAdviser = mysqli_query($db, "SELECT *, CONCAT(facul.faculty_lastname, ', ', facul.faculty_firstname, ' ', facul.faculty_middlename) AS fullname 
+                                            FROM tbl_faculties AS facul
+                                            LEFT JOIN tbl_departments AS dep ON dep.department_id = facul.department_id
+                                            WHERE role = 'Adviser'");
+                                            while ($row = mysqli_fetch_array($listAdviser)) {
                                                 $id = $row['faculty_id'];
                                             ?>
 
@@ -92,6 +94,8 @@ include '../../includes/session.php';
                                                     <?php echo $row['fullname']; ?></td>
                                                 <td class="text-sm font-weight-normal">
                                                     <?php echo $row['position']; ?></td>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['role']; ?></td>
                                                 <td class="text-sm font-weight-normal"><?php echo $row['status']; ?>
                                                 </td>
                                                 <td class="text-sm font-weight-normal"><?php echo $row['email']; ?></td>
@@ -105,7 +109,7 @@ include '../../includes/session.php';
                                                 </td>
                                                 <td class="text-sm font-weight-normal">
                                                     <a class="btn bg-gradient-primary text-xs"
-                                                        href="edit.teacher.php?faculty_id=<?php echo $id; ?>"><i
+                                                        href="edit.faculty.php?faculty_id=<?php echo $id; ?>"><i
                                                             class="text-xs fas fa-edit"></i> Edit</a>
 
                                                     <a class="btn btn-block bg-gradient-danger mb-3 text-xs"
@@ -138,12 +142,14 @@ include '../../includes/session.php';
                                                                             Delete Account!</h4>
                                                                         <p>Are you sure you want to delete
                                                                             <br>
-                                                                            <i><b><?php echo $row['fullname']; ?></b></i>?
+                                                                            <i><b><?php echo $row['fullname']; ?></b></i>
+                                                                            from
+                                                                            <i><b><?php echo $row['department_name'] ?></b></i>?
                                                                         </p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <a href="userData/ctrl.del.teacher.php?faculty_id=<?php echo $id; ?>"
+                                                                    <a href="userData/ctrl.del.faculty.php?faculty_id=<?php echo $id; ?>"
                                                                         class="btn btn-white text-white bg-danger">Delete</a>
                                                                     <button type="button"
                                                                         class="btn btn-link text-secondary btn-outline-dark ml-auto"

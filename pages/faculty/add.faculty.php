@@ -3,10 +3,6 @@ session_start();
 include '../../includes/head.php';
 include '../../includes/session.php';
 ?>
-<title>
-    Add Faculty Staff | SFAC - Las Piñas
-</title>
-</head>
 
 <body class="g-sidenav-show  bg-gray-100">
     <?php include '../../includes/sidebar.php'; ?>
@@ -23,7 +19,7 @@ include '../../includes/session.php';
                         </li>
                         <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">Add Enrollment Faculty</h6>
+                    <h6 class="font-weight-bolder mb-0">Add Enrollment Adviser</h6>
                 </nav>
                 <?php include '../../includes/navbar.php'; ?>
                 <!-- End Navbar -->
@@ -32,7 +28,7 @@ include '../../includes/session.php';
                     <div class="row">
                         <div class="col-12">
                             <div class="text-center">
-                                <h3>Input the Faculty information</h3>
+                                <h3>Input the adviser information</h3>
                                 <h5 class="text-secondary font-weight-normal">Please fill out the fields</h5>
                             </div>
                             <div class="multisteps-form mb-5">
@@ -57,11 +53,11 @@ include '../../includes/session.php';
                                 <div class="row">
                                     <div class="col-12 col-lg-8 m-auto">
                                         <form class="multisteps-form__form mb-8" method="POST"
-                                            enctype="multipart/form-data" action="userData/ctrl.add.teacher.php">
+                                            enctype="multipart/form-data" action="userData/ctrl.add.adviser.php">
                                             <!--single form panel-->
                                             <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
                                                 data-animation="FadeIn">
-                                                <h5 class="font-weight-bolder mb-0">Add Enrollment Faculty</h5>
+                                                <h5 class="font-weight-bolder mb-0">Add Enrollment Adviser</h5>
                                                 <p class="mb-0 text-sm">Personal Data</p>
                                                 <div class="multisteps-form__content">
 
@@ -99,6 +95,30 @@ include '../../includes/session.php';
                                                                 name="faculty_no" />
                                                         </div>
                                                     </div>
+
+
+                                                    <div class="row mt-3 justify-content-center">
+                                                        <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                                            <label>Department</label>
+                                                            <select class="form-control" name="department"
+                                                                id="department">
+                                                                <option value="" disabled selected>Select Department
+                                                                </option>
+                                                                <?php $getDepartment = mysqli_query($db, "SELECT * FROM tbl_departments");
+                                                                while ($row = mysqli_fetch_array($getDepartment)) {
+                                                                ?>
+                                                                <option value="<?php echo $row['department_id']; ?>">
+                                                                    <?php echo $row['department_name'];
+                                                                } ?></option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-12 col-sm-6">
+                                                            <label>Role</label>
+                                                            <input class="multisteps-form__input form-control"
+                                                                type="text" placeholder="Enter a role" name="role" />
+                                                        </div>
+                                                    </div>
+
 
                                                     <div class="row mt-3 justify-content-center">
                                                         <div class="col-12 col-sm-6 mt-3 mt-sm-0">
@@ -212,7 +232,7 @@ include '../../includes/session.php';
                                                             type="button" title="Prev">Prev</button>
                                                         <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
                                                             title="Send" name="submit">Add
-                                                            Faculty</button>
+                                                            Adviser</button>
                                                     </div>
                                                 </div>
                                             </div>
