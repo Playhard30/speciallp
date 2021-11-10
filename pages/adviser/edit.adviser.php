@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../../includes/conn.php';
+include '../../includes/head.php';
 include '../../includes/session.php';
 if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Adviser" || $_SESSION['role'] == "Registrar"  ) {
     $faculty_id = $_GET['faculty_id'];

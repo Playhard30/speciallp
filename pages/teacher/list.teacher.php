@@ -3,7 +3,10 @@ session_start();
 include '../../includes/head.php';
 include '../../includes/session.php';
 ?>
-
+<title>
+    Faculty Staff List | SFAC - Las Piñas
+</title>
+</head>
 
 <body class="g-sidenav-show  bg-gray-100">
     <?php include '../../includes/sidebar.php'; ?>
@@ -64,6 +67,10 @@ include '../../includes/session.php';
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                    Updated At</th>
+
+                                                   <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9"> Options
+                                                   </th>
 
                                                 
                                         </thead>
