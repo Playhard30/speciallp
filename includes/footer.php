@@ -116,6 +116,31 @@ if (isset($_SESSION['emptyImg'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="FASub"
           id="autoClickBtn" hidden>
       </a>';
+    //   lorenzo
+} elseif (isset($_SESSION['yearUpdated'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="yearUpdated"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['yearExist'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="yearExist"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['yearDelete'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="yearDelete"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['subjUpdate'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="subjUpdate"
+       id="autoClickBtn" hidden>
+   </a>';
+} elseif (isset($_SESSION['inquiryComplete'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="inquiryComplete"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['inquiryAdmitted'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="inquiryAdmitted"
+             id="autoClickBtn" hidden>
+         </a>';
 }
 
 unset($_SESSION['emptyImg']);
@@ -149,6 +174,13 @@ unset($_SESSION['SASub']);
 unset($_SESSION['FASub']);
 
 
+//   lorenzo
+unset($_SESSION['yearUpdated']);
+unset($_SESSION['yearExist']);
+unset($_SESSION['yearDelete']);
+unset($_SESSION['subjUpdate']);
+unset($_SESSION['inquiryComplete']);
+unset($_SESSION['inquiryAdmitted']);
 
 ?>
 
@@ -496,7 +528,7 @@ unset($_SESSION['FASub']);
         </div>
         <hr class="horizontal dark m-0">
         <div class="toast-body">
-            You've successfull added a subject.
+            You've successfully added a subject.
         </div>
     </div>
     <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="successCalendar"
@@ -524,7 +556,85 @@ unset($_SESSION['FASub']);
             You've successfully added an Academic Year!
         </div>
     </div>
+    <!-- Lorenzo -->
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="subjUpdate" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Subject Updated!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            You've successfully updatet the subject.
+        </div>
+    </div>
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="yearExist" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Academic Year is Existing!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            The academic year you're trying to input already exists.
+        </div>
+    </div>
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="yearUpdated" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Academic Year Updated!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            You've successfully updated an academic year.
+        </div>
+    </div>
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="yearDelete" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Academic Year Deleted!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            You've successfully deleted an academic year.
+        </div>
+    </div>
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="inquiryComplete"
+        aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Inquiry Registered!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            You've successfully registered your inquiries.
+        </div>
+    </div>
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="inquiryAdmitted"
+        aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Inquiry Registered!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Inquiry successfully admitted.
+        </div>
+    </div>
+    <!-- End of Lorenzo -->
+
 </div>
+
 <!-- End alert -->
 <hr class="horizontal dark mb-2">
 <footer class="footer pt-3">

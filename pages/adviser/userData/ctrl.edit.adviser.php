@@ -32,7 +32,11 @@ if (isset($_POST['save'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);;
     $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
 
+<<<<<<< HEAD
     $getAllUsername = mysqli_query($db, "SELECT username FROM tbl_admissions WHERE username = '$username' UNION ALL SELECT username FROM tbl_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_deans WHERE username = '$username' UNION ALL SELECT username FROM tbl_super_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_accounting WHERE username = '$username' UNION ALL SELECT username FROM tbl_students WHERE username = '$username'") or die(mysqli_error($db));
+=======
+    $getAllUsername = mysqli_query($db, "SELECT username FROM tbl_admissions WHERE username = '$username' UNION ALL SELECT username FROM tbl_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_deans WHERE username = '$username' UNION ALL SELECT username FROM tbl_super_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_accounting WHERE username = '$username'") or die(mysqli_error($db));
+>>>>>>> 8a72d9e4e7a7a2eba2ebf4fd21c250fab776cc80
     $check = mysqli_num_rows($getAllUsername);
 
     if ($check == 0) {

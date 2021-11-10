@@ -220,22 +220,21 @@ $_SESSION['faculty_id'] = $faculty_id;
                                 </div>';
                                 } ?>
 
-                                <label class="form-label">New Password</label>
-                                <div class="form-group">
-                                    <input class="form-control" type="password" name="password"
-                                        placeholder="New password" required>
-                                </div>
-                                <label class="form-label">Confirm New password</label>
-                                <div class="form-group">
-                                    <input class="form-control" type="password" name="confirmPass"
-                                        placeholder="Confirm password" required>
-                                </div>
+                                <<<<<<< HEAD <label class="form-label">New Password</label>
+                                    =======
+                                    <label class="form-label">New password</label>
+                                    <div class="form-group">
+                                        <label class="form-label">Confirm New password</label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="password" name="confirmPass"
+                                                placeholder="Confirm password" required>
+                                        </div>
 
-                                <div class="col-12 button-row d-flex mt-4">
-                                    <button type="submit" name="savePass"
-                                        class="btn bg-gradient-primary ms-auto">Update</button>
-                                </div>
-                            </div>
+                                        <div class="col-12 button-row d-flex mt-4">
+                                            <button type="submit" name="savePass"
+                                                class="btn bg-gradient-primary ms-auto">Update</button>
+                                        </div>
+                                    </div>
                         </form>
 
                         <?php include '../../includes/footer.php'; ?>

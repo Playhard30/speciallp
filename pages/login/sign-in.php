@@ -108,9 +108,9 @@ if (!empty($_SESSION['role'])) {
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link me-2" href="../pages/sign-up.html">
+                                    <a class="nav-link me-2" href="../inquiry/online.inquiry.php">
                                         <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
-                                        Sign Up
+                                        Online Inquiry 
                                     </a>
                                 </li>
                             </ul>

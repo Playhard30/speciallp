@@ -1,6 +1,9 @@
-<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 shadow-xl shadow bg-white" id="sidenav-main" data-color="danger">
+<aside
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 shadow-xl shadow bg-white"
+    id="sidenav-main" data-color="danger">
     <div class="sidenav-header">
-        <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+        <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+            aria-hidden="true" id="iconSidenav"></i>
         <div class="border-0 d-flex align-items-center px-0 mt-3">
             <?php if ("Super Administrator" == $_SESSION['role']) {
                 $getUserName = mysqli_query($db, "SELECT * FROM tbl_super_admins WHERE sa_id = '$sa_id'");
@@ -491,6 +494,20 @@
                                 <span class="sidenav-normal font-weight-bold">Advisers List</span>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="../acad/list.acad.year.php">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal font-weight-bold">Academic Year List</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="../subject/list.subject.php">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal font-weight-bold">Subject List</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
@@ -536,34 +553,14 @@
                             </a>
                         </li>
 
-
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#addSubject">
-                                <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Add Subject</span>
+                            <a class="nav-link" href="../subject/add.subject.php">
+                                <span class="sidenav-mini-icon text-xs"> </span>
+                                <span class="sidenav-normal font-weight-bold"> Add Subject </span>
                             </a>
-                            <div class="collapse" id="addSubject">
-                                <ul class="nav nav-sm flex-column">
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="../subject/add.subject.php">
-                                            <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50"> Add New Subject
-                                            </span>
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="../subject/add.subject.old.php">
-                                            <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50"> Add Old Subject
-                                            </span>
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </div>
                         </li>
+
+
                     </ul>
                 </div>
             </li>
@@ -783,6 +780,10 @@
                     </div>
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
+            </li>
+
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Update</h6>
             </li>
 
             <li class="nav-item">
