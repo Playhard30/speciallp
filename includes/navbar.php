@@ -81,6 +81,21 @@
                                                         echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
                                                     }
                                                 }
+                                            } elseif ($_SESSION['role'] == "President") {
+                                                $getImg = mysqli_query($db, "SELECT * FROM tbl_presidents WHERE pres_id = '$pres_id'");
+                                                while ($row = mysqli_fetch_array($getImg)) {
+                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
+                                                    <div class="ms-3 my-auto">
+                                                <h6 class="text-white mb-0">' . $row['username'] . '</h6>
+                                                <p class="text-xs text-white">Username</p>
+                                            </div>
+                                        </div>';
+                                                    if (!empty($row['email'])) {
+                                                        echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
+                                                    } else {
+                                                        echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
+                                                    }
+                                                }
                                             } elseif ($_SESSION['role'] == "Accounting") {
                                                 $getImg = mysqli_query($db, "SELECT * FROM tbl_accounting WHERE account_id = '$account_id'");
                                                 while ($row = mysqli_fetch_array($getImg)) {
