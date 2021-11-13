@@ -51,6 +51,22 @@ include '../../includes/session.php';
                                     </div>
 
                                     <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="mt-3">Course</label>
+                                            <select class="form-control" name="course" id="courses">
+                                                <option value="" disabled selected>Select Course
+                                                </option>
+                                                <?php $getCourse = mysqli_query($db, "SELECT * FROM tbl_courses");
+                                                while ($row = mysqli_fetch_array($getCourse)) {
+                                                ?>
+                                                <option value="<?php echo $row['course_id']; ?>">
+                                                    <?php echo $row['course'];
+                                                } ?></option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="col-sm-4">
                                             <label class="mt-3">Lecture Units</label>
                                             <input class="form-control" type="text" placeholder="Enter no. of units"

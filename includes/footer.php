@@ -141,6 +141,14 @@ if (isset($_SESSION['emptyImg'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="inquiryAdmitted"
              id="autoClickBtn" hidden>
          </a>';
+} elseif (isset($_SESSION['successEAY'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="successEAY"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['DEAY'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="DEAY"
+             id="autoClickBtn" hidden>
+         </a>';
 }
 
 unset($_SESSION['emptyImg']);
@@ -172,6 +180,8 @@ unset($_SESSION['delSubjects']);
 unset($_SESSION['FDSub']);
 unset($_SESSION['SASub']);
 unset($_SESSION['FASub']);
+unset($_SESSION['successEAY']);
+unset($_SESSION['DEAY']);
 
 
 //   lorenzo
@@ -556,6 +566,18 @@ unset($_SESSION['inquiryAdmitted']);
             You've successfully added an Academic Year!
         </div>
     </div>
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="successEAY" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Added!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            You've successfully added an Effective Academic Year!
+        </div>
+    </div>
     <!-- Lorenzo -->
     <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="subjUpdate" aria-atomic="true">
         <div class="toast-header border-0">
@@ -603,6 +625,18 @@ unset($_SESSION['inquiryAdmitted']);
         <hr class="horizontal dark m-0">
         <div class="toast-body">
             You've successfully deleted an academic year.
+        </div>
+    </div>
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="DEAY" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Deleted!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            You've successfully deleted an Effective Academic Year
         </div>
     </div>
     <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="inquiryComplete"

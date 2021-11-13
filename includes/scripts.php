@@ -10,6 +10,15 @@
 <script src="../../assets/js/plugins/dropzone.min.js"></script>
 <script src="../../assets/js/plugins/dragula/dragula.min.js"></script>
 <script src="../../assets/js/plugins/jkanban/jkanban.js"></script>
+<script src="https://unpkg.com/imask"></script>
+<script>
+var inputElements = document.querySelectorAll("input[data-format]");
+inputElements.forEach(input => {
+    let m = new IMask(input, {
+        mask: input.getAttribute("data-format")
+    });
+});
+</script>
 <script>
 $(document).ready(function() {
     $('#datatable-basic').DataTable({

@@ -4,10 +4,9 @@ include '../../includes/head.php';
 include '../../includes/session.php';
 ?>
 <title>
-    Academic Year List | SFAC - Las Piñas
+    Effective Academic Year | SFAC - Las Piñas
 </title>
 </head>
-
 
 <body class="g-sidenav-show  bg-gray-100">
     <?php include '../../includes/sidebar.php'; ?>
@@ -24,31 +23,54 @@ include '../../includes/session.php';
                         </li>
                         <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">View Academic Year List</h6>
+                    <h6 class="font-weight-bolder mb-0">Effective Academic Year</h6>
                 </nav>
                 <?php include '../../includes/navbar.php'; ?>
                 <!-- End Navbar -->
 
                 <div class="container-fluid py-4">
-                    <div class="row mb-5">
-                        <div class="col-12">
-                            <div class="card shadow shadow-xl">
+                    <div class="row mb-8">
+                        <div class=" col-lg-4 col-12 mx-auto">
+                            <div class="card card-body mt-4 shadow-sm">
+                                <h5 class="font-weight-bolder mb-0">Add Effective Academic Year</h5>
+                                <p class="text-sm mb-0">Fill out the field!</p>
+                                <hr class="horizontal dark my-3">
+                                <form method="POST" enctype="multipart/form-data"
+                                    action="acadData/ctrl.effectiveAY.php">
+                                    <div class="row justify-content-center">
+                                        <div class="col-sm-10 text-center">
+                                            <label>Effective Academic Year</label>
+                                            <input class="form-control text-center" data-format="0000-0000" type="text"
+                                                placeholder="0000-0000" name="EAY" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-end mt-4">
+                                        <button class="btn bg-gradient-dark text-white m-0 ms-2" type="submit"
+                                            title="Add" name="submit">Add</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8">
+                            <div class="card shadow shadow-xl mt-4">
                                 <!-- Card header -->
                                 <div class="card-header">
-                                    <h5 class="mb-0">Academic Year List</h5>
-                                    <!-- <p class="text-sm mb-0">
-                                        A lightweight, extendable, dependency-free javascript HTML table plugin.
-                                    </p> -->
+                                    <h5 class="mb-0 font-weight-bolder">Effectve Academic Years List</h5>
+                                    <p class="text-sm mb-0">
+                                        This is a list of Effective Academic Year
+                                    </p>
                                 </div>
+                                <hr class="horizontal dark">
                                 <div class="table-responsive px-4 my-4">
                                     <table class="table table-flush table-hover m-0 responsive nowrap"
                                         id="datatable-basic" style="width: 100%;">
                                         <thead class="thead-light">
                                             <tr>
-                                                <th></th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
-                                                    Academic Year</th>
+                                                    Effective Academic Year</th>
 
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
@@ -57,22 +79,15 @@ include '../../includes/session.php';
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php
-                                            $listAdviser = mysqli_query($db, "SELECT * 
-                                            FROM tbl_acadyears");
-                                            while ($row = mysqli_fetch_array($listAdviser)) {
-                                                $id = $row['ay_id'];
-                                            ?>
-
+                                            <?php $query = $db->query("SELECT * FROM tbl_effective_acadyear") or die($db->error);
+                                            while ($row = $query->fetch_array()) {
+                                                $id = $row['eay_id']; ?>
                                             <tr>
-                                                <td></td>
-                                                <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['academic_year'] ?>
+                                                <td class="text-sm font-weight-normal"><?php echo $row['eay']; ?>
                                                 </td>
-
                                                 <td class="text-sm font-weight-normal">
                                                     <a class="btn bg-gradient-primary text-xs"
-                                                        href="edit.acad.year.php?ay_id=<?php echo $id; ?>"><i
+                                                        href="edit.effectiveAY.php?id=<?php echo $id; ?>"><i
                                                             class="text-xs fas fa-edit"></i> Edit</a>
 
                                                     <a class="btn btn-block bg-gradient-danger mb-3 text-xs"
@@ -91,7 +106,8 @@ include '../../includes/session.php';
                                                                 <div class="modal-header">
                                                                     <h6 class="modal-title text-danger"
                                                                         id="modal-title-notification"><i
-                                                                            class="fas fa-exclamation-triangle"> </i>
+                                                                            class="fas fa-exclamation-triangle">
+                                                                        </i>
                                                                         Warning
                                                                     </h6>
                                                                     <button type="button" class="btn-close"
@@ -103,15 +119,15 @@ include '../../includes/session.php';
                                                                     <div class="py-3 text-center">
                                                                         <i class="fas fa-trash-alt text-9xl"></i>
                                                                         <h4 class="text-gradient text-danger mt-4">
-                                                                            Delete Academic Year!</h4>
+                                                                            Delete Effective Academic Year!</h4>
                                                                         <p>Are you sure you want to delete
                                                                             <br>
-                                                                            <i><b><?php echo $row['academic_year']; ?></b></i>?
+                                                                            <i><b><?php echo $row['eay']; ?></b></i>?
                                                                         </p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <a href="acadData/ctrl.del.acad.year.php?ay_id=<?php echo $id; ?>"
+                                                                    <a href="acadData/ctrl.effectiveAY.php?id=<?php echo $id; ?>"
                                                                         class="btn btn-white text-white bg-danger">Delete</a>
                                                                     <button type="button"
                                                                         class="btn btn-link text-secondary btn-outline-dark ml-auto"
@@ -121,6 +137,7 @@ include '../../includes/session.php';
                                                         </div>
                                                     </div>
                                                 </td>
+                                                </td>
                                             </tr>
                                             <?php } ?>
                                         </tbody>
@@ -128,6 +145,7 @@ include '../../includes/session.php';
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <?php include '../../includes/footer.php'; ?>
                     <!-- End footer -->

@@ -125,7 +125,6 @@
                                                     } else {
                                                         echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
                                                     }
-<<<<<<< HEAD
                                                 }
                                             } elseif ($_SESSION['role'] == "Student") {
                                                 $getImg = mysqli_query($db, "SELECT * FROM tbl_students WHERE stud_id = '$stud_id'");
@@ -151,10 +150,8 @@
                                                     } else {
                                                         echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
                                                     }
-=======
->>>>>>> 8a72d9e4e7a7a2eba2ebf4fd21c250fab776cc80
                                                 }
-                                            }  elseif ($_SESSION['role'] == "Student") {
+                                            } elseif ($_SESSION['role'] == "Student") {
                                                 $getImg = mysqli_query($db, "SELECT * FROM tbl_students WHERE stud_id = '$stud_id'");
                                                 while ($row = mysqli_fetch_array($getImg)) {
                                                     echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
@@ -168,8 +165,8 @@
                                                     } else {
                                                         echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
                                                     }
-                                                } 
-                                            }   elseif ($_SESSION['role'] == "Teacher") {
+                                                }
+                                            } elseif ($_SESSION['role'] == "Teacher") {
                                                 $getImg = mysqli_query($db, "SELECT * FROM tbl_faculties_staff WHERE faculty_id = '$faculty_id'");
                                                 while ($row = mysqli_fetch_array($getImg)) {
                                                     echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
@@ -183,8 +180,8 @@
                                                     } else {
                                                         echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
                                                     }
-                                                } 
-                                            }?>
+                                                }
+                                            } ?>
 
 
                                             </p>

@@ -23,7 +23,7 @@
                                 </li>
                                 <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
                             </ol>
-                            <h6 class="font-weight-bolder mb-0">Add Students</h6>
+                            <h6 class="font-weight-bolder mb-0">Add Student</h6>
                         </nav>
                         <?php include '../../includes/navbar.php'; ?>
                         <!-- End Navbar -->
