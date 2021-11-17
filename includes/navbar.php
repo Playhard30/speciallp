@@ -151,8 +151,8 @@
                                                         echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
                                                     }
                                                 }
-                                            } elseif ($_SESSION['role'] == "Student") {
-                                                $getImg = mysqli_query($db, "SELECT * FROM tbl_students WHERE stud_id = '$stud_id'");
+                                            } elseif ($_SESSION['role'] == "Adviser") {
+                                                $getImg = mysqli_query($db, "SELECT * FROM tbl_faculties WHERE faculty_id = '$faculty_id'");
                                                 while ($row = mysqli_fetch_array($getImg)) {
                                                     echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
                                                     <div class="ms-3 my-auto">

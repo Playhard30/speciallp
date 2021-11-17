@@ -72,10 +72,19 @@ if ($count > 0) {
                                             <label class="mt-3">Course</label>
                                             <select class="form-control" name="course" id="department">
                                                 <option value="" selected disabled>Select Course</option>
-                                                <?php $getCourse = $db->query("SELECT * FROM tbl_courses");
-                                                    while ($row1 = $getCourse->fetch_array()) {
-                                                        echo '<option value="' . $row1['course_id'] . '">' .
-                                                            $row1['course'] . '</option>';
+                                                <?php
+                                                    if ($row['course_id'] == 0) {
+                                                        $getCourse = $db->query("SELECT * FROM tbl_courses");
+                                                        while ($row1 = $getCourse->fetch_array()) {
+                                                            echo '<option value="' . $row1['course_id'] . '">' .
+                                                                $row1['course'] . '</option>';
+                                                        }
+                                                    } else {
+                                                        $getCourse = $db->query("SELECT * FROM tbl_courses WHERE course_id IN ('$row[course_id]')");
+                                                        while ($row1 = $getCourse->fetch_array()) {
+                                                            echo '<option value="' . $row1['course_id'] . '">' .
+                                                                $row1['course'] . '</option>';
+                                                        }
                                                     } ?>
                                             </select>
                                         </div>

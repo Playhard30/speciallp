@@ -149,6 +149,18 @@ if (isset($_SESSION['emptyImg'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="DEAY"
              id="autoClickBtn" hidden>
          </a>';
+} elseif (isset($_SESSION['AFill'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="AFill"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['exist_schedule'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="exist_schedule"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['SASched'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="SASched"
+             id="autoClickBtn" hidden>
+         </a>';
 }
 
 unset($_SESSION['emptyImg']);
@@ -182,6 +194,9 @@ unset($_SESSION['SASub']);
 unset($_SESSION['FASub']);
 unset($_SESSION['successEAY']);
 unset($_SESSION['DEAY']);
+unset($_SESSION['AFill']);
+unset($_SESSION['exist_schedule']);
+unset($_SESSION['SASched']);
 
 
 //   lorenzo
@@ -196,6 +211,46 @@ unset($_SESSION['inquiryAdmitted']);
 
 <div class="position-fixed top-2 end-1 z-index-3">
 
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="SASched" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Added!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Schedule of a subject has been successfully Added.
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="exist_schedule"
+        aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Already Exist!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Set of Schedule is already exist!
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="AFill" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Required Fields!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Please complete all required fields.
+        </div>
+    </div>
+
     <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="FASub" aria-atomic="true">
         <div class="toast-header border-0">
             <i class="ni ni-notification-70 text-danger me-2"></i>
@@ -208,7 +263,6 @@ unset($_SESSION['inquiryAdmitted']);
             Please select a subject/s
         </div>
     </div>
-
 
     <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="SASub" aria-atomic="true">
         <div class="toast-header border-0">

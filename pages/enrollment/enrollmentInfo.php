@@ -3,8 +3,14 @@
 session_start();
 include '../../includes/session.php';
 include '../../includes/head.php';
-
 $_SESSION['stud_id'] = $stud_id;
+
+$q = $db->query("SELECT * FROM tbl_schoolyears SY WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AYear]' AND sem_id = '$_SESSION[ASem]'") or die($db->error);
+$count = $q->num_rows;
+
+if ($count == 0) {
+    header('location: enrollNow.php');
+}
 ?>
 <title>
     Enrollment Information | SFAC - Las Piñas
@@ -48,7 +54,9 @@ $_SESSION['stud_id'] = $stud_id;
                                     LEFT JOIN tbl_courses C ON C.course_id = SY.course_id
                                     WHERE SY.stud_id = '$stud_id' AND SY.ay_id = '$_SESSION[AYear]' AND SY.sem_id = '$_SESSION[ASem]'") or die($db->error);
                                     while ($row = $getSY->fetch_array()) {
-                                        $course_id = $row['course_id']; ?>
+                                        $course_id = $row['course_id'];
+                                    ?>
+
                                     <!-- Profile -->
                                     <div class="col-auto my-2">
                                         <div class="h-100">
@@ -215,14 +223,14 @@ $_SESSION['stud_id'] = $stud_id;
                                                                             </thead>
                                                                             <tbody>
                                                                                 <?php $i = -1;
-                                                                                 $query1 = $db->query("SELECT * FROM tbl_schedules S
+                                                                                $query1 = $db->query("SELECT * FROM tbl_schedules S
                                                                             LEFT JOIN tbl_subjects_new SN ON SN.subj_id = S.subj_id
                                                                             LEFT JOIN tbl_courses C ON C.course_id = SN.course_id
                                                                             LEFT JOIN tbl_year_levels YL ON YL.year_id = SN.year_id
                                                                             LEFT JOIN tbl_semesters SEM ON SEM.sem_id = SN.sem_id
                                                                             WHERE S.subj_id NOT IN (SELECT ES.subj_id FROM tbl_enrolled_subjects ES WHERE ES.stud_id = '$stud_id' AND ES.acad_year = '$_SESSION[AC]' AND ES.semester = '$_SESSION[S]') AND C.course_id = '$course_id' AND acad_year = '$_SESSION[AC]' AND S.semester = '$_SESSION[S]'
                                                                             ORDER BY YL.year_id, SEM.sem_id") or die($db->error);
-                                                                                while ($row2 = $query1->fetch_array()) { 
+                                                                                while ($row2 = $query1->fetch_array()) {
                                                                                     $i++; ?>
                                                                                 <tr>
                                                                                     <td

@@ -3,7 +3,7 @@ session_start();
 require '../../includes/conn.php';
 include '../../includes/head.php';
 include '../../includes/session.php';
-if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Adviser" || $_SESSION['role'] == "Registrar"  ) {
+if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Registrar") {
     $faculty_id = $_GET['faculty_id'];
 }
 $_SESSION['faculty_id'] = $faculty_id;
@@ -64,7 +64,7 @@ $_SESSION['faculty_id'] = $faculty_id;
                                             <?php echo $row['fullname'];  ?>
                                         </h5>
                                         <p class="mb-0 font-weight-bold text-sm">
-                                            Faculty
+                                            Adviser
                                         </p>
                                     </div>
                                 </div>
@@ -141,11 +141,27 @@ $_SESSION['faculty_id'] = $faculty_id;
                                     <div class="col-sm-6">
                                         <label class="form-label mt-4">Department</label>
                                         <select class="form-control" name="department" id="department">
-                                            <?php $getDepartment = mysqli_query($db, "SELECT * FROM tbl_departments");
-                                            while ($row1 = mysqli_fetch_array($getDepartment)) {
-                                                echo '<option selected value="' . $row1['department_id'] . '">
+                                            <?php if ($row['department_id'] > 0) {
+                                                $getDepartment = mysqli_query($db, "SELECT * FROM tbl_departments WHERE department_id IN ('$row[department_id]')") or die($db->error);
+                                                while ($row1 = mysqli_fetch_array($getDepartment)) {
+                                                    echo '<option selected value="' . $row1['department_id'] . '">
                                                 ' . $row1['department_name'] . '
                                             </option>';
+                                                }
+                                                $getDepartment2 = mysqli_query($db, "SELECT * FROM tbl_departments WHERE department_id NOT IN ('$row[department_id]')") or die($db->error);
+                                                while ($row2 = mysqli_fetch_array($getDepartment2)) {
+                                                    echo '<option value="' . $row2['department_id'] . '">
+                                                ' . $row2['department_name'] . '
+                                            </option>';
+                                                }
+                                            } else {
+                                                echo '<option selected disabled value="">Select Department</option>';
+                                                $getDepartment = mysqli_query($db, "SELECT * FROM tbl_departments") or die($db->error);
+                                                while ($row1 = mysqli_fetch_array($getDepartment)) {
+                                                    echo '<option value="' . $row1['department_id'] . '">
+                                                ' . $row1['department_name'] . '
+                                            </option>';
+                                                }
                                             } ?>
                                         </select>
                                     </div>
@@ -220,21 +236,23 @@ $_SESSION['faculty_id'] = $faculty_id;
                                 </div>';
                                 } ?>
 
-                                <<<<<<< HEAD <label class="form-label">New Password</label>
-                                    =======
-                                    <label class="form-label">New password</label>
-                                    <div class="form-group">
-                                        <label class="form-label">Confirm New password</label>
-                                        <div class="form-group">
-                                            <input class="form-control" type="password" name="confirmPass"
-                                                placeholder="Confirm password" required>
-                                        </div>
+                                <label class="form-label">New Password</label>
+                                <div class="form-group">
+                                    <input class="form-control" type="password" name="password"
+                                        placeholder="New Password" required>
+                                </div>
 
-                                        <div class="col-12 button-row d-flex mt-4">
-                                            <button type="submit" name="savePass"
-                                                class="btn bg-gradient-primary ms-auto">Update</button>
-                                        </div>
-                                    </div>
+                                <label class="form-label">Confirm New password</label>
+                                <div class="form-group">
+                                    <input class="form-control" type="password" name="confirmPass"
+                                        placeholder="Confirm password" required>
+                                </div>
+
+                                <div class="col-12 button-row d-flex mt-4">
+                                    <button type="submit" name="savePass"
+                                        class="btn bg-gradient-primary ms-auto">Update</button>
+                                </div>
+                            </div>
                         </form>
 
                         <?php include '../../includes/footer.php'; ?>

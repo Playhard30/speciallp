@@ -36,8 +36,8 @@ include '../../includes/session.php';
                                         A lightweight, extendable, dependency-free javascript HTML table plugin.
                                     </p> -->
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="table table-flush table-hover" id="datatable-basic">
+                                <div class="table-responsive px-4 my-4">
+                                    <table class="table table-flush table-hover nowrap responsive" id="datatable-basic">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th

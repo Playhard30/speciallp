@@ -11,6 +11,29 @@
 <script src="../../assets/js/plugins/dragula/dragula.min.js"></script>
 <script src="../../assets/js/plugins/jkanban/jkanban.js"></script>
 <script src="https://unpkg.com/imask"></script>
+<!-- unset cookie | Schedule Subjects -->
+<script>
+document.cookie = "instructor= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+document.cookie = "subj_id= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+document.cookie = "inst= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+</script>
+<!-- Cookies for Modal Select | Schedule Subject -->
+<script type="text/javascript">
+document.querySelector('.multi').addEventListener('change', function() {
+    var x = this.value;
+    document.cookie = "instructor=" + x;
+});
+
+document.querySelector('.multi_sub').addEventListener('change', function() {
+    var y = this.value;
+    document.cookie = "subj_id=" + y;
+});
+
+document.querySelector('.multi_inst').addEventListener('change', function() {
+    var z = this.value;
+    document.cookie = "inst=" + z;
+});
+</script>
 <script>
 var inputElements = document.querySelectorAll("input[data-format]");
 inputElements.forEach(input => {
@@ -115,6 +138,7 @@ $(document).ready(function() {
 });
 </script>
 <script>
+// single Select by ID
 if (document.getElementById('year_lvl')) {
     var element = document.getElementById('year_lvl');
     const example = new Choices(element, {
@@ -163,14 +187,31 @@ if (document.getElementById('dep')) {
         searchPlaceholderValue: "Search...",
     });
 };
-</script>
-<script>
 if (document.getElementById('status')) {
     var element = document.getElementById('status');
     const example = new Choices(element, {
         searchPlaceholderValue: "Search...",
     });
 };
+</script>
+<script>
+// Multi Select by Class
+var n = 0;
+while (n <= <?php echo $m; ?>) {
+    // if (document.getElementById(`multi${n}`)) {
+    //     var element = document.getElementById(`multi${n}`);
+    //     const example = new Choices(element, {
+    //         searchPlaceholderValue: "Search..."
+    //     });
+    // };
+    if (document.querySelector('.multi')) {
+        const element = document.querySelector('.multi');
+        const example = new Choices($('.multi')[n], {
+            searchPlaceholderValue: "Search...",
+        });
+    };
+    n++;
+}
 </script>
 <script>
 window.onload = function() {

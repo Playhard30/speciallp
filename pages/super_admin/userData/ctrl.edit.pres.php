@@ -46,7 +46,7 @@ if (isset($_POST['save'])) {
 
 if (isset($_POST['savePass'])) {
 
-    if ($_SESSION['role'] == "President) {
+    if ($_SESSION['role'] == "President") {
 
         $oldpassword = mysqli_real_escape_string($db, $_POST['oldPass']);
 

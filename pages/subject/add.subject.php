@@ -38,12 +38,12 @@ include '../../includes/session.php';
                                 <form method="POST" enctype="multipart/form-data"
                                     action="userData/ctrl.add.subject.php">
                                     <div class="row">
-                                        <div class="col-sm-5">
+                                        <div class="col-sm-4">
                                             <label>Subject Code</label>
                                             <input class="form-control" type="text" placeholder="Subject Code"
                                                 name="subj_code" />
                                         </div>
-                                        <div class="col-sm-7">
+                                        <div class="col-sm-8">
                                             <label>Subject Description</label>
                                             <input class="form-control" type="text" placeholder="Subject Description"
                                                 name="subj_desc" />
@@ -51,17 +51,16 @@ include '../../includes/session.php';
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-12">
                                             <label class="mt-3">Course</label>
-                                            <select class="form-control" name="course" id="courses">
+                                            <select class="form-control" name="course" id="department">
                                                 <option value="" disabled selected>Select Course
                                                 </option>
-                                                <?php $getCourse = mysqli_query($db, "SELECT * FROM tbl_courses");
-                                                while ($row = mysqli_fetch_array($getCourse)) {
-                                                ?>
-                                                <option value="<?php echo $row['course_id']; ?>">
-                                                    <?php echo $row['course'];
-                                                } ?></option>
+                                                <?php $query = $db->query("SELECT * FROM tbl_courses");
+                                                while ($row = $query->fetch_array()) {
+                                                    echo '<option value="' . $row['course_id'] . '">' . $row['course'] . '</option>';
+                                                } ?>
+
                                             </select>
                                         </div>
                                     </div>
@@ -91,22 +90,6 @@ include '../../includes/session.php';
                                                 name="prereq" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="mt-3">Course</label>
-                                            <select class="form-control" name="course" id="courses">
-                                                <option value="" disabled selected>Select Course
-                                                </option>
-                                                <?php $getCourse = mysqli_query($db, "SELECT * FROM tbl_courses");
-                                                while ($row = mysqli_fetch_array($getCourse)) {
-                                                ?>
-                                                <option value="<?php echo $row['course_id']; ?>">
-                                                    <?php echo $row['course'];
-                                                } ?></option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-6">
                                             <label class="mt-3">Year Level</label>
                                             <select class="form-control" name="year" id="year_lvl">
                                                 <option value="" disabled selected>Select Year Level
@@ -119,7 +102,9 @@ include '../../includes/session.php';
                                                 } ?></option>
                                             </select>
                                         </div>
+                                    </div>
 
+                                    <div class="row">
                                         <div class="col-sm-6">
                                             <label class="mt-3">Semester</label>
                                             <select class="form-control" name="semester" id="semester">
@@ -130,6 +115,20 @@ include '../../includes/session.php';
                                                 ?>
                                                 <option value="<?php echo $row['sem_id']; ?>">
                                                     <?php echo $row['semester'];
+                                                } ?></option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label class="mt-3">Effective Academic Year</label>
+                                            <select class="form-control" name="eay" id="academic_year">
+                                                <option value="" disabled selected>Select Effective Academic Year
+                                                </option>
+                                                <?php $getEAY = mysqli_query($db, "SELECT * FROM tbl_effective_acadyear");
+                                                while ($row = mysqli_fetch_array($getEAY)) {
+                                                ?>
+                                                <option value="<?php echo $row['eay_id']; ?>">
+                                                    <?php echo $row['eay'];
                                                 } ?></option>
                                             </select>
                                         </div>

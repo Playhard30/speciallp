@@ -4,7 +4,7 @@ include '../../includes/head.php';
 include '../../includes/session.php';
 ?>
 <title>
-    Faculty Staff List | SFAC - Las Piñas
+    View Teacher List | SFAC - Las Piñas
 </title>
 </head>
 
@@ -23,7 +23,7 @@ include '../../includes/session.php';
                         </li>
                         <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">View Faculty List</h6>
+                    <h6 class="font-weight-bolder mb-0">View Teachers List</h6>
                 </nav>
                 <?php include '../../includes/navbar.php'; ?>
                 <!-- End Navbar -->
@@ -34,13 +34,15 @@ include '../../includes/session.php';
                             <div class="card shadow shadow-xl">
                                 <!-- Card header -->
                                 <div class="card-header">
-                                    <h5 class="mb-0">Faculty List</h5>
+                                    <h5 class="mb-0">Teachers List</h5>
                                     <!-- <p class="text-sm mb-0">
                                         A lightweight, extendable, dependency-free javascript HTML table plugin.
                                     </p> -->
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="table table-flush table-hover" id="datatable-basic">
+                                <hr class="horizontal dark">
+                                <div class="table-responsive px-4 my-4">
+                                    <table class="table table-flush table-hover nowrap responsive" id="datatable-basic"
+                                        style="width:100%">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th

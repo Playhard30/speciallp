@@ -103,10 +103,26 @@ include '../../includes/session.php';
                                             <?php
                                             if (isset($_GET['search'])) {
                                                 $_GET['search_text'] = addslashes($_GET['search_text']);
-
-                                                $studentList = mysqli_query(
-                                                    $db,
-                                                    "SELECT *,CONCAT(tbl_students.lastname, ', ', tbl_students.firstname, ' ', tbl_students.middlename)  as fullname
+                                                if ($_SESSION['role'] == "Adviser") {
+                                                    $studentList = mysqli_query(
+                                                        $db,
+                                                        "SELECT *,CONCAT(tbl_students.lastname, ', ', tbl_students.firstname, ' ', tbl_students.middlename)  as fullname
+                                         FROM tbl_students
+                                        LEFT JOIN tbl_courses ON tbl_courses.course_id = tbl_students.course_id
+                                        LEFT JOIN tbl_genders ON tbl_genders.gender_id = tbl_students.gender_id
+                                        LEFT JOIN tbl_departments ON tbl_departments.department_id = tbl_courses.department_id
+                                        WHERE tbl_courses.department_id = '$_SESSION[ADepartment_id]' AND
+                                        (firstname LIKE '%$_GET[search_text]%' OR
+                                        middlename LIKE '%$_GET[search_text]%' OR
+                                        lastname LIKE '%$_GET[search_text]%' OR
+                                        course_abv LIKE '%$_GET[search_text]%' OR
+                                        stud_no LIKE '%$_GET[search_text]%')
+                                         ORDER BY stud_no DESC"
+                                                    ) or die(mysqli_error($db));
+                                                } else {
+                                                    $studentList = mysqli_query(
+                                                        $db,
+                                                        "SELECT *,CONCAT(tbl_students.lastname, ', ', tbl_students.firstname, ' ', tbl_students.middlename)  as fullname
                                          FROM tbl_students
                                         LEFT JOIN tbl_courses ON tbl_courses.course_id = tbl_students.course_id
                                         LEFT JOIN tbl_genders ON tbl_genders.gender_id = tbl_students.gender_id
@@ -117,7 +133,8 @@ include '../../includes/session.php';
                                         course_abv LIKE '%$_GET[search_text]%' OR
                                         stud_no LIKE '%$_GET[search_text]%')
                                          ORDER BY stud_no DESC"
-                                                ) or die(mysqli_error($db));
+                                                    ) or die(mysqli_error($db));
+                                                }
 
                                                 while ($row = mysqli_fetch_array($studentList)) {
                                                     $id = $row['stud_id'];

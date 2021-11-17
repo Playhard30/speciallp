@@ -66,6 +66,7 @@ if (!empty($_SESSION['role'])) {
     exit();
 }
 
+// Active Acadyear & Semester
 $getAAcadYear = $db->query("SELECT * FROM tbl_active_acads AC LEFT JOIN tbl_acadyears A ON A.ay_id = AC.ay_id") or die($db->error);
 while ($row = $getAAcadYear->fetch_array()) {
     $_SESSION['AC'] = $row['academic_year'];
@@ -76,3 +77,5 @@ while ($row = $getASem->fetch_array()) {
     $_SESSION['S'] = $row['semester'];
     $_SESSION['ASem'] = $row['sem_id'];
 }
+
+// Get department from Subjects

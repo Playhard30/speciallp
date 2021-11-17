@@ -109,6 +109,8 @@ if (isset($_POST['signin'])) {
             } elseif ($hashedPwdCheck == true) {
                 $_SESSION['role'] = "Adviser";
                 $_SESSION['userid'] = $row['faculty_id'];
+                $_SESSION['ADepartment_id'] = $row['department_id'];
+                $_SESSION['name'] = $row['faculty_lastname'] . ", " . $row['faculty_firstname'];
             }
             header("location: ../../dashboard/index.php");
         }

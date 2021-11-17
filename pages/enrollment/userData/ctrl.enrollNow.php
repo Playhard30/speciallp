@@ -5,6 +5,14 @@ $stud_id = $_SESSION['stud_id'];
 
 if (isset($_POST['submit'])) {
 
+    $getCourse = $db->query("SELECT course_id FROM tbl_students WHERE stud_id = '$stud_id'") or die($db->error);
+    while ($row = $getCourse->fetch_array()) {
+        if ($row['course_id'] == 0) {
+            $CCourse_id = $db->real_escape_string($_POST['course']);
+            $query = $db->query("UPDATE tbl_students SET course_id = '$CCourse_id' WHERE stud_id = '$stud_id'") or die($db->error);
+        }
+    }
+
     $course_id = $db->real_escape_string($_POST['course']);
     $year_id = $db->real_escape_string($_POST['level']);
     $status = $db->real_escape_string($_POST['status']);

@@ -4,7 +4,7 @@ include '../../includes/head.php';
 include '../../includes/session.php';
 ?>
 <title>
-    Add Faculty Staff | SFAC - Las Piñas
+    Add Teacher | SFAC - Las Piñas
 </title>
 </head>
 
@@ -23,7 +23,7 @@ include '../../includes/session.php';
                         </li>
                         <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">Add Enrollment Faculty</h6>
+                    <h6 class="font-weight-bolder mb-0">Add Teacher</h6>
                 </nav>
                 <?php include '../../includes/navbar.php'; ?>
                 <!-- End Navbar -->
@@ -32,7 +32,7 @@ include '../../includes/session.php';
                     <div class="row">
                         <div class="col-12">
                             <div class="text-center">
-                                <h3>Input the Faculty information</h3>
+                                <h3>Input the Teacher information</h3>
                                 <h5 class="text-secondary font-weight-normal">Please fill out the fields</h5>
                             </div>
                             <div class="multisteps-form mb-5">
@@ -61,7 +61,7 @@ include '../../includes/session.php';
                                             <!--single form panel-->
                                             <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
                                                 data-animation="FadeIn">
-                                                <h5 class="font-weight-bolder mb-0">Add Enrollment Faculty</h5>
+                                                <h5 class="font-weight-bolder mb-0">Add Teacher</h5>
                                                 <p class="mb-0 text-sm">Personal Data</p>
                                                 <div class="multisteps-form__content">
 

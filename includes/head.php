@@ -38,4 +38,17 @@ require '../../includes/conn.php';
     .bg-gradient-red-orange {
         background-image: linear-gradient(310deg, #d77700, #ab0808);
     }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        border-radius: 50px;
+        background-image: linear-gradient(310deg, #1d2139, #39406d) !important;
+        color: whitesmoke !important;
+        padding: 6px 14px !important;
+        border: none;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+        color: #8392ab !important;
+        background-image: linear-gradient(310deg, #1d2139, #39406d) !important;
+    }
     </style>

@@ -4,7 +4,7 @@ require '../../includes/conn.php';
 include '../../includes/head.php';
 include '../../includes/session.php';
 
-if ('Registrar' == $_SESSION['role']) {
+if ('Registrar' == $_SESSION['role'] || $_SESSION['role'] == "Adviser") {
     $stud_id = $_GET['stud_id'];
     echo '<title>
     Edit Student | SFAC - Las Piñas
@@ -37,7 +37,7 @@ $_SESSION['stud_id'] = $stud_id;
                         </li>
                         <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
                     </ol>
-                    <?php if ($_SESSION['role'] == "Registrar") {
+                    <?php if ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == "Adviser") {
                         echo '<h6 class="font-weight-bolder mb-0">Edit Student Information</h6>';
                     } elseif ($_SESSION['role'] == "Student") {
                         echo '<h6 class="font-weight-bolder mb-0">Personal Information</h6>';
@@ -51,7 +51,7 @@ $_SESSION['stud_id'] = $stud_id;
                 <div class="container-fluid py-4">
                     <div class="col-lg-11 mt-lg-0 my-4 mx-auto mb-5">
                         <!-- Card Profile -->
-                        <?php if ($_SESSION['role'] == "Registrar") { ?>
+                        <?php if ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == "Adviser") { ?>
                         <div class="card card-body" id="profile">
                             <div class="row justify-content-center align-items-center">
                                 <div class="col-sm-auto col-4">
@@ -118,7 +118,7 @@ $_SESSION['stud_id'] = $stud_id;
                                     <div class="col-sm-4">
                                         <label class="form-label mt-4">Student ID No.</label>
                                         <div class="input-group">
-                                            <?php if ("Registrar" == $_SESSION['role']) {
+                                            <?php if ("Registrar" == $_SESSION['role'] || $_SESSION['role'] == "Adviser") {
                                                 echo ' <input name="stud_no" required type="text" placeholder="Student Number" class="form-control" value="' . $row['stud_no'] . '">';
                                             } else {
                                                 echo ' <input name="stud_no" type="text" required placeholder="Student Number" readonly class="form-control" value="' . $row['stud_no'] . '">';
@@ -126,14 +126,33 @@ $_SESSION['stud_id'] = $stud_id;
 
                                         </div>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <label class="form-label mt-4">Email Address</label>
-                                        <div class="input-group">
-                                            <input id="email" name="email" class="form-control" type="text"
-                                                placeholder="example@gmail.com" value="<?php echo $row['email']; ?>">
-                                        </div>
-                                    </div>
 
+                                    <?php if ("Registrar" == $_SESSION['role'] || $_SESSION['role'] == "Adviser") {
+                                                echo '
+                                                <div class="col-sm-8">
+                                                <label class="form-label mt-4">Course</label>
+                                                <select class="form-control" name="courses" id="courses" required>';
+                                                if (!empty($row['course_id'])) {
+                                                    $getCourse = mysqli_query($db, "SELECT * FROM tbl_courses WHERE course_id IN ('$row[course_id]')");
+                                                    while ($row1 = mysqli_fetch_array($getCourse)) {
+                                                        echo '<option selected value="' . $row1['course_id'] . '">' . $row1['course'] . '</option>';
+                                                    }
+                                                    $getCourse = mysqli_query($db, "SELECT * FROM tbl_courses WHERE course_id NOT IN ('$row[course_id]')");
+                                                    while ($row2 = mysqli_fetch_array($getCourse)) {
+                                                        echo '<option value="' . $row2['course_id'] . '">' . $row2['course'] . '</option>';
+                                                    }
+                                                }
+
+                                                echo '</select></div>';
+                                            } else {
+                                                echo '  <div class="col-sm-8">
+                                                <label class="form-label mt-4">Email Address</label>
+                                                <div class="input-group">
+                                                    <input id="email" name="email" class="form-control" type="text"
+                                                        placeholder="example@gmail.com" value="' . $row['email'] . '">
+                                                </div>
+                                            </div>';
+                                            } ?>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -265,6 +284,15 @@ $_SESSION['stud_id'] = $stud_id;
                                                 placeholder="Contact Number" value="<?php echo $row['contact']; ?>">
                                         </div>
                                     </div>
+                                    <?php if ("Registrar" == $_SESSION['role'] || $_SESSION['role'] == "Adviser") {
+                                                echo '  <div class="col-sm-8">
+                                                <label class="form-label mt-4">Email Address</label>
+                                                <div class="input-group">
+                                                    <input id="email" name="email" class="form-control" type="text"
+                                                        placeholder="example@gmail.com" value="' . $row['email'] . '">
+                                                </div>
+                                            </div>';
+                                            } ?>
                                 </div>
                             </div>
 
@@ -536,7 +564,7 @@ $_SESSION['stud_id'] = $stud_id;
                             </div>
                         </form>
 
-                        <?php if ($_SESSION['role'] == "Registrar") { ?>
+                        <?php if ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == "Adviser") { ?>
                         <form method="POST" enctype="multipart/form-data" action="userData/ctrl.edit.student.php"
                             class="card mt-4" id="account_details">
                             <div class="card-header text-center">
