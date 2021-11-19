@@ -871,17 +871,16 @@
                 $getDep = $db->query("SELECT * FROM tbl_departments RIGHT JOIN tbl_courses ON tbl_courses.department_id = tbl_departments.department_id") or die($db->error);
                 while ($row = $getDep->fetch_array()) {
                     $course_abv = $row['course_abv'];
+                    $course_id = $row['course_id'];
                     if ($_SESSION['ADepartment_id'] == $row['department_id']) {
                         echo '  <li class="nav-item">
-                            <a class="nav-link" href="../offer/offer.' . $course_abv . '.php">
+                            <a class="nav-link" href="../offer/offer.' . $course_abv . '.php?CID=' . $course_id . '">
                                 <span class="sidenav-mini-icon text-xs"> </span>
                                 <span class="sidenav-normal font-weight-bold">' . $course_abv . '</span>
                             </a>
                         </li>';
-                        $course_id = $row['course_id'];
                     }
                 }
-
                 echo ' </ul>
                 </div>
              </li>
