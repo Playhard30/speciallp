@@ -3,8 +3,8 @@ session_start();
 require '../../includes/conn.php';
 include '../../includes/head.php';
 include '../../includes/session.php';
-if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Adviser" || $_SESSION['role'] == "Registrar"  ) {
-    $faculty_id = $_GET['faculty_id'];
+if ("Super Administrator" == $_SESSION['role'] || "Adviser" == $_SESSION['role'] || "Registrar" == $_SESSION['role']) {
+ $faculty_id = $_GET['faculty_id'];
 }
 $_SESSION['faculty_id'] = $faculty_id;
 ?>
@@ -43,25 +43,24 @@ $_SESSION['faculty_id'] = $faculty_id;
                                 <div class="col-sm-auto col-4">
                                     <div class="avatar avatar-xl position-relative">
                                         <?php
-                                        $getUserData = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties.faculty_firstname, ' ', tbl_faculties.faculty_middlename, ' ', tbl_faculties.faculty_lastname) AS fullname FROM tbl_faculties WHERE faculty_id = '$faculty_id'");
-                                        while ($row = mysqli_fetch_array($getUserData)) {
-                                            if (!empty($row['img'])) {
-                                                echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" alt="bruce"
+$getUserData = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties.faculty_firstname, ' ', tbl_faculties.faculty_middlename, ' ', tbl_faculties.faculty_lastname) AS fullname FROM tbl_faculties WHERE faculty_id = '$faculty_id'");
+while ($row = mysqli_fetch_array($getUserData)) {
+ if (!empty($row['img'])) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" alt="bruce"
                                                 class="border-radius-lg shadow-sm" style="height: 80px; width: 80px;">';
-                                            } else {
-                                                echo '<img src="../../assets/img/illustrations/user_prof.jpg" alt="bruce"
+ } else {
+  echo '<img src="../../assets/img/illustrations/user_prof.jpg" alt="bruce"
                                             class="border-radius-lg shadow-sm">';
-                                            }
+ }
 
-
-                                        ?>
+ ?>
 
                                     </div>
                                 </div>
                                 <div class="col-sm-auto col-8 my-auto">
                                     <div class="h-100">
                                         <h5 class="mb-1 font-weight-bolder">
-                                            <?php echo $row['fullname'];  ?>
+                                            <?php echo $row['fullname']; ?>
                                         </h5>
                                         <p class="mb-0 font-weight-bold text-sm">
                                             Faculty
@@ -92,18 +91,16 @@ $_SESSION['faculty_id'] = $faculty_id;
                                         <label class="form-label">Last Name</label>
                                         <div class="input-group">
                                             <input id="lastName" name="lname" class="form-control" type="text"
-                                                placeholder="Lastname"
-                                                value="<?php echo $row['faculty_lastname'];
-                                                                                                                                                ?>">
+                                                placeholder="Lastname" value="<?php echo $row['faculty_lastname'];
+ ?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <label class="form-label">First Name</label>
                                         <div class="input-group">
                                             <input id="firstName" name="fname" class="form-control" type="text"
-                                                placeholder="Firstname"
-                                                value="<?php echo $row['faculty_firstname'];
-                                                                                                                                                ?>">
+                                                placeholder="Firstname" value="<?php echo $row['faculty_firstname'];
+ ?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -121,9 +118,8 @@ $_SESSION['faculty_id'] = $faculty_id;
                                         <label class="form-label mt-4">Email</label>
                                         <div class="input-group">
                                             <input id="email" name="email" class="form-control" type="email"
-                                                placeholder="example@email.com"
-                                                value="<?php echo $row['email'];
-                                                                                                                                                    ?>">
+                                                placeholder="example@email.com" value="<?php echo $row['email'];
+ ?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -142,11 +138,11 @@ $_SESSION['faculty_id'] = $faculty_id;
                                         <label class="form-label mt-4">Department</label>
                                         <select class="form-control" name="department" id="department">
                                             <?php $getDepartment = mysqli_query($db, "SELECT * FROM tbl_departments");
-                                            while ($row1 = mysqli_fetch_array($getDepartment)) {
-                                                echo '<option selected value="' . $row1['department_id'] . '">
+ while ($row1 = mysqli_fetch_array($getDepartment)) {
+  echo '<option selected value="' . $row1['department_id'] . '">
                                                 ' . $row1['department_name'] . '
                                             </option>';
-                                            } ?>
+ } ?>
                                         </select>
                                     </div>
                                     <div class="col-sm-6">
@@ -173,15 +169,15 @@ $_SESSION['faculty_id'] = $faculty_id;
                                         <label class="form-label mt-4">Employment Status</label>
                                         <select class="form-control" name="status" id="status">
                                             <?php $getStatus = mysqli_query($db, "SELECT * FROM tbl_faculties WHERE faculty_id = '$faculty_id'");
-                                            while ($row2 = mysqli_fetch_array($getStatus)) {
-                                                if ($row2['status'] == "Full-time") {
-                                                    echo '<option selected value="' . $row2['status'] . '">' . $row2['status'] . '</option>
+ while ($row2 = mysqli_fetch_array($getStatus)) {
+  if ("Full-time" == $row2['status']) {
+   echo '<option selected value="' . $row2['status'] . '">' . $row2['status'] . '</option>
                                             <option value="Part-time">Part-time</option>';
-                                                } else {
-                                                    echo '<option selected value="' . $row2['status'] . '">' . $row2['status'] . ' </option>
+  } else {
+   echo '<option selected value="' . $row2['status'] . '">' . $row2['status'] . ' </option>
                                                     <option value="Part-time">Full-time</option>';
-                                                }
-                                            } ?>
+  }
+ } ?>
                                         </select>
                                     </div>
 
@@ -212,29 +208,32 @@ $_SESSION['faculty_id'] = $faculty_id;
                                 <h5>Change Password</h5>
                             </div>
                             <div class="card-body pt-0">
-                                <?php if ($_SESSION['role'] == "Adviser") {
-                                    echo '<label class="form-label">Current Password</label>
+                                <?php if ("Adviser" == $_SESSION['role']) {
+ echo '<label class="form-label">Current Password</label>
                                 <div class="form-group">
                                     <input class="form-control" type="password" name="oldPass"
                                         placeholder="Current password" required>
                                 </div>';
-                                } ?>
+} ?>
 
-                                <<<<<<< HEAD <label class="form-label">New Password</label>
-                                    =======
+
+                                <div class="form-group">
                                     <label class="form-label">New password</label>
                                     <div class="form-group">
-                                        <label class="form-label">Confirm New password</label>
-                                        <div class="form-group">
-                                            <input class="form-control" type="password" name="confirmPass"
-                                                placeholder="Confirm password" required>
-                                        </div>
-
-                                        <div class="col-12 button-row d-flex mt-4">
-                                            <button type="submit" name="savePass"
-                                                class="btn bg-gradient-primary ms-auto">Update</button>
-                                        </div>
+                                        <input class="form-control" type="password" name="password"
+                                            placeholder="New password" required>
                                     </div>
+                                    <label class="form-label">Confirm New password</label>
+                                    <div class="form-group">
+                                        <input class="form-control" type="password" name="confirmPass"
+                                            placeholder="Confirm password" required>
+                                    </div>
+
+                                    <div class="col-12 button-row d-flex mt-4">
+                                        <button type="submit" name="savePass"
+                                            class="btn bg-gradient-primary ms-auto">Update</button>
+                                    </div>
+                                </div>
                         </form>
 
                         <?php include '../../includes/footer.php'; ?>

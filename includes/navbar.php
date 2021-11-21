@@ -36,155 +36,127 @@
                                         <div class="d-flex">
 
                                             <?php
-                                            if ($_SESSION['role'] == "Super Administrator") {
-                                                $getImg = mysqli_query($db, "SELECT * FROM tbl_super_admins WHERE sa_id = '$sa_id'");
-                                                while ($row = mysqli_fetch_array($getImg)) {
-                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
+if ("Super Administrator" == $_SESSION['role']) {
+ $getImg = mysqli_query($db, "SELECT * FROM tbl_super_admins WHERE sa_id = '$sa_id'");
+ while ($row = mysqli_fetch_array($getImg)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
                                                     <div class="ms-3 my-auto">
                                                 <h6 class="text-white mb-0">' . $row['username'] . '</h6>
                                                 <p class="text-xs text-white">Username</p>
                                             </div>
                                         </div>';
-                                                    if (!empty($row['email'])) {
-                                                        echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
-                                                    } else {
-                                                        echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
-                                                    }
-                                                }
-                                            } elseif ($_SESSION['role'] == "Dean") {
-                                                $getImg = mysqli_query($db, "SELECT * FROM tbl_deans WHERE dean_id = '$dean_id'");
-                                                while ($row = mysqli_fetch_array($getImg)) {
-                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
+  if (!empty($row['email'])) {
+   echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
+  } else {
+   echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
+  }
+ }
+} elseif ("Dean" == $_SESSION['role']) {
+ $getImg = mysqli_query($db, "SELECT * FROM tbl_deans WHERE dean_id = '$dean_id'");
+ while ($row = mysqli_fetch_array($getImg)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
                                                     <div class="ms-3 my-auto">
                                                 <h6 class="text-white mb-0">' . $row['username'] . '</h6>
                                                 <p class="text-xs text-white">Username</p>
                                             </div>
                                         </div>';
-                                                    if (!empty($row['email'])) {
-                                                        echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
-                                                    } else {
-                                                        echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
-                                                    }
-                                                }
-                                            } elseif ($_SESSION['role'] == "Admission") {
-                                                $getImg = mysqli_query($db, "SELECT * FROM tbl_admissions WHERE admission_id = '$admission_id'");
-                                                while ($row = mysqli_fetch_array($getImg)) {
-                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
+  if (!empty($row['email'])) {
+   echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
+  } else {
+   echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
+  }
+ }
+} elseif ("Admission" == $_SESSION['role']) {
+ $getImg = mysqli_query($db, "SELECT * FROM tbl_admissions WHERE admission_id = '$admission_id'");
+ while ($row = mysqli_fetch_array($getImg)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
                                                     <div class="ms-3 my-auto">
                                                 <h6 class="text-white mb-0">' . $row['username'] . '</h6>
                                                 <p class="text-xs text-white">Username</p>
                                             </div>
                                         </div>';
-                                                    if (!empty($row['email'])) {
-                                                        echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
-                                                    } else {
-                                                        echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
-                                                    }
-                                                }
-                                            } elseif ($_SESSION['role'] == "President") {
-                                                $getImg = mysqli_query($db, "SELECT * FROM tbl_presidents WHERE pres_id = '$pres_id'");
-                                                while ($row = mysqli_fetch_array($getImg)) {
-                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
+  if (!empty($row['email'])) {
+   echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
+  } else {
+   echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
+  }
+ }
+} elseif ("President" == $_SESSION['role']) {
+ $getImg = mysqli_query($db, "SELECT * FROM tbl_presidents WHERE pres_id = '$pres_id'");
+ while ($row = mysqli_fetch_array($getImg)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
                                                     <div class="ms-3 my-auto">
                                                 <h6 class="text-white mb-0">' . $row['username'] . '</h6>
                                                 <p class="text-xs text-white">Username</p>
                                             </div>
                                         </div>';
-                                                    if (!empty($row['email'])) {
-                                                        echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
-                                                    } else {
-                                                        echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
-                                                    }
-                                                }
-                                            } elseif ($_SESSION['role'] == "Accounting") {
-                                                $getImg = mysqli_query($db, "SELECT * FROM tbl_accounting WHERE account_id = '$account_id'");
-                                                while ($row = mysqli_fetch_array($getImg)) {
-                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
+  if (!empty($row['email'])) {
+   echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
+  } else {
+   echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
+  }
+ }
+} elseif ("Accounting" == $_SESSION['role']) {
+ $getImg = mysqli_query($db, "SELECT * FROM tbl_accounting WHERE account_id = '$account_id'");
+ while ($row = mysqli_fetch_array($getImg)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
                                                     <div class="ms-3 my-auto">
                                                 <h6 class="text-white mb-0">' . $row['username'] . '</h6>
                                                 <p class="text-xs text-white">Username</p>
                                             </div>
                                         </div>';
-                                                    if (!empty($row['email'])) {
-                                                        echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
-                                                    } else {
-                                                        echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
-                                                    }
-                                                }
-                                            } elseif ($_SESSION['role'] == "Registrar") {
-                                                $getImg = mysqli_query($db, "SELECT * FROM tbl_admins WHERE admin_id = '$admin_id'");
-                                                while ($row = mysqli_fetch_array($getImg)) {
-                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
+  if (!empty($row['email'])) {
+   echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
+  } else {
+   echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
+  }
+ }
+} elseif ("Registrar" == $_SESSION['role']) {
+ $getImg = mysqli_query($db, "SELECT * FROM tbl_admins WHERE admin_id = '$admin_id'");
+ while ($row = mysqli_fetch_array($getImg)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
                                                     <div class="ms-3 my-auto">
                                                 <h6 class="text-white mb-0">' . $row['username'] . '</h6>
                                                 <p class="text-xs text-white">Username</p>
                                             </div>
                                         </div>';
-                                                    if (!empty($row['email'])) {
-                                                        echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
-                                                    } else {
-                                                        echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
-                                                    }
-<<<<<<< HEAD
-                                                }
-                                            } elseif ($_SESSION['role'] == "Student") {
-                                                $getImg = mysqli_query($db, "SELECT * FROM tbl_students WHERE stud_id = '$stud_id'");
-                                                while ($row = mysqli_fetch_array($getImg)) {
-                                                    if (!empty(base64_encode($row['img']))) {
-                                                        echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
+  if (!empty($row['email'])) {
+   echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
+  } else {
+   echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
+  }
+ }
+} elseif ("Student" == $_SESSION['role']) {
+ $getImg = mysqli_query($db, "SELECT * FROM tbl_students WHERE stud_id = '$stud_id'");
+ while ($row = mysqli_fetch_array($getImg)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
                                                     <div class="ms-3 my-auto">
                                                 <h6 class="text-white mb-0">' . $row['username'] . '</h6>
                                                 <p class="text-xs text-white">Username</p>
                                             </div>
                                         </div>';
-                                                    } else {
-                                                        echo '<img src="../../assets/img/illustrations/user_prof.jpg" class="avatar avatar-xl border-radius-md">
-                                                        <div class="ms-3 my-auto">
-                                                    <h6 class="text-white mb-0">' . $row['username'] . '</h6>
-                                                    <p class="text-xs text-white">Username</p>
-                                                </div>
-                                            </div>';
-                                                    }
-
-                                                    if (!empty($row['email'])) {
-                                                        echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
-                                                    } else {
-                                                        echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
-                                                    }
-=======
->>>>>>> 8a72d9e4e7a7a2eba2ebf4fd21c250fab776cc80
-                                                }
-                                            }  elseif ($_SESSION['role'] == "Student") {
-                                                $getImg = mysqli_query($db, "SELECT * FROM tbl_students WHERE stud_id = '$stud_id'");
-                                                while ($row = mysqli_fetch_array($getImg)) {
-                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
+  if (!empty($row['email'])) {
+   echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
+  } else {
+   echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
+  }
+ }
+} elseif ("Teacher" == $_SESSION['role']) {
+ $getImg = mysqli_query($db, "SELECT * FROM tbl_faculties_staff WHERE faculty_id = '$faculty_id'");
+ while ($row = mysqli_fetch_array($getImg)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
                                                     <div class="ms-3 my-auto">
                                                 <h6 class="text-white mb-0">' . $row['username'] . '</h6>
                                                 <p class="text-xs text-white">Username</p>
                                             </div>
                                         </div>';
-                                                    if (!empty($row['email'])) {
-                                                        echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
-                                                    } else {
-                                                        echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
-                                                    }
-                                                } 
-                                            }   elseif ($_SESSION['role'] == "Teacher") {
-                                                $getImg = mysqli_query($db, "SELECT * FROM tbl_faculties_staff WHERE faculty_id = '$faculty_id'");
-                                                while ($row = mysqli_fetch_array($getImg)) {
-                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="avatar avatar-xl border-radius-md">
-                                                    <div class="ms-3 my-auto">
-                                                <h6 class="text-white mb-0">' . $row['username'] . '</h6>
-                                                <p class="text-xs text-white">Username</p>
-                                            </div>
-                                        </div>';
-                                                    if (!empty($row['email'])) {
-                                                        echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
-                                                    } else {
-                                                        echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
-                                                    }
-                                                } 
-                                            }?>
+  if (!empty($row['email'])) {
+   echo '<p class="text-sm mt-3 text-center">' . $row['email'] . '</p>';
+  } else {
+   echo '<p class="text-sm mt-3 text-center">Hi! Welcome to SFAC</p>';
+  }
+ }
+} ?>
 
 
                                             </p>

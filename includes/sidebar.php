@@ -6,90 +6,90 @@
             aria-hidden="true" id="iconSidenav"></i>
         <div class="border-0 d-flex align-items-center px-0 mt-3">
             <?php if ("Super Administrator" == $_SESSION['role']) {
-                $getUserName = mysqli_query($db, "SELECT * FROM tbl_super_admins WHERE sa_id = '$sa_id'");
-                while ($row = mysqli_fetch_array($getUserName)) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
+ $getUserName = mysqli_query($db, "SELECT * FROM tbl_super_admins WHERE sa_id = '$sa_id'");
+ while ($row = mysqli_fetch_array($getUserName)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
             <div class="d-flex align-items-start flex-column justify-content-center">
                 <h6 class="mb-0 text-sm">' . $row['name'] . '</h6>
                 <p class="mb-0 text-xs">' . $_SESSION['role'];
-                }
-            } elseif ("Dean" == $_SESSION['role']) {
-                $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_deans.dean_lastname, ', ', tbl_deans.dean_firstname) AS fullname FROM tbl_deans WHERE dean_id = '$dean_id'");
-                while ($row = mysqli_fetch_array($getUserName)) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
+ }
+} elseif ("Dean" == $_SESSION['role']) {
+ $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_deans.dean_lastname, ', ', tbl_deans.dean_firstname) AS fullname FROM tbl_deans WHERE dean_id = '$dean_id'");
+ while ($row = mysqli_fetch_array($getUserName)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
             <div class="d-flex align-items-start flex-column justify-content-center">
                 <h6 class="mb-0 text-sm">' . $row['fullname'] . '</h6>
                 <p class="mb-0 text-xs">' . $_SESSION['role'];
-                }
-            } elseif ("Admission" == $_SESSION['role']) {
-                $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_admissions.admission_lastname, ', ', tbl_admissions.admission_firstname) AS fullname FROM tbl_admissions WHERE admission_id = '$admission_id'");
-                while ($row = mysqli_fetch_array($getUserName)) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
+ }
+} elseif ("Admission" == $_SESSION['role']) {
+ $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_admissions.admission_lastname, ', ', tbl_admissions.admission_firstname) AS fullname FROM tbl_admissions WHERE admission_id = '$admission_id'");
+ while ($row = mysqli_fetch_array($getUserName)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
             <div class="d-flex align-items-start flex-column justify-content-center">
                 <h6 class="mb-0 text-sm">' . $row['fullname'] . '</h6>
                 <p class="mb-0 text-xs">' . $_SESSION['role'];
-                }
-            } elseif ("President" == $_SESSION['role']) {
-                $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_presidents.pres_lastname, ', ', tbl_presidents.pres_firstname) AS fullname FROM tbl_presidents WHERE pres_id = '$pres_id'");
-                while ($row = mysqli_fetch_array($getUserName)) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
+ }
+} elseif ("President" == $_SESSION['role']) {
+ $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_presidents.pres_lastname, ', ', tbl_presidents.pres_firstname) AS fullname FROM tbl_presidents WHERE pres_id = '$pres_id'");
+ while ($row = mysqli_fetch_array($getUserName)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
             <div class="d-flex align-items-start flex-column justify-content-center">
                 <h6 class="mb-0 text-sm">' . $row['fullname'] . '</h6>
                 <p class="mb-0 text-xs">' . $_SESSION['role'];
-                }
-            } elseif ("Accounting" == $_SESSION['role']) {
-                $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_accounting.account_lastname, ', ', tbl_accounting.account_firstname) AS fullname FROM tbl_accounting WHERE account_id = '$account_id'");
-                while ($row = mysqli_fetch_array($getUserName)) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
+ }
+} elseif ("Accounting" == $_SESSION['role']) {
+ $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_accounting.account_lastname, ', ', tbl_accounting.account_firstname) AS fullname FROM tbl_accounting WHERE account_id = '$account_id'");
+ while ($row = mysqli_fetch_array($getUserName)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
             <div class="d-flex align-items-start flex-column justify-content-center">
                 <h6 class="mb-0 text-sm">' . $row['fullname'] . '</h6>
                 <p class="mb-0 text-xs">' . $_SESSION['role'];
-                }
-            } elseif ("Registrar" == $_SESSION['role']) {
-                $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_admins.admin_lastname, ', ', tbl_admins.admin_firstname) AS fullname FROM tbl_admins WHERE admin_id = '$admin_id'");
-                while ($row = mysqli_fetch_array($getUserName)) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
+ }
+} elseif ("Registrar" == $_SESSION['role']) {
+ $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_admins.admin_lastname, ', ', tbl_admins.admin_firstname) AS fullname FROM tbl_admins WHERE admin_id = '$admin_id'");
+ while ($row = mysqli_fetch_array($getUserName)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
             <div class="d-flex align-items-start flex-column justify-content-center">
                 <h6 class="mb-0 text-sm">' . $row['fullname'] . '</h6>
                 <p class="mb-0 text-xs">' . $_SESSION['role'];
-                }
-            } else if ($_SESSION['role'] == "Adviser") {
-                $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties.faculty_lastname, ', ', tbl_faculties.faculty_firstname) AS fullname FROM tbl_faculties WHERE faculty_id = '$faculty_id'");
-                while ($row = mysqli_fetch_array($getUserName)) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
+ }
+} elseif ("Adviser" == $_SESSION['role']) {
+ $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties.faculty_lastname, ', ', tbl_faculties.faculty_firstname) AS fullname FROM tbl_faculties WHERE faculty_id = '$faculty_id'");
+ while ($row = mysqli_fetch_array($getUserName)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
             <div class="d-flex align-items-start flex-column justify-content-center">
                 <h6 class="mb-0 text-sm">' . $row['fullname'] . '</h6>
                 <p class="mb-0 text-xs">' . $_SESSION['role'];
-                }
-            } elseif ("Teacher" == $_SESSION['role']) {
-                $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties_staff.faculty_lastname, ', ', tbl_faculties_staff.faculty_firstname) AS fullname FROM tbl_faculties_staff WHERE faculty_id = '$faculty_id'");
-                while ($row = mysqli_fetch_array($getUserName)) {
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
+ }
+} elseif ("Teacher" == $_SESSION['role']) {
+ $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties_staff.faculty_lastname, ', ', tbl_faculties_staff.faculty_firstname) AS fullname FROM tbl_faculties_staff WHERE faculty_id = '$faculty_id'");
+ while ($row = mysqli_fetch_array($getUserName)) {
+  echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
                            <div class="d-flex align-items-start flex-column justify-content-center">
                                <h6 class="mb-0 text-sm">' . $row['fullname'] . '</h6>
                                <p class="mb-0 text-xs">' . $_SESSION['role'];
-                }
-            } elseif ("Student" == $_SESSION['role']) {
-                $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_students.lastname, ', ', tbl_students.firstname) AS fullname FROM tbl_students WHERE stud_id = '$stud_id'");
-                while ($row = mysqli_fetch_array($getUserName)) {
-                    if (!empty(base64_encode($row['img']))) {
-                        echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
+ }
+} elseif ("Student" == $_SESSION['role']) {
+ $getUserName = mysqli_query($db, "SELECT *, CONCAT(tbl_students.lastname, ', ', tbl_students.firstname) AS fullname FROM tbl_students WHERE stud_id = '$stud_id'");
+ while ($row = mysqli_fetch_array($getUserName)) {
+  if (!empty(base64_encode($row['img']))) {
+   echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" class="border-radius-lg mx-3 shadow zoom" alt="main_logo" style="height: 40px; width: 40px;">
                ';
-                    } else {
-                        echo '<img src="../../assets/img/illustrations/user_prof.jpg" class="border-radius-lg mx-3 shadow zoom"
+  } else {
+   echo '<img src="../../assets/img/illustrations/user_prof.jpg" class="border-radius-lg mx-3 shadow zoom"
                 alt="main_logo" style="height: 40px; width: 40px;">';
-                    }
-                    if (!empty($row['lastname']) && !empty($row['firstname'])) {
-                        echo '<div class="d-flex align-items-start flex-column justify-content-center">
+  }
+  if (!empty($row['lastname']) && !empty($row['firstname'])) {
+   echo '<div class="d-flex align-items-start flex-column justify-content-center">
                         <h6 class="mb-0 text-sm">' . $row['fullname'] . '</h6>
                         <p class="mb-0 text-xs">' . $_SESSION['role'];
-                    } else {
-                        echo '<div class="d-flex align-items-start flex-column justify-content-center">
+  } else {
+   echo '<div class="d-flex align-items-start flex-column justify-content-center">
                         <h6 class="mb-0 text-sm">' . $row['stud_no'] . '</h6>
                         <p class="mb-0 text-xs">' . $_SESSION['role'];
-                    }
-                }
-            } ?></p>
+  }
+ }
+} ?></p>
 
         </div>
 
@@ -98,12 +98,12 @@
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto max-height-vh-90" id="sidenav-collapse-main">
         <ul class="navbar-nav">
-            <?php if ($_SESSION['role'] == "Student") {
-                $q = $db->query("SELECT * FROM tbl_schoolyears SY WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AYear]' AND sem_id = '$_SESSION[ASem]'") or die($db->error);
-                $count = $q->num_rows;
-            }
-            if ("Super Administrator" == $_SESSION['role']) {
-                echo '<li class="nav-item">
+            <?php if ("Student" == $_SESSION['role']) {
+ $q     = $db->query("SELECT * FROM tbl_schoolyears SY WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AYear]' AND sem_id = '$_SESSION[ASem]'") or die($db->error);
+ $count = $q->num_rows;
+}
+if ("Super Administrator" == $_SESSION['role']) {
+ echo '<li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -193,6 +193,16 @@
         </a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link  " href="../student/list.student.php">
+            <div
+                class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="far fa-list-alt text-dark" style="height: 12px; width: 12px;"></i>
+            </div>
+            <span class="nav-link-text ms-1">Students List</span>
+        </a>
+    </li>
+
          <li class="nav-item">
          <a class="nav-link  " href="../teacher/list.teacher.php">
               <div
@@ -267,7 +277,7 @@
                     <span class="nav-link-text ms-1">Add Accounting</span>
                 </a>
             </li>
-            
+
         <li class="nav-item">
         <a class="nav-link  " href="../adviser/add.adviser.php">
             <div
@@ -287,9 +297,19 @@
         <span class="nav-link-text ms-1">Add Faculty</span>
     </a>
 </li>
+
+<li class="nav-item">
+    <a class="nav-link  " href="../student/add.student.php">
+        <div
+            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-user-plus text-dark"></i>
+        </div>
+        <span class="nav-link-text ms-1">Add Student</span>
+    </a>
+</li>
             ';
-            } elseif ("Dean" == $_SESSION['role']) {
-                echo '<li class="nav-item">
+} elseif ("Dean" == $_SESSION['role']) {
+ echo '<li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -367,9 +387,154 @@
                     <span class="nav-link-text ms-1">Department</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                    role="button" aria-expanded="false">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-book-reader text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Curriculum</span>
+                </a>
+
+                <div class="collapse" id="newcurr">
+                    <ul class="nav ms-4 ps-3">
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
+                            </a>
+                            <div class="collapse" id="curri">
+                                <ul class="nav nav-sm flex-column">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BA.PSYC-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BA PSYC</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BEED-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BEED</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSBA-OM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSBA-OM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSCpE-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSCpE</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSCS-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSCS</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSECE-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSECE</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED_English-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-English</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-Filipino-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-Filipino</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-Mathematics-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-Science-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-Science</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-SS-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSEE-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSEE</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSFM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSFM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSHM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSHM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSMM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSMM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/CURRI-MA.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">MA</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/MBA-CURRI.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">MBA</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/MBA.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">MBA-2</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/nursing_curr.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">NURS</span>
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
             ';
-            } elseif ("President" == $_SESSION['role']) {
-                echo '<li class="nav-item">
+} elseif ("President" == $_SESSION['role']) {
+ echo '<li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -410,8 +575,8 @@
                 </a>
             </li>
             ';
-            } elseif ("Admission" == $_SESSION['role']) {
-                echo '<li class="nav-item">
+} elseif ("Admission" == $_SESSION['role']) {
+ echo '<li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -474,8 +639,8 @@
                 </a>
             </li>
             ';
-            } elseif ("Accounting" == $_SESSION['role']) {
-                echo '<li class="nav-item">
+} elseif ("Accounting" == $_SESSION['role']) {
+ echo '<li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -540,8 +705,8 @@
                 </a>
             </li>
             ';
-            } else if ($_SESSION['role'] == "Registrar") {
-                echo '
+} elseif ("Registrar" == $_SESSION['role']) {
+ echo '
             <li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">
                     <div
@@ -733,7 +898,7 @@
 
 
             <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
+                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
                     role="button" aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -742,21 +907,129 @@
                     <span class="nav-link-text ms-1">Curriculum</span>
                 </a>
 
-                <div class="collapse" id="curriculum">
+                <div class="collapse" id="newcurr">
                     <ul class="nav ms-4 ps-3">
 
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curr2020">
+                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
                                 <span class="sidenav-mini-icon"> </span>
                                 <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
                             </a>
-                            <div class="collapse" id="curr2020">
+                            <div class="collapse" id="curri">
                                 <ul class="nav nav-sm flex-column">
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../curriculum/curr2020/stem_curr.php">
+                                        <a class="nav-link" href="../newcurr/BA.PSYC-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">STEM</span>
+                                            <span class="sidenav-normal text-black-50">BA PSYC</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BEED-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BEED</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSBA-OM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSBA-OM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSCpE-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSCpE</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSCS-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSCS</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSECE-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSECE</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED_English-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-English</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-Filipino-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-Filipino</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-Mathematics-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-Science-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-Science</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-SS-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSEE-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSEE</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSFM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSFM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSHM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSHM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSMM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSMM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/CURRI-MA.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">MA</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/MBA-CURRI.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">MBA</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/MBA.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">MBA-2</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/nursing_curr.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">NURS</span>
                                         </a>
                                     </li>
 
@@ -769,8 +1042,12 @@
                 </div>
             </li>
             ';
-            } else if ($_SESSION['role'] == "Adviser") {
-                echo '<li class="nav-item">
+} elseif ("Adviser" == $_SESSION['role']) {
+ $query = mysqli_query($db, "SELECT * FROM tbl_faculties F LEFT JOIN tbl_departments D ON D.department_id = F.department_id WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
+ while ($row = $query->fetch_array()) {
+  $dept_name = $row['department_name'];
+ }
+ echo '<li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -814,8 +1091,372 @@
                     </div>
                     <span class="nav-link-text ms-1">Add Old Subject</span>
                 </a>
+            </li>';
+ if ('CS Department' == $dept_name) {
+  echo '
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                    role="button" aria-expanded="false">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-book-reader text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Curriculum</span>
+                </a>
+
+                <div class="collapse" id="newcurr">
+                    <ul class="nav ms-4 ps-3">
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
+                            </a>
+                            <div class="collapse" id="curri">
+                                <ul class="nav nav-sm flex-column">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSCS-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BS Computer Science</span>
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
             </li>
-            
+            ';} elseif ('BA Department' == $dept_name) {
+  echo '
+                          <li class="nav-item">
+                              <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                                  role="button" aria-expanded="false">
+                                  <div
+                                      class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                      <i class="fas fa-book-reader text-dark"></i>
+                                  </div>
+                                  <span class="nav-link-text ms-1">Curriculum</span>
+                              </a>
+
+                              <div class="collapse" id="newcurr">
+                                  <ul class="nav ms-4 ps-3">
+
+                                      <li class="nav-item">
+                                          <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                              <span class="sidenav-mini-icon"> </span>
+                                              <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
+                                          </a>
+                                          <div class="collapse" id="curri">
+                                              <ul class="nav nav-sm flex-column">
+
+                                                  <li class="nav-item">
+                                                      <a class="nav-link" href="../newcurr/BSBA-OM-2020-2021.php">
+                                                          <span class="sidenav-mini-icon text-xs"> </span>
+                                                          <span class="sidenav-normal text-black-50">BSBA-OM</span>
+                                                      </a>
+                                                  </li>
+                                                  <li class="nav-item">
+                                                      <a class="nav-link" href="../newcurr/BSFM-2020-2021.php">
+                                                          <span class="sidenav-mini-icon text-xs"> </span>
+                                                          <span class="sidenav-normal text-black-50">BSBA-FM</span>
+                                                      </a>
+                                                  </li>
+                                                  <li class="nav-item">
+                                                      <a class="nav-link" href="../newcurr/BSMM-2020-2021.php">
+                                                          <span class="sidenav-mini-icon text-xs"> </span>
+                                                          <span class="sidenav-normal text-black-50">BSBA-MM</span>
+                                                      </a>
+                                                  </li>
+                                                  <li class="nav-item">
+                                                      <a class="nav-link" href="../newcurr/MBA-CURRI.php">
+                                                          <span class="sidenav-mini-icon text-xs"> </span>
+                                                          <span class="sidenav-normal text-black-50">MBA</span>
+                                                      </a>
+                                                  </li>
+                                                  <li class="nav-item">
+                                                      <a class="nav-link" href="../newcurr/MBA.php">
+                                                          <span class="sidenav-mini-icon text-xs"> </span>
+                                                          <span class="sidenav-normal text-black-50">MBA-2</span>
+                                                      </a>
+                                                  </li>
+
+
+                                              </ul>
+                                          </div>
+                                      </li>
+
+                                  </ul>
+                              </div>
+                          </li>
+                          ';} elseif ('EDUC Department' == $dept_name) {
+  echo '
+                                                    <li class="nav-item">
+                                                        <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                                                            role="button" aria-expanded="false">
+                                                            <div
+                                                                class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                                                <i class="fas fa-book-reader text-dark"></i>
+                                                            </div>
+                                                            <span class="nav-link-text ms-1">Curriculum</span>
+                                                        </a>
+
+                                                        <div class="collapse" id="newcurr">
+                                                            <ul class="nav ms-4 ps-3">
+
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                                                        <span class="sidenav-mini-icon"> </span>
+                                                                        <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
+                                                                    </a>
+                                                                    <div class="collapse" id="curri">
+                                                                        <ul class="nav nav-sm flex-column">
+
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link" href="../newcurr/BEED-2020-2021.php">
+                                                                                    <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                    <span class="sidenav-normal text-black-50">BEED</span>
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link" href="../newcurr/BSED_English-2020-2021.php">
+                                                                                    <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                    <span class="sidenav-normal text-black-50">BSED-English</span>
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link" href="../newcurr/BSED-Filipino-2020-2021.php">
+                                                                                    <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                    <span class="sidenav-normal text-black-50">BSED-Filipino</span>
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link" href="../newcurr/BSED-Mathematics-2020-2021.php">
+                                                                                    <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                    <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link" href="../newcurr/BSED-Science-2020-2021.php">
+                                                                                    <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                    <span class="sidenav-normal text-black-50">BSED-Science</span>
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link" href="../newcurr/BSED-SS-2020-2021.php">
+                                                                                    <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                    <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                                                                </a>
+                                                                            </li>
+
+
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                ';} elseif ('HRM Department' == $dept_name) {
+  echo '
+                                            <li class="nav-item">
+                                                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                                                    role="button" aria-expanded="false">
+                                                    <div
+                                                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                                        <i class="fas fa-book-reader text-dark"></i>
+                                                    </div>
+                                                    <span class="nav-link-text ms-1">Curriculum</span>
+                                                </a>
+
+                                                <div class="collapse" id="newcurr">
+                                                    <ul class="nav ms-4 ps-3">
+
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                                                <span class="sidenav-mini-icon"> </span>
+                                                                <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
+                                                            </a>
+                                                            <div class="collapse" id="curri">
+                                                                <ul class="nav nav-sm flex-column">
+
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link" href="../newcurr/BSHM-2020-2021.php">
+                                                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                                                            <span class="sidenav-normal text-black-50">BSHM</span>
+                                                                        </a>
+                                                                    </li>
+
+
+
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </li>
+                ';} elseif ('Bridging Department' == $dept_name) {
+  echo '
+                                            <li class="nav-item">
+                                                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                                                    role="button" aria-expanded="false">
+                                                    <div
+                                                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                                        <i class="fas fa-book-reader text-dark"></i>
+                                                    </div>
+                                                    <span class="nav-link-text ms-1">Curriculum</span>
+                                                </a>
+
+                                                <div class="collapse" id="newcurr">
+                                                    <ul class="nav ms-4 ps-3">
+
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                                                <span class="sidenav-mini-icon"> </span>
+                                                                <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
+                                                            </a>
+                                                            <div class="collapse" id="curri">
+                                                                <ul class="nav nav-sm flex-column">
+
+
+
+
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </li>
+                 ';} elseif ('LA Department' == $dept_name) {
+  echo '
+                                            <li class="nav-item">
+                                                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                                                    role="button" aria-expanded="false">
+                                                    <div
+                                                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                                        <i class="fas fa-book-reader text-dark"></i>
+                                                    </div>
+                                                    <span class="nav-link-text ms-1">Curriculum</span>
+                                                </a>
+
+                                                <div class="collapse" id="newcurr">
+                                                    <ul class="nav ms-4 ps-3">
+
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                                                <span class="sidenav-mini-icon"> </span>
+                                                                <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
+                                                            </a>
+                                                            <div class="collapse" id="curri">
+                                                                <ul class="nav nav-sm flex-column">
+
+
+
+
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </li>
+                ';} elseif ('ENG Department' == $dept_name) {
+  echo '
+                                            <li class="nav-item">
+                                                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                                                    role="button" aria-expanded="false">
+                                                    <div
+                                                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                                        <i class="fas fa-book-reader text-dark"></i>
+                                                    </div>
+                                                    <span class="nav-link-text ms-1">Curriculum</span>
+                                                </a>
+
+                                                <div class="collapse" id="newcurr">
+                                                    <ul class="nav ms-4 ps-3">
+
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                                                <span class="sidenav-mini-icon"> </span>
+                                                                <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
+                                                            </a>
+                                                            <div class="collapse" id="curri">
+                                                                <ul class="nav nav-sm flex-column">
+
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link" href="../newcurr/BSCpE-2020-2021.php">
+                                                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                                                            <span class="sidenav-normal text-black-50">BSCpE</span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link" href="../newcurr/BSECE-2020-2021.php">
+                                                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                                                            <span class="sidenav-normal text-black-50">BSECE</span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link" href="../newcurr/BSEE-2020-2021.php">
+                                                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                                                            <span class="sidenav-normal text-black-50">BSEE</span>
+                                                                        </a>
+                                                                    </li>
+
+
+
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </li>
+                ';} elseif ('NURS Department' == $dept_name) {
+  echo '
+                                            <li class="nav-item">
+                                                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                                                    role="button" aria-expanded="false">
+                                                    <div
+                                                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                                        <i class="fas fa-book-reader text-dark"></i>
+                                                    </div>
+                                                    <span class="nav-link-text ms-1">Curriculum</span>
+                                                </a>
+
+                                                <div class="collapse" id="newcurr">
+                                                    <ul class="nav ms-4 ps-3">
+
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                                                <span class="sidenav-mini-icon"> </span>
+                                                                <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
+                                                            </a>
+                                                            <div class="collapse" id="curri">
+                                                                <ul class="nav nav-sm flex-column">
+
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link" href="../newcurr/nursing_curr.php">
+                                                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                                                            <span class="sidenav-normal text-black-50">BS Nursing</span>
+                                                                        </a>
+                                                                    </li>
+
+
+
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </li>
+                ';}
+ echo '
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#maintenance" class="nav-link" aria-controls="maintenance"
                     role="button" aria-expanded="false">
@@ -844,7 +1485,7 @@
                                 <span class="sidenav-normal font-weight-bold">EDUC</span>
                             </a>
                         </li>
-                                   
+
                                 </ul>
                             </div>
                 <div class="collapse" id="maintenance">
@@ -882,7 +1523,7 @@
             <li class="nav-item mt-3">
             <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Manage Faculty Staff</h6>
         </li>
-           
+
         <li class="nav-item">
         <a class="nav-link  " href="../teacher/list.teacher.php">
             <div
@@ -891,7 +1532,7 @@
             </div>
             <span class="nav-link-text ms-1">Faculty Staff List</span>
         </a>
-    </li>   
+    </li>
 
     <li class="nav-item">
     <a class="nav-link  " href="../teacher/add.teacher.php">
@@ -904,14 +1545,14 @@
 </li>
 
             ';
-            } elseif ("Teacher" == $_SESSION['role']) {
-                echo '<li class="nav-item">
+} elseif ("Teacher" == $_SESSION['role']) {
+ echo '<li class="nav-item">
                                <a class="nav-link  active" href="../dashboard/index.php">
                                    <div
                                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                        <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-               
+
                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                <g transform="translate(-1716.000000, -439.000000)" fill="#FFFFFF" fill-rule="nonzero">
                                                    <g transform="translate(1716.000000, 291.000000)">
@@ -931,13 +1572,13 @@
                                    <span class="nav-link-text ms-1">Dashboard</span>
                                </a>
                            </li>
-               
+
                            <li class="nav-item mt-3">
                                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Update</h6>
                            </li>
                            ';
-            } elseif ("Student" == $_SESSION['role']) {
-                echo '<li class="nav-item">
+} elseif ("Student" == $_SESSION['role']) {
+ echo '<li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -978,8 +1619,8 @@
                 </a>
             </li>
             ';
-                if ($count > 0) {
-                    echo '<li class="nav-item">
+ if ($count > 0) {
+  echo '<li class="nav-item">
                     <a class="nav-link" href="../enrollment/enrollmentInfo.php">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -988,8 +1629,8 @@
                         <span class="nav-link-text ms-1">Enrollment Info.</span>
                     </a>
                 </li>';
-                } else {
-                    echo '<li class="nav-item">
+ } else {
+  echo '<li class="nav-item">
                     <a class="nav-link" href="../enrollment/enrollNow.php">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -998,9 +1639,9 @@
                         <span class="nav-link-text ms-1">Enroll Now</span>
                     </a>
                 </li>';
-                }
-            }
-            ?>
+ }
+}
+?>
 
 
         </ul>
@@ -1008,55 +1649,55 @@
     <div class="sidenav-footer mx-3">
         <hr class="horizontal dark">
         <?php if ("Super Administrator" == $_SESSION['role']) {
-            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="#" data-bs-toggle="tooltip"
+ echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="#" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Sidebar Settings" data-container="body" data-animation="true"><i class="fa fa-cog"></i></a>
         <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../super_admin/edit.SA.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Edit Account" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
-        } elseif ($_SESSION['role'] == "Dean") {
-            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../report/send.report.php" data-bs-toggle="tooltip"
+} elseif ("Dean" == $_SESSION['role']) {
+ echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../report/send.report.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
             <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../dean/edit.dean.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Edit Account" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
-        } elseif ("Admission" == $_SESSION['role']) {
-            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../admission/send.report.php" data-bs-toggle="tooltip"
+} elseif ("Admission" == $_SESSION['role']) {
+ echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../admission/send.report.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
             <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../admission/edit.admission.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Edit Account" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
-        } elseif ("President" == $_SESSION['role']) {
-            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../super_admin/send.report.php" data-bs-toggle="tooltip"
+} elseif ("President" == $_SESSION['role']) {
+ echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../super_admin/send.report.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
             <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../super_admin/edit.pres.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
-        } elseif ("Registrar" == $_SESSION['role']) {
-            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../dean/send.report.php" data-bs-toggle="tooltip"
+} elseif ("Registrar" == $_SESSION['role']) {
+ echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../dean/send.report.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
             <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../registrar/edit.registrar.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Edit Account" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
-        } elseif ($_SESSION['role'] == "Adviser") {
-            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../dean/send.report.php" data-bs-toggle="tooltip"
+} elseif ("Adviser" == $_SESSION['role']) {
+ echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../dean/send.report.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
             <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../adviser/edit.adviser.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Edit Account" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
-        } elseif ($_SESSION['role'] == "Faculty") {
-            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../dean/send.report.php" data-bs-toggle="tooltip"
+} elseif ("Faculty" == $_SESSION['role']) {
+ echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../dean/send.report.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
             <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../adviser/edit.adviser.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"></i></a>;
                 class="fas fa-user-edit"></i></a>';
-        } elseif ("Teacher" == $_SESSION['role']) {
-            echo '<a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../teacher/edit.teacher.php" data-bs-toggle="tooltip"
+} elseif ("Teacher" == $_SESSION['role']) {
+ echo '<a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../teacher/edit.teacher.php" data-bs-toggle="tooltip"
                      data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
                            class="fas fa-user-edit"></i></a>';
-        } elseif ("Student" == $_SESSION['role']) {
-            echo '<a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../student/edit.student.php" data-bs-toggle="tooltip"
+} elseif ("Student" == $_SESSION['role']) {
+ echo '<a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../student/edit.student.php" data-bs-toggle="tooltip"
           data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
-        } ?>
+} ?>
     </div>
 </aside>
