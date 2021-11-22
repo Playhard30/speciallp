@@ -161,6 +161,10 @@ if (isset($_SESSION['emptyImg'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="SASched"
              id="autoClickBtn" hidden>
          </a>';
+} elseif (isset($_SESSION['SDCSched'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="SDCSched"
+             id="autoClickBtn" hidden>
+         </a>';
 }
 
 unset($_SESSION['emptyImg']);
@@ -197,6 +201,7 @@ unset($_SESSION['DEAY']);
 unset($_SESSION['AFill']);
 unset($_SESSION['exist_schedule']);
 unset($_SESSION['SASched']);
+unset($_SESSION['SDCSched']);
 
 
 //   lorenzo
@@ -210,6 +215,19 @@ unset($_SESSION['inquiryAdmitted']);
 ?>
 
 <div class="position-fixed top-2 end-1 z-index-3">
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="SDCSched" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Deleted!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            The Class Schedule has been successfully deleted.
+        </div>
+    </div>
 
     <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="SASched" aria-atomic="true">
         <div class="toast-header border-0">

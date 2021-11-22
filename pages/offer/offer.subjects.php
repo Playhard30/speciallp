@@ -45,9 +45,16 @@ if (!empty($_GET['CID'])) {
                                         <div class="row">
                                             <div class="col-md-7 ms-auto">
                                                 <h5 class="mb-0">Subjects List</h5>
-                                                <p class="text-sm mb-0">
-                                                    Offer/Open Subjects for BS in Hospitality Management
-                                                </p>
+
+                                                <?php if (!empty($_GET['CID'])) {
+                                                    $query = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]' AND department_id = '$_SESSION[ADepartment_id]'") or die($db->error);
+                                                    while ($row2 = $query->fetch_array()) {
+                                                        echo '<p class="text-sm mb-0">
+                                                    Offer/Open Subjects for ' . $row2['course'] . '
+                                                </p>';
+                                                    }
+                                                } ?>
+
                                             </div>
 
                                             <div class="col-md-3 px-0 g-0 mt-3 my-lg-0">
@@ -73,10 +80,12 @@ if (!empty($_GET['CID'])) {
                                                         } ?>
                                                     </select>
 
-                                                    <?php $getCour = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]' AND department_id = '$_SESSION[ADepartment_id]'") or die($db->error);
-                                                    $count1 = $getCour->num_rows;
-                                                    if (!empty($_GET['CID']) && $count1 > 0) {
-                                                        echo '<input hidden type="text" name="CID" value="' . $_GET['CID'] . '">';
+                                                    <?php if (!empty($_GET['CID'])) {
+                                                        $getCour = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]' AND department_id = '$_SESSION[ADepartment_id]'") or die($db->error);
+                                                        $count1 = $getCour->num_rows;
+                                                        if (!empty($_GET['CID']) && $count1 > 0) {
+                                                            echo '<input hidden type="text" name="CID" value="' . $_GET['CID'] . '">';
+                                                        }
                                                     } ?>
 
                                                 </div>
@@ -88,6 +97,9 @@ if (!empty($_GET['CID'])) {
                                                         class="fas fa-eye"> </i>
                                                     &nbsp;Show</button>
                                             </div>
+                                        </div>
+                                        <div id="divRes">
+
                                         </div>
                                     </form>
                                 </div>
@@ -181,7 +193,7 @@ if (!empty($_GET['CID'])) {
                                                 role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
                                                 <div class="modal-dialog modal-danger modal-dialog-centered modal-"
                                                     role="document" style="max-width:850px !important;">
-                                                    <form action="offerData/ctrl.offer.BSHM.php" method="POST">
+                                                    <form action="offerData/ctrl.offer.subjects.php" method="POST">
                                                         <div class=" modal-content">
                                                             <div class="modal-header bg-gray-100">
                                                                 <h6 class="modal-title text-dark text-uppercase"
@@ -264,7 +276,8 @@ if (!empty($_GET['CID'])) {
                                                                                     <label
                                                                                         class="mt-3">Instructor</label>
                                                                                     <select class="form-control multi"
-                                                                                        name="inst">
+                                                                                        name="instr"
+                                                                                        id="multi_instr<?php echo $m; ?>">
                                                                                         <option value="" selected
                                                                                             disabled>Select Instructor
                                                                                         </option>
@@ -279,7 +292,7 @@ if (!empty($_GET['CID'])) {
                                                                             <div class="row">
                                                                                 <div class="col-sm-6">
                                                                                     <div class="form-check mt-3">
-                                                                                        <label class="">Special
+                                                                                        <label>Special
                                                                                             Tutorial</label>
                                                                                         <input class="form-check-input"
                                                                                             name="special_tut[]"
@@ -329,7 +342,7 @@ if (!empty($_GET['CID'])) {
                                                 aria-labelledby="modal-notification" aria-hidden="true">
                                                 <div class="modal-dialog modal-danger modal-dialog-centered modal-"
                                                     role="document" style="max-width:850px !important;">
-                                                    <form action="offerData/ctrl.offer.BSHM.php" method="POST">
+                                                    <form action="offerData/ctrl.offer.subjects.php" method="POST">
                                                         <div class=" modal-content">
                                                             <div class="modal-header bg-gray-100">
                                                                 <h6 class="modal-title text-dark text-uppercase"

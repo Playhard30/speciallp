@@ -820,6 +820,13 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                        <a class="nav-link" href="../offer/list.classSched.php">
+                            <span class="sidenav-mini-icon"> </span>
+                            <span class="sidenav-normal font-weight-bold">Class Schedules</span>
+                        </a>
+                    </li>
+
                     </ul>
                 </div>
             </li>
@@ -874,7 +881,7 @@
                     $course_id = $row['course_id'];
                     if ($_SESSION['ADepartment_id'] == $row['department_id']) {
                         echo '  <li class="nav-item">
-                            <a class="nav-link" href="../offer/offer.' . $course_abv . '.php?CID=' . $course_id . '">
+                            <a class="nav-link" href="../offer/offer.subjects.php?CID=' . $course_id . '">
                                 <span class="sidenav-mini-icon text-xs"> </span>
                                 <span class="sidenav-normal font-weight-bold">' . $course_abv . '</span>
                             </a>

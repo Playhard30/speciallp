@@ -110,7 +110,7 @@ if (!empty($_SESSION['role'])) {
                                 <li class="nav-item">
                                     <a class="nav-link me-2" href="../inquiry/online.inquiry.php">
                                         <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
-                                        Online Inquiry 
+                                        Online Inquiry
                                     </a>
                                 </li>
                             </ul>
@@ -140,7 +140,7 @@ if (!empty($_SESSION['role'])) {
                                     <p class="mb-0">Enter your email and password to sign in</p>
                                 </div>
 
-                                <?php if (isset($_GET['sessionP'])) {
+                                <?php if (isset($_SESSION['sessionP'])) {
                                     echo '<div class="alert alert-dismissible text-white mt-2 mb-0 " role="alert"
                                     style="background-color:#f74567;"><span class="alert-icon text-sm"><i
                                             class="fas fa-exclamation-triangle"> </i> The password you entered is
@@ -150,7 +150,8 @@ if (!empty($_SESSION['role'])) {
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>';
-                                } else if (isset($_GET['sessionUP'])) {
+                                    unset($_SESSION['sessionP']);
+                                } else if (isset($_SESSION['sessionUP'])) {
                                     echo '<div class="alert alert-dismissible text-white mt-2 mb-0 " role="alert"
                                     style="background-color:#f74567;"><span class="alert-icon text-sm"><i
                                             class="fas fa-exclamation-triangle"> </i> Invalid username and password.</span>
@@ -159,6 +160,7 @@ if (!empty($_SESSION['role'])) {
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>';
+                                    unset($_SESSION['sessionUP']);
                                 }
 
                                 ?>

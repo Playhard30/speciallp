@@ -40,7 +40,8 @@ if (isset($_POST['signin'])) {
         while ($row = mysqli_fetch_array($super_admin)) {
             $hashedPwdCheck = password_verify($password, $row['password']);
             if ($hashedPwdCheck == false) {
-                header("location: ../sign-in.php?sessionP");
+                $_SESSION['sessionP'] = true;
+                header("location: ../sign-in.php");
                 exit();
             } elseif ($hashedPwdCheck == true) {
                 $_SESSION['role'] = "Super Administrator";
@@ -53,7 +54,8 @@ if (isset($_POST['signin'])) {
         while ($row = mysqli_fetch_array($dean)) {
             $hashedPwdCheck = password_verify($password, $row['password']);
             if ($hashedPwdCheck == false) {
-                header("location: ../sign-in.php?sessionP");
+                $_SESSION['sessionP'] = true;
+                header("location: ../sign-in.php");
                 exit();
             } elseif ($hashedPwdCheck == true) {
                 $_SESSION['role'] = "Dean";
@@ -66,7 +68,8 @@ if (isset($_POST['signin'])) {
         while ($row = mysqli_fetch_array($admission)) {
             $hashedPwdCheck = password_verify($password, $row['password']);
             if ($hashedPwdCheck == false) {
-                header("location: ../sign-in.php?sessionP");
+                $_SESSION['sessionP'] = true;
+                header("location: ../sign-in.php");
                 exit();
             } elseif ($hashedPwdCheck == true) {
                 $_SESSION['role'] = "Admission";
@@ -79,7 +82,8 @@ if (isset($_POST['signin'])) {
         while ($row = mysqli_fetch_array($accounting)) {
             $hashedPwdCheck = password_verify($password, $row['password']);
             if ($hashedPwdCheck == false) {
-                header("location: ../sign-in.php?sessionP");
+                $_SESSION['sessionP'] = true;
+                header("location: ../sign-in.php");
                 exit();
             } elseif ($hashedPwdCheck == true) {
                 $_SESSION['role'] = "Accounting";
@@ -91,7 +95,8 @@ if (isset($_POST['signin'])) {
         while ($row = mysqli_fetch_array($admin)) {
             $hashedPwdCheck = password_verify($password, $row['password']);
             if ($hashedPwdCheck == false) {
-                header("location: ../sign-in.php?sessionP");
+                $_SESSION['sessionP'] = true;
+                header("location: ../sign-in.php");
                 exit();
             } elseif ($hashedPwdCheck == true) {
                 $_SESSION['role'] = "Registrar";
@@ -104,7 +109,8 @@ if (isset($_POST['signin'])) {
         while ($row = mysqli_fetch_array($adviser)) {
             $hashedPwdCheck = password_verify($password, $row['password']);
             if ($hashedPwdCheck == false) {
-                header("location: ../sign-in.php?sessionP");
+                $_SESSION['sessionP'] = true;
+                header("location: ../sign-in.php");
                 exit();
             } elseif ($hashedPwdCheck == true) {
                 $_SESSION['role'] = "Adviser";
@@ -118,7 +124,8 @@ if (isset($_POST['signin'])) {
         while ($row = mysqli_fetch_array($student)) {
             $hashedPwdCheck = password_verify($password, $row['password']);
             if (false == $hashedPwdCheck) {
-                header("location: ../sign-in.php?sessionP");
+                $_SESSION['sessionP'] = true;
+                header("location: ../sign-in.php");
                 exit();
             } elseif (true == $hashedPwdCheck) {
                 $_SESSION['role']   = "Student";
@@ -131,7 +138,8 @@ if (isset($_POST['signin'])) {
         while ($row = mysqli_fetch_array($president)) {
             $hashedPwdCheck = password_verify($password, $row['password']);
             if (false == $hashedPwdCheck) {
-                header("location: ../sign-in.php?sessionP");
+                $_SESSION['sessionP'] = true;
+                header("location: ../sign-in.php");
                 exit();
             } elseif (true == $hashedPwdCheck) {
                 $_SESSION['role']   = "President";
@@ -144,7 +152,8 @@ if (isset($_POST['signin'])) {
         while ($row = mysqli_fetch_array($teacher)) {
             $hashedPwdCheck = password_verify($password, $row['password']);
             if (false == $hashedPwdCheck) {
-                header("location: ../sign-in.php?sessionP");
+                $_SESSION['sessionP'] = true;
+                header("location: ../sign-in.php");
                 exit();
             } elseif (true == $hashedPwdCheck) {
 
@@ -155,7 +164,8 @@ if (isset($_POST['signin'])) {
             header("location: ../../dashboard/index.php");
         }
     } else {
-        header("location: ../sign-in.php?sessionUP");
+        $_SESSION['sessionUP'] = true;
+        header("location: ../sign-in.php");
         exit();
     }
 }

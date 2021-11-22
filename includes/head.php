@@ -31,8 +31,17 @@ require '../../includes/conn.php';
         overflow: hidden;
     }
 
+
     body {
         font-weight: 400;
+        background: url(../../assets/img/curved-images/main.jpg) !important;
+        background-repeat: no-repeat !important;
+        background-position-y: top !important;
+        background-size: cover !important;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+
     }
 
     .bg-gradient-red-orange {

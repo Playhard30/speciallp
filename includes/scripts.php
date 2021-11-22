@@ -18,20 +18,24 @@ document.cookie = "subj_id= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 document.cookie = "inst= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 </script>
 <!-- Cookies for Modal Select | Schedule Subject -->
-<script type="text/javascript">
-document.querySelector('.multi').addEventListener('change', function() {
-    var x = this.value;
-    document.cookie = "instructor=" + x;
-});
+<script>
+var num = 1;
+while (num <= <?php echo $m; ?>) {
+    document.querySelector('#multi_instr' + num).addEventListener('change', function() {
+        var instructor_id = this.value;
+        document.cookie = "instructor=" + instructor_id;
+    });
 
+    num++;
+}
 document.querySelector('.multi_sub').addEventListener('change', function() {
-    var y = this.value;
-    document.cookie = "subj_id=" + y;
+    var subID = this.value;
+    document.cookie = "subj_id=" + subID;
 });
 
 document.querySelector('.multi_inst').addEventListener('change', function() {
-    var z = this.value;
-    document.cookie = "inst=" + z;
+    var instID = this.value;
+    document.cookie = "inst=" + instID;
 });
 </script>
 <script>
