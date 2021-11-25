@@ -16,8 +16,8 @@ if (isset($_POST['submit'])) {
     $course_id = $db->real_escape_string($_POST['course']);
     $year_id = $db->real_escape_string($_POST['level']);
     $status = $db->real_escape_string($_POST['status']);
-    $ay_id = $_SESSION['AYear'];
-    $sem_id = $_SESSION['ASem'];
+    $ay_id = $_SESSION['AC'];
+    $sem_id = $_SESSION['S'];
     $date_enrolled = date("Y-m-d");
     $remark = $db->real_escape_string("Pending");
 

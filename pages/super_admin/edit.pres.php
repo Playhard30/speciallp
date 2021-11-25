@@ -61,12 +61,11 @@ $_SESSION['pres_id'] = $pres_id;
                                             <?php echo $row['fullname'];  ?>
                                         </h5>
                                         <p class="mb-0 font-weight-bold text-sm">
-                                            Admission
+                                            President
                                         </p>
                                     </div>
                                 </div>
-                                <form method="POST" enctype="multipart/form-data"
-                                    action="userData/ctrl.edit.pres.php"
+                                <form method="POST" enctype="multipart/form-data" action="userData/ctrl.edit.pres.php"
                                     class="col-sm-auto ms-lg-auto mt-sm-0 ms-sm-0 mt-3 justify-content-sm-center">
 
                                     <button class="btn btn-outline-primary me-2 mb-0"><input type="file"
@@ -107,8 +106,7 @@ $_SESSION['pres_id'] = $pres_id;
                                         <label class="form-label">Middlename</label>
                                         <div class="input-group">
                                             <input id="middlename" name="mname" class="form-control" type="text"
-                                                placeholder="Middlename"
-                                                value="<?php echo $row['pres_middlename']; ?>">
+                                                placeholder="Middlename" value="<?php echo $row['pres_middlename']; ?>">
                                         </div>
                                     </div>
 
@@ -144,8 +142,7 @@ $_SESSION['pres_id'] = $pres_id;
 
 
                         <!-- Card Change Password -->
-                        <form class="card mt-4 mb-5" id="password" method="POST"
-                            action="userData/ctrl.edit.pres.php">
+                        <form class="card mt-4 mb-5" id="password" method="POST" action="userData/ctrl.edit.pres.php">
                             <div class="card-header">
                                 <h5>Change Password</h5>
                             </div>

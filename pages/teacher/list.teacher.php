@@ -45,6 +45,7 @@ include '../../includes/session.php';
                                         style="width:100%">
                                         <thead class="thead-light">
                                             <tr>
+                                                <th></th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     I.D. No.</th>
@@ -87,6 +88,7 @@ include '../../includes/session.php';
                                             ?>
 
                                             <tr>
+                                                <td></td>
                                                 <td class="text-sm font-weight-normal">
                                                     <?php echo $row['faculty_no'] ?>
                                                 </td>

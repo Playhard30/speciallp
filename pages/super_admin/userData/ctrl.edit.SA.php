@@ -22,11 +22,30 @@ if (isset($_POST['save'])) {
 
     $name = mysqli_real_escape_string($db, $_POST['name']);
     $email = mysqli_real_escape_string($db, $_POST['email']);
-    $username = mysqli_real_escape_string($db, $_POST['username']);;
+    $username = mysqli_real_escape_string($db, $_POST['username']);
 
-    $updateInfo = mysqli_query($db, "UPDATE tbl_super_admins SET name = '$name', email='$email', username='$username' WHERE sa_id = '$sa_id'") or die(mysqli_error($db));
-    $_SESSION['successUpdate'] = true;
-    header("location: ../edit.SA.php");
+    $getAllUsername = mysqli_query($db, "SELECT username FROM tbl_admissions WHERE username = '$username' UNION ALL SELECT username FROM tbl_deans WHERE username = '$username' UNION ALL SELECT username FROM tbl_faculties WHERE username = '$username' UNION ALL SELECT username FROM tbl_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_students WHERE username = '$username' UNION ALL SELECT username FROM tbl_presidents WHERE username = '$username' UNION ALL SELECT username FROM tbl_accounting WHERE username = '$username' UNION ALL SELECT username FROM tbl_faculties_staff WHERE username = '$username'") or die(mysqli_error($db));
+    $check = mysqli_num_rows($getAllUsername);
+
+    if ($check == 0) {
+        $q = $db->query("SELECT * FROM tbl_super_admins WHERE username = '$username'") or die($db->error);
+        $check2 = mysqli_num_rows($q);
+        while ($row = mysqli_fetch_array($q)) {
+            $getID = $row['sa_id'];
+        }
+        if ($getID == $sa_id || $check2 < 1) {
+
+            $updateInfo = mysqli_query($db, "UPDATE tbl_super_admins SET name = '$name', email='$email', username='$username' WHERE sa_id = '$sa_id'") or die(mysqli_error($db));
+            $_SESSION['successUpdate'] = true;
+            header("location: ../edit.SA.php");
+        } else {
+            $_SESSION['usernameExist'] = true;
+            header("location: ../edit.SA.php");
+        }
+    } else {
+        $_SESSION['usernameExist'] = true;
+        header("location: ../edit.SA.php");
+    }
 }
 
 if (isset($_POST['savePass'])) {

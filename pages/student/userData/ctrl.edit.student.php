@@ -111,19 +111,32 @@ if (isset($_POST['save_account'])) {
     $hashedPwd    = password_hash($password, PASSWORD_DEFAULT);
     $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
 
-    $result2 = $db->query("SELECT * FROM tbl_students WHERE username = '$username'") or die($db->error);
-    $count2 = $result2->num_rows;
-    while ($row = mysqli_fetch_array($result2)) {
-        $checkID = $row['stud_id'];
-    }
 
-    if ($count2 < 1 || $checkID == $stud_id) {
-        $query = $db->query("UPDATE tbl_students SET username = '$username', password = '$hashedPwd' , updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE stud_id = '$stud_id'") or die($db->error);
-        $_SESSION['successUpdate'] = true;
-        if ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == 'Adviser') {
-            header("location: ../edit.student.php?stud_id=" . $stud_id);
+    $getAllUsername = mysqli_query($db, "SELECT username FROM tbl_admissions WHERE username = '$username' UNION ALL SELECT username FROM tbl_deans WHERE username = '$username' UNION ALL SELECT username FROM tbl_faculties WHERE username = '$username' UNION ALL SELECT username FROM tbl_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_presidents WHERE username = '$username' UNION ALL SELECT username FROM tbl_super_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_accounting WHERE username = '$username' UNION ALL SELECT username FROM tbl_faculties_staff WHERE username = '$username'") or die(mysqli_error($db));
+    $check = mysqli_num_rows($getAllUsername);
+
+    if ($check == 0) {
+        $q = $db->query("SELECT * FROM tbl_students WHERE username = '$username'") or die($db->error);
+        $check2 = mysqli_num_rows($q);
+        while ($row = mysqli_fetch_array($q)) {
+            $getID = $row['stud_id'];
+        }
+        if ($getID == $stud_id || $check2 < 1) {
+
+            $query = $db->query("UPDATE tbl_students SET username = '$username', password = '$hashedPwd' , updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE stud_id = '$stud_id'") or die($db->error);
+            $_SESSION['successUpdate'] = true;
+            if ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == 'Adviser') {
+                header("location: ../edit.student.php?stud_id=" . $stud_id);
+            } else {
+                header("location: ../edit.student.php");
+            }
         } else {
-            header("location: ../edit.student.php");
+            $_SESSION['usernameExist'] = true;
+            if ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == 'Adviser') {
+                header("location: ../edit.student.php?stud_id=" . $stud_id);
+            } else {
+                header("location: ../edit.student.php");
+            }
         }
     } else {
         $_SESSION['usernameExist'] = true;

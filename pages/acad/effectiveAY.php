@@ -79,7 +79,7 @@ include '../../includes/session.php';
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $query = $db->query("SELECT * FROM tbl_effective_acadyear") or die($db->error);
+                                            <?php $query = $db->query("SELECT * FROM tbl_effective_acadyear ORDER BY eay DESC") or die($db->error);
                                             while ($row = $query->fetch_array()) {
                                                 $id = $row['eay_id']; ?>
                                             <tr>

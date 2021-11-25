@@ -6,7 +6,7 @@ include '../../includes/head.php';
 
 $_SESSION['stud_id'] = $stud_id;
 
-$q = $db->query("SELECT * FROM tbl_schoolyears SY WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AYear]' AND sem_id = '$_SESSION[ASem]'") or die($db->error);
+$q = $db->query("SELECT * FROM tbl_schoolyears SY WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
 $count = $q->num_rows;
 
 if ($count > 0) {

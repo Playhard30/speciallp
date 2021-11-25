@@ -61,7 +61,7 @@ $_SESSION['faculty_id'] = $faculty_id;
                                             <?php echo $row['fullname'];  ?>
                                         </h5>
                                         <p class="mb-0 font-weight-bold text-sm">
-                                            Faculty
+                                            Teacher
                                         </p>
                                     </div>
                                 </div>
@@ -193,11 +193,14 @@ $_SESSION['faculty_id'] = $faculty_id;
                                 <h5>Change Password</h5>
                             </div>
                             <div class="card-body pt-0">
-                                <label class="form-label">Current password</label>
+                                <?php if ($_SESSION['role'] == "Teacher") {
+                                    echo '<label class="form-label">Current password</label>
                                 <div class="form-group">
                                     <input class="form-control" type="password" name="oldPass"
                                         placeholder="Current password" required>
-                                </div>
+                                </div>';
+                                } ?>
+
                                 <label class="form-label">New password</label>
                                 <div class="form-group">
                                     <input class="form-control" type="password" name="password"

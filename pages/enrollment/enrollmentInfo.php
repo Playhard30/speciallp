@@ -5,7 +5,7 @@ include '../../includes/session.php';
 include '../../includes/head.php';
 $_SESSION['stud_id'] = $stud_id;
 
-$q = $db->query("SELECT * FROM tbl_schoolyears SY WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AYear]' AND sem_id = '$_SESSION[ASem]'") or die($db->error);
+$q = $db->query("SELECT * FROM tbl_schoolyears SY WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
 $count = $q->num_rows;
 
 if ($count == 0) {
@@ -47,12 +47,10 @@ if ($count == 0) {
                             <div class="card card-body blur shadow-blur mx-4 mt-n5 overflow-hidden">
                                 <div class="row gx-4 justify-content-evenly">
                                     <?php $getSY = $db->query("SELECT *, CONCAT(S.firstname, ' ', S.middlename, ' ', S.lastname) AS fullname FROM tbl_schoolyears SY
-                                    LEFT JOIN tbl_acadyears AY ON AY.ay_id = SY.ay_id
                                     LEFT JOIN tbl_year_levels YL ON YL.year_id = SY.year_id
-                                    LEFT JOIN tbl_semesters SEM ON SEM.sem_id = SY.sem_id
                                     LEFT JOIN tbl_students S ON S.stud_id = SY.stud_id
                                     LEFT JOIN tbl_courses C ON C.course_id = SY.course_id
-                                    WHERE SY.stud_id = '$stud_id' AND SY.ay_id = '$_SESSION[AYear]' AND SY.sem_id = '$_SESSION[ASem]'") or die($db->error);
+                                    WHERE SY.stud_id = '$stud_id' AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
                                     while ($row = $getSY->fetch_array()) {
                                         $course_id = $row['course_id'];
                                     ?>
@@ -102,7 +100,7 @@ if ($count == 0) {
                                     <div class="col-auto my-2">
                                         <div class="h-100">
                                             <h6 class="mb-1">
-                                                <?php echo $row['academic_year']; ?>
+                                                <?php echo $row['ay_id']; ?>
                                             </h6>
                                             <p class="mb-0 font-weight-bold text-xs text-center">
                                                 A.Y.
@@ -112,7 +110,7 @@ if ($count == 0) {
                                     <div class="col-auto my-2">
                                         <div class="h-100">
                                             <h6 class="mb-1">
-                                                <?php echo $row['semester']; ?>
+                                                <?php echo $row['sem_id']; ?>
                                             </h6>
                                             <p class="mb-0 font-weight-bold text-xs text-center">
                                                 Semester
@@ -152,7 +150,7 @@ if ($count == 0) {
 
                             <!-- Subjects List -->
                             <div class="card shadow shadow-xl mt-4">
-                                <form action="userData/ctrl.add.del.subject.php" method="POST">
+                                <form action="userData/ctrl.enrollmentInfo.php" method="POST">
                                     <!-- Card header -->
                                     <div class="card-header">
                                         <div class="d-lg-flex">

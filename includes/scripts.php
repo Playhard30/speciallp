@@ -171,6 +171,7 @@ if (document.getElementById('academic_year')) {
     var element = document.getElementById('academic_year');
     const example = new Choices(element, {
         searchPlaceholderValue: "Search...",
+        shouldSort: false,
     });
 }
 if (document.getElementById('semester')) {

@@ -70,11 +70,15 @@ if (!empty($_GET['CID'])) {
                                                             while ($row = $getEAY->fetch_array()) {
                                                                 echo '<option selected value="' . $row['eay'] . '">' . $row['eay'] . '</option>';
                                                             }
+                                                            $getEAY2 = $db->query("SELECT * FROM tbl_effective_acadyear WHERE eay NOT IN ('$_GET[eay]') ORDER BY eay DESC") or die($db->error);
+                                                            while ($row = $getEAY2->fetch_array()) {
+                                                                echo '<option value="' . $row['eay'] . '">' . $row['eay'] . '</option>';
+                                                            }
                                                         } else {
-                                                            echo '<option selected disabled value="">Select a year
+                                                            echo '<option selected  value="">Select a year
                                                         </option>';
-                                                            $getEAY = $db->query("SELECT * FROM tbl_effective_acadyear") or die($db->error);
-                                                            while ($row = $getEAY->fetch_array()) {
+                                                            $getEAY3 = $db->query("SELECT * FROM tbl_effective_acadyear ORDER BY eay DESC") or die($db->error);
+                                                            while ($row = $getEAY3->fetch_array()) {
                                                                 echo '<option value="' . $row['eay'] . '">' . $row['eay'] . '</option>';
                                                             }
                                                         } ?>
