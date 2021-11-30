@@ -2,7 +2,6 @@
 include '../../../includes/conn.php';
 session_start();
 
-
 if (isset($_POST['submit'])) {
 
     $year         = mysqli_real_escape_string($db, $_POST['years']);

@@ -21,7 +21,11 @@ include '../../includes/head.php';
 require '../../includes/conn.php';
 session_start();
 ?>
-
+<style>
+    html {
+        overflow: scroll;
+    }
+</style>
 <title>
         Online Inquiry | Saint Francis of Assisi College - Las Piñas
 </title>
@@ -45,7 +49,7 @@ session_start();
     </nav>
     <!-- End Navbar -->
     <section class="min-vh-100 mb-8">
-        <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('../../assets/img/sfaclaspi.jpg');">
+        <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg">
             <span class="mask bg-gradient-dark opacity-6"></span>
             <div class="container">
                 <div class="row justify-content-center">
@@ -65,12 +69,10 @@ session_start();
                                     <div class="col-sm-8">
                                         <label class="form-label mt-4">Course</label>
                                         <select class="form-control" required name="courses" id="courses">
-                                            <option disabled selected>Select Course</option>
+                                            <option disabled selected value="">Select Course</option>
                                             <?php $getCourse = mysqli_query($db, "SELECT * FROM tbl_courses");
                                             while ($row = mysqli_fetch_array($getCourse)) {
-                                            ?>
-                                                <option value="<?php echo $row['course_id']; ?>">
-                                                <?php echo $row['course'];
+                                                echo '<option value="' . $row['course_id'] . '">' . $row['course'] . '</option>';
                                             } ?>
                                                 </option>
                                         </select>
@@ -78,12 +80,10 @@ session_start();
                                     <div class="col-sm-4">
                                         <label class="form-label mt-4">Year</label>
                                         <select class="form-control" required name="years" id="year_lvl">
-                                            <option disabled selected>Select Year</option>
+                                            <option disabled selected value="">Select Year</option>
                                             <?php $getYear = mysqli_query($db, "SELECT * FROM tbl_year_levels");
                                             while ($row = mysqli_fetch_array($getYear)) {
-                                            ?>
-                                                <option value="<?php echo $row['year_id']; ?>">
-                                                <?php echo $row['year_level'];
+                                                echo '<option value="' . $row['year_id'] . '">' . $row['year_level'] . '</option>';
                                             } ?>
                                                 </option>
                                         </select>
@@ -449,7 +449,7 @@ session_start();
     </section>
 
     <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
-    <?php include '../../includes/footer.php'; ?>
+    
     <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
     <!--   Core JS Files   -->
     <?php include '../../includes/scripts.php'; ?>
