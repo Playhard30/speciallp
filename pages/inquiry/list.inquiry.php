@@ -51,6 +51,8 @@ include '../../includes/session.php';
                                                     Fullname</th>
                                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Course and Year Applying To</th>
+                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                    Semester and Academic Year Applied</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Contact Number</th>
@@ -68,6 +70,8 @@ include '../../includes/session.php';
                                         </thead>
                                         <tbody>
                                             <?php
+
+
                                             $listInquiries = mysqli_query($db, "SELECT *, CONCAT(tbl_online_registrations.lastname, ', ', tbl_online_registrations.firstname, ' ', tbl_online_registrations.middlename) AS fullname 
                                             FROM tbl_online_registrations
                                             LEFT JOIN tbl_courses ON tbl_courses.course_id = tbl_online_registrations.course_id
@@ -82,6 +86,8 @@ include '../../includes/session.php';
                                                     <?php echo $row['fullname']; ?></td>
                                                 <td class="text-sm font-weight-normal">
                                                     <?php echo $row['course_abv'].' - '.$row['year_abv']; ?></td>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['semester'].', '. $row['acad_year']; ?></td>
                                                 <td class="text-sm font-weight-normal">
                                                     <?php echo $row['contact']; ?></td>
                                                 <td class="text-sm font-weight-normal">
