@@ -81,8 +81,7 @@ include '../../includes/session.php';
                                         <tbody>
 
                                             <?php
-                                            // Count for dropdown
-                                            $Dnum = 0;
+
                                             // Query Pending Students
                                             $pendStud = $db->query("SELECT *, CONCAT(S.firstname, ' ', S.middlename, ' ', S.lastname) AS fullname
                                             FROM tbl_schoolyears SY
@@ -92,7 +91,7 @@ include '../../includes/session.php';
                                             WHERE remark IN ('Pending') AND C.department_id = '$_SESSION[ADepartment_id]' AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')") or die($db->error);
                                             while ($row = $pendStud->fetch_array()) {
                                                 $id = $row['sy_id'];
-                                                $Dnum++;
+
                                             ?>
                                             <!-- ROWS -->
                                             <tr>
@@ -189,7 +188,7 @@ include '../../includes/session.php';
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <a href="userData/ctrl.del.student.php?stud_id=<?php echo $id; ?>"
+                                                            <a href="userData/ctrl.del.pendingStud.php?id=<?php echo $id; ?>"
                                                                 class="btn btn-white text-white bg-danger">Delete</a>
                                                             <button type="button"
                                                                 class="btn btn-link text-secondary btn-outline-dark ml-auto"
