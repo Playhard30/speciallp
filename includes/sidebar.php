@@ -389,7 +389,7 @@ if ("Super Administrator" == $_SESSION['role']) {
             </li>
 
             <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
                     role="button" aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -397,16 +397,121 @@ if ("Super Administrator" == $_SESSION['role']) {
                     </div>
                     <span class="nav-link-text ms-1">Curriculum</span>
                 </a>
+                <div class="collapse" id="curriculum">
+                <ul class="nav ms-4 ps-3">
 
-                <div class="collapse" id="newcurr">
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                            <span class="sidenav-mini-icon"> </span>
+                            <span class="sidenav-normal font-weight-bold">2018-2019 Curriculum</span>
+                        </a>
+                        <div class="collapse" id="oldcurri">
+                            <ul class="nav nav-sm flex-column">
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BEED-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BEED</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSBA-FM-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-FM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSBA-MM-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-MM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/bsba-om-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-OM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSCpE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSCS</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSECE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSECE</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-English-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-English</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-Filipino-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-Filipino</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-Mathematics-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-SCIENCE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-Science</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-Social-Studies-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSEE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSEE</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSHM-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSHM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/cs-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSCS</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/psych-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BS Psychology</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="collapse" id="curriculum">
                     <ul class="nav ms-4 ps-3">
 
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
                                 <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
                             </a>
-                            <div class="collapse" id="curri">
+                            <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
 
                                     <li class="nav-item">
@@ -898,7 +1003,7 @@ if ("Super Administrator" == $_SESSION['role']) {
 
 
             <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
                     role="button" aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -906,16 +1011,121 @@ if ("Super Administrator" == $_SESSION['role']) {
                     </div>
                     <span class="nav-link-text ms-1">Curriculum</span>
                 </a>
+                <div class="collapse" id="curriculum">
+                <ul class="nav ms-4 ps-3">
 
-                <div class="collapse" id="newcurr">
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                            <span class="sidenav-mini-icon"> </span>
+                            <span class="sidenav-normal font-weight-bold">2018-2019 Curriculum</span>
+                        </a>
+                        <div class="collapse" id="oldcurri">
+                            <ul class="nav nav-sm flex-column">
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BEED-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BEED</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSBA-FM-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-FM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSBA-MM-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-MM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/bsba-om-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-OM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSCpE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSCS</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSECE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSECE</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-English-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-English</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-Filipino-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-Filipino</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-Mathematics-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-SCIENCE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-Science</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-Social-Studies-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSEE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSEE</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSHM-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSHM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/cs-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSCS</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/psych-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BS Psychology</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="collapse" id="curriculum">
                     <ul class="nav ms-4 ps-3">
 
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
                                 <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
                             </a>
-                            <div class="collapse" id="curri">
+                            <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
 
                                     <li class="nav-item">
@@ -1095,7 +1305,7 @@ if ("Super Administrator" == $_SESSION['role']) {
  if ('CS Department' == $dept_name) {
   echo '
             <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
                     role="button" aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -1104,6 +1314,30 @@ if ("Super Administrator" == $_SESSION['role']) {
                     <span class="nav-link-text ms-1">Curriculum</span>
                 </a>
 
+                <div class="collapse" id="curriculum">
+                <ul class="nav ms-4 ps-3">
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                            <span class="sidenav-mini-icon"> </span>
+                            <span class="sidenav-normal font-weight-bold">2018-2019 Curriculum</span>
+                        </a>
+                        <div class="collapse" id="oldcurri">
+                            <ul class="nav nav-sm flex-column">
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/cs-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSCS</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
                 <div class="collapse" id="newcurr">
                     <ul class="nav ms-4 ps-3">
 
@@ -1132,25 +1366,61 @@ if ("Super Administrator" == $_SESSION['role']) {
             </li>
             ';} elseif ('BA Department' == $dept_name) {
   echo '
-                          <li class="nav-item">
-                              <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
-                                  role="button" aria-expanded="false">
-                                  <div
-                                      class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                                      <i class="fas fa-book-reader text-dark"></i>
-                                  </div>
-                                  <span class="nav-link-text ms-1">Curriculum</span>
-                              </a>
+  <li class="nav-item">
+  <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
+      role="button" aria-expanded="false">
+      <div
+          class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="fas fa-book-reader text-dark"></i>
+      </div>
+      <span class="nav-link-text ms-1">Curriculum</span>
+  </a>
+  <div class="collapse" id="curriculum">
+  <ul class="nav ms-4 ps-3">
 
-                              <div class="collapse" id="newcurr">
+      <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+              <span class="sidenav-mini-icon"> </span>
+              <span class="sidenav-normal font-weight-bold">2018-2019 Curriculum</span>
+          </a>
+          <div class="collapse" id="oldcurri">
+              <ul class="nav nav-sm flex-column">
+
+                  <li class="nav-item">
+                      <a class="nav-link" href="../oldcurr/bsba-om-2018-2019.php">
+                          <span class="sidenav-mini-icon text-xs"> </span>
+                          <span class="sidenav-normal text-black-50">BSBA-OM</span>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="../oldcurr/BSBA-FM-2018-2019.php">
+                          <span class="sidenav-mini-icon text-xs"> </span>
+                          <span class="sidenav-normal text-black-50">BSBA-FM</span>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="../oldcurr/BSBA-MM-2018-2019.php">
+                          <span class="sidenav-mini-icon text-xs"> </span>
+                          <span class="sidenav-normal text-black-50">BSBA-MM</span>
+                      </a>
+                  </li>
+
+              </ul>
+          </div>
+      </li>
+
+  </ul>
+</div>
+
+                              <div class="collapse" id="curriculum">
                                   <ul class="nav ms-4 ps-3">
 
                                       <li class="nav-item">
-                                          <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                          <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                               <span class="sidenav-mini-icon"> </span>
                                               <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
                                           </a>
-                                          <div class="collapse" id="curri">
+                                          <div class="collapse" id="newcurri">
                                               <ul class="nav nav-sm flex-column">
 
                                                   <li class="nav-item">
@@ -1194,8 +1464,8 @@ if ("Super Administrator" == $_SESSION['role']) {
                           </li>
                           ';} elseif ('EDUC Department' == $dept_name) {
   echo '
-                                                    <li class="nav-item">
-                                                        <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                                                        <li class="nav-item">
+                                                        <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
                                                             role="button" aria-expanded="false">
                                                             <div
                                                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -1204,15 +1474,71 @@ if ("Super Administrator" == $_SESSION['role']) {
                                                             <span class="nav-link-text ms-1">Curriculum</span>
                                                         </a>
 
-                                                        <div class="collapse" id="newcurr">
+                                                        <div class="collapse" id="curriculum">
+                                                        <ul class="nav ms-4 ps-3">
+
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                                                                    <span class="sidenav-mini-icon"> </span>
+                                                                    <span class="sidenav-normal font-weight-bold">2018-2019 Curriculum</span>
+                                                                </a>
+                                                                <div class="collapse" id="oldcurri">
+                                                                    <ul class="nav nav-sm flex-column">
+
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link" href="../oldcurr/BEED-2018-2019.php">
+                                                                                <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                <span class="sidenav-normal text-black-50">BEED</span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link" href="../oldcurr/BSED-English-2018-2019.php">
+                                                                                <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                <span class="sidenav-normal text-black-50">BSED-English</span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link" href="../oldcurr/BSED-Filipino-2018-2019.php">
+                                                                                <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                <span class="sidenav-normal text-black-50">BSED-Filipino</span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link" href="../oldcurr/BSED-Mathematics-2018-2019.php">
+                                                                                <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link" href="../oldcurr/BSED-SCIENCE-2018-2019.php">
+                                                                                <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                <span class="sidenav-normal text-black-50">BSED-Science</span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link" href="../oldcurr/BSED-Social-Studies-2018-2019.php">
+                                                                                <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                                                            </a>
+                                                                        </li>
+
+
+                                                                    </ul>
+                                                                </div>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                        <div class="collapse" id="curriculum">
                                                             <ul class="nav ms-4 ps-3">
 
                                                                 <li class="nav-item">
-                                                                    <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                                                    <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                                                         <span class="sidenav-mini-icon"> </span>
                                                                         <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
                                                                     </a>
-                                                                    <div class="collapse" id="curri">
+                                                                    <div class="collapse" id="newcurri">
                                                                         <ul class="nav nav-sm flex-column">
 
                                                                             <li class="nav-item">
@@ -1262,25 +1588,52 @@ if ("Super Administrator" == $_SESSION['role']) {
                                                     </li>
                 ';} elseif ('HRM Department' == $dept_name) {
   echo '
-                                            <li class="nav-item">
-                                                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
-                                                    role="button" aria-expanded="false">
-                                                    <div
-                                                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-book-reader text-dark"></i>
-                                                    </div>
-                                                    <span class="nav-link-text ms-1">Curriculum</span>
-                                                </a>
+                                                    <li class="nav-item">
+                                                    <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
+                                                        role="button" aria-expanded="false">
+                                                        <div
+                                                            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                                            <i class="fas fa-book-reader text-dark"></i>
+                                                        </div>
+                                                        <span class="nav-link-text ms-1">Curriculum</span>
+                                                    </a>
 
-                                                <div class="collapse" id="newcurr">
+                                                    <div class="collapse" id="curriculum">
                                                     <ul class="nav ms-4 ps-3">
 
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                                                                <span class="sidenav-mini-icon"> </span>
+                                                                <span class="sidenav-normal font-weight-bold">2018-2019 Curriculum</span>
+                                                            </a>
+                                                            <div class="collapse" id="oldcurri">
+                                                                <ul class="nav nav-sm flex-column">
+
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link" href="../oldcurr/BSHM-2018-2019.php">
+                                                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                                                            <span class="sidenav-normal text-black-50">BSHM</span>
+                                                                        </a>
+                                                                    </li>
+
+
+
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+
+                                                <div class="collapse" id="curriculum">
+                                                    <ul class="nav ms-4 ps-3">
+
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                                                 <span class="sidenav-mini-icon"> </span>
                                                                 <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
                                                             </a>
-                                                            <div class="collapse" id="curri">
+                                                            <div class="collapse" id="newcurri">
                                                                 <ul class="nav nav-sm flex-column">
 
                                                                     <li class="nav-item">
@@ -1301,8 +1654,8 @@ if ("Super Administrator" == $_SESSION['role']) {
                                             </li>
                 ';} elseif ('Bridging Department' == $dept_name) {
   echo '
-                                            <li class="nav-item">
-                                                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                                                <li class="nav-item">
+                                                <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
                                                     role="button" aria-expanded="false">
                                                     <div
                                                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -1310,16 +1663,37 @@ if ("Super Administrator" == $_SESSION['role']) {
                                                     </div>
                                                     <span class="nav-link-text ms-1">Curriculum</span>
                                                 </a>
+                                                <div class="collapse" id="curriculum">
+                                                <ul class="nav ms-4 ps-3">
 
-                                                <div class="collapse" id="newcurr">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                                                            <span class="sidenav-mini-icon"> </span>
+                                                            <span class="sidenav-normal font-weight-bold">2018-2019 Curriculum</span>
+                                                        </a>
+                                                        <div class="collapse" id="oldcurri">
+                                                            <ul class="nav nav-sm flex-column">
+
+
+
+
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+
+
+                                                <div class="collapse" id="curriculum">
                                                     <ul class="nav ms-4 ps-3">
 
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                                                 <span class="sidenav-mini-icon"> </span>
                                                                 <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
                                                             </a>
-                                                            <div class="collapse" id="curri">
+                                                            <div class="collapse" id="newcurri">
                                                                 <ul class="nav nav-sm flex-column">
 
 
@@ -1335,40 +1709,61 @@ if ("Super Administrator" == $_SESSION['role']) {
                  ';} elseif ('LA Department' == $dept_name) {
   echo '
                                             <li class="nav-item">
-                                                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
-                                                    role="button" aria-expanded="false">
-                                                    <div
-                                                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                                                        <i class="fas fa-book-reader text-dark"></i>
-                                                    </div>
-                                                    <span class="nav-link-text ms-1">Curriculum</span>
-                                                </a>
-
-                                                <div class="collapse" id="newcurr">
-                                                    <ul class="nav ms-4 ps-3">
-
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
-                                                                <span class="sidenav-mini-icon"> </span>
-                                                                <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
-                                                            </a>
-                                                            <div class="collapse" id="curri">
-                                                                <ul class="nav nav-sm flex-column">
-
-
-
-
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-
-                                                    </ul>
+                                            <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
+                                                role="button" aria-expanded="false">
+                                                <div
+                                                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                                    <i class="fas fa-book-reader text-dark"></i>
                                                 </div>
+                                                <span class="nav-link-text ms-1">Curriculum</span>
+                                            </a>
+                                            <div class="collapse" id="curriculum">
+                                                <ul class="nav ms-4 ps-3">
+
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                                                            <span class="sidenav-mini-icon"> </span>
+                                                            <span class="sidenav-normal font-weight-bold">2018-2019 Curriculum</span>
+                                                        </a>
+                                                    <div class="collapse" id="oldcurri">
+                                                        <ul class="nav nav-sm flex-column">
+
+
+
+
+                                                        </ul>
+                                                    </div>
+                                                </li>
+
+                                                </ul>
+                                            </div>
+
+
+                                            <div class="collapse" id="curriculum">
+                                                <ul class="nav ms-4 ps-3">
+
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
+                                                            <span class="sidenav-mini-icon"> </span>
+                                                            <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
+                                                        </a>
+                                                        <div class="collapse" id="newcurri">
+                                                            <ul class="nav nav-sm flex-column">
+
+
+
+
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
                                             </li>
                 ';} elseif ('ENG Department' == $dept_name) {
   echo '
-                                            <li class="nav-item">
-                                                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                                                <li class="nav-item">
+                                                <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
                                                     role="button" aria-expanded="false">
                                                     <div
                                                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -1377,15 +1772,55 @@ if ("Super Administrator" == $_SESSION['role']) {
                                                     <span class="nav-link-text ms-1">Curriculum</span>
                                                 </a>
 
-                                                <div class="collapse" id="newcurr">
+                                                <div class="collapse" id="curriculum">
+                                                <ul class="nav ms-4 ps-3">
+
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                                                            <span class="sidenav-mini-icon"> </span>
+                                                            <span class="sidenav-normal font-weight-bold">2018-2019 Curriculum</span>
+                                                        </a>
+                                                        <div class="collapse" id="oldcurri">
+                                                            <ul class="nav nav-sm flex-column">
+
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" href="../oldcurr/BSCpE-2018-2019.php">
+                                                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                                                        <span class="sidenav-normal text-black-50">BSCpE</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" href="../oldcurr/BSECE-2018-2019.php">
+                                                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                                                        <span class="sidenav-normal text-black-50">BSECE</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" href="../oldcurr/BSEE-2018-2019.php">
+                                                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                                                        <span class="sidenav-normal text-black-50">BSEE</span>
+                                                                    </a>
+                                                                </li>
+
+
+
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+
+
+                                                <div class="collapse" id="curriculum">
                                                     <ul class="nav ms-4 ps-3">
 
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                                                 <span class="sidenav-mini-icon"> </span>
                                                                 <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
                                                             </a>
-                                                            <div class="collapse" id="curri">
+                                                            <div class="collapse" id="newcurri">
                                                                 <ul class="nav nav-sm flex-column">
 
                                                                     <li class="nav-item">
@@ -1418,8 +1853,8 @@ if ("Super Administrator" == $_SESSION['role']) {
                                             </li>
                 ';} elseif ('NURS Department' == $dept_name) {
   echo '
-                                            <li class="nav-item">
-                                                <a data-bs-toggle="collapse" href="#newcurr" class="nav-link" aria-controls="newcurr"
+                                                <li class="nav-item">
+                                                <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
                                                     role="button" aria-expanded="false">
                                                     <div
                                                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -1427,16 +1862,35 @@ if ("Super Administrator" == $_SESSION['role']) {
                                                     </div>
                                                     <span class="nav-link-text ms-1">Curriculum</span>
                                                 </a>
+                                                <div class="collapse" id="curriculum">
+                                                <ul class="nav ms-4 ps-3">
 
-                                                <div class="collapse" id="newcurr">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                                                            <span class="sidenav-mini-icon"> </span>
+                                                            <span class="sidenav-normal font-weight-bold">2018-2019 Curriculum</span>
+                                                        </a>
+                                                        <div class="collapse" id="oldcurri">
+                                                            <ul class="nav nav-sm flex-column">
+
+
+
+
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                                </div>
+                                                <div class="collapse" id="curriculum">
                                                     <ul class="nav ms-4 ps-3">
 
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curri">
+                                                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                                                 <span class="sidenav-mini-icon"> </span>
                                                                 <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
                                                             </a>
-                                                            <div class="collapse" id="curri">
+                                                            <div class="collapse" id="newcurri">
                                                                 <ul class="nav nav-sm flex-column">
 
                                                                     <li class="nav-item">
