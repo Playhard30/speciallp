@@ -75,7 +75,7 @@ include '../../includes/session.php';
                                             $listInquiries = mysqli_query($db, "SELECT *, CONCAT(tbl_online_registrations.lastname, ', ', tbl_online_registrations.firstname, ' ', tbl_online_registrations.middlename) AS fullname 
                                             FROM tbl_online_registrations
                                             LEFT JOIN tbl_courses ON tbl_courses.course_id = tbl_online_registrations.course_id
-                                            LEFT JOIN tbl_year_levels ON tbl_year_levels.year_id = tbl_online_registrations.year_id WHERE status = 'Pending'");
+                                            LEFT JOIN tbl_year_levels ON tbl_year_levels.year_id = tbl_online_registrations.year_id");
                                             while ($row = mysqli_fetch_array($listInquiries)) {
                                                 $id = $row['or_id'];
                                             ?>
@@ -92,9 +92,18 @@ include '../../includes/session.php';
                                                     <?php echo $row['contact']; ?></td>
                                                 <td class="text-sm font-weight-normal">
                                                     <?php echo $row['email']; ?></td>
-                                                <td class="text-sm text-danger font-weight-normal">
-                                                    <?php echo $row['status']; ?>
-                                                </td>
+                                                <?php
+                                                    if ($row['status'] == "Pending") {
+                                                        ?>
+                                                            <td class="text-sm text-danger font-weight-normal"><?php echo $row['status']; ?></td>
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                            <td class="text-sm text-success font-weight-normal"><?php echo $row['status']; ?></td>
+                                                        <?php
+                                                    }
+                                                ?>
+                                                
                                                 
                                                 <td class="text-sm font-weight-normal">
                                                     <a class="btn bg-gradient-success text-xs"
