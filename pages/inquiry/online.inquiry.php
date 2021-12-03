@@ -24,6 +24,7 @@ session_start();
 <style>
     html {
         overflow: scroll;
+        overflow-x: hidden;
     }
 </style>
 <title>
@@ -31,26 +32,71 @@ session_start();
 </title>
 </head>
 
-<body class="g-sidenav-show  bg-gray-100">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent mt-4">
-        <div class="container">
-            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="../login/sign-in.php">
-                Sain Francis of Assisi College | Las Pinas Campus
-            </a>
-            <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
-                <ul class="navbar-nav d-lg-block d-none">
-                    <li class="nav-item">
-                        <a href="../login/sign-in.php" class="btn btn-sm  bg-gradient-primary  btn-round mb-0 me-1" onclick="smoothToPricing('pricing-soft-ui')">Sign In</a>
-                    </li>
-                </ul>
+<body class=""  style="background-image:url('../../assets/img/curved-images/sfaclp.jpg'); background-repeat:no-repeat; background-size:cover;">
+<div class="container position-sticky z-index-sticky top-0">
+        <div class="row">
+            <div class="col-12">
+                <!-- Navbar -->
+                <nav
+                    class="navbar navbar-expand-lg blur blur-rounded top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+                    <div class="container-fluid">
+                        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../dashboard/index.php">
+                            SFAC Las Piñas
+                        </a>
+                        <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon mt-2">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navigation">
+                            <ul class="navbar-nav mx-auto">
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
+                                        href="../pages/dashboard.html">
+                                        <i class="fa fa-chart-pie opacity-6 text-dark me-1"></i>
+                                        Dashboard
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link me-2" href="../pages/profile.html">
+                                        <i class="fa fa-user opacity-6 text-dark me-1"></i>
+                                        Profile
+                                    </a>
+                                </li> -->
+
+                                <li class="nav-item">
+                                    <a class="nav-link me-2" href="../dashboard/index.php">
+                                        <i class="fas fa-key opacity-6 text-dark me-1"></i>
+                                        Sign In
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link me-2" href="../inquiry/online.inquiry.php">
+                                        <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
+                                        Online Inquiry 
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav d-lg-block d-none">
+                                <li class="nav-item">
+                                    <a href="#" class="btn btn-sm btn-round mb-0 me-1 text-light"
+                                        style="background-color: #d62121 !important;">Home</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar -->
             </div>
         </div>
-    </nav>
-    <!-- End Navbar -->
+    </div>
     <section class="min-vh-100 mb-8">
         <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg">
-            <span class="mask bg-gradient-dark opacity-6"></span>
+            
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-5 text-center mx-auto">
@@ -58,9 +104,9 @@ session_start();
                         <p class="text-lead text-white">Please fill out the form.</p>
                     </div>
                 </div>
-                <div class="container-fluid py-4">
-                    <div class="col-lg-11 mt-lg-0 mt-4 mx-auto">
-                        <form method="POST" enctype="multipart/form-data" action="inquiryData/ctrl.add.inquiry.php" class="card mt-4" id="basic-info">
+                <div class="container-fluid py-4" >
+                    <div class="col-lg-11 mt-lg-0 mt-4 mx-auto" >
+                        <form method="POST" enctype="multipart/form-data" action="inquiryData/ctrl.add.inquiry.php" class="card mt-4" id="basic-info" >
                             <div class="card-header text-center">
                                 <h5>Personal Data</h5>
                             </div>
@@ -449,7 +495,7 @@ session_start();
     </section>
 
     <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
-    
+    <?php include '../../includes/footer.php'; ?>
     <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
     <!--   Core JS Files   -->
     <?php include '../../includes/scripts.php'; ?>
