@@ -60,4 +60,9 @@ require '../../includes/conn.php';
         color: #8392ab !important;
         background-image: linear-gradient(310deg, #1d2139, #39406d) !important;
     }
+
+    .badge-warning {
+        background-color: #ce7e00 !important;
+        color: bisque !important;
+    }
     </style>

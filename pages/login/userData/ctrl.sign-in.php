@@ -4,8 +4,8 @@ session_start();
 
 if (isset($_POST['signin'])) {
 
-    $username = mysqli_real_escape_string($db, $_POST['username']);
-    $password = mysqli_real_escape_string($db, $_POST['password']);
+    $username = $db->real_escape_string($_POST['username']);
+    $password = $db->real_escape_string($_POST['password']);
 
     $super_admin = mysqli_query($db, "SELECT * FROM tbl_super_admins WHERE username = '$username'");
     $numrow      = mysqli_num_rows($super_admin);
