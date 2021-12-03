@@ -116,7 +116,7 @@ if (!empty($_SESSION['role'])) {
                             </ul>
                             <ul class="navbar-nav d-lg-block d-none">
                                 <li class="nav-item">
-                                    <a href="#" class="btn btn-sm btn-round mb-0 me-1 text-light"
+                                    <a href="#" class="btn btn-sm btn-round mb-0 me-1 text-white font-weight-bolder"
                                         style="background-color: #d62121 !important;">Home</a>
                                 </li>
                             </ul>
@@ -127,7 +127,7 @@ if (!empty($_SESSION['role'])) {
             </div>
         </div>
     </div>
-    <main class="main-content mt-0"  >
+    <main class="main-content mt-0">
         <section>
             <div class="page-header min-vh-75">
                 <div class="container">
@@ -197,9 +197,11 @@ if (!empty($_SESSION['role'])) {
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8" style="z-index:1;">
+                            <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8"
+                                style="z-index:1;">
                                 <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
-                                    style="background-image:url('../../assets/img/curved-images/sfaclp.jpg'); background-position: 100% 100%; background-repeat: no-repeat;"></div>
+                                    style="background-image:url('../../assets/img/curved-images/sfaclp.jpg'); background-position: 100% 100%; background-repeat: no-repeat;">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -213,12 +215,13 @@ if (!empty($_SESSION['role'])) {
             <div class="row my-0">
                 <div class="col-lg-8 mb-4 mx-auto my-0 text-center">
                     <a href="https://web.facebook.com/mysfaclp" target="_blank" class="text-secondary me-xl-4 me-4">
-                        <span class="text-lg fab fa-facebook"></span>  SFAC - Las Pinas
+                        <span class="text-lg fab fa-facebook"></span> SFAC - Las Pinas
                     </a>
-                    <a href="https://stfrancis.edu.ph/sfac-las-pinas" target="_blank" class="text-secondary me-xl-4 me-4">
-                        <span class="text-lg fas fa-globe"></span>  stfrancis.edu.ph
+                    <a href="https://stfrancis.edu.ph/sfac-las-pinas" target="_blank"
+                        class="text-secondary me-xl-4 me-4">
+                        <span class="text-lg fas fa-globe"></span> stfrancis.edu.ph
                     </a>
-                    
+
                 </div>
             </div>
             <div class="row my-0">
@@ -252,4 +255,5 @@ if (!empty($_SESSION['role'])) {
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
 </body>
+
 </html>
