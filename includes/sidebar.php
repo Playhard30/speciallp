@@ -203,6 +203,15 @@
                     <span class="nav-link-text ms-1">Teachers List</span>
                 </a>
             </li>
+            <li class="nav-item">
+        <a class="nav-link  " href="../student/list.student.php">
+            <div
+                class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="far fa-list-alt text-dark" style="height: 12px; width: 12px;"></i>
+            </div>
+            <span class="nav-link-text ms-1">Students List</span>
+        </a>
+    </li>
 
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Add Accounts</h6>
@@ -278,6 +287,15 @@
                     <span class="nav-link-text ms-1">Add Teacher</span>
                 </a>
             </li>
+            <li class="nav-item">
+    <a class="nav-link  " href="../student/add.student.php">
+        <div
+            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-user-plus text-dark"></i>
+        </div>
+        <span class="nav-link-text ms-1">Add Student</span>
+    </a>
+</li>
             ';
             } elseif ("Dean" == $_SESSION['role']) {
                 echo '<li class="nav-item">
@@ -357,6 +375,256 @@
                     </div>
                     <span class="nav-link-text ms-1">Department</span>
                 </a>
+            </li>
+
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
+                    role="button" aria-expanded="false">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-book-reader text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Curriculum</span>
+                </a>
+                <div class="collapse" id="curriculum">
+                <ul class="nav ms-4 ps-3">
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                            <span class="sidenav-mini-icon"> </span>
+                            <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                        </a>
+                        <div class="collapse" id="oldcurri">
+                            <ul class="nav nav-sm flex-column">
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BEED-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BEED</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSBA-FM-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-FM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSBA-MM-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-MM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/bsba-om-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-OM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSCpE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSCS</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSECE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSECE</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-English-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-English</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-Filipino-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-Filipino</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-Mathematics-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-SCIENCE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-Science</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-Social-Studies-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSEE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSEE</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSHM-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSHM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/cs-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSCS</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/psych-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BS Psychology</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="collapse" id="curriculum">
+                    <ul class="nav ms-4 ps-3">
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                            </a>
+                            <div class="collapse" id="newcurri">
+                                <ul class="nav nav-sm flex-column">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BA.PSYC-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BA PSYC</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BEED-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BEED</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSBA-OM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSBA-OM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSCpE-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSCpE</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSCS-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSCS</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSECE-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSECE</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED_English-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-English</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-Filipino-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-Filipino</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-Mathematics-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-Science-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-Science</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-SS-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSEE-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSEE</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSFM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSFM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSHM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSHM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSMM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSMM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/CURRI-MA.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">MA</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/MBA-CURRI.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">MBA</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/MBA.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">MBA-2</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/nursing_curr.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">NURS</span>
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
             </li>
             ';
             } elseif ("President" == $_SESSION['role']) {
@@ -740,33 +1008,253 @@
                     </div>
                     <span class="nav-link-text ms-1">Curriculum</span>
                 </a>
+                <div class="collapse" id="curriculum">
+                <ul class="nav ms-4 ps-3">
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                            <span class="sidenav-mini-icon"> </span>
+                            <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                        </a>
+                        <div class="collapse" id="oldcurri">
+                            <ul class="nav nav-sm flex-column">
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BEED-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BEED</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSBA-FM-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-FM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSBA-MM-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-MM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/bsba-om-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-OM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSCpE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSCS</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSECE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSECE</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-English-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-English</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-Filipino-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-Filipino</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-Mathematics-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-SCIENCE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-Science</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSED-Social-Studies-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSEE-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSEE</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSHM-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSHM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/cs-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSCS</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/psych-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BS Psychology</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
 
                 <div class="collapse" id="curriculum">
                     <ul class="nav ms-4 ps-3">
 
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#curr2020">
+                            <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">2020 Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
                             </a>
-                            <div class="collapse" id="curr2020">
+                            <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../curriculum/curr2020/stem_curr.php">
+                                        <a class="nav-link" href="../newcurr/BA.PSYC-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">STEM</span>
+                                            <span class="sidenav-normal text-black-50">BA PSYC</span>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BEED-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BEED</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSBA-OM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSBA-OM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSCpE-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSCpE</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSCS-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSCS</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSECE-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSECE</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED_English-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-English</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-Filipino-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-Filipino</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-Mathematics-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-Science-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-Science</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSED-SS-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSEE-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSEE</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSFM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSFM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSHM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSHM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSMM-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSMM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/CURRI-MA.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">MA</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/MBA-CURRI.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">MBA</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/MBA.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">MBA-2</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/nursing_curr.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">NURS</span>
+                                        </a>
+                                    </li>
+
+
                                 </ul>
                             </div>
                         </li>
+
                     </ul>
                 </div>
-
             </li>
             ';
             } else if ($_SESSION['role'] == "Adviser") {
+                $query = mysqli_query($db, "SELECT * FROM tbl_faculties F LEFT JOIN tbl_departments D ON D.department_id = F.department_id WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
+ while ($row = $query->fetch_array()) {
+  $dept_name = $row['department_name'];
+ }
+
                 echo '<li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">
                     <div
@@ -853,7 +1341,617 @@
 
                     </ul>
                 </div>
-            </li>
+            </li>';
+
+            if ('CS Department' == $dept_name) {
+                echo '
+                          <li class="nav-item">
+                              <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
+                                  role="button" aria-expanded="false">
+                                  <div
+                                      class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                      <i class="fas fa-book-reader text-dark"></i>
+                                  </div>
+                                  <span class="nav-link-text ms-1">Curriculum</span>
+                              </a>
+              
+                              <div class="collapse" id="curriculum">
+                              <ul class="nav ms-4 ps-3">
+              
+                                  <li class="nav-item">
+                                      <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                                          <span class="sidenav-mini-icon"> </span>
+                                          <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                      </a>
+                                      <div class="collapse" id="oldcurri">
+                                          <ul class="nav nav-sm flex-column">
+              
+                                              <li class="nav-item">
+                                                  <a class="nav-link" href="../oldcurr/cs-2018-2019.php">
+                                                      <span class="sidenav-mini-icon text-xs"> </span>
+                                                      <span class="sidenav-normal text-black-50">BSCS</span>
+                                                  </a>
+                                              </li>
+              
+                                          </ul>
+                                      </div>
+                                  </li>
+              
+                              </ul>
+                          </div>
+                              <div class="collapse" id="curriculum">
+                                  <ul class="nav ms-4 ps-3">
+              
+                                      <li class="nav-item">
+                                          <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
+                                              <span class="sidenav-mini-icon"> </span>
+                                              <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                          </a>
+                                          <div class="collapse" id="newcurri">
+                                              <ul class="nav nav-sm flex-column">
+              
+                                                  <li class="nav-item">
+                                                      <a class="nav-link" href="../newcurr/BSCS-2020-2021.php">
+                                                          <span class="sidenav-mini-icon text-xs"> </span>
+                                                          <span class="sidenav-normal text-black-50">BSCS</span>
+                                                      </a>
+                                                  </li>
+              
+              
+                                              </ul>
+                                          </div>
+                                      </li>
+              
+                                  </ul>
+                              </div>
+                          </li>
+                          ';} elseif ('BA Department' == $dept_name) {
+                echo '
+                <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
+                    role="button" aria-expanded="false">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-book-reader text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Curriculum</span>
+                </a>
+                <div class="collapse" id="curriculum">
+                <ul class="nav ms-4 ps-3">
+              
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                            <span class="sidenav-mini-icon"> </span>
+                            <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                        </a>
+                        <div class="collapse" id="oldcurri">
+                            <ul class="nav nav-sm flex-column">
+              
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/bsba-om-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-OM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSBA-FM-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-FM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSBA-MM-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BSBA-MM</span>
+                                    </a>
+                                </li>
+              
+                            </ul>
+                        </div>
+                    </li>
+              
+                </ul>
+              </div>
+              
+                                            <div class="collapse" id="curriculum">
+                                                <ul class="nav ms-4 ps-3">
+              
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
+                                                            <span class="sidenav-mini-icon"> </span>
+                                                            <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                                        </a>
+                                                        <div class="collapse" id="newcurri">
+                                                            <ul class="nav nav-sm flex-column">
+              
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" href="../newcurr/BSBA-OM-2020-2021.php">
+                                                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                                                        <span class="sidenav-normal text-black-50">BSBA-OM</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" href="../newcurr/BSFM-2020-2021.php">
+                                                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                                                        <span class="sidenav-normal text-black-50">BSBA-FM</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" href="../newcurr/BSMM-2020-2021.php">
+                                                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                                                        <span class="sidenav-normal text-black-50">BSBA-MM</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" href="../newcurr/MBA-CURRI.php">
+                                                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                                                        <span class="sidenav-normal text-black-50">MBA</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" href="../newcurr/MBA.php">
+                                                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                                                        <span class="sidenav-normal text-black-50">MBA-2</span>
+                                                                    </a>
+                                                                </li>
+              
+              
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+              
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        ';} elseif ('EDUC Department' == $dept_name) {
+                echo '
+                                                                      <li class="nav-item">
+                                                                      <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
+                                                                          role="button" aria-expanded="false">
+                                                                          <div
+                                                                              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                                                              <i class="fas fa-book-reader text-dark"></i>
+                                                                          </div>
+                                                                          <span class="nav-link-text ms-1">Curriculum</span>
+                                                                      </a>
+              
+                                                                      <div class="collapse" id="curriculum">
+                                                                      <ul class="nav ms-4 ps-3">
+              
+                                                                          <li class="nav-item">
+                                                                              <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                                                                                  <span class="sidenav-mini-icon"> </span>
+                                                                                  <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                                                              </a>
+                                                                              <div class="collapse" id="oldcurri">
+                                                                                  <ul class="nav nav-sm flex-column">
+              
+                                                                                      <li class="nav-item">
+                                                                                          <a class="nav-link" href="../oldcurr/BEED-2018-2019.php">
+                                                                                              <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                              <span class="sidenav-normal text-black-50">BEED</span>
+                                                                                          </a>
+                                                                                      </li>
+                                                                                      <li class="nav-item">
+                                                                                          <a class="nav-link" href="../oldcurr/BSED-English-2018-2019.php">
+                                                                                              <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                              <span class="sidenav-normal text-black-50">BSED-English</span>
+                                                                                          </a>
+                                                                                      </li>
+                                                                                      <li class="nav-item">
+                                                                                          <a class="nav-link" href="../oldcurr/BSED-Filipino-2018-2019.php">
+                                                                                              <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                              <span class="sidenav-normal text-black-50">BSED-Filipino</span>
+                                                                                          </a>
+                                                                                      </li>
+                                                                                      <li class="nav-item">
+                                                                                          <a class="nav-link" href="../oldcurr/BSED-Mathematics-2018-2019.php">
+                                                                                              <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                              <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                                                                          </a>
+                                                                                      </li>
+                                                                                      <li class="nav-item">
+                                                                                          <a class="nav-link" href="../oldcurr/BSED-SCIENCE-2018-2019.php">
+                                                                                              <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                              <span class="sidenav-normal text-black-50">BSED-Science</span>
+                                                                                          </a>
+                                                                                      </li>
+                                                                                      <li class="nav-item">
+                                                                                          <a class="nav-link" href="../oldcurr/BSED-Social-Studies-2018-2019.php">
+                                                                                              <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                              <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                                                                          </a>
+                                                                                      </li>
+              
+              
+                                                                                  </ul>
+                                                                              </div>
+                                                                          </li>
+              
+                                                                      </ul>
+                                                                  </div>
+              
+                                                                      <div class="collapse" id="curriculum">
+                                                                          <ul class="nav ms-4 ps-3">
+              
+                                                                              <li class="nav-item">
+                                                                                  <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
+                                                                                      <span class="sidenav-mini-icon"> </span>
+                                                                                      <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                                                                  </a>
+                                                                                  <div class="collapse" id="newcurri">
+                                                                                      <ul class="nav nav-sm flex-column">
+              
+                                                                                          <li class="nav-item">
+                                                                                              <a class="nav-link" href="../newcurr/BEED-2020-2021.php">
+                                                                                                  <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                                  <span class="sidenav-normal text-black-50">BEED</span>
+                                                                                              </a>
+                                                                                          </li>
+                                                                                          <li class="nav-item">
+                                                                                              <a class="nav-link" href="../newcurr/BSED_English-2020-2021.php">
+                                                                                                  <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                                  <span class="sidenav-normal text-black-50">BSED-English</span>
+                                                                                              </a>
+                                                                                          </li>
+                                                                                          <li class="nav-item">
+                                                                                              <a class="nav-link" href="../newcurr/BSED-Filipino-2020-2021.php">
+                                                                                                  <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                                  <span class="sidenav-normal text-black-50">BSED-Filipino</span>
+                                                                                              </a>
+                                                                                          </li>
+                                                                                          <li class="nav-item">
+                                                                                              <a class="nav-link" href="../newcurr/BSED-Mathematics-2020-2021.php">
+                                                                                                  <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                                  <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                                                                              </a>
+                                                                                          </li>
+                                                                                          <li class="nav-item">
+                                                                                              <a class="nav-link" href="../newcurr/BSED-Science-2020-2021.php">
+                                                                                                  <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                                  <span class="sidenav-normal text-black-50">BSED-Science</span>
+                                                                                              </a>
+                                                                                          </li>
+                                                                                          <li class="nav-item">
+                                                                                              <a class="nav-link" href="../newcurr/BSED-SS-2020-2021.php">
+                                                                                                  <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                                  <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                                                                              </a>
+                                                                                          </li>
+              
+              
+                                                                                      </ul>
+                                                                                  </div>
+                                                                              </li>
+              
+                                                                          </ul>
+                                                                      </div>
+                                                                  </li>
+                              ';} elseif ('HRM Department' == $dept_name) {
+                echo '
+                                                                  <li class="nav-item">
+                                                                  <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
+                                                                      role="button" aria-expanded="false">
+                                                                      <div
+                                                                          class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                                                          <i class="fas fa-book-reader text-dark"></i>
+                                                                      </div>
+                                                                      <span class="nav-link-text ms-1">Curriculum</span>
+                                                                  </a>
+              
+                                                                  <div class="collapse" id="curriculum">
+                                                                  <ul class="nav ms-4 ps-3">
+              
+                                                                      <li class="nav-item">
+                                                                          <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                                                                              <span class="sidenav-mini-icon"> </span>
+                                                                              <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                                                          </a>
+                                                                          <div class="collapse" id="oldcurri">
+                                                                              <ul class="nav nav-sm flex-column">
+              
+                                                                                  <li class="nav-item">
+                                                                                      <a class="nav-link" href="../oldcurr/BSHM-2018-2019.php">
+                                                                                          <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                          <span class="sidenav-normal text-black-50">BSHM</span>
+                                                                                      </a>
+                                                                                  </li>
+              
+              
+              
+                                                                              </ul>
+                                                                          </div>
+                                                                      </li>
+              
+                                                                  </ul>
+                                                              </div>
+              
+                                                              <div class="collapse" id="curriculum">
+                                                                  <ul class="nav ms-4 ps-3">
+              
+                                                                      <li class="nav-item">
+                                                                          <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
+                                                                              <span class="sidenav-mini-icon"> </span>
+                                                                              <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                                                          </a>
+                                                                          <div class="collapse" id="newcurri">
+                                                                              <ul class="nav nav-sm flex-column">
+              
+                                                                                  <li class="nav-item">
+                                                                                      <a class="nav-link" href="../newcurr/BSHM-2020-2021.php">
+                                                                                          <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                          <span class="sidenav-normal text-black-50">BSHM</span>
+                                                                                      </a>
+                                                                                  </li>
+              
+              
+              
+                                                                              </ul>
+                                                                          </div>
+                                                                      </li>
+              
+                                                                  </ul>
+                                                              </div>
+                                                          </li>
+                              ';} elseif ('Bridging Department' == $dept_name) {
+                echo '
+                                                              <li class="nav-item">
+                                                              <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
+                                                                  role="button" aria-expanded="false">
+                                                                  <div
+                                                                      class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                                                      <i class="fas fa-book-reader text-dark"></i>
+                                                                  </div>
+                                                                  <span class="nav-link-text ms-1">Curriculum</span>
+                                                              </a>
+                                                              <div class="collapse" id="curriculum">
+                                                              <ul class="nav ms-4 ps-3">
+              
+                                                                  <li class="nav-item">
+                                                                      <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                                                                          <span class="sidenav-mini-icon"> </span>
+                                                                          <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                                                      </a>
+                                                                      <div class="collapse" id="oldcurri">
+                                                                          <ul class="nav nav-sm flex-column">
+              
+              
+              
+              
+                                                                          </ul>
+                                                                      </div>
+                                                                  </li>
+              
+                                                              </ul>
+                                                          </div>
+              
+              
+                                                              <div class="collapse" id="curriculum">
+                                                                  <ul class="nav ms-4 ps-3">
+              
+                                                                      <li class="nav-item">
+                                                                          <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
+                                                                              <span class="sidenav-mini-icon"> </span>
+                                                                              <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                                                          </a>
+                                                                          <div class="collapse" id="newcurri">
+                                                                              <ul class="nav nav-sm flex-column">
+              
+              
+              
+              
+                                                                              </ul>
+                                                                          </div>
+                                                                      </li>
+              
+                                                                  </ul>
+                                                              </div>
+                                                          </li>
+                               ';} elseif ('LA Department' == $dept_name) {
+                echo '
+                                                          <li class="nav-item">
+                                                          <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
+                                                              role="button" aria-expanded="false">
+                                                              <div
+                                                                  class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                                                  <i class="fas fa-book-reader text-dark"></i>
+                                                              </div>
+                                                              <span class="nav-link-text ms-1">Curriculum</span>
+                                                          </a>
+                                                          <div class="collapse" id="curriculum">
+                                                              <ul class="nav ms-4 ps-3">
+              
+                                                                  <li class="nav-item">
+                                                                      <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                                                                          <span class="sidenav-mini-icon"> </span>
+                                                                          <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                                                      </a>
+                                                                  <div class="collapse" id="oldcurri">
+                                                                      <ul class="nav nav-sm flex-column">
+              
+              
+              
+              
+                                                                      </ul>
+                                                                  </div>
+                                                              </li>
+              
+                                                              </ul>
+                                                          </div>
+              
+              
+                                                          <div class="collapse" id="curriculum">
+                                                              <ul class="nav ms-4 ps-3">
+              
+                                                                  <li class="nav-item">
+                                                                      <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
+                                                                          <span class="sidenav-mini-icon"> </span>
+                                                                          <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                                                      </a>
+                                                                      <div class="collapse" id="newcurri">
+                                                                          <ul class="nav nav-sm flex-column">
+              
+              
+              
+              
+                                                                          </ul>
+                                                                      </div>
+                                                                  </li>
+              
+                                                              </ul>
+                                                          </div>
+                                                          </li>
+                              ';} elseif ('ENG Department' == $dept_name) {
+                echo '
+                                                              <li class="nav-item">
+                                                              <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
+                                                                  role="button" aria-expanded="false">
+                                                                  <div
+                                                                      class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                                                      <i class="fas fa-book-reader text-dark"></i>
+                                                                  </div>
+                                                                  <span class="nav-link-text ms-1">Curriculum</span>
+                                                              </a>
+              
+                                                              <div class="collapse" id="curriculum">
+                                                              <ul class="nav ms-4 ps-3">
+              
+                                                                  <li class="nav-item">
+                                                                      <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                                                                          <span class="sidenav-mini-icon"> </span>
+                                                                          <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                                                      </a>
+                                                                      <div class="collapse" id="oldcurri">
+                                                                          <ul class="nav nav-sm flex-column">
+              
+                                                                              <li class="nav-item">
+                                                                                  <a class="nav-link" href="../oldcurr/BSCpE-2018-2019.php">
+                                                                                      <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                      <span class="sidenav-normal text-black-50">BSCpE</span>
+                                                                                  </a>
+                                                                              </li>
+                                                                              <li class="nav-item">
+                                                                                  <a class="nav-link" href="../oldcurr/BSECE-2018-2019.php">
+                                                                                      <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                      <span class="sidenav-normal text-black-50">BSECE</span>
+                                                                                  </a>
+                                                                              </li>
+                                                                              <li class="nav-item">
+                                                                                  <a class="nav-link" href="../oldcurr/BSEE-2018-2019.php">
+                                                                                      <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                      <span class="sidenav-normal text-black-50">BSEE</span>
+                                                                                  </a>
+                                                                              </li>
+              
+              
+              
+                                                                          </ul>
+                                                                      </div>
+                                                                  </li>
+              
+                                                              </ul>
+                                                          </div>
+              
+              
+                                                              <div class="collapse" id="curriculum">
+                                                                  <ul class="nav ms-4 ps-3">
+              
+                                                                      <li class="nav-item">
+                                                                          <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
+                                                                              <span class="sidenav-mini-icon"> </span>
+                                                                              <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                                                          </a>
+                                                                          <div class="collapse" id="newcurri">
+                                                                              <ul class="nav nav-sm flex-column">
+              
+                                                                                  <li class="nav-item">
+                                                                                      <a class="nav-link" href="../newcurr/BSCpE-2020-2021.php">
+                                                                                          <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                          <span class="sidenav-normal text-black-50">BSCpE</span>
+                                                                                      </a>
+                                                                                  </li>
+                                                                                  <li class="nav-item">
+                                                                                      <a class="nav-link" href="../newcurr/BSECE-2020-2021.php">
+                                                                                          <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                          <span class="sidenav-normal text-black-50">BSECE</span>
+                                                                                      </a>
+                                                                                  </li>
+                                                                                  <li class="nav-item">
+                                                                                      <a class="nav-link" href="../newcurr/BSEE-2020-2021.php">
+                                                                                          <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                          <span class="sidenav-normal text-black-50">BSEE</span>
+                                                                                      </a>
+                                                                                  </li>
+              
+              
+              
+                                                                              </ul>
+                                                                          </div>
+                                                                      </li>
+              
+                                                                  </ul>
+                                                              </div>
+                                                          </li>
+                              ';} elseif ('NURS Department' == $dept_name) {
+                echo '
+                                                              <li class="nav-item">
+                                                              <a data-bs-toggle="collapse" href="#curriculum" class="nav-link" aria-controls="curriculum"
+                                                                  role="button" aria-expanded="false">
+                                                                  <div
+                                                                      class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                                                      <i class="fas fa-book-reader text-dark"></i>
+                                                                  </div>
+                                                                  <span class="nav-link-text ms-1">Curriculum</span>
+                                                              </a>
+                                                              <div class="collapse" id="curriculum">
+                                                              <ul class="nav ms-4 ps-3">
+              
+                                                                  <li class="nav-item">
+                                                                      <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
+                                                                          <span class="sidenav-mini-icon"> </span>
+                                                                          <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                                                      </a>
+                                                                      <div class="collapse" id="oldcurri">
+                                                                          <ul class="nav nav-sm flex-column">
+              
+              
+              
+              
+                                                                          </ul>
+                                                                      </div>
+                                                                  </li>
+              
+                                                              </ul>
+                                                              </div>
+                                                              <div class="collapse" id="curriculum">
+                                                                  <ul class="nav ms-4 ps-3">
+              
+                                                                      <li class="nav-item">
+                                                                          <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
+                                                                              <span class="sidenav-mini-icon"> </span>
+                                                                              <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                                                          </a>
+                                                                          <div class="collapse" id="newcurri">
+                                                                              <ul class="nav nav-sm flex-column">
+              
+                                                                                  <li class="nav-item">
+                                                                                      <a class="nav-link" href="../newcurr/nursing_curr.php">
+                                                                                          <span class="sidenav-mini-icon text-xs"> </span>
+                                                                                          <span class="sidenav-normal text-black-50">BS Nursing</span>
+                                                                                      </a>
+                                                                                  </li>
+              
+              
+              
+                                                                              </ul>
+                                                                          </div>
+                                                                      </li>
+              
+                                                                  </ul>
+                                                              </div>
+                                                          </li>;
+                              ';}
+               echo '
 
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#maintenance" class="nav-link" aria-controls="maintenance"
@@ -949,6 +2047,8 @@
     </li>
     ';
             } elseif ("Student" == $_SESSION['role']) {
+              
+               
                 echo '<li class="nav-item">
         <a class="nav-link  active" href="../dashboard/index.php">
             <div
@@ -974,8 +2074,10 @@
             </div>
             <span class="nav-link-text ms-1">Dashboard</span>
         </a>
-    </li>
+    </li>;
 
+    
+                      
     <li class="nav-item">
         <a class="nav-link" href="../student/edit.student.php">
             <div
