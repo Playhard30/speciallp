@@ -3,6 +3,8 @@ session_start();
 include '../../includes/head.php';
 include '../../includes/session.php';
 
+$course = 0;
+
 if (isset($_GET['BSCS'])) {
     $course = $_GET['BSCS'];
 } elseif (isset($_GET['BSBA-MM'])) {
@@ -61,6 +63,7 @@ if (isset($_GET['BSCS'])) {
                         <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
                     </ol>
                     <h6 class="font-weight-bolder mb-0">View Subject List</h6>
+                    
                 </nav>
                 <?php include '../../includes/navbar.php'; ?>
                 <!-- End Navbar -->
@@ -71,7 +74,14 @@ if (isset($_GET['BSCS'])) {
                             <div class="card shadow shadow-xl">
                                 <!-- Card header -->
                                 <div class="card-header">
-                                    <h5 class="mb-0">Subject List</h5>
+                                <?php
+                                    if (!empty($course)) {
+                                        ?><h5 class="mb-0">Subject List  for <?php echo $course;?></h5><?php
+                                    } else {
+                                        ?><h5 class="mb-0">Subject List</h5><?php
+                                    }
+                                ?>
+                                 
                                     <!-- <p class="text-sm mb-0">
                                         A lightweight, extendable, dependency-free javascript HTML table plugin.
                                     </p> -->

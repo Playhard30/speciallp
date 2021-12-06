@@ -95,11 +95,11 @@ include '../../includes/session.php';
                                                 <?php
                                                     if ($row['status'] == "Pending") {
                                                         ?>
-                                                            <td class="text-sm text-danger font-weight-normal"><?php echo $row['status']; ?></td>
+                                                            <td class="text-sm font-weight-normal"><span class="badge badge-danger"><?php echo $row['status']; ?></span></td>
                                                         <?php
                                                     } else {
                                                         ?>
-                                                            <td class="text-sm text-success font-weight-normal"><?php echo $row['status']; ?></td>
+                                                            <td class="text-sm font-weight-normal"><span class="badge badge-success"><?php echo $row['status']; ?></span></td>
                                                         <?php
                                                     }
                                                 ?>

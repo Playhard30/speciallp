@@ -157,7 +157,7 @@ include '../../includes/head.php';
                                                 $actualCount = mysqli_fetch_array($orCount);
                                                 ?>
                                                 <h1 class="text-white text-end mb-0 mt-n2"><?php echo $actualCount[0];?></h1>
-                                                <p class="text-sm mb-0 text-white">Items</p>
+                                                <p class="text-sm mb-0 text-white">Pending Items</p>
                                             </div>
 
                                     </div>
