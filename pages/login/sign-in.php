@@ -116,7 +116,7 @@ if (!empty($_SESSION['role'])) {
                             </ul>
                             <ul class="navbar-nav d-lg-block d-none">
                                 <li class="nav-item">
-                                    <a href="#" class="btn btn-sm btn-round mb-0 me-1 text-light"
+                                    <a href="#" class="btn btn-sm btn-round mb-0 me-1 text-white font-weight-bolder"
                                         style="background-color: #d62121 !important;">Home</a>
                                 </li>
                             </ul>
@@ -127,17 +127,17 @@ if (!empty($_SESSION['role'])) {
             </div>
         </div>
     </div>
-    <main class="main-content  mt-0">
+    <main class="main-content mt-0">
         <section>
             <div class="page-header min-vh-75">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-                            <div class="card card-plain mt-8">
-                                <div class="card-header pb-0 text-left bg-transparent">
+                        <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto" style="z-index: 2">
+                            <div class="card card-plain mt-8" style="background-color: rgba(255,255,255, 0.9);">
+                                <div class="card-header pb-0 text-center bg-transparent">
                                     <h3 class="font-weight-bolder text-danger text-gradient">
                                         Welcome Franciscans</h3>
-                                    <p class="mb-0">Enter your email and password to sign in</p>
+                                    <p class="mb-0">Enter your username and password to sign in</p>
                                 </div>
 
                                 <?php if (isset($_SESSION['sessionP'])) {
@@ -197,9 +197,11 @@ if (!empty($_SESSION['role'])) {
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
+                            <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8"
+                                style="z-index:1;">
                                 <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
-                                    style="background-image:url('../../assets/img/curved-images/curved6.jpg')"></div>
+                                    style="background-image:url('../../assets/img/curved-images/sfaclp.jpg'); background-position: 100% 100%; background-repeat: no-repeat;">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -208,50 +210,23 @@ if (!empty($_SESSION['role'])) {
         </section>
     </main>
     <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
-    <footer class="footer py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mb-4 mx-auto text-center">
-                    <!-- <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                        Company
-                    </a> -->
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                        About Us
+    <footer class="footer pt-3" style="background-color: rgba(255,255,255, 0.9);">
+        <div class="container-fluid">
+            <div class="row my-0">
+                <div class="col-lg-8 mb-4 mx-auto my-0 text-center">
+                    <a href="https://web.facebook.com/mysfaclp" target="_blank" class="text-secondary me-xl-4 me-4">
+                        <span class="text-lg fab fa-facebook"></span> SFAC - Las Pinas
                     </a>
-                    <!-- <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                        Team
+                    <a href="https://stfrancis.edu.ph/sfac-las-pinas" target="_blank"
+                        class="text-secondary me-xl-4 me-4">
+                        <span class="text-lg fas fa-globe"></span> stfrancis.edu.ph
                     </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                        Products
-                    </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                        Blog
-                    </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                        Pricing
-                    </a> -->
-                </div>
-                <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                        <span class="text-lg fab fa-dribbble"></span>
-                    </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                        <span class="text-lg fab fa-twitter"></span>
-                    </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                        <span class="text-lg fab fa-instagram"></span>
-                    </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                        <span class="text-lg fab fa-pinterest"></span>
-                    </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                        <span class="text-lg fab fa-github"></span>
-                    </a>
+
                 </div>
             </div>
-            <div class="row">
-                <div class="col-8 mx-auto text-center mt-1">
-                    <p class="mb-0 text-secondary">
+            <div class="row my-0">
+                <div class="col-8 mx-auto my-0 text-center mt-0">
+                    <p class="text-secondary me-xl-4 me-4">
                         Copyright © <script>
                         document.write(new Date().getFullYear())
                         </script> CompStud.

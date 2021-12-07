@@ -133,7 +133,8 @@ include '../../includes/head.php';
                                             </div>
                                         </div>
                                         <div class="col-4 text-end">
-                                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                            <div
+                                                class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
                                                 <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
                                             </div>
                                         </div>
@@ -150,20 +151,22 @@ include '../../includes/head.php';
                             <div class="card bg-gradient-dark move-on-hover">
                                 <div class="card-body">
                                     <div class="d-flex">
-                                            <h5 class="mb-0 text-white">Online Inquiry</h5>
-                                            <div class="ms-auto">
-                                                <?php
+                                        <h5 class="mb-0 text-white">Online Inquiry</h5>
+                                        <div class="ms-auto">
+                                            <?php
                                                 $orCount = mysqli_query($db, "SELECT COUNT(or_id) FROM tbl_online_registrations WHERE status = 'Pending'");
                                                 $actualCount = mysqli_fetch_array($orCount);
                                                 ?>
-                                                <h1 class="text-white text-end mb-0 mt-n2"><?php echo $actualCount[0];?></h1>
-                                                <p class="text-sm mb-0 text-white">Items</p>
-                                            </div>
+                                            <h1 class="text-white text-end mb-0 mt-n2"><?php echo $actualCount[0]; ?>
+                                            </h1>
+                                            <p class="text-sm mb-0 text-white">Items</p>
+                                        </div>
 
                                     </div>
                                 </div>
-                                <a href="../inquiry/list.inquiry.php" class="w-100 text-center py-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
-                                <i class="fas fa-chevron-down text-white"></i>
+                                <a href="../inquiry/list.inquiry.php" class="w-100 text-center py-1"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
+                                    <i class="fas fa-chevron-down text-white"></i>
                                 </a>
                             </div>
                         </div>

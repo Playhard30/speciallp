@@ -88,7 +88,8 @@ include '../../includes/session.php';
                                             LEFT JOIN tbl_courses C USING(course_id)
                                             LEFT JOIN tbl_students S USING(stud_id)
                                             LEFT JOIN tbl_year_levels YL USING(year_id)
-                                            WHERE remark IN ('Pending') AND C.department_id = '$_SESSION[ADepartment_id]' AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')") or die($db->error);
+                                            WHERE remark IN ('Pending') OR remark IN ('Checked') OR remark IN ('Canceled') AND C.department_id = '$_SESSION[ADepartment_id]' AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')
+                                            ORDER BY sy_id") or die($db->error);
                                             while ($row = $pendStud->fetch_array()) {
                                                 $id = $row['sy_id'];
 
@@ -122,9 +123,16 @@ include '../../includes/session.php';
                                                     <div class="d-flex align-items-center">
                                                         <button
                                                             class="btn btn-icon-only btn-rounded btn-outline-warning mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
-                                                            style="color: #ce7e00; border-color:#ce7e00"><i
-                                                                class="fas fa-spinner" aria-hidden="true"></i></button>
-                                                        <span><?php echo $row['remark']; ?></span>
+                                                            <?php if ($row['remark'] == "Pending") {
+                                                                                                                                                                                                    echo 'style="color: #ce7e00; border-color:#ce7e00"><i class="fas fa-spinner"
+                                                                                                                                                                                                    aria-hidden="true"></i>';
+                                                                                                                                                                                                } elseif ($row['remark'] == 'Checked') {
+                                                                                                                                                                                                    echo 'style="color: #8fce00; border-color:#8fce00"><i
+                                                                class="fas fa-check" aria-hidden="true"></i>';
+                                                                                                                                                                                                } elseif ($row['remark'] == 'Canceled') {
+                                                                                                                                                                                                    echo 'style="color: #c90076; border-color:#c90076"><i class="fas fa-times" aria-hidden="true"></i>';
+                                                                                                                                                                                                } ?> </button>
+                                                            <span><?php echo $row['remark']; ?></span>
                                                     </div>
 
                                                 </td>
@@ -134,25 +142,29 @@ include '../../includes/session.php';
                                                 <td class="text-sm font-weight-normal">
 
                                                     <div class="d-flex align-items-center">
-                                                        <a href="javascript:;" class="mx-2" data-bs-toggle="tooltip"
-                                                            data-bs-original-title="Check">
-                                                            <i class="fas fa-check" style="color:#8fce00"></i>
-                                                        </a>
 
-                                                        <a href="javascript:;" class="mx-2" data-bs-toggle="tooltip"
-                                                            data-bs-original-title="Preview product">
-                                                            <i class="fas fa-eye text-secondary"></i>
-                                                        </a>
-                                                        <a href="javascript:;" class="mx-2" data-bs-toggle="tooltip"
-                                                            data-bs-original-title="Edit">
-                                                            <i class="fas fa-user-edit text-secondary"></i>
-                                                        </a>
-                                                        <span data-bs-toggle="tooltip" data-bs-original-title="Delete">
-                                                            <a class="mx-2" data-bs-toggle="modal"
-                                                                data-bs-target="#modal-delete<?php echo $id; ?>">
-                                                                <i class="fas fa-trash text-secondary"></i>
+                                                        <a href="userData/ctrl.edit.pendingStud.php?id=<?php echo $id . '&remark=' . $row['remark'];  ?>"
+                                                            class="mx-2" data-bs-toggle="tooltip"
+                                                            <?php if ($row['remark'] == 'Pending' || $row['remark'] == 'Canceled') {
+                                                                                                                                                                                                        echo 'data-bs-original-title="Check"><i class="fas fa-check" style="color:#8fce00"></i>';
+                                                                                                                                                                                                    } elseif ($row['remark'] == 'Checked') echo 'data-bs-original-title="Uncheck"><i class="fas fa-times" style="color:#ce7e00"></i>'; ?>
                                                             </a>
-                                                        </span>
+
+                                                            <a href="javascript:;" class="mx-2" data-bs-toggle="tooltip"
+                                                                data-bs-original-title="Preview product">
+                                                                <i class="fas fa-eye text-secondary"></i>
+                                                            </a>
+                                                            <a href="javascript:;" class="mx-2" data-bs-toggle="tooltip"
+                                                                data-bs-original-title="Edit">
+                                                                <i class="fas fa-user-edit text-secondary"></i>
+                                                            </a>
+                                                            <span data-bs-toggle="tooltip"
+                                                                data-bs-original-title="Delete">
+                                                                <a class="mx-2" data-bs-toggle="modal"
+                                                                    data-bs-target="#modal-delete<?php echo $id; ?>">
+                                                                    <i class="fas fa-trash text-secondary"></i>
+                                                                </a>
+                                                            </span>
                                                     </div>
                                                 </td>
                                             </tr>
