@@ -37,14 +37,14 @@ $_SESSION['or_id'] = $or_id;
 
 
                 <div class="container-fluid py-4">
-                    <div class="col-lg-11 mt-lg-0 mt-4 mx-auto">
+                    <div class="col-lg-11 mt-lg-0 mt-4 mx-auto mb-5">
                         <!-- Card Profile -->
-                                        <?php
-                                        $getStudData = mysqli_query($db, "SELECT *, CONCAT(stud.firstname, ' ', stud.middlename, ' ', stud.lastname) AS fullname
+                        <?php
+                        $getStudData = mysqli_query($db, "SELECT *, CONCAT(stud.firstname, ' ', stud.middlename, ' ', stud.lastname) AS fullname
                                         FROM tbl_online_registrations AS stud
                                         WHERE or_id = '$or_id'");
-                                        while ($row = mysqli_fetch_array($getStudData)) {
-                                        ?>
+                        while ($row = mysqli_fetch_array($getStudData)) {
+                        ?>
                         <!-- Card Basic Info -->
                         <form method="POST" enctype="multipart/form-data" action="inquiryData/ctrl.edit.inquiry.php"
                             class="card mt-4" id="basic-info">
@@ -58,7 +58,8 @@ $_SESSION['or_id'] = $or_id;
                                     <div class="col-sm-4">
                                         <label class="form-label mt-4">Student ID No.</label>
                                         <div class="input-group">
-                                            <input name="stud_no" required type="text" placeholder="Student Number" class="form-control">
+                                            <input name="stud_no" required type="text" placeholder="Student Number"
+                                                class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-sm-8">
@@ -66,27 +67,27 @@ $_SESSION['or_id'] = $or_id;
                                         <select class="form-control" required name="courses" id="department">
 
                                             <?php if (!empty($row['course_id'])) {
-                                                $getCourses = mysqli_query($db, "SELECT * FROM tbl_courses WHERE course_id IN ('$row[course_id]')");
-                                                while ($row2 = mysqli_fetch_array($getCourses)) {
-                                            ?>
+                                                    $getCourses = mysqli_query($db, "SELECT * FROM tbl_courses WHERE course_id IN ('$row[course_id]')");
+                                                    while ($row2 = mysqli_fetch_array($getCourses)) {
+                                                ?>
                                             <option selected value="<?php echo $row2['course_id']; ?>">
                                                 <?php echo $row2['course'];
-                                                } ?>
+                                                    } ?>
                                             </option>
 
                                             <?php $getCourses = mysqli_query($db, "SELECT * FROM tbl_courses WHERE course_id NOT IN ('$row[course_id]')");
-                                                    while ($row1 = mysqli_fetch_array($getCourses)) {
-                                                    ?>
+                                                        while ($row1 = mysqli_fetch_array($getCourses)) {
+                                                        ?>
                                             <option value="<?php echo $row1['course_id']; ?>">
                                                 <?php echo $row1['course'];
-                                                    } ?></option>
+                                                        } ?></option>
                                             <?php } else {
-                                                    echo '<option value="" selected disabled>Select Department</option>';
-                                                    $getCourses = mysqli_query($db, "SELECT * FROM tbl_courses");
-                                                    while ($row3 = mysqli_fetch_array($getCourses)) {
-                                                        echo '<option value="' . $row3['course_id'] . '">' . $row3['course'] . '</option>';
-                                                    }
-                                                } ?>
+                                                        echo '<option value="" selected disabled>Select Department</option>';
+                                                        $getCourses = mysqli_query($db, "SELECT * FROM tbl_courses");
+                                                        while ($row3 = mysqli_fetch_array($getCourses)) {
+                                                            echo '<option value="' . $row3['course_id'] . '">' . $row3['course'] . '</option>';
+                                                        }
+                                                    } ?>
                                         </select>
                                     </div>
 
@@ -97,8 +98,7 @@ $_SESSION['or_id'] = $or_id;
                                         <label class="form-label mt-4">Last Name</label>
                                         <div class="input-group">
                                             <input id="lastName" name="lastname" class="form-control" type="text"
-                                                placeholder="Lastname"
-                                                value="<?php echo $row['lastname'];?>">
+                                                placeholder="Lastname" value="<?php echo $row['lastname']; ?>">
                                         </div>
                                     </div>
 
@@ -108,7 +108,7 @@ $_SESSION['or_id'] = $or_id;
                                             <input id="firstName" name="firstname" class="form-control" type="text"
                                                 placeholder="Firstname"
                                                 value="<?php echo $row['firstname'];
-                                                                                                                                                    ?>">
+                                                                                                                                                        ?>">
                                         </div>
                                     </div>
 
@@ -141,27 +141,27 @@ $_SESSION['or_id'] = $or_id;
                                         <label class="form-label mt-4">Gender</label>
                                         <select class="form-control" required name="gender" id="gender">
                                             <?php if (!empty($row['gender_id'])) {
-                                                $getGenders = mysqli_query($db, "SELECT * FROM tbl_genders WHERE gender_id IN ('$row[gender_id]')");
-                                                while ($row2 = mysqli_fetch_array($getGenders)) {
-                                            ?>
+                                                    $getGenders = mysqli_query($db, "SELECT * FROM tbl_genders WHERE gender_id IN ('$row[gender_id]')");
+                                                    while ($row2 = mysqli_fetch_array($getGenders)) {
+                                                ?>
                                             <option selected value="<?php echo $row2['gender_id']; ?>">
                                                 <?php echo $row2['gender'];
-                                                } ?>
+                                                    } ?>
                                             </option>
 
                                             <?php $getGenders = mysqli_query($db, "SELECT * FROM tbl_genders WHERE gender_id NOT IN ('$row[gender_id]')");
-                                                    while ($row1 = mysqli_fetch_array($getGenders)) {
-                                                    ?>
+                                                        while ($row1 = mysqli_fetch_array($getGenders)) {
+                                                        ?>
                                             <option value="<?php echo $row1['gender_id']; ?>">
                                                 <?php echo $row1['gender'];
-                                                    } ?></option>
+                                                        } ?></option>
                                             <?php } else {
-                                                    echo '<option selected disabled>Select Gender</option>';
-                                                    $getGenders = mysqli_query($db, "SELECT * FROM tbl_genders");
-                                                    while ($row3 = mysqli_fetch_array($getGenders)) {
-                                                        echo '<option value="' . $row3['gender_id'] . '">' . $row3['gender'] . '</option>';
-                                                    }
-                                                } ?>
+                                                        echo '<option selected disabled>Select Gender</option>';
+                                                        $getGenders = mysqli_query($db, "SELECT * FROM tbl_genders");
+                                                        while ($row3 = mysqli_fetch_array($getGenders)) {
+                                                            echo '<option value="' . $row3['gender_id'] . '">' . $row3['gender'] . '</option>';
+                                                        }
+                                                    } ?>
                                         </select>
                                     </div>
                                     <div class="col-sm-2">
@@ -232,7 +232,7 @@ $_SESSION['or_id'] = $or_id;
                             </div>
 
 
-                            <hr class="collapse-horizontal mb-0">
+                            <!-- <hr class="collapse-horizontal mb-0">
                             <div class="card-header text-center">
                                 <h5>Family Background</h5>
                             </div>
@@ -343,10 +343,10 @@ $_SESSION['or_id'] = $or_id;
                                                 value="<?php echo $row['nosiblings']; ?>">
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
 
-                                <hr class="collapse-horizontal">
+                            <!-- <hr class="collapse-horizontal">
                                 <h5 class="mt-4">Guardian</h5>
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -390,10 +390,10 @@ $_SESSION['or_id'] = $or_id;
                                     </div>
 
                                 </div>
-                            </div>
+                            </div> -->
 
 
-                            <hr class="collapse-horizontal mb-0">
+                            <!-- <hr class="collapse-horizontal mb-0">
                             <div class="card-header text-center">
                                 <h5>Educational Background</h5>
                             </div>
@@ -491,13 +491,13 @@ $_SESSION['or_id'] = $or_id;
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <hr class="collapse-horizontal mb-0">
                             <div class="card-header text-center">
                                 <h5>Account Details</h5>
                             </div>
-                        
+
                             <div class="card-body pt-0">
                                 <div class="row">
                                     <div class="col-sm-6">

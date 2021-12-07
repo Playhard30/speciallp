@@ -122,6 +122,9 @@ if (!empty($_GET['CID'])) {
                                                     Course Description</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                    Abbr</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Unit(s)</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
@@ -146,20 +149,23 @@ if (!empty($_GET['CID'])) {
                                             LEFT JOIN tbl_year_levels YL ON YL.year_id = SN.year_id
                                             LEFT JOIN tbl_semesters S ON S.sem_id = SN.sem_id
                                             LEFT JOIN tbl_effective_acadyear EA ON EA.eay_id = SN.eay_id
-                                            WHERE course_id = '$_GET[CID]' AND eay = '$_GET[eay]' AND SN.sem_id = '$_SESSION[ASem]'") or die($db->error);
+                                            LEFT JOIN tbl_courses C USING(course_id)
+                                            WHERE SN.course_id = '$_GET[CID]' AND eay = '$_GET[eay]' AND SN.sem_id = '$_SESSION[ASem]'") or die($db->error);
                                                 } else {
                                                     $listSubjects = mysqli_query($db, "SELECT * FROM tbl_subjects_new SN
                                                 LEFT JOIN tbl_year_levels YL ON YL.year_id = SN.year_id
                                                 LEFT JOIN tbl_semesters S ON S.sem_id = SN.sem_id
                                                 LEFT JOIN tbl_effective_acadyear EA ON EA.eay_id = SN.eay_id
-                                                WHERE course_id = '$_GET[CID]' AND eay = '0' AND SN.sem_id = '$_SESSION[ASem]'") or die($db->error);
+                                                LEFT JOIN tbl_courses C USING(course_id)
+                                                WHERE SN.course_id = '$_GET[CID]' AND eay = '0' AND SN.sem_id = '$_SESSION[ASem]'") or die($db->error);
                                                 }
                                             } else {
                                                 $listSubjects = mysqli_query($db, "SELECT * FROM tbl_subjects_new SN
                                                 LEFT JOIN tbl_year_levels YL ON YL.year_id = SN.year_id
                                                 LEFT JOIN tbl_semesters S ON S.sem_id = SN.sem_id
                                                 LEFT JOIN tbl_effective_acadyear EA ON EA.eay_id = SN.eay_id
-                                                WHERE course_id = '0' AND eay = '0' AND SN.sem_id = '$_SESSION[ASem]'") or die($db->error);
+                                                LEFT JOIN tbl_courses C USING(course_id)
+                                                WHERE SN.course_id = '0' AND eay = '0' AND SN.sem_id = '$_SESSION[ASem]'") or die($db->error);
                                             }
 
                                             while ($row = mysqli_fetch_array($listSubjects)) {
@@ -174,6 +180,8 @@ if (!empty($_GET['CID'])) {
                                                 </td>
                                                 <td class="text-sm font-weight-normal">
                                                     <?php echo $row['subj_desc']; ?></td>
+                                                <td class="text-sm font-weight-normal">
+                                                    <?php echo $row['course_abv']; ?></td>
                                                 <td class="text-sm font-weight-normal">
                                                     <?php echo $row['unit_total']; ?></td>
                                                 <td class="text-sm font-weight-normal">

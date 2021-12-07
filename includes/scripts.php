@@ -10,7 +10,25 @@
 <script src="../../assets/js/plugins/dropzone.min.js"></script>
 <script src="../../assets/js/plugins/dragula/dragula.min.js"></script>
 <script src="../../assets/js/plugins/jkanban/jkanban.js"></script>
-<script src="https://unpkg.com/imask"></script>
+<script src="../../assets/js/plugins/imask.js"></script>
+<script src="../../assets/js/plugins/countup.min.js"></script>
+<script>
+// count | DASHBOARD
+var numState = 1;
+var totalWidget = 5;
+while (numState <= totalWidget) {
+    if (document.getElementById('state' + numState)) {
+        const countUp = new CountUp('state' + numState, document.getElementById("state" + numState).getAttribute(
+            "countTo"));
+        if (!countUp.error) {
+            countUp.start();
+        } else {
+            console.error(countUp.error);
+        }
+    }
+    numState++;
+}
+</script>
 <!-- unset cookie | Schedule Subjects -->
 <script>
 document.cookie = "instructor= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";

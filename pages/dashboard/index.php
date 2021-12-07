@@ -45,160 +45,293 @@ include '../../includes/head.php';
                 </nav>
                 <?php include '../../includes/navbar.php'; ?>
                 <!-- End Navbar -->
-                <div class="container-fluid py-4">
-                    <div class="row mb-9">
-                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                            <div class="card">
-                                <div class="card-body p-3">
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <div class="numbers">
-                                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Money
-                                                </p>
-                                                <h5 class="font-weight-bolder mb-0">
-                                                    $53,000
-                                                    <span class="text-success text-sm font-weight-bolder">+55%</span>
-                                                </h5>
-                                            </div>
+
+                <!-- Start Container -->
+                <?php if ("Registrar" == $_SESSION['role'] || "Admission" == $_SESSION['role']) { ?>
+                <div class="container-fluid py-4 mb-11">
+                    <!-- first row -->
+                    <div class="row">
+                        <!-- Enrolled students -->
+                        <div class="col-xl-3 col-sm-6 mb-3">
+                            <div class="card bg-white shadow move-on-hover">
+                                <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
+                                    style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
+                                    <span class="mask bg-gradient-dark opacity-6"></span>
+                                    <div class="card-body position-relative z-index-2 p-1">
+                                        <div class="text-center">
+                                            <h6 class="mb-0 text-white font-weight-bold mb-2">
+                                                Enrolled Students
+                                            </h6>
+
+                                            <?php
+                                                $ESCount = mysqli_query($db, "SELECT COUNT(SY.sy_id) FROM tbl_schoolyears SY WHERE remark IN ('Approved') AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
+                                                $actualCount = mysqli_fetch_array($ESCount);
+                                                ?>
+                                            <h3 class="text-white text-center mb-0 mt-n2" id="state1"
+                                                countTo="<?php echo $actualCount[0]; ?>">
+                                            </h3>
+                                            <p class="text-sm mb-0 text-white">Students</p>
+
+
                                         </div>
-                                        <div class="col-4 text-end">
-                                            <div
-                                                class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <hr class="horizontal dark m-0">
+                                    <div class="text-center">
+                                        <a href="#" class="position-relative w-100 text-center py-1"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
+                                            <i class="fas fa-chevron-down text-white"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                            <div class="card">
-                                <div class="card-body p-3">
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <div class="numbers">
-                                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users
-                                                </p>
-                                                <h5 class="font-weight-bolder mb-0">
-                                                    2,300
-                                                    <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                                </h5>
-                                            </div>
+                        <!-- End Enrolled Students -->
+
+                        <!-- New Student -->
+                        <div class="col-xl-3 col-sm-6 mb-3">
+                            <div class="card bg-white shadow move-on-hover">
+                                <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
+                                    style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
+                                    <span class="mask bg-gradient-dark opacity-6"></span>
+                                    <div class="card-body position-relative z-index-2 p-1">
+                                        <div class="text-center">
+                                            <h6 class="mb-0 text-white font-weight-bold mb-2">
+                                                New Students
+                                            </h6>
+
+                                            <?php
+                                                $NESCount = mysqli_query($db, "SELECT COUNT(SY.sy_id) FROM tbl_schoolyears SY WHERE remark IN ('Approved') AND status IN ('New') AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
+                                                $actualCount = mysqli_fetch_array($NESCount);
+                                                ?>
+                                            <h3 class="text-white text-center mb-0 mt-n2" id="state2"
+                                                countTo="<?php echo $actualCount[0]; ?>">
+                                            </h3>
+                                            <p class="text-sm mb-0 text-white">Students</p>
+
+
                                         </div>
-                                        <div class="col-4 text-end">
-                                            <div
-                                                class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <hr class="horizontal dark m-0">
+                                    <div class="text-center">
+                                        <a href="#" class="position-relative w-100 text-center py-1"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
+                                            <i class="fas fa-chevron-down text-white"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                            <div class="card">
-                                <div class="card-body p-3">
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <div class="numbers">
-                                                <p class="text-sm mb-0 text-capitalize font-weight-bold">New Clients</p>
-                                                <h5 class="font-weight-bolder mb-0">
-                                                    +3,462
-                                                    <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                                                </h5>
-                                            </div>
+                        <!-- End New Students -->
+
+                        <!-- Old students -->
+                        <div class="col-xl-3 col-sm-6 mb-3">
+                            <div class="card bg-white shadow move-on-hover">
+                                <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
+                                    style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
+                                    <span class="mask bg-gradient-dark opacity-6"></span>
+                                    <div class="card-body position-relative z-index-2 p-1">
+                                        <div class="text-center">
+                                            <h6 class="mb-0 text-white font-weight-bold mb-2">
+                                                Old Students
+                                            </h6>
+
+                                            <?php
+                                                $OESCount = mysqli_query($db, "SELECT COUNT(SY.sy_id) AS total FROM tbl_schoolyears SY WHERE remark IN ('Approved') AND status IN ('Old') AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
+                                                $actualCount = mysqli_fetch_array($OESCount);
+                                                ?>
+                                            <h3 class="text-white text-center mb-0 mt-n2" id="state3"
+                                                countTo="<?php echo $actualCount[0]; ?>">
+                                            </h3>
+                                            <p class="text-sm mb-0 text-white">Students</p>
+
+
                                         </div>
-                                        <div class="col-4 text-end">
-                                            <div
-                                                class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                                <i class="ni ni-paper-diploma text-lg opacity-10"
-                                                    aria-hidden="true"></i>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <hr class="horizontal dark m-0">
+                                    <div class="text-center">
+                                        <a href="#" class="position-relative w-100 text-center py-1"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
+                                            <i class="fas fa-chevron-down text-white"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-sm-6">
-                            <div class="card">
-                                <div class="card-body p-3">
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <div class="numbers">
-                                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Sales</p>
-                                                <h5 class="font-weight-bolder mb-0">
-                                                    $103,430
-                                                    <span class="text-success text-sm font-weight-bolder">+5%</span>
-                                                </h5>
-                                            </div>
+                        <!-- End Old Students -->
+
+                        <!-- Pending Enrollees -->
+                        <div class="col-xl-3 col-sm-6 mb-3">
+                            <div class="card bg-white shadow move-on-hover">
+                                <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
+                                    style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
+                                    <span class="mask bg-gradient-dark opacity-6"></span>
+                                    <div class="card-body position-relative z-index-2 p-1">
+                                        <div class="text-center">
+                                            <h6 class="mb-0 text-white font-weight-bold mb-2">
+                                                Pending Enrollees
+                                            </h6>
+
+                                            <?php
+                                                $OESCount = mysqli_query($db, "SELECT COUNT(SY.sy_id) AS total FROM tbl_schoolyears SY WHERE remark IN ('Pending', 'Canceled') AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
+                                                $actualCount = mysqli_fetch_array($OESCount);
+                                                ?>
+                                            <h3 class="text-white text-center mb-0 mt-n2" id="state4"
+                                                countTo="<?php echo $actualCount[0]; ?>">
+                                            </h3>
+                                            <p class="text-sm mb-0 text-white">Students</p>
+
+
                                         </div>
-                                        <div class="col-4 text-end">
-                                            <div
-                                                class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                                <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <hr class="horizontal dark m-0">
+                                    <div class="text-center">
+                                        <a href="#" class="position-relative w-100 text-center py-1"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
+                                            <i class="fas fa-chevron-down text-white"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <?php
-                    if ("Registrar" == $_SESSION['role'] || "Admission" == $_SESSION['role']) {
-                    ?>
-                    <div class="row mb-9">
-                        <div class="col-xl-3 col-sm-6">
-                            <div class="card bg-gradient-dark move-on-hover">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <h5 class="mb-0 text-white">Online Inquiry</h5>
-                                        <div class="ms-auto">
+                    <!-- End Pending Enrollees -->
+
+                    <!-- second row -->
+                    <div class="row">
+                        <!-- Online inquiry -->
+                        <div class="col-xl-3 col-sm-6 mb-3">
+                            <div class="card bg-white shadow move-on-hover">
+                                <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
+                                    style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
+                                    <span class="mask bg-gradient-dark opacity-6"></span>
+                                    <div class="card-body position-relative z-index-2 p-1">
+                                        <div class="text-center">
+                                            <h6 class="mb-0 text-white font-weight-bold mb-2">
+                                                Online Inquiry
+                                            </h6>
+
                                             <?php
-                                                $orCount = mysqli_query($db, "SELECT COUNT(or_id) FROM tbl_online_registrations WHERE status = 'Pending'");
+                                                $orCount = mysqli_query($db, "SELECT COUNT(or_id) FROM tbl_online_registrations WHERE status IN ('Pending') ") or die($db->error);
                                                 $actualCount = mysqli_fetch_array($orCount);
                                                 ?>
-                                            <h1 class="text-white text-end mb-0 mt-n2"><?php echo $actualCount[0]; ?>
-                                            </h1>
-                                            <p class="text-sm mb-0 text-white">Items</p>
-                                        </div>
+                                            <h3 class="text-white text-center mb-0 mt-n2" id="state5"
+                                                countTo="<?php echo $actualCount[0]; ?>">
+                                            </h3>
+                                            <p class="text-sm mb-0 text-white">Students</p>
 
+
+                                        </div>
+                                    </div>
+                                    <hr class="horizontal dark m-0">
+                                    <div class="text-center">
+                                        <a href="../inquiry/list.inquiry.php"
+                                            class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Show More">
+                                            <i class="fas fa-chevron-down text-white"></i>
+                                        </a>
                                     </div>
                                 </div>
-                                <a href="../inquiry/list.inquiry.php" class="w-100 text-center py-1"
-                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
-                                    <i class="fas fa-chevron-down text-white"></i>
-                                </a>
                             </div>
                         </div>
+                        <!-- End Online inquiry -->
                     </div>
-                    <?php
-                    }
-                    ?>
-
-                    <div class="container-fluid py-4">
-                        <div class="row">
-                        </div>
-                    </div>
-                    <div class="container-fluid py-4">
-                        <div class="row">
-                        </div>
-                    </div>
-                    <div class="container-fluid py-4">
-                        <div class="row">
-                        </div>
-                    </div>
-                    <div class="container-fluid py-4">
-                        <div class="row">
-                        </div>
-                    </div>
-                    <div class="container-fluid py-4">
-                        <div class="row">
-                        </div>
-                    </div>
-                    <!-- footer -->
-                    <?php include '../../includes/footer.php'; ?>
-                    <!-- End footer -->
                 </div>
+                <!-- End Container -->
+                <!-- STUDENT -->
+                <?php } elseif ($_SESSION['role'] == "Student") {
+                ?>
+                <div class="container-fluid py-4 mb-12">
+                    <!-- first row -->
+                    <div class="row">
+                        <!--Student Courses | Enrolled students -->
+                        <div class="col-xl-3 col-sm-6 mb-3">
+                            <div class="card bg-white shadow move-on-hover">
+                                <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
+                                    style="background-image: url('../../assets/img/curved-images/curved14.jpg')">
+                                    <span class="mask bg-gradient-dark opacity-6"></span>
+                                    <div class="card-body position-relative z-index-2 p-1">
+                                        <div class="text-center">
+                                            <h6 class="mb-0 text-white font-weight-bold mb-2">
+                                                <?php $course = $db->query("SELECT * FROM tbl_students LEFT JOIN tbl_courses USING(course_id) WHERE stud_id = '$stud_id'") or die($db->error);
+                                                    while ($row = $course->fetch_array()) {
+                                                        $DCourse_abv = $row['course_abv'];
+                                                        if ($row['course_id'] > 0) {
+                                                            echo $row['course_abv'] . ' Students';
+                                                        } else {
+                                                            echo 'Students';
+                                                        }
+                                                    } ?>
+                                            </h6>
+
+                                            <?php
+                                                $SCount = mysqli_query($db, "SELECT COUNT(SY.sy_id) FROM tbl_schoolyears SY LEFT JOIN tbl_courses C USING(course_id) WHERE remark IN ('Approved') AND course_abv IN ('$DCourse_abv') AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
+                                                $actualCount = mysqli_fetch_array($SCount);
+                                                ?>
+                                            <h3 class="text-white text-center mb-0 mt-n2" id="state1"
+                                                countTo="<?php echo $actualCount[0]; ?>">
+                                            </h3>
+                                            <p class="text-sm mb-0 text-white">Students</p>
+
+
+                                        </div>
+                                    </div>
+                                    <hr class="horizontal dark m-0">
+                                    <div class="text-center">
+                                        <a href="#" class="position-relative w-100 text-center py-1"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
+                                            <i class="fas fa-chevron-down text-white"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Student Courses | Enrolled students -->
+                        <!-- Subjects Enrolled -->
+                        <div class="col-xl-3 col-sm-6 mb-3">
+                            <div class="card bg-white shadow move-on-hover">
+                                <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
+                                    style="background-image: url('../../assets/img/curved-images/curved14.jpg')">
+                                    <span class="mask bg-gradient-dark opacity-6"></span>
+                                    <div class="card-body position-relative z-index-2 p-1">
+                                        <div class="text-center">
+                                            <h6 class="mb-0 text-white font-weight-bold mb-2">
+                                                Enrolled Subjects
+                                            </h6>
+
+                                            <?php
+                                                $ESubCount = mysqli_query($db, "SELECT COUNT(ES.enrolled_subj_id) FROM tbl_enrolled_subjects ES WHERE stud_id IN ('$stud_id') AND acad_year = '$_SESSION[AC]' AND semester = '$_SESSION[S]'") or die($db->error);
+                                                $actualCount = mysqli_fetch_array($ESubCount);
+                                                ?>
+                                            <h3 class="text-white text-center mb-0 mt-n2" id="state2"
+                                                countTo="<?php echo $actualCount[0]; ?>">
+                                            </h3>
+                                            <p class="text-sm mb-0 text-white">Students</p>
+
+
+                                        </div>
+                                    </div>
+                                    <hr class="horizontal dark m-0">
+                                    <div class="text-center">
+                                        <a href="#" class="position-relative w-100 text-center py-1"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
+                                            <i class="fas fa-chevron-down text-white"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Subjects Enrolled -->
+
+                    </div>
+                </div>
+                <!-- End Container -->
+                <?php } ?>
+                <!-- End Container -->
+
+                <!-- footer -->
+                <?php include '../../includes/footer.php'; ?>
+                <!-- End footer -->
+            </div>
     </main>
     <div class="fixed-plugin">
         <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">

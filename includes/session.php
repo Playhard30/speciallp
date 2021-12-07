@@ -77,5 +77,3 @@ while ($row = $getASem->fetch_array()) {
     $_SESSION['S'] = $row['semester'];
     $_SESSION['ASem'] = $row['sem_id'];
 }
-
-// Get department from Subjects

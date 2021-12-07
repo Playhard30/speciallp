@@ -73,7 +73,7 @@ if (!empty($_SESSION['role'])) {
                 <nav
                     class="navbar navbar-expand-lg blur blur-rounded top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                     <div class="container-fluid">
-                        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../pages/dashboard.html">
+                        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="sign-in.php">
                             SFAC Las Piñas
                         </a>
                         <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
@@ -116,7 +116,7 @@ if (!empty($_SESSION['role'])) {
                             </ul>
                             <ul class="navbar-nav d-lg-block d-none">
                                 <li class="nav-item">
-                                    <a href="#" class="btn btn-sm btn-round mb-0 me-1 text-white font-weight-bolder"
+                                    <a href="#" class="btn btn-sm btn-round mb-0 me-1 text-white font-weight-bold"
                                         style="background-color: #d62121 !important;">Home</a>
                                 </li>
                             </ul>

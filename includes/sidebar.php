@@ -1,6 +1,6 @@
 <aside
     class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 shadow-xl shadow bg-white"
-    id="sidenav-main" data-color="danger">
+    data-color="danger">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
@@ -695,31 +695,6 @@
                     </div>
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
-            </li>
-
-
-            <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#enrollment" class="nav-link" aria-controls="enrollment"
-                    role="button" aria-expanded="false">
-                    <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-sign-in-alt text-dark"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Enrollment</span>
-                </a>
-
-                <div class="collapse" id="enrollment">
-                    <ul class="nav ms-4 ps-3">
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Pending Students</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
             </li>
 
 

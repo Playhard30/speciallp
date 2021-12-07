@@ -19,39 +19,39 @@ if (isset($_POST['submit'])) {
     $civilstatus  = mysqli_real_escape_string($db, $_POST['civilstatus']);
     $contact      = mysqli_real_escape_string($db, $_POST['contact']);
     $email        = mysqli_real_escape_string($db, $_POST['email']);
-    $flastname    = mysqli_real_escape_string($db, $_POST['flastname']);
-    $ffirstname   = mysqli_real_escape_string($db, $_POST['ffirstname']);
-    $fmiddlename  = mysqli_real_escape_string($db, $_POST['fmiddlename']);
-    $fage         = mysqli_real_escape_string($db, $_POST['fage']);
-    $foccupation  = mysqli_real_escape_string($db, $_POST['foccupation']);
-    $mlastname    = mysqli_real_escape_string($db, $_POST['mlastname']);
-    $mfirstname   = mysqli_real_escape_string($db, $_POST['mfirstname']);
-    $mmiddlename  = mysqli_real_escape_string($db, $_POST['mmiddlename']);
-    $mage         = mysqli_real_escape_string($db, $_POST['mage']);
-    $moccupation  = mysqli_real_escape_string($db, $_POST['moccupation']);
-    $familyincome = mysqli_real_escape_string($db, $_POST['familyincome']);
-    $nosiblings   = mysqli_real_escape_string($db, $_POST['nosiblings']);
-    $glastname    = mysqli_real_escape_string($db, $_POST['glastname']);
-    $gfirstname   = mysqli_real_escape_string($db, $_POST['gfirstname']);
-    $gmiddlename  = mysqli_real_escape_string($db, $_POST['gmiddlename']);
-    $relationship = mysqli_real_escape_string($db, $_POST['relationship']);
-    $gaddress     = mysqli_real_escape_string($db, $_POST['gaddress']);
+    // $flastname    = mysqli_real_escape_string($db, $_POST['flastname']);
+    // $ffirstname   = mysqli_real_escape_string($db, $_POST['ffirstname']);
+    // $fmiddlename  = mysqli_real_escape_string($db, $_POST['fmiddlename']);
+    // $fage         = mysqli_real_escape_string($db, $_POST['fage']);
+    // $foccupation  = mysqli_real_escape_string($db, $_POST['foccupation']);
+    // $mlastname    = mysqli_real_escape_string($db, $_POST['mlastname']);
+    // $mfirstname   = mysqli_real_escape_string($db, $_POST['mfirstname']);
+    // $mmiddlename  = mysqli_real_escape_string($db, $_POST['mmiddlename']);
+    // $mage         = mysqli_real_escape_string($db, $_POST['mage']);
+    // $moccupation  = mysqli_real_escape_string($db, $_POST['moccupation']);
+    // $familyincome = mysqli_real_escape_string($db, $_POST['familyincome']);
+    // $nosiblings   = mysqli_real_escape_string($db, $_POST['nosiblings']);
+    // $glastname    = mysqli_real_escape_string($db, $_POST['glastname']);
+    // $gfirstname   = mysqli_real_escape_string($db, $_POST['gfirstname']);
+    // $gmiddlename  = mysqli_real_escape_string($db, $_POST['gmiddlename']);
+    // $relationship = mysqli_real_escape_string($db, $_POST['relationship']);
+    // $gaddress     = mysqli_real_escape_string($db, $_POST['gaddress']);
 
-    $elem         = mysqli_real_escape_string($db, $_POST['elem']);
-    $elemSY       = mysqli_real_escape_string($db, $_POST['elemSY']);
-    $elemAddress  = mysqli_real_escape_string($db, $_POST['elemAddress']);
+    // $elem         = mysqli_real_escape_string($db, $_POST['elem']);
+    // $elemSY       = mysqli_real_escape_string($db, $_POST['elemSY']);
+    // $elemAddress  = mysqli_real_escape_string($db, $_POST['elemAddress']);
 
-    $hs           = mysqli_real_escape_string($db, $_POST['hs']);
-    $hsSY         = mysqli_real_escape_string($db, $_POST['hsSY']);
-    $hsAddress    = mysqli_real_escape_string($db, $_POST['hsAddress']);
-    $lastschool   = mysqli_real_escape_string($db, $_POST['lastschool']);
-    $courseYear  = mysqli_real_escape_string($db, $_POST['course-year']);
-    $lastSY       = mysqli_real_escape_string($db, $_POST['lastSY']);
-    $lastAddress  = mysqli_real_escape_string($db, $_POST['lastAddress']);
+    // $hs           = mysqli_real_escape_string($db, $_POST['hs']);
+    // $hsSY         = mysqli_real_escape_string($db, $_POST['hsSY']);
+    // $hsAddress    = mysqli_real_escape_string($db, $_POST['hsAddress']);
+    // $lastschool   = mysqli_real_escape_string($db, $_POST['lastschool']);
+    // $courseYear  = mysqli_real_escape_string($db, $_POST['course-year']);
+    // $lastSY       = mysqli_real_escape_string($db, $_POST['lastSY']);
+    // $lastAddress  = mysqli_real_escape_string($db, $_POST['lastAddress']);
 
     $acadYear = mysqli_query($db, "SELECT * FROM tbl_active_acads LEFT JOIN tbl_acadyears ON tbl_acadyears.ay_id = tbl_active_acads.ay_id");
 
-    while($rowYear = mysqli_fetch_array($acadYear)) {
+    while ($rowYear = mysqli_fetch_array($acadYear)) {
         $acad_year = $rowYear['academic_year'];
     }
 
@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
         $semester = $rowSem['semester'];
     }
 
-    $inquiryData = mysqli_query($db, "INSERT INTO tbl_online_registrations (admit_type, year_id, course_id, gender_id, lastname, firstname, middlename, address, birthdate, birthplace, age, religion, citizenship, civilstatus, contact, email, flastname, ffirstname, fmiddlename, fage, foccupation, mlastname, mfirstname, mmiddlename, mage, moccupation, familyincome, nosiblings, glastname, gfirstname, gmiddlename, relationship, gaddress, elem, elemSY, elemAddress, hs, hsSY, hsAddress, lastschool, courseYear, lastSY, lastAddress, acad_year, semester, status) VALUES ('NEW STUDENT', '$year', '$course', '$gender', '$lastname', '$firstname', '$middlename', '$address', '$birthdate', '$birthplace', '$age', '$religion', '$citizenship', '$civilstatus', '$contact', '$email', '$flastname', '$ffirstname', '$fmiddlename', '$fage', '$foccupation', '$mlastname', '$mfirstname', '$mmiddlename', '$mage', '$moccupation', '$familyincome', '$nosiblings', '$glastname', '$gfirstname', '$gmiddlename', '$relationship', '$gaddress', '$elem', '$elemSY', '$elemAddress', '$hs', '$hsSY', '$hsAddress', '$lastschool', '$courseYear', '$lastSY', '$lastAddress', '$acad_year', '$semester', 'Pending') ") or die(mysqli_error($db));
+    $inquiryData = mysqli_query($db, "INSERT INTO tbl_online_registrations (admit_type, year_id, course_id, gender_id, lastname, firstname, middlename, address, birthdate, birthplace, age, religion, citizenship, civilstatus, contact, email, acad_year, semester, status) VALUES ('NEW STUDENT', '$year', '$course', '$gender', '$lastname', '$firstname', '$middlename', '$address', '$birthdate', '$birthplace', '$age', '$religion', '$citizenship', '$civilstatus', '$contact', '$email', '$acad_year', '$semester', 'Pending') ") or die(mysqli_error($db));
     $_SESSION['inquiryComplete'] = true;
     header("location: ../online.inquiry.php");
 }

@@ -49,9 +49,11 @@ include '../../includes/session.php';
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Fullname</th>
-                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Course and Year Applying To</th>
-                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                     Semester and Academic Year Applied</th>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
@@ -75,7 +77,8 @@ include '../../includes/session.php';
                                             $listInquiries = mysqli_query($db, "SELECT *, CONCAT(tbl_online_registrations.lastname, ', ', tbl_online_registrations.firstname, ' ', tbl_online_registrations.middlename) AS fullname 
                                             FROM tbl_online_registrations
                                             LEFT JOIN tbl_courses ON tbl_courses.course_id = tbl_online_registrations.course_id
-                                            LEFT JOIN tbl_year_levels ON tbl_year_levels.year_id = tbl_online_registrations.year_id");
+                                            LEFT JOIN tbl_year_levels ON tbl_year_levels.year_id = tbl_online_registrations.year_id
+                                            ORDER BY status DESC, or_id DESC");
                                             while ($row = mysqli_fetch_array($listInquiries)) {
                                                 $id = $row['or_id'];
                                             ?>
@@ -85,31 +88,37 @@ include '../../includes/session.php';
                                                 <td class="text-sm font-weight-normal">
                                                     <?php echo $row['fullname']; ?></td>
                                                 <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['course_abv'].' - '.$row['year_abv']; ?></td>
+                                                    <?php echo $row['course_abv'] . ' - ' . $row['year_abv']; ?></td>
                                                 <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['semester'].', '. $row['acad_year']; ?></td>
+                                                    <?php echo $row['semester'] . ', ' . $row['acad_year']; ?></td>
                                                 <td class="text-sm font-weight-normal">
                                                     <?php echo $row['contact']; ?></td>
                                                 <td class="text-sm font-weight-normal">
                                                     <?php echo $row['email']; ?></td>
                                                 <?php
                                                     if ($row['status'] == "Pending") {
-                                                        ?>
-                                                            <td class="text-sm text-danger font-weight-normal"><?php echo $row['status']; ?></td>
-                                                        <?php
+                                                    ?>
+                                                <td class="text-xs font-weight-normal" style="color: #b45f06">
+                                                    <span
+                                                        class="badge badge-warning"><?php echo $row['status']; ?></span>
+                                                </td>
+                                                <?php
                                                     } else {
-                                                        ?>
-                                                            <td class="text-sm text-success font-weight-normal"><?php echo $row['status']; ?></td>
-                                                        <?php
+                                                    ?>
+                                                <td class="text-xs font-weight-normal" style="color: #38761d">
+                                                    <span class="badge"
+                                                        style="background-color: #38761d; color: #d9ead3"><?php echo $row['status']; ?>
+                                                </td></span>
+                                                <?php
                                                     }
-                                                ?>
-                                                
-                                                
+                                                    ?>
+
                                                 <td class="text-sm font-weight-normal">
-                                                    <a class="btn bg-gradient-success text-xs"
+                                                    <?php if ($row['status'] == "Pending") { ?>
+                                                    <a class="btn text-xs bg-gradient-primary"
                                                         href="edit.inquiry.php?or_id=<?php echo $id; ?>"><i
                                                             class="text-xs fas fa-edit"></i> Admit</a>
-
+                                                    <?php } ?>
                                                     <a class="btn btn-block bg-gradient-danger mb-3 text-xs"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#modal-notification<?php echo $id; ?>"><i
@@ -138,7 +147,7 @@ include '../../includes/session.php';
                                                                     <div class="py-3 text-center">
                                                                         <i class="fas fa-trash-alt text-9xl"></i>
                                                                         <h4 class="text-gradient text-danger mt-4">
-                                                                            Delete Account!</h4>
+                                                                            Delete Enrollee!</h4>
                                                                         <p>Are you sure you want to delete
                                                                             <br>
                                                                             <i><b><?php echo $row['fullname']; ?></b></i>?
