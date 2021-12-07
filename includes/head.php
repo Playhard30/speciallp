@@ -27,10 +27,10 @@ require '../../includes/conn.php';
     <!-- edited CSS -->
     <link rel="stylesheet" href="../../assets/css/addons/edited.css">
     <style>
-    html {
-        overflow: hidden;
+    ::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
     }
-
 
     body {
         font-weight: 400;
