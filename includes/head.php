@@ -37,6 +37,7 @@ require '../../includes/conn.php';
         background: url(../../assets/img/curved-images/main.jpg) !important;
         background-repeat: no-repeat !important;
         background-position-y: top !important;
+        background-attachment: fixed !important;
         background-size: cover !important;
         -webkit-background-size: cover;
         -moz-background-size: cover;

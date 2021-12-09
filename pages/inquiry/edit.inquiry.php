@@ -19,220 +19,209 @@ $_SESSION['or_id'] = $or_id;
     <?php include '../../includes/sidebar.php'; ?>
     <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
         <!-- Navbar -->
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
-            navbar-scroll="true">
-            <div class="container-fluid py-1 px-3">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                        <li class="breadcrumb-item text-sm">
-                            <img src="../../assets/img/logos/logo.png" class="navbar-brand-img h-100" alt="main_logo"
-                                style="width: 40px; height: 40px;">
-                        </li>
-                        <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
-                    </ol>
-                    <h6 class="font-weight-bolder mb-0">Inquirer's Information</h6>
-                </nav>
-                <?php include '../../includes/navbar.php'; ?>
-                <!-- End Navbar -->
+        <?php include '../../includes/navbar-title.php'; ?>
+        <h6 class="font-weight-bolder mb-0">Inquirer's Information</h6>
+        <?php include '../../includes/navbar.php'; ?>
+        <!-- End Navbar -->
 
 
-                <div class="container-fluid py-4">
-                    <div class="col-lg-11 mt-lg-0 mt-4 mx-auto mb-5">
-                        <!-- Card Profile -->
-                        <?php
-                        $getStudData = mysqli_query($db, "SELECT *, CONCAT(stud.firstname, ' ', stud.middlename, ' ', stud.lastname) AS fullname
+        <div class="container-fluid py-4">
+            <div class="col-lg-11 mt-lg-0 mt-4 mx-auto mb-5">
+                <!-- Card Profile -->
+                <?php
+                $getStudData = mysqli_query($db, "SELECT *, CONCAT(stud.firstname, ' ', stud.middlename, ' ', stud.lastname) AS fullname
                                         FROM tbl_online_registrations AS stud
                                         WHERE or_id = '$or_id'");
-                        while ($row = mysqli_fetch_array($getStudData)) {
-                        ?>
-                        <!-- Card Basic Info -->
-                        <form method="POST" enctype="multipart/form-data" action="inquiryData/ctrl.edit.inquiry.php"
-                            class="card mt-4" id="basic-info">
-                            <div class="card-header text-center">
-                                <h5>Personal Data</h5>
+                while ($row = mysqli_fetch_array($getStudData)) {
+                ?>
+                <!-- Card Basic Info -->
+                <form method="POST" enctype="multipart/form-data" action="inquiryData/ctrl.edit.inquiry.php"
+                    class="card mt-4" id="basic-info">
+                    <div class="card-header text-center">
+                        <h5>Personal Data</h5>
+                    </div>
+
+
+                    <div class="card-body pt-0">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="form-label mt-4">Student ID No.</label>
+                                <div class="input-group">
+                                    <input name="stud_no" required type="text" placeholder="Student Number"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <label class="form-label mt-4">Department</label>
+                                <select class="form-control" required name="courses" id="department">
+
+                                    <?php if (!empty($row['course_id'])) {
+                                            $getCourses = mysqli_query($db, "SELECT * FROM tbl_courses WHERE course_id IN ('$row[course_id]')");
+                                            while ($row2 = mysqli_fetch_array($getCourses)) {
+                                        ?>
+                                    <option selected value="<?php echo $row2['course_id']; ?>">
+                                        <?php echo $row2['course'];
+                                            } ?>
+                                    </option>
+
+                                    <?php $getCourses = mysqli_query($db, "SELECT * FROM tbl_courses WHERE course_id NOT IN ('$row[course_id]')");
+                                                while ($row1 = mysqli_fetch_array($getCourses)) {
+                                                ?>
+                                    <option value="<?php echo $row1['course_id']; ?>">
+                                        <?php echo $row1['course'];
+                                                } ?></option>
+                                    <?php } else {
+                                                echo '<option value="" selected disabled>Select Department</option>';
+                                                $getCourses = mysqli_query($db, "SELECT * FROM tbl_courses");
+                                                while ($row3 = mysqli_fetch_array($getCourses)) {
+                                                    echo '<option value="' . $row3['course_id'] . '">' . $row3['course'] . '</option>';
+                                                }
+                                            } ?>
+                                </select>
                             </div>
 
 
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <label class="form-label mt-4">Student ID No.</label>
-                                        <div class="input-group">
-                                            <input name="stud_no" required type="text" placeholder="Student Number"
-                                                class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <label class="form-label mt-4">Department</label>
-                                        <select class="form-control" required name="courses" id="department">
-
-                                            <?php if (!empty($row['course_id'])) {
-                                                    $getCourses = mysqli_query($db, "SELECT * FROM tbl_courses WHERE course_id IN ('$row[course_id]')");
-                                                    while ($row2 = mysqli_fetch_array($getCourses)) {
-                                                ?>
-                                            <option selected value="<?php echo $row2['course_id']; ?>">
-                                                <?php echo $row2['course'];
-                                                    } ?>
-                                            </option>
-
-                                            <?php $getCourses = mysqli_query($db, "SELECT * FROM tbl_courses WHERE course_id NOT IN ('$row[course_id]')");
-                                                        while ($row1 = mysqli_fetch_array($getCourses)) {
-                                                        ?>
-                                            <option value="<?php echo $row1['course_id']; ?>">
-                                                <?php echo $row1['course'];
-                                                        } ?></option>
-                                            <?php } else {
-                                                        echo '<option value="" selected disabled>Select Department</option>';
-                                                        $getCourses = mysqli_query($db, "SELECT * FROM tbl_courses");
-                                                        while ($row3 = mysqli_fetch_array($getCourses)) {
-                                                            echo '<option value="' . $row3['course_id'] . '">' . $row3['course'] . '</option>';
-                                                        }
-                                                    } ?>
-                                        </select>
-                                    </div>
-
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <label class="form-label mt-4">Last Name</label>
-                                        <div class="input-group">
-                                            <input id="lastName" name="lastname" class="form-control" type="text"
-                                                placeholder="Lastname" value="<?php echo $row['lastname']; ?>">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-4">
-                                        <label class="form-label mt-4">First Name</label>
-                                        <div class="input-group">
-                                            <input id="firstName" name="firstname" class="form-control" type="text"
-                                                placeholder="Firstname"
-                                                value="<?php echo $row['firstname'];
-                                                                                                                                                        ?>">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-4">
-                                        <label class="form-label mt-4">Middlename</label>
-                                        <div class="input-group">
-                                            <input id="middlename" name="middlename" class="form-control" type="text"
-                                                placeholder="Middlename" value="<?php echo $row['middlename']; ?>">
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-                                <div class="row">
-
-                                    <div class="col-sm-12">
-                                        <label class="form-label mt-4">Address</label>
-                                        <div class="input-group">
-                                            <input id="address" name="address" class="form-control" type="address"
-                                                placeholder="House/Unit/Flr #, Bldg Name, Blk or Lot #, Barangay, City/Municipality, Province"
-                                                value="<?php echo $row['address']; ?>">
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <label class="form-label mt-4">Gender</label>
-                                        <select class="form-control" required name="gender" id="gender">
-                                            <?php if (!empty($row['gender_id'])) {
-                                                    $getGenders = mysqli_query($db, "SELECT * FROM tbl_genders WHERE gender_id IN ('$row[gender_id]')");
-                                                    while ($row2 = mysqli_fetch_array($getGenders)) {
-                                                ?>
-                                            <option selected value="<?php echo $row2['gender_id']; ?>">
-                                                <?php echo $row2['gender'];
-                                                    } ?>
-                                            </option>
-
-                                            <?php $getGenders = mysqli_query($db, "SELECT * FROM tbl_genders WHERE gender_id NOT IN ('$row[gender_id]')");
-                                                        while ($row1 = mysqli_fetch_array($getGenders)) {
-                                                        ?>
-                                            <option value="<?php echo $row1['gender_id']; ?>">
-                                                <?php echo $row1['gender'];
-                                                        } ?></option>
-                                            <?php } else {
-                                                        echo '<option selected disabled>Select Gender</option>';
-                                                        $getGenders = mysqli_query($db, "SELECT * FROM tbl_genders");
-                                                        while ($row3 = mysqli_fetch_array($getGenders)) {
-                                                            echo '<option value="' . $row3['gender_id'] . '">' . $row3['gender'] . '</option>';
-                                                        }
-                                                    } ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <label class="form-label mt-4">Age</label>
-                                        <div class="input-group">
-                                            <input id="age" name="age" class="form-control" type="text"
-                                                value="<?php echo $row['age']; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <label class="form-label mt-4">Date of Birth</label>
-                                        <div class="input-group">
-                                            <input id="birthdate" name="birthdate" class="form-control" type="date"
-                                                value="<?php echo $row['birthdate']; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label class="form-label mt-4">Place of Birth</label>
-                                        <div class="input-group">
-                                            <input id="birthplace" name="birthplace" class="form-control" type="text"
-                                                placeholder="City/Municipality, Province"
-                                                value="<?php echo $row['birthplace']; ?>">
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <label class="form-label mt-4">Religion</label>
-                                        <div class="input-group">
-                                            <input id="religion" name="religion" class="form-control" type="text"
-                                                placeholder="Religion" value="<?php echo $row['religion']; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label class="form-label mt-4">Citizenship</label>
-                                        <div class="input-group">
-                                            <input id="citizenship" name="citizenship" class="form-control" type="text"
-                                                placeholder="Citizenship" value="<?php echo $row['citizenship']; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label class="form-label mt-4">Civil Status</label>
-                                        <div class="input-group">
-                                            <input id="civilstatus" name="civilstatus" class="form-control" type="text"
-                                                placeholder="civilstatus" value="<?php echo $row['civilstatus']; ?>">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <label class="form-label mt-4">Contact Number</label>
-                                        <div class="input-group">
-                                            <input id="contact" name="contact" class="form-control" type="text"
-                                                placeholder="Contact Number" value="<?php echo $row['contact']; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <label class="form-label mt-4">Email Address</label>
-                                        <div class="input-group">
-                                            <input id="email" name="email" class="form-control" type="text"
-                                                placeholder="example@gmail.com" value="<?php echo $row['email']; ?>">
-                                        </div>
-                                    </div>
-
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="form-label mt-4">Last Name</label>
+                                <div class="input-group">
+                                    <input id="lastName" name="lastname" class="form-control" type="text"
+                                        placeholder="Lastname" value="<?php echo $row['lastname']; ?>">
                                 </div>
                             </div>
 
+                            <div class="col-sm-4">
+                                <label class="form-label mt-4">First Name</label>
+                                <div class="input-group">
+                                    <input id="firstName" name="firstname" class="form-control" type="text"
+                                        placeholder="Firstname"
+                                        value="<?php echo $row['firstname'];
+                                                                                                                                                ?>">
+                                </div>
+                            </div>
 
-                            <!-- <hr class="collapse-horizontal mb-0">
+                            <div class="col-sm-4">
+                                <label class="form-label mt-4">Middlename</label>
+                                <div class="input-group">
+                                    <input id="middlename" name="middlename" class="form-control" type="text"
+                                        placeholder="Middlename" value="<?php echo $row['middlename']; ?>">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <label class="form-label mt-4">Address</label>
+                                <div class="input-group">
+                                    <input id="address" name="address" class="form-control" type="address"
+                                        placeholder="House/Unit/Flr #, Bldg Name, Blk or Lot #, Barangay, City/Municipality, Province"
+                                        value="<?php echo $row['address']; ?>">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label class="form-label mt-4">Gender</label>
+                                <select class="form-control" required name="gender" id="gender">
+                                    <?php if (!empty($row['gender_id'])) {
+                                            $getGenders = mysqli_query($db, "SELECT * FROM tbl_genders WHERE gender_id IN ('$row[gender_id]')");
+                                            while ($row2 = mysqli_fetch_array($getGenders)) {
+                                        ?>
+                                    <option selected value="<?php echo $row2['gender_id']; ?>">
+                                        <?php echo $row2['gender'];
+                                            } ?>
+                                    </option>
+
+                                    <?php $getGenders = mysqli_query($db, "SELECT * FROM tbl_genders WHERE gender_id NOT IN ('$row[gender_id]')");
+                                                while ($row1 = mysqli_fetch_array($getGenders)) {
+                                                ?>
+                                    <option value="<?php echo $row1['gender_id']; ?>">
+                                        <?php echo $row1['gender'];
+                                                } ?></option>
+                                    <?php } else {
+                                                echo '<option selected disabled>Select Gender</option>';
+                                                $getGenders = mysqli_query($db, "SELECT * FROM tbl_genders");
+                                                while ($row3 = mysqli_fetch_array($getGenders)) {
+                                                    echo '<option value="' . $row3['gender_id'] . '">' . $row3['gender'] . '</option>';
+                                                }
+                                            } ?>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="form-label mt-4">Age</label>
+                                <div class="input-group">
+                                    <input id="age" name="age" class="form-control" type="text"
+                                        value="<?php echo $row['age']; ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="form-label mt-4">Date of Birth</label>
+                                <div class="input-group">
+                                    <input id="birthdate" name="birthdate" class="form-control" type="date"
+                                        value="<?php echo $row['birthdate']; ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label mt-4">Place of Birth</label>
+                                <div class="input-group">
+                                    <input id="birthplace" name="birthplace" class="form-control" type="text"
+                                        placeholder="City/Municipality, Province"
+                                        value="<?php echo $row['birthplace']; ?>">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="form-label mt-4">Religion</label>
+                                <div class="input-group">
+                                    <input id="religion" name="religion" class="form-control" type="text"
+                                        placeholder="Religion" value="<?php echo $row['religion']; ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label mt-4">Citizenship</label>
+                                <div class="input-group">
+                                    <input id="citizenship" name="citizenship" class="form-control" type="text"
+                                        placeholder="Citizenship" value="<?php echo $row['citizenship']; ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label mt-4">Civil Status</label>
+                                <div class="input-group">
+                                    <input id="civilstatus" name="civilstatus" class="form-control" type="text"
+                                        placeholder="civilstatus" value="<?php echo $row['civilstatus']; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="form-label mt-4">Contact Number</label>
+                                <div class="input-group">
+                                    <input id="contact" name="contact" class="form-control" type="text"
+                                        placeholder="Contact Number" value="<?php echo $row['contact']; ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <label class="form-label mt-4">Email Address</label>
+                                <div class="input-group">
+                                    <input id="email" name="email" class="form-control" type="text"
+                                        placeholder="example@gmail.com" value="<?php echo $row['email']; ?>">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!-- <hr class="collapse-horizontal mb-0">
                             <div class="card-header text-center">
                                 <h5>Family Background</h5>
                             </div>
@@ -346,7 +335,7 @@ $_SESSION['or_id'] = $or_id;
                                 </div> -->
 
 
-                            <!-- <hr class="collapse-horizontal">
+                    <!-- <hr class="collapse-horizontal">
                                 <h5 class="mt-4">Guardian</h5>
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -393,7 +382,7 @@ $_SESSION['or_id'] = $or_id;
                             </div> -->
 
 
-                            <!-- <hr class="collapse-horizontal mb-0">
+                    <!-- <hr class="collapse-horizontal mb-0">
                             <div class="card-header text-center">
                                 <h5>Educational Background</h5>
                             </div>
@@ -493,42 +482,41 @@ $_SESSION['or_id'] = $or_id;
                                 </div>
                             </div> -->
 
-                            <hr class="collapse-horizontal mb-0">
-                            <div class="card-header text-center">
-                                <h5>Account Details</h5>
-                            </div>
-
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label class="form-label mt-3">Username</label>
-                                        <div class="input-group">
-                                            <input id="username" required name="username" class="form-control"
-                                                type="text" placeholder="Username">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label mt-3">Password</label>
-                                        <div class="input-group">
-                                            <input id="password" required name="password" class="form-control"
-                                                placeholder="Password" type="password">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 button-row d-flex mt-4">
-                                    <button type="submit" name="submit"
-                                        class="btn bg-gradient-primary ms-auto">Admit</button>
-                                </div>
-                            </div>
-                        </form>
-
-                        <?php } ?>
-
+                    <hr class="collapse-horizontal mb-0">
+                    <div class="card-header text-center">
+                        <h5>Account Details</h5>
                     </div>
-                    <?php include '../../includes/footer.php'; ?>
-                    <!-- End footer -->
-                </div>
+
+                    <div class="card-body pt-0">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="form-label mt-3">Username</label>
+                                <div class="input-group">
+                                    <input id="username" required name="username" class="form-control" type="text"
+                                        placeholder="Username">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label mt-3">Password</label>
+                                <div class="input-group">
+                                    <input id="password" required name="password" class="form-control"
+                                        placeholder="Password" type="password">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 button-row d-flex mt-4">
+                            <button type="submit" name="submit" class="btn bg-gradient-primary ms-auto">Admit</button>
+                        </div>
+                    </div>
+                </form>
+
+                <?php } ?>
+
+            </div>
+            <?php include '../../includes/footer.php'; ?>
+            <!-- End footer -->
+        </div>
 
     </main>
     <!--   Core JS Files   -->

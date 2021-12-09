@@ -1317,7 +1317,71 @@
 
                     </ul>
                 </div>
-            </li>';
+            </li>
+            
+
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#maintenance" class="nav-link" aria-controls="maintenance"
+                    role="button" aria-expanded="false">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-tools text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Maintenance</span>
+                </a>
+
+                <div class="collapse" id="maintenance">
+                    <ul class="nav ms-4 ps-3">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="../student/add.student.php">
+                                <span class="sidenav-mini-icon text-xs"> </span>
+                                <span class="sidenav-normal font-weight-bold">Add Student</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="../teacher/add.teacher.php">
+                                <span class="sidenav-mini-icon text-xs"> </span>
+                                <span class="sidenav-normal font-weight-bold">Add Teacher</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#OOSubject" class="nav-link" aria-controls="Offer/OpenSubject"
+                    role="button" aria-expanded="false">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-book-open text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Offer Subjects</span>
+                </a>
+
+                <div class="collapse" id="OOSubject">
+                    <ul class="nav ms-4 ps-3">
+                        ';
+                $getDep = $db->query("SELECT * FROM tbl_departments RIGHT JOIN tbl_courses ON
+                        tbl_courses.department_id = tbl_departments.department_id") or die($db->error);
+                while ($row = $getDep->fetch_array()) {
+                    $course_abv = $row['course_abv'];
+                    $course_id = $row['course_id'];
+                    if ($_SESSION['ADepartment_id'] == $row['department_id']) {
+                        echo ' <li class="nav-item">
+                            <a class="nav-link" href="../offer/offer.subjects.php?CID=' . $course_id . '">
+                                <span class="sidenav-mini-icon text-xs"> </span>
+                                <span class="sidenav-normal font-weight-bold">' . $course_abv . '</span>
+                            </a>
+                        </li>';
+                    }
+                }
+                echo ' </ul>
+                </div>
+            </li>
+            ';
 
                 if ('CS Department' == $dept_name) {
                     echo '
@@ -1931,70 +1995,6 @@
             </li>;
             ';
                 }
-                echo '
-
-            <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#maintenance" class="nav-link" aria-controls="maintenance"
-                    role="button" aria-expanded="false">
-                    <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-tools text-dark"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Maintenance</span>
-                </a>
-
-                <div class="collapse" id="maintenance">
-                    <ul class="nav ms-4 ps-3">
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="../student/add.student.php">
-                                <span class="sidenav-mini-icon text-xs"> </span>
-                                <span class="sidenav-normal font-weight-bold">Add Student</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="../teacher/add.teacher.php">
-                                <span class="sidenav-mini-icon text-xs"> </span>
-                                <span class="sidenav-normal font-weight-bold">Add Teacher</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#OOSubject" class="nav-link" aria-controls="Offer/OpenSubject"
-                    role="button" aria-expanded="false">
-                    <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-book-open text-dark"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Offer Subjects</span>
-                </a>
-
-                <div class="collapse" id="OOSubject">
-                    <ul class="nav ms-4 ps-3">
-                        ';
-                $getDep = $db->query("SELECT * FROM tbl_departments RIGHT JOIN tbl_courses ON
-                        tbl_courses.department_id = tbl_departments.department_id") or die($db->error);
-                while ($row = $getDep->fetch_array()) {
-                    $course_abv = $row['course_abv'];
-                    $course_id = $row['course_id'];
-                    if ($_SESSION['ADepartment_id'] == $row['department_id']) {
-                        echo ' <li class="nav-item">
-                            <a class="nav-link" href="../offer/offer.subjects.php?CID=' . $course_id . '">
-                                <span class="sidenav-mini-icon text-xs"> </span>
-                                <span class="sidenav-normal font-weight-bold">' . $course_abv . '</span>
-                            </a>
-                        </li>';
-                    }
-                }
-                echo ' </ul>
-                </div>
-            </li>
-            ';
             } elseif ("Teacher" == $_SESSION['role']) {
                 echo '<li class="nav-item">
                 <a class="nav-link  active" href="../dashboard/index.php">
@@ -2157,8 +2157,8 @@
             data-bs-placement="top" title="Personal Info" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';
         } elseif ("Registrar" == $_SESSION['role']) {
-            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../dean/send.report.php" data-bs-toggle="tooltip"
-            data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>
+            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../settings/set.acad.calendar.php" data-bs-toggle="tooltip"
+            data-bs-placement="top" title="Set A.Y. & Semester" data-container="body" data-animation="true"><i class="fas fa-calendar-alt"></i></a>
             <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../registrar/edit.registrar.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Edit Account" data-container="body" data-animation="true"><i
                 class="fas fa-user-edit"></i></a>';

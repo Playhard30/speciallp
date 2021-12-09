@@ -2,6 +2,9 @@
 require '../../../includes/conn.php';
 session_start();
 
+if ($_SESSION['role'] != "Student") {
+    $stud_id = $_SESSION['stud_id'];
+}
 
 if (isset($_POST['delete'])) {
     if (!empty($_POST['check'])) {
@@ -9,11 +12,19 @@ if (isset($_POST['delete'])) {
         foreach ($check as $id) {
             $query = $db->query("DELETE FROM tbl_enrolled_subjects WHERE enrolled_subj_id = '$id'") or die($db->error);
             $_SESSION['delSubjects'] = true;
-            header("location: ../enrollmentInfo.php");
+            if ($_SESSION['role'] == "Student") {
+                header("location: ../enrollmentInfo.php");
+            } else {
+                header("location: ../enrollmentInfo.php?stud_id=" . $stud_id);
+            }
         }
     } else {
         $_SESSION['FDSub'] = true;
-        header("location: ../enrollmentInfo.php");
+        if ($_SESSION['role'] == "Student") {
+            header("location: ../enrollmentInfo.php");
+        } else {
+            header("location: ../enrollmentInfo.php?stud_id=" . $stud_id);
+        }
     }
 }
 
@@ -27,9 +38,47 @@ if (isset($_POST['addSub'])) {
             $query1 = $db->query("INSERT INTO tbl_enrolled_subjects (class_id, stud_id, subj_id, acad_year, semester) VALUES ('$class_id[$i]', '$_SESSION[stud_id]', '$subjects_id[$i]', '$_SESSION[AC]', '$_SESSION[S]')");
         }
         $_SESSION['SASub'] = true;
-        header("location: ../enrollmentInfo.php");
+        if ($_SESSION['role'] == "Student") {
+            header("location: ../enrollmentInfo.php");
+        } else {
+            header("location: ../enrollmentInfo.php?stud_id=" . $stud_id);
+        }
     } else {
         $_SESSION['FASub'] = true;
-        header("location: ../enrollmentInfo.php");
+        if ($_SESSION['role'] == "Student") {
+            header("location: ../enrollmentInfo.php");
+        } else {
+            header("location: ../enrollmentInfo.php?stud_id=" . $stud_id);
+        }
+    }
+}
+
+// Not Student Role
+if (isset($_POST['update'])) {
+    $stud_id = $_SESSION['stud_id'];
+
+    $getCourse = $db->query("SELECT course_id FROM tbl_students WHERE stud_id = '$stud_id'") or die($db->error);
+    while ($row = $getCourse->fetch_array()) {
+        if ($row['course_id'] > 0) {
+            $CCourse_id = $db->real_escape_string($_POST['course']);
+            $query = $db->query("UPDATE tbl_students SET course_id = '$CCourse_id' WHERE stud_id = '$stud_id'") or die($db->error);
+        }
+    }
+
+    $course_id = $db->real_escape_string($_POST['course']);
+    $year_id = $db->real_escape_string($_POST['level']);
+    $status = $db->real_escape_string($_POST['status']);
+    // $ay_id = $_SESSION['AC'];
+    // $sem_id = $_SESSION['S'];
+    // $date_enrolled = date("Y-m-d");
+    // $remark = $db->real_escape_string("Pending");
+
+    if (!empty($_POST['course']) && !empty($_POST['level']) && !empty($_POST['status'])) {
+        $q = $db->query("UPDATE tbl_schoolyears SET year_id = '$year_id', course_id = '$course_id', status = '$status' WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
+        $_SESSION['successUpdate'] = true;
+        header("location: ../enrollmentInfo.php?stud_id=" . $stud_id);
+    } else {
+        $_SESSION['fill-select'] = true;
+        header("location: ../enrollmentInfo.php?stud_id=" . $stud_id);
     }
 }

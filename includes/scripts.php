@@ -202,6 +202,7 @@ if (document.getElementById('department')) {
     var element = document.getElementById('department');
     const example = new Choices(element, {
         searchPlaceholderValue: "Search...",
+        shouldSort: false,
     });
 };
 if (document.getElementById('dep')) {

@@ -790,7 +790,7 @@ unset($_SESSION['inquiryAdmitted']);
                                 <div class="numbers">
                                     <p class="text-white text-sm mb-0 opacity-7">Academic Year</p>
                                     <h6 class="text-white font-weight-bold mb-0">
-                                        <?php echo $_SESSION['AC'] ?>
+                                        <?php echo $_SESSION['AC']; ?>
                                     </h6>
                                 </div>
                             </div>
@@ -830,16 +830,14 @@ unset($_SESSION['inquiryAdmitted']);
         <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">
                 <div class="copyright text-center text-sm text-muted text-lg-start">
-                    © <script>
-                    document.write(new Date().getFullYear())
-                    </script>,
+                    &copy; 2021,
                     CompStud.
                 </div>
             </div>
             <div class="col-lg-6">
                 <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                     <li class="nav-item">
-                        <p>SFAC - Las Piñas</p>
+                        <a class="nav-link">SFAC - Las Piñas</a>
                     </li>
                 </ul>
             </div>
