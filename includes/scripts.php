@@ -13,6 +13,57 @@
 <script src="../../assets/js/plugins/imask.js"></script>
 <script src="../../assets/js/plugins/countup.min.js"></script>
 <script>
+// Notification
+// Function for fetching data | dir -> includes/fetch.php
+$(document).ready(function() {
+    function load_unseen_notification(view = '') {
+        $.ajax({
+            url: "../../includes/fetch.php",
+            method: "POST",
+            data: {
+                view: view
+            },
+            dataType: "json",
+            success: function(data) {
+                // to Display the fetched data
+                $('.notif').html(data.notification);
+                if (data.unseen_notification > 0) {
+                    $('.count').html(data.unseen_notification);
+                } else {
+                    $('.count').html("");
+                }
+            }
+        })
+    }
+    load_unseen_notification();
+
+    // for backend of EnrollNow | Inserting data
+    $('.notif_form').on('submit', function(event) {
+        // serialize -> get the id and value of the element 
+        var form_data = $(this).serialize();
+        $.ajax({
+            url: "userData/ctrl.enrollNow.php",
+            method: "POST",
+            data: form_data,
+            success: function(data) {
+                $('.notif_form')[0].reset();
+                load_unseen_notification();
+            }
+        })
+    })
+    // it update the seen notif | from includes/fetch.php
+    $(document).on('click', '.drop-toggle', function() {
+        $('.count').html('');
+        load_unseen_notification('yes');
+    })
+
+    // for realtime function | it set to 1 sec
+    setInterval(function() {
+        load_unseen_notification();
+    }, 1000);
+})
+</script>
+<script>
 // count | DASHBOARD
 var numState = 1;
 var totalWidget = 5;
@@ -546,3 +597,4 @@ if (win && document.querySelector('#sidenav-scrollbar')) {
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="../../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+<!-- PERVERSE -->

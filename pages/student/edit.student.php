@@ -116,7 +116,7 @@ $_SESSION['stud_id'] = $stud_id;
                                         echo '
                                                 <div class="col-sm-8">
                                                 <label class="form-label mt-4">Course</label>
-                                                <select class="form-control" name="courses" id="courses" required>';
+                                                <select class="form-control" name="courses" id="courses">';
                                         if (!empty($row['course_id'])) {
                                             $getCourse = mysqli_query($db, "SELECT * FROM tbl_courses WHERE course_id IN ('$row[course_id]')");
                                             while ($row1 = mysqli_fetch_array($getCourse)) {
@@ -187,7 +187,7 @@ $_SESSION['stud_id'] = $stud_id;
                         <div class="row">
                             <div class="col-sm-3">
                                 <label class="form-label mt-4">Gender</label>
-                                <select class="form-control" name="gender" id="gender" required>
+                                <select class="form-control" name="gender" id="gender">
                                     <?php if (!empty($row['gender_id'])) {
                                         $getGenders = mysqli_query($db, "SELECT * FROM tbl_genders WHERE gender_id IN ('$row[gender_id]')");
                                         while ($row2 = mysqli_fetch_array($getGenders)) {

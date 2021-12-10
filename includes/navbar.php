@@ -5,7 +5,7 @@
     </div>
     <ul class="navbar-nav  justify-content-end">
 
-        <li class="nav-item d-xl-none mx-1 ps-3 d-flex align-items-center">
+        <li class="nav-item d-xl-none mx-2 ps-3 d-flex align-items-center">
             <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
                     <i class="sidenav-toggler-line"></i>
@@ -16,36 +16,20 @@
         </li>
         <!-- Notification -->
         <?php if ($_SESSION['role'] == "Adviser" || $_SESSION['role'] == "Registrar") {
-            echo '<li class="nav-item dropdown pe-2 d-flex align-items-center mx-1">
-                    <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-bell cursor-pointer text-secondary"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                        <li class="mb-2">
-                            <a class="dropdown-item border-radius-md" href="javascript:;">
-                                <div class="d-flex py-1">
-                                    <div class="my-auto">
-                                        <img src="../../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 "
-                                            alt="user image">
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="text-sm font-weight-normal mb-1">
-                                            <span class="font-weight-bold">New message</span> from Laur
-                                        </h6>
-                                        <p class="text-xs text-secondary mb-0">
-                                            <i class="fa fa-clock me-1"></i>
-                                            13 minutes ago
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>';
+            echo '<li class="nav-item dropdown pe-2 d-flex align-items-center mx-2">
+            <a href="javascript:;" class="position-relative nav-link text-body p-0 drop-toggle" id="dropdownMenuButton"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer text-secondary"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger count">
+                    <span class="visually-hidden">unread messages</span>
+                </span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4 notif" aria-labelledby="dropdownMenuButton">
+            </ul>
+        </li>';
         } ?>
 
-        <li class="nav-item dropdown pe-2 d-flex align-items-center mx-1">
+        <li class="nav-item dropdown pe-2 d-flex align-items-center mx-2">
             <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 <i class="fas fa-caret-down text-secondary"></i>

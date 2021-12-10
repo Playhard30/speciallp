@@ -612,7 +612,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/nursing_curr.php">
+                                        <a class="nav-link" href="../newcurr/BSN-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
                                             <span class="sidenav-normal text-black-50">NURS</span>
                                         </a>
@@ -1209,7 +1209,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/nursing_curr.php">
+                                        <a class="nav-link" href="../newcurr/BSN-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
                                             <span class="sidenav-normal text-black-50">NURS</span>
                                         </a>

@@ -294,7 +294,7 @@ include '../../includes/head.php';
                                     <h3 class="text-white text-center mb-0 mt-n2" id="state2"
                                         countTo="<?php echo $actualCount[0]; ?>">
                                     </h3>
-                                    <p class="text-sm mb-0 text-white">Students</p>
+                                    <p class="text-sm mb-0 text-white">Subjects</p>
 
 
                                 </div>

@@ -67,7 +67,7 @@ include '../../includes/session.php';
                                             LEFT JOIN tbl_courses C USING(course_id)
                                             LEFT JOIN tbl_students S USING(stud_id)
                                             LEFT JOIN tbl_year_levels YL USING(year_id)
-                                            WHERE remark IN ('Pending') OR remark IN ('Checked') OR remark IN ('Canceled') AND C.department_id = '$_SESSION[ADepartment_id]' AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')
+                                            WHERE (remark IN ('Pending') OR remark IN ('Checked') OR remark IN ('Canceled')) AND C.department_id IN ('$_SESSION[ADepartment_id]') AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')
                                             ORDER BY sy_id") or die($db->error);
                                     while ($row = $pendStud->fetch_array()) {
                                         $id = $row['sy_id'];
