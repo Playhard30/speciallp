@@ -1084,6 +1084,12 @@
                                         <span class="sidenav-normal text-black-50">BS Psychology</span>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/BSN-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">BS Nursing</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </ul>
