@@ -96,8 +96,28 @@ if (isset($_SESSION['emptyImg'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="stud_noExist"
           id="autoClickBtn" hidden>
       </a>';
+} elseif (isset($_SESSION['enroll_success'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="enroll_success"
+          id="autoClickBtn" hidden>
+      </a>';
+} elseif (isset($_SESSION['delSubjects'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="delSubjects"
+          id="autoClickBtn" hidden>
+      </a>';
+} elseif (isset($_SESSION['FDSub'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="FDSub"
+          id="autoClickBtn" hidden>
+      </a>';
+} elseif (isset($_SESSION['SASub'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="SASub"
+          id="autoClickBtn" hidden>
+      </a>';
+} elseif (isset($_SESSION['FASub'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="FASub"
+          id="autoClickBtn" hidden>
+      </a>';
     //   lorenzo
-}  elseif (isset($_SESSION['yearUpdated'])) {
+} elseif (isset($_SESSION['yearUpdated'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="yearUpdated"
              id="autoClickBtn" hidden>
          </a>';
@@ -119,6 +139,38 @@ if (isset($_SESSION['emptyImg'])) {
          </a>';
 } elseif (isset($_SESSION['inquiryAdmitted'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="inquiryAdmitted"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['successEAY'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="successEAY"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['DEAY'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="DEAY"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['AFill'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="AFill"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['exist_schedule'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="exist_schedule"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['SASched'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="SASched"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['SDCSched'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="SDCSched"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['ACheck'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="ACheck"
+             id="autoClickBtn" hidden>
+         </a>';
+} elseif (isset($_SESSION['ACanceled'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="ACanceled"
              id="autoClickBtn" hidden>
          </a>';
 }
@@ -147,6 +199,21 @@ unset($_SESSION['courAdded']);
 unset($_SESSION['courExist']);
 unset($_SESSION['fill-select']);
 unset($_SESSION['stud_noExist']);
+unset($_SESSION['enroll_success']);
+unset($_SESSION['delSubjects']);
+unset($_SESSION['FDSub']);
+unset($_SESSION['SASub']);
+unset($_SESSION['FASub']);
+unset($_SESSION['successEAY']);
+unset($_SESSION['DEAY']);
+unset($_SESSION['AFill']);
+unset($_SESSION['exist_schedule']);
+unset($_SESSION['SASched']);
+unset($_SESSION['SDCSched']);
+unset($_SESSION['ACheck']);
+unset($_SESSION['ACanceled']);
+
+
 //   lorenzo
 unset($_SESSION['yearUpdated']);
 unset($_SESSION['yearExist']);
@@ -158,6 +225,150 @@ unset($_SESSION['inquiryAdmitted']);
 ?>
 
 <div class="position-fixed top-2 end-1 z-index-3">
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="ACanceled" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Canceled!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Student has been Successfully Canceled.
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="ACheck" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Approved!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Student has been Successfully Approved.
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="SDCSched" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Deleted!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            The Class Schedule has been successfully deleted.
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="SASched" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Added!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Schedule of a subject has been successfully Added.
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="exist_schedule"
+        aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Already Exist!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Set of Schedule is already exist!
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="AFill" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Required Fields!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Please complete all required fields.
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="FASub" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Failed to Add Subject/s</span>
+            <small class="text-body"></small> <i class="fas fa-times text-md ms-3 cursor-pointer"
+                data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Please select a subject/s
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="SASub" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Added!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            The selected Subject/s has been successfully Added.
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="FDSub" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-notification-70 text-danger me-2"></i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Failed to delete subject/s!</span>
+            <small class="text-body"></small> <i class="fas fa-times text-md ms-3 cursor-pointer"
+                data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Please select a subject/s
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="delSubjects" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Deleted!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            The selected Subject/s has been successfully deleted.
+        </div>
+    </div>
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="enroll_success" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Success!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Successfully Registered!
+        </div>
+    </div>
 
     <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="fill-select"
         aria-atomic="true">
@@ -463,6 +674,18 @@ unset($_SESSION['inquiryAdmitted']);
             You've successfully added an Academic Year!
         </div>
     </div>
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="successEAY" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Added!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            You've successfully added an Effective Academic Year!
+        </div>
+    </div>
     <!-- Lorenzo -->
     <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="subjUpdate" aria-atomic="true">
         <div class="toast-header border-0">
@@ -476,8 +699,7 @@ unset($_SESSION['inquiryAdmitted']);
             You've successfully updatet the subject.
         </div>
     </div>
-    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="yearExist"
-        aria-atomic="true">
+    <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="yearExist" aria-atomic="true">
         <div class="toast-header border-0">
             <i class="ni ni-notification-70 text-danger me-2"></i>
             <span class="me-auto text-gradient text-danger font-weight-bold">Academic Year is Existing!</span>
@@ -513,7 +735,20 @@ unset($_SESSION['inquiryAdmitted']);
             You've successfully deleted an academic year.
         </div>
     </div>
-    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="inquiryComplete" aria-atomic="true">
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="DEAY" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Deleted!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            You've successfully deleted an Effective Academic Year
+        </div>
+    </div>
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="inquiryComplete"
+        aria-atomic="true">
         <div class="toast-header border-0">
             <i class="ni ni-check-bold text-success me-2"></i>
             <span class="me-auto font-weight-bold">Inquiry Registered!</span>
@@ -525,7 +760,8 @@ unset($_SESSION['inquiryAdmitted']);
             You've successfully registered your inquiries.
         </div>
     </div>
-    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="inquiryAdmitted" aria-atomic="true">
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="inquiryAdmitted"
+        aria-atomic="true">
         <div class="toast-header border-0">
             <i class="ni ni-check-bold text-success me-2"></i>
             <span class="me-auto font-weight-bold">Inquiry Registered!</span>
@@ -542,33 +778,66 @@ unset($_SESSION['inquiryAdmitted']);
 </div>
 
 <!-- End alert -->
+<hr class="horizontal dark mb-2">
 <footer class="footer pt-3">
     <div class="container-fluid">
+        <div class="row justify-content-lg-evenly">
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="card bg-gradient-dark">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers">
+                                    <p class="text-white text-sm mb-0 opacity-7">Academic Year</p>
+                                    <h6 class="text-white font-weight-bold mb-0">
+                                        <?php echo $_SESSION['AC']; ?>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-white shadow text-center border-radius-md">
+                                    <i class="fas fa-bookmark text-dark text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card bg-gradient-dark">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers">
+                                    <p class="text-white text-sm mb-0 opacity-7">Semester</p>
+                                    <h6 class="text-white font-weight-bold mb-0">
+                                        <?php echo $_SESSION['S']; ?>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-white shadow text-center border-radius-md">
+                                    <i class="fab fa-font-awesome-flag text-dark text-lg opacity-10"
+                                        aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="info-horizontal dark mt-md-2">
         <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">
                 <div class="copyright text-center text-sm text-muted text-lg-start">
-                    © <script>
-                    document.write(new Date().getFullYear())
-                    </script>,
-                    SFAC. Compstud
+                    &copy; 2021,
+                    CompStud.
                 </div>
             </div>
             <div class="col-lg-6">
                 <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                     <li class="nav-item">
-                        <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative
-                            Tim</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted"
-                            target="_blank">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
-                            target="_blank">License</a>
+                        <a class="nav-link">SFAC - Las Piñas</a>
                     </li>
                 </ul>
             </div>

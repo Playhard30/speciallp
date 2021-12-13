@@ -1,4 +1,6 @@
 <?php
+require 'conn.php';
+
 if (!empty($_SESSION['role'])) {
     if ($_SESSION['role'] == "Super Administrator") {
         $sa_id = $_SESSION['userid'];
@@ -36,14 +38,42 @@ if (!empty($_SESSION['role'])) {
             header("location: ../login/sign-in.php");
             exit();
         }
+    } elseif ("President" == $_SESSION['role']) {
+        $pres_id = $_SESSION['userid'];
+        if (false == $pres_id) {
+            header("location: ../login/sign-in.php");
+            exit();
+        }
+    } elseif ("Teacher" == $_SESSION['role']) {
+        $faculty_id = $_SESSION['userid'];
+        if (false == $faculty_id) {
+            header("location: ../login/sign-in.php");
+            exit();
+        }
     } elseif ("Student" == $_SESSION['role']) {
         $stud_id = $_SESSION['userid'];
         if (false == $stud_id) {
             header("location: ../login/sign-in.php");
             exit();
         }
+    } else {
+        session_destroy();
+        header("location: ../login/sign-in.php");
+        exit();
     }
 } else {
     header("location: ../login/sign-in.php");
     exit();
+}
+
+// Active Acadyear & Semester
+$getAAcadYear = $db->query("SELECT * FROM tbl_active_acads AC LEFT JOIN tbl_acadyears A ON A.ay_id = AC.ay_id") or die($db->error);
+while ($row = $getAAcadYear->fetch_array()) {
+    $_SESSION['AC'] = $row['academic_year'];
+    $_SESSION['AYear'] = $row['ay_id'];
+}
+$getASem = $db->query("SELECT * FROM tbl_active_sem ASEM LEFT JOIN tbl_semesters S ON S.sem_id = ASEM.sem_id") or die($db->error);
+while ($row = $getASem->fetch_array()) {
+    $_SESSION['S'] = $row['semester'];
+    $_SESSION['ASem'] = $row['sem_id'];
 }

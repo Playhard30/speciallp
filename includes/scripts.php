@@ -10,6 +10,111 @@
 <script src="../../assets/js/plugins/dropzone.min.js"></script>
 <script src="../../assets/js/plugins/dragula/dragula.min.js"></script>
 <script src="../../assets/js/plugins/jkanban/jkanban.js"></script>
+<script src="../../assets/js/plugins/imask.js"></script>
+<script src="../../assets/js/plugins/countup.min.js"></script>
+<script>
+// Notification
+// Function for fetching data | dir -> includes/fetch.php
+$(document).ready(function() {
+    function load_unseen_notification(view = '') {
+        $.ajax({
+            url: "../../includes/fetch.php",
+            method: "POST",
+            data: {
+                view: view
+            },
+            dataType: "json",
+            success: function(data) {
+                // to Display the fetched data
+                $('.notif').html(data.notification);
+                if (data.unseen_notification > 0) {
+                    $('.count').html(data.unseen_notification);
+                } else {
+                    $('.count').html("");
+                }
+            }
+        })
+    }
+    load_unseen_notification();
+
+    // for backend of EnrollNow | Inserting data
+    $('.notif_form').on('submit', function(event) {
+        // serialize -> get the id and value of the element 
+        var form_data = $(this).serialize();
+        $.ajax({
+            url: "userData/ctrl.enrollNow.php",
+            method: "POST",
+            data: form_data,
+            success: function(data) {
+                $('.notif_form')[0].reset();
+                load_unseen_notification();
+            }
+        })
+    })
+    // it update the seen notif | from includes/fetch.php
+    $(document).on('click', '.drop-toggle', function() {
+        $('.count').html('');
+        load_unseen_notification('yes');
+    })
+
+    // for realtime function | it set to 1 sec
+    setInterval(function() {
+        load_unseen_notification();
+    }, 1000);
+})
+</script>
+<script>
+// count | DASHBOARD
+var numState = 1;
+var totalWidget = 5;
+while (numState <= totalWidget) {
+    if (document.getElementById('state' + numState)) {
+        const countUp = new CountUp('state' + numState, document.getElementById("state" + numState).getAttribute(
+            "countTo"));
+        if (!countUp.error) {
+            countUp.start();
+        } else {
+            console.error(countUp.error);
+        }
+    }
+    numState++;
+}
+</script>
+<!-- unset cookie | Schedule Subjects -->
+<script>
+document.cookie = "instructor= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+document.cookie = "subj_id= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+document.cookie = "inst= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+</script>
+<!-- Cookies for Modal Select | Schedule Subject -->
+<script>
+var num = 1;
+while (num <= <?php echo $m; ?>) {
+    document.querySelector('#multi_instr' + num).addEventListener('change', function() {
+        var instructor_id = this.value;
+        document.cookie = "instructor=" + instructor_id;
+    });
+
+    num++;
+}
+document.querySelector('.multi_sub').addEventListener('change', function() {
+    var subID = this.value;
+    document.cookie = "subj_id=" + subID;
+});
+
+document.querySelector('.multi_inst').addEventListener('change', function() {
+    var instID = this.value;
+    document.cookie = "inst=" + instID;
+});
+</script>
+<script>
+var inputElements = document.querySelectorAll("input[data-format]");
+inputElements.forEach(input => {
+    let m = new IMask(input, {
+        mask: input.getAttribute("data-format")
+    });
+});
+</script>
 <script>
 $(document).ready(function() {
     $('#datatable-basic').DataTable({
@@ -29,12 +134,84 @@ $(document).ready(function() {
             },
             search: "_INPUT_",
             searchPlaceholder: "Search..."
-        }
+        },
 
+    });
+});
+
+$(document).ready(function() {
+    $('#datatable-simple').DataTable({
+        "searching": false,
+        "paging": false,
+        "ordering": false,
+        "info": false,
+        language: {
+            paginate: {
+                previous: '‹',
+                next: '›'
+            },
+            aria: {
+                paginate: {
+                    previous: 'Previous',
+                    next: 'Next'
+                }
+            },
+            search: "_INPUT_",
+            searchPlaceholder: "Search..."
+        },
+    });
+});
+
+$(document).ready(function() {
+    $('#datatable-info').DataTable({
+        "searching": false,
+        "paging": false,
+        "ordering": false,
+        "info": true,
+        "pageLength": 50,
+        language: {
+            paginate: {
+                previous: '‹',
+                next: '›'
+            },
+            aria: {
+                paginate: {
+                    previous: 'Previous',
+                    next: 'Next'
+                }
+            },
+            search: "_INPUT_",
+            searchPlaceholder: "Search..."
+        },
+    });
+});
+
+$(document).ready(function() {
+    $('#datatable-modal').DataTable({
+        "searching": true,
+        "paging": false,
+        "ordering": false,
+        "info": false,
+        "pageLength": 50,
+        language: {
+            paginate: {
+                previous: '‹',
+                next: '›'
+            },
+            aria: {
+                paginate: {
+                    previous: 'Previous',
+                    next: 'Next'
+                }
+            },
+            search: "_INPUT_",
+            searchPlaceholder: "Search..."
+        },
     });
 });
 </script>
 <script>
+// single Select by ID
 if (document.getElementById('year_lvl')) {
     var element = document.getElementById('year_lvl');
     const example = new Choices(element, {
@@ -63,6 +240,7 @@ if (document.getElementById('academic_year')) {
     var element = document.getElementById('academic_year');
     const example = new Choices(element, {
         searchPlaceholderValue: "Search...",
+        shouldSort: false,
     });
 }
 if (document.getElementById('semester')) {
@@ -75,6 +253,7 @@ if (document.getElementById('department')) {
     var element = document.getElementById('department');
     const example = new Choices(element, {
         searchPlaceholderValue: "Search...",
+        shouldSort: false,
     });
 };
 if (document.getElementById('dep')) {
@@ -83,14 +262,31 @@ if (document.getElementById('dep')) {
         searchPlaceholderValue: "Search...",
     });
 };
-</script>
-<script>
 if (document.getElementById('status')) {
     var element = document.getElementById('status');
     const example = new Choices(element, {
         searchPlaceholderValue: "Search...",
     });
 };
+</script>
+<script>
+// Multi Select by Class
+var n = 0;
+while (n <= <?php echo $m; ?>) {
+    // if (document.getElementById(`multi${n}`)) {
+    //     var element = document.getElementById(`multi${n}`);
+    //     const example = new Choices(element, {
+    //         searchPlaceholderValue: "Search..."
+    //     });
+    // };
+    if (document.querySelector('.multi')) {
+        const element = document.querySelector('.multi');
+        const example = new Choices($('.multi')[n], {
+            searchPlaceholderValue: "Search...",
+        });
+    };
+    n++;
+}
 </script>
 <script>
 window.onload = function() {
@@ -401,3 +597,4 @@ if (win && document.querySelector('#sidenav-scrollbar')) {
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="../../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+<!-- PERVERSE -->

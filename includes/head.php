@@ -24,12 +24,46 @@ require '../../includes/conn.php';
     <link rel="stylesheet" href="../../assets/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="../../assets/css/responsive.dataTables.min.css">
     <script src="../../assets/js/jquery-3.5.1.js"></script>
-    <!-- select2 -->
-
     <!-- edited CSS -->
     <link rel="stylesheet" href="../../assets/css/addons/edited.css">
     <style>
+    ::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
+
     body {
         font-weight: 400;
+        background: url(../../assets/img/curved-images/main.jpg) !important;
+        background-repeat: no-repeat !important;
+        background-position-y: top !important;
+        background-attachment: fixed !important;
+        background-size: cover !important;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+
+    }
+
+    .bg-gradient-red-orange {
+        background-image: linear-gradient(310deg, #d77700, #ab0808);
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        border-radius: 50px;
+        background-image: linear-gradient(310deg, #1d2139, #39406d) !important;
+        color: whitesmoke !important;
+        padding: 6px 14px !important;
+        border: none;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+        color: #8392ab !important;
+        background-image: linear-gradient(310deg, #1d2139, #39406d) !important;
+    }
+
+    .badge-warning {
+        background-color: #ce7e00 !important;
+        color: bisque !important;
     }
     </style>

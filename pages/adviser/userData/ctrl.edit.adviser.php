@@ -21,7 +21,7 @@ if (isset($_POST['saveImg'])) {
 if (isset($_POST['save'])) {
 
     $faculty_no = mysqli_real_escape_string($db, $_POST['faculty_no']);
-    $department = mysqli_real_escape_string($db, $_POST['department']);
+    $department_id = mysqli_real_escape_string($db, $_POST['department']);
     $role = mysqli_real_escape_string($db, $_POST['role']);
     $position = mysqli_real_escape_string($db, $_POST['position']);
     $status = mysqli_real_escape_string($db, $_POST['status']);
@@ -32,7 +32,7 @@ if (isset($_POST['save'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);;
     $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
 
-    $getAllUsername = mysqli_query($db, "SELECT username FROM tbl_admissions WHERE username = '$username' UNION ALL SELECT username FROM tbl_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_deans WHERE username = '$username' UNION ALL SELECT username FROM tbl_super_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_accounting WHERE username = '$username'") or die(mysqli_error($db));
+    $getAllUsername = mysqli_query($db, "SELECT username FROM tbl_admissions WHERE username = '$username' UNION ALL SELECT username FROM tbl_deans WHERE username = '$username' UNION ALL SELECT username FROM tbl_super_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_admins WHERE username = '$username' UNION ALL SELECT username FROM tbl_students WHERE username = '$username' UNION ALL SELECT username FROM tbl_presidents WHERE username = '$username' UNION ALL SELECT username FROM tbl_accounting WHERE username = '$username' UNION ALL SELECT username FROM tbl_faculties_staff WHERE username = '$username'") or die(mysqli_error($db));
     $check = mysqli_num_rows($getAllUsername);
 
     if ($check == 0) {
@@ -42,7 +42,7 @@ if (isset($_POST['save'])) {
             $getID = $row['faculty_id'];
         }
         if ($getID == $faculty_id || $check2 < 1) {
-            $updateInfo = mysqli_query($db, " UPDATE tbl_faculties SET faculty_lastname='$lname',faculty_firstname='$fname', faculty_middlename='$mname', faculty_no = '$faculty_no', position = '$position', department_id = '$department', role = '$role', status = '$status', email='$email', username='$username', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
+            $updateInfo = mysqli_query($db, " UPDATE tbl_faculties SET faculty_lastname='$lname',faculty_firstname='$fname', faculty_middlename='$mname', faculty_no = '$faculty_no', position = '$position', department_id = '$department_id', role = '$role', status = '$status', email='$email', username='$username', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
             $_SESSION['successUpdate'] = true;
             if ($_SESSION['role'] == "Super Administrator") {
                 header("location: ../edit.adviser.php?faculty_id=" . $faculty_id);
