@@ -151,11 +151,11 @@ include '../../includes/session.php';
 
                                             <div class="d-flex align-items-center">
 
-                                                <a href="userData/ctrl.edit.pendingStud.php?id=<?php echo $id . '&remark=' . $row['remark'];  ?>"
+                                                <a href="userData/ctrl.edit.pendingStud.php?id=<?php echo $id . '&remark=' . $row['remark'] . '&search=' . $_GET['search'];  ?>"
                                                     class="mx-2" data-bs-toggle="tooltip"
                                                     <?php if ($row['remark'] == 'Pending' || $row['remark'] == 'Canceled') {
-                                                                                                                                                                                                    echo 'data-bs-original-title="Check"><i class="fas fa-check text-success"></i>';
-                                                                                                                                                                                                } elseif ($row['remark'] == 'Checked' || $row['remark'] == 'Disapproved') echo 'data-bs-original-title="Uncheck"><i class="fas fa-times text-danger" ></i>'; ?>
+                                                                                                                                                                                                                                    echo 'data-bs-original-title="Check"><i class="fas fa-check text-success"></i>';
+                                                                                                                                                                                                                                } elseif ($row['remark'] == 'Checked' || $row['remark'] == 'Disapproved') echo 'data-bs-original-title="Uncheck"><i class="fas fa-times text-danger" ></i>'; ?>
                                                     </a>
 
                                                     <a href="../enrollment/enrollmentInfo.php?stud_id=<?php echo $stud_id; ?>"
@@ -214,7 +214,7 @@ include '../../includes/session.php';
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <a href="userData/ctrl.del.pendingStud.php?id=<?php echo $id; ?>"
+                                                    <a href="userData/ctrl.del.pendingStud.php?id=<?php echo $id . '&search=' . $_GET['search']; ?>"
                                                         class="btn btn-white text-white bg-danger">Delete</a>
                                                     <button type="button"
                                                         class="btn btn-link text-secondary btn-outline-dark ml-auto"

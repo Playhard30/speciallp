@@ -14,7 +14,7 @@ if ($_SESSION['role'] == "Adviser") {
             // query
             $query = $db->query("UPDATE tbl_schoolyears SET remark = '$check' WHERE sy_id = '$id'") or die($db->error);
             $_SESSION['ACheck'] = true;
-            header("location: ../pendingStud.php");
+            header("location: ../pendingStud.php?search=" . $_GET['search']);
         } elseif ($_GET['remark'] == "Checked" || $_GET['remark'] == "Disapproved") {
             // get id by URL
             $id = $_GET['id'];
@@ -22,7 +22,7 @@ if ($_SESSION['role'] == "Adviser") {
             // query
             $query = $db->query("UPDATE tbl_schoolyears SET remark = '$cancel' WHERE sy_id = '$id'") or die($db->error);
             $_SESSION['ACanceled'] = true;
-            header("location: ../pendingStud.php");
+            header("location: ../pendingStud.php?search=" . $_GET['search']);
         }
     }
     // REGISTRAR Approval 
