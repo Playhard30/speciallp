@@ -46,7 +46,7 @@ $(document).ready(function() {
             method: "POST",
             data: form_data,
             success: function(data) {
-                $('.notif_form')[0].reset();
+                window.location.href = 'enrollmentInfo.php';
                 load_unseen_notification();
             }
         })

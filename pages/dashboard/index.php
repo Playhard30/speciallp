@@ -322,6 +322,8 @@ include '../../includes/head.php';
         <!-- End footer -->
         </div>
     </main>
+
+
     <!-- School Settings -->
     <?php if ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == "Super Administrator") { ?>
     <div class="fixed-plugin">

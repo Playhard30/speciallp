@@ -173,6 +173,10 @@ if (isset($_SESSION['emptyImg'])) {
     echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="ACanceled"
              id="autoClickBtn" hidden>
          </a>';
+} elseif (isset($_SESSION['RDisapproved'])) {
+    echo '<a class="btn bg-gradient-danger w-100 mb-0 toast-btn" data-target="RDisapproved"
+             id="autoClickBtn" hidden>
+         </a>';
 }
 
 unset($_SESSION['emptyImg']);
@@ -212,6 +216,7 @@ unset($_SESSION['SASched']);
 unset($_SESSION['SDCSched']);
 unset($_SESSION['ACheck']);
 unset($_SESSION['ACanceled']);
+unset($_SESSION['RDisapproved']);
 
 
 //   lorenzo
@@ -225,6 +230,19 @@ unset($_SESSION['inquiryAdmitted']);
 ?>
 
 <div class="position-fixed top-2 end-1 z-index-3">
+
+    <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="RDisapproved" aria-atomic="true">
+        <div class="toast-header border-0">
+            <i class="ni ni-check-bold text-success me-2"></i>
+            <span class="me-auto font-weight-bold">Successfully Disapproved!</span>
+            <small class="text-body"></small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+            Student has been Successfully Disapproved.
+        </div>
+    </div>
 
     <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="ACanceled" aria-atomic="true">
         <div class="toast-header border-0">

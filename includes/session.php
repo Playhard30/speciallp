@@ -34,6 +34,11 @@ if (!empty($_SESSION['role'])) {
         }
     } elseif ($_SESSION['role'] == "Adviser") {
         $faculty_id = $_SESSION['userid'];
+        // Adviser
+        $getDepartment = $db->query("SELECT * FROM tbl_faculties WHERE faculty_id = '$faculty_id'") or die($db->error);
+        while ($row = $getDepartment->fetch_array()) {
+            $_SESSION['ADepartment_id'] = $row['department_id'];
+        }
         if ($faculty_id == false) {
             header("location: ../login/sign-in.php");
             exit();

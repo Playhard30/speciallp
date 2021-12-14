@@ -6,7 +6,7 @@ if (isset($_POST["view"])) {
 
     // to Update the seen notif
     if ($_POST["view"] != "") {
-        $update_query = $db->query("UPDATE tbl_notifications LEFT JOIN tbl_schoolyears SY USING(sy_id) LEFT JOIN tbl_courses C ON C.course_id = SY.course_id SET notif_status = 1 WHERE notif_status = 0 AND C.department_id IN ('$_SESSION[ADepartment_id]')") or die($db->error);
+        $update_query = $db->query("UPDATE tbl_notifications LEFT JOIN tbl_schoolyears SY USING(sy_id) LEFT JOIN tbl_courses C ON C.course_id = SY.course_id SET notif_status = 1 WHERE notif_status = 0 AND C.department_id IN ('$_SESSION[ADepartment_id]') AND (remark IN ('Pending') OR remark IN ('Checked') OR remark IN ('Canceled')) ") or die($db->error);
     }
 
     // to show the lists item of notif
@@ -16,8 +16,8 @@ if (isset($_POST["view"])) {
      LEFT JOIN tbl_students S USING(stud_id)
      LEFT JOIN tbl_year_levels YL USING(year_id)
      LEFT JOIN tbl_courses C ON C.course_id = SY.course_id
-     WHERE C.department_id IN ('$_SESSION[ADepartment_id]')
-     ORDER BY notif_id DESC 
+     WHERE C.department_id IN ('$_SESSION[ADepartment_id]') AND (remark IN ('Pending') OR remark IN ('Checked') OR remark IN ('Canceled'))
+     ORDER BY notif_id DESC
      LIMIT 5") or die($db->error);
     $output = '';
     if ($query->num_rows > 0) {
@@ -25,7 +25,7 @@ if (isset($_POST["view"])) {
             if (!empty(base64_encode($row['img'])) && !empty($row['stud_no'])) {
                 $output .= '
             <li class="mb-2">
-            <a class="dropdown-item border-radius-md" href="javascript:;">
+            <a class="dropdown-item border-radius-md" href="../enrollment/pendingStud.php?search=' . $row['stud_no'] . '">
                 <div class="d-flex py-1">
                     <div class="my-auto">
                         <img src="data:image/jpeg;base64, ' . base64_encode($row['img']) . '" class="avatar avatar-sm me-3 " alt="user image">
@@ -46,7 +46,7 @@ if (isset($_POST["view"])) {
             } elseif (empty(base64_encode($row['img'])) && !empty($row['stud_no'])) {
                 $output .= '
                 <li class="mb-2">
-                <a class="dropdown-item border-radius-md" href="../enrollment/pendingStud.php">
+                <a class="dropdown-item border-radius-md" href="../enrollment/pendingStud.php?search=' . $row['stud_no'] . '">
                     <div class="d-flex py-1">
                         <div class="my-auto">
                             <img src="../../assets/img/illustrations/user_prof.jpg" class="avatar avatar-sm me-3 " alt="user image">
@@ -101,7 +101,11 @@ if (isset($_POST["view"])) {
     }
 
     // it count the number of unseen notif
-    $query1 = $db->query("SELECT * FROM tbl_notifications LEFT JOIN tbl_schoolyears SY USING(sy_id) LEFT JOIN tbl_courses C ON C.course_id = SY.course_id WHERE notif_status = 0 AND C.department_id IN ('$_SESSION[ADepartment_id]')") or die($db->error);
+    $query1 = $db->query("SELECT * FROM tbl_notifications 
+    LEFT JOIN tbl_schoolyears SY USING(sy_id) 
+    LEFT JOIN tbl_courses C ON C.course_id = SY.course_id 
+    WHERE notif_status = 0 AND C.department_id IN ('$_SESSION[ADepartment_id]') AND (remark IN ('Pending') OR remark IN ('Checked') OR remark IN ('Canceled'))")
+        or die($db->error);
     $count = $query1->num_rows;
     // it store the collected data
     $data = array(

@@ -132,7 +132,7 @@ if ($_SESSION['role'] == "Student") {
                                 <div class="h-100">
                                     <?php if ($row['remark'] == "Pending") {
                                                 echo '<p class="badge badge-warning badge-sm mb-2">';
-                                            } elseif ($row['remark'] == "Canceled") {
+                                            } elseif ($row['remark'] == "Canceled" || $row['remark'] == "Disapproved") {
                                                 echo '<p class="badge badge-danger badge-sm mb-2">';
                                             } else {
                                                 echo '<p class="badge badge-success badge-sm mb-2">';
@@ -295,7 +295,7 @@ if ($_SESSION['role'] == "Student") {
                                                             <div class="table-responsive px-3 my-3">
                                                                 <table
                                                                     class="table table-flush table-hover m-0 responsive nowrap"
-                                                                    style="width: 100%;" id="datatable-modal">
+                                                                    style="width: 100%;" id="datatable-simple">
                                                                     <thead class="thead-light">
                                                                         <tr>
                                                                             <th
@@ -448,7 +448,7 @@ if ($_SESSION['role'] == "Student") {
                                             LEFT JOIN tbl_schedules S ON S.class_id = ES.class_id
                                             LEFT JOIN tbl_students STUD ON STUD.stud_id = ES.stud_id
                                             LEFT JOIN tbl_subjects_new SN ON SN.subj_id = ES.subj_id
-                                            WHERE ES.stud_id = '$stud_id' AND ES.acad_year = '$_SESSION[AC]' AND ES.semester = '$_SESSION[S]'") or die($db->error);
+                                            WHERE ES.stud_id = '$stud_id' AND ES.acad_year = '$_SESSION[AC]' AND ES.semester = '$_SESSION[S]' AND SN.course_id = '$course_id'") or die($db->error);
                                         while ($row = $query01->fetch_array()) { ?>
                                         <tr>
                                             <td class="text-sm font-weight-normal">
@@ -520,7 +520,7 @@ if ($_SESSION['role'] == "Student") {
                                     <tfoot>
                                         <?php $query02 = $db->query("SELECT SUM(unit_total) AS TU FROM tbl_enrolled_subjects ES
                                             LEFT JOIN tbl_subjects_new SN ON SN.subj_id = ES.subj_id
-                                            WHERE ES.stud_id = '$stud_id' AND ES.acad_year = '$_SESSION[AC]' AND ES.semester = '$_SESSION[S]'") or die($db->error);
+                                            WHERE ES.stud_id = '$stud_id' AND ES.acad_year = '$_SESSION[AC]' AND ES.semester = '$_SESSION[S]' AND SN.course_id = '$course_id'") or die($db->error);
                                         while ($row = $query02->fetch_array()) { ?>
                                         <tr>
                                             <th
