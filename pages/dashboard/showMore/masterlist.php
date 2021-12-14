@@ -74,20 +74,20 @@ $pdf->SetFont('Arial', 'B', 10);
 $pdf->Cell(100, 5, 'Name', 1, 0, 'C');
 $pdf->Cell(28, 5, 'Course', 1, 0, 'C');
 $pdf->Cell(25, 5, 'Year Level', 1, 0, 'C');
-$pdf->Cell(50, 5, 'Email', 1, 0, 'C');
+$pdf->Cell(50, 5, 'Email', 1, 1, 'C');
 $pdf->SetFont('Arial', '', 9);
 $x = 1;
-$query = mysqli_query($db, "SELECT *,CONCAT(tbl_students.lastname, ', ', tbl_students.firstname, ' ', tbl_students.middlename)  as fullname FROM tbl_schoolyears 
+$query = mysqli_query($db, "SELECT *,CONCAT(tbl_students.lastname, ', ', tbl_students.firstname, ' ', tbl_students.middlename) AS fullname FROM tbl_schoolyears 
                                   LEFT JOIN tbl_students ON tbl_students.stud_id = tbl_schoolyears.stud_id
                                   LEFT JOIN tbl_genders ON tbl_genders.gender_id = tbl_students.gender_id
                                   LEFT JOIN tbl_courses ON tbl_courses.course_id = tbl_schoolyears.course_id
-                                  WHERE ay_id = '$_SESSION[AYear]' AND tbl_courses.department_id='3' AND sem_id = '$_SESSION[ASem]' AND remark IN ('Approved') ORDER BY lastname") or die(mysqli_error($db));
+                                  LEFT JOIN tbl_year_levels USING(year_id)
+                                  WHERE ay_id = '$_SESSION[AC]' AND tbl_courses.department_id='3' AND sem_id = '$_SESSION[S]' AND remark IN ('Approved') ORDER BY lastname") or die(mysqli_error($db));
 while ($row = mysqli_fetch_array($query)) {
-    $pdf->Cell(6, 5, $x, 0, 0);
-    $pdf->Cell(100, 5, strtoupper(utf8_decode($row['fullname'])), 0, 0);
-    $pdf->Cell(28, 5, $row['course_abv'], 0, 0);
-    $pdf->Cell(25, 5, $row['year_abv'], 0, 0);
-    $pdf->Cell(50, 5, $row['email'], 0, 0);
+    $pdf->Cell(100, 5, $x . '.   ' . strtoupper(utf8_decode($row['fullname'])), 1, 0);
+    $pdf->Cell(28, 5, $row['course_abv'], 1, 0, 'C');
+    $pdf->Cell(25, 5, $row['year_level'], 1, 0, 'C');
+    $pdf->Cell(50, 5, $row['email'], 1, 0, 'C');
     $x++;
 }
 
