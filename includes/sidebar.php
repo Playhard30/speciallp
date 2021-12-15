@@ -392,7 +392,7 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                             <span class="sidenav-mini-icon"> </span>
-                            <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                            <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                         </a>
                         <div class="collapse" id="oldcurri">
                             <ul class="nav nav-sm flex-column">
@@ -463,6 +463,7 @@
                                         <span class="sidenav-normal text-black-50">BSED-SS</span>
                                     </a>
                                 </li>
+                                
                                 <li class="nav-item">
                                     <a class="nav-link" href="../oldcurr/BSEE-2018-2019.php">
                                         <span class="sidenav-mini-icon text-xs"> </span>
@@ -487,6 +488,25 @@
                                         <span class="sidenav-normal text-black-50">BS Psychology</span>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                <a class="nav-link" href="../oldcurr/TCP-2018-2019.php">
+                                    <span class="sidenav-mini-icon text-xs"> </span>
+                                    <span class="sidenav-normal text-black-50">TCP</span>
+                                </a>
+                            </li>
+<li class="nav-item">
+                                <a class="nav-link" href="../oldcurr/BA-Psych-2018-2019.php">
+                                    <span class="sidenav-mini-icon text-xs"> </span>
+                                    <span class="sidenav-normal text-black-50">BS Psychology</span>
+                                </a>
+                            </li>
+
+                                <li class="nav-item">
+                                <a class="nav-link" href="../newcurr/BSN-2018-2019.php">
+                                    <span class="sidenav-mini-icon text-xs"> </span>
+                                    <span class="sidenav-normal text-black-50">BSN</span>
+                                </a>
+                            </li>
                             </ul>
                         </div>
                     </ul>
@@ -498,7 +518,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -611,12 +631,7 @@
                                             <span class="sidenav-normal text-black-50">MBA-2</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BSN-2020-2021.php">
-                                            <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">NURS</span>
-                                        </a>
-                                    </li>
+                                   
 
 
                                 </ul>
@@ -1012,7 +1027,7 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                             <span class="sidenav-mini-icon"> </span>
-                            <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                            <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                         </a>
                         <div class="collapse" id="oldcurri">
                             <ul class="nav nav-sm flex-column">
@@ -1083,6 +1098,7 @@
                                         <span class="sidenav-normal text-black-50">BSED-SS</span>
                                     </a>
                                 </li>
+                                
                                 <li class="nav-item">
                                     <a class="nav-link" href="../oldcurr/BSEE-2018-2019.php">
                                         <span class="sidenav-mini-icon text-xs"> </span>
@@ -1107,6 +1123,19 @@
                                         <span class="sidenav-normal text-black-50">BS Psychology</span>
                                     </a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/TCP-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">TCP</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSN-2018-2019.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSN</span>
+                                        </a>
+                                    </li>
                             </ul>
                         </div>
                     </ul>
@@ -1118,7 +1147,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1231,12 +1260,7 @@
                                             <span class="sidenav-normal text-black-50">MBA-2</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BSN-2020-2021.php">
-                                            <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">NURS</span>
-                                        </a>
-                                    </li>
+                                    
 
 
                                 </ul>
@@ -1424,7 +1448,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1448,7 +1472,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1486,7 +1510,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1523,7 +1547,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1586,7 +1610,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1627,6 +1651,12 @@
                                             <span class="sidenav-normal text-black-50">BSED-SS</span>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../oldcurr/TCP-2018-2019.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">TCP</span>
+                                        </a>
+                                    </li>
 
 
                                 </ul>
@@ -1642,7 +1672,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1711,7 +1741,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1738,7 +1768,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1777,7 +1807,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1799,7 +1829,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1832,7 +1862,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1850,7 +1880,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1884,7 +1914,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1924,7 +1954,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1975,7 +2005,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1995,15 +2025,15 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BSN-2020-2021.php">
+                                        <a class="nav-link" href="../newcurr/BSN-2018-2019.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">BS Nursing</span>
+                                            <span class="sidenav-normal text-black-50">BSN</span>
                                         </a>
                                     </li>
 
