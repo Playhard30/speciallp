@@ -1657,6 +1657,12 @@
                                             <span class="sidenav-normal text-black-50">TCP</span>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../oldcurr/BA-Psych-2018-2019.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BA-PSYCH</span>
+                                        </a>
+                                    </li>
 
 
                                 </ul>
@@ -1711,6 +1717,12 @@
                                         <a class="nav-link" href="../newcurr/BSED-SS-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
                                             <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BA-Psych-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BA-PSYCH</span>
                                         </a>
                                     </li>
 
