@@ -288,7 +288,7 @@ include '../../includes/head.php';
                                     </h6>
 
                                     <?php
-                                        $ESubCount = mysqli_query($db, "SELECT COUNT(ES.enrolled_subj_id) FROM tbl_enrolled_subjects ES WHERE stud_id IN ('$stud_id') AND acad_year = '$_SESSION[AC]' AND semester = '$_SESSION[S]'") or die($db->error);
+                                        $ESubCount = mysqli_query($db, "SELECT COUNT(ES.enrolled_subj_id) FROM tbl_enrolled_subjects ES LEFT JOIN tbl_subjects_new SN USING(subj_id) WHERE stud_id IN ('$stud_id') AND acad_year = '$_SESSION[AC]' AND semester = '$_SESSION[S]' AND course_id IN ('$SCourse_id')") or die($db->error);
                                         $actualCount = mysqli_fetch_array($ESubCount);
                                         ?>
                                     <h3 class="text-white text-center mb-0 mt-n2" id="state2"

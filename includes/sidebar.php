@@ -1,6 +1,6 @@
 <aside
     class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 shadow-xl shadow bg-white"
-    data-color="danger">
+    data-color="danger" id="sidenav-main">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
@@ -2112,10 +2112,10 @@
             </li>';
                 }
                 // For curriculum / sidebar
-                $getCourse_id = $db->query("SELECT * FROM tbl_students S LEFT JOIN tbl_courses C USING(course_id) WHERE stud_id = '$stud_id'") or die($db->error);
+                $getCourse_id = $db->query("SELECT * FROM tbl_students S LEFT JOIN tbl_courses C USING(course_id) LEFT JOIN tbl_effective_acadyear EA ON S.curri = EA.eay_id WHERE stud_id = '$stud_id'") or die($db->error);
                 while ($row = $getCourse_id->fetch_array()) {
                     // if URL exist
-                    $url = 'http://localhost/speciallp/pages/newcurr/' . $row['course_abv'] . '-2020-2021.php';
+                    $url = 'http://localhost/speciallp/pages/newcurr/' . $row['course_abv'] . '-' . $row['eay'] . '.php';
                     $array = get_headers($url);
                     $string = $array[0];
                     if (strpos($string, "200")) {
@@ -2130,7 +2130,7 @@
                 </li>';
                     } else {
                         // if URL exist
-                        $url = 'http://localhost/speciallp/pages/newcurr/curri18-19/' . $row['course_abv'] . '-2018-2019.php';
+                        $url = 'http://localhost/speciallp/pages/oldcurr/curri18-19/' . $row['course_abv'] . '-2018-2019.php';
                         $array = get_headers($url);
                         $string = $array[0];
                         if (strpos($string, "200")) {

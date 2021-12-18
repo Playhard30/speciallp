@@ -47,7 +47,6 @@ if (!empty($_GET['CID'])) {
                                     </div>
 
                                     <div class="col-md-3 px-0 g-0 mt-3 my-lg-0">
-
                                         <div class="my-auto">
                                             <select class="form-control" name="eay" id="academic_year">
                                                 <?php
@@ -72,7 +71,6 @@ if (!empty($_GET['CID'])) {
                                                     }
                                                 } ?>
                                             </select>
-
                                             <?php if (!empty($_GET['CID'])) {
                                                 $getCour = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]' AND department_id = '$_SESSION[ADepartment_id]'") or die($db->error);
                                                 $count1 = $getCour->num_rows;
@@ -82,11 +80,10 @@ if (!empty($_GET['CID'])) {
                                             } ?>
 
                                         </div>
-
-
                                     </div>
-                                    <div class="col-md-2 px-0 g-0 text-center mt-3 my-lg-0">
-                                        <button type="submit" class="btn bg-gradient-dark"><i class="fas fa-eye"> </i>
+                                    <div class="col-md-2 px-0 g-0 text-center mt-0 mt-md-3 my-lg-0">
+                                        <button type="submit" class="btn bg-gradient-dark"><i class="fas fa-eye">
+                                            </i>
                                             &nbsp;Show</button>
                                     </div>
                                 </div>
@@ -309,6 +306,7 @@ if (!empty($_GET['CID'])) {
                                                 data-bs-target="#modal-petitioned"><i class="fas fa-plus"> </i>
                                                 Petitioned Subject</a>
                                         </th>
+                                        <th></th>
                                         <th></th>
                                         <th></th>
                                         <th></th>

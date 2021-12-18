@@ -13,6 +13,7 @@ if ($_SESSION['role'] == "Adviser") {
             $check = "Checked";
             // query
             $query = $db->query("UPDATE tbl_schoolyears SET remark = '$check' WHERE sy_id = '$id'") or die($db->error);
+            $query2 = $db->query("UPDATE tbl_notifications SET notif_status = 0 WHERE sy_id = '$id'") or die($db->error);
             $_SESSION['ACheck'] = true;
             header("location: ../pendingStud.php?search=" . $_GET['search']);
         } elseif ($_GET['remark'] == "Checked" || $_GET['remark'] == "Disapproved") {
@@ -36,7 +37,7 @@ if ($_SESSION['role'] == "Adviser") {
             // query
             $query = $db->query("UPDATE tbl_schoolyears SET remark = '$check' WHERE sy_id = '$id'") or die($db->error);
             $_SESSION['ACheck'] = true;
-            header("location: ../enrolledStud.php");
+            header("location: ../enrolledStud.php?search=" . $_GET['search']);
         } elseif ($_GET['remark'] == "Approved") {
             // get id by URL
             $id = $_GET['id'];
@@ -44,7 +45,7 @@ if ($_SESSION['role'] == "Adviser") {
             // query
             $query = $db->query("UPDATE tbl_schoolyears SET remark = '$disapproved' WHERE sy_id = '$id'") or die($db->error);
             $_SESSION['RDisapproved'] = true;
-            header("location: ../enrolledStud.php");
+            header("location: ../enrolledStud.php?search=" . $_GET['search']);
         }
     }
 }

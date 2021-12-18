@@ -37,20 +37,7 @@ $(document).ready(function() {
     }
     load_unseen_notification();
 
-    // for backend of EnrollNow | Inserting data
-    $('.notif_form').on('submit', function(event) {
-        // serialize -> get the id and value of the element 
-        var form_data = $(this).serialize();
-        $.ajax({
-            url: "userData/ctrl.enrollNow.php",
-            method: "POST",
-            data: form_data,
-            success: function(data) {
-                window.location.href = 'enrollmentInfo.php';
-                load_unseen_notification();
-            }
-        })
-    })
+
     // it update the seen notif | from includes/fetch.php
     $(document).on('click', '.drop-toggle', function() {
         $('.count').html('');

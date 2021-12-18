@@ -34,9 +34,12 @@ if (isset($_POST['addSub'])) {
         $index = $_POST['index'];
         $class_id = $_POST['class'];
         $subjects_id = $_POST['subjects'];
+        $eay_id = $_POST['eay_id'];
         foreach ($index as $i) {
             $query1 = $db->query("INSERT INTO tbl_enrolled_subjects (class_id, stud_id, subj_id, acad_year, semester) VALUES ('$class_id[$i]', '$_SESSION[stud_id]', '$subjects_id[$i]', '$_SESSION[AC]', '$_SESSION[S]')");
         }
+        // update the student curri for curriculum of a student
+        $query2 = $db->query("UPDATE tbl_students SET curri = '$eay_id[0]' WHERE stud_id = '$_SESSION[stud_id]'");
         $_SESSION['SASub'] = true;
         if ($_SESSION['role'] == "Student") {
             header("location: ../enrollmentInfo.php");

@@ -4,7 +4,7 @@ session_start();
 include '../../includes/session.php';
 include '../../includes/head.php';
 // to get ID
-if ($_SESSION['role'] == "Adviser") {
+if ($_SESSION['role'] == "Adviser" || $_SESSION['role'] == "Registrar") {
     $stud_id = $_GET['stud_id'];
 }
 // for ctrl function
@@ -273,7 +273,7 @@ if ($_SESSION['role'] == "Student") {
                                                     class="fas fa-plus text-sm"> </i>
                                                 Add Subjects
                                             </button>';
-                                            } elseif ($_SESSION['role'] == "Adviser") {
+                                            } elseif ($_SESSION['role'] == "Adviser" || $_SESSION['role'] == "Registrar") {
                                                 echo '<button type="button" class="btn bg-gradient-dark btn-sm mb-0"
                                                 data-bs-toggle="modal" data-bs-target="#addSub"><i
                                                     class="fas fa-plus text-sm"> </i>
@@ -328,6 +328,9 @@ if ($_SESSION['role'] == "Student") {
                                                                             <th
                                                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                                                                 Room</th>
+                                                                            <th
+                                                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                                                                E.A.Y</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
@@ -337,6 +340,7 @@ if ($_SESSION['role'] == "Student") {
                                                                             LEFT JOIN tbl_courses C ON C.course_id = SN.course_id
                                                                             LEFT JOIN tbl_year_levels YL ON YL.year_id = SN.year_id
                                                                             LEFT JOIN tbl_semesters SEM ON SEM.sem_id = SN.sem_id
+                                                                            LEFT JOIN tbl_effective_acadyear EA ON SN.eay_id = EA.eay_id
                                                                             WHERE S.subj_id NOT IN (SELECT ES.subj_id FROM tbl_enrolled_subjects ES WHERE ES.stud_id = '$stud_id' AND ES.acad_year = '$_SESSION[AC]' AND ES.semester = '$_SESSION[S]') AND C.course_id = '$course_id' AND acad_year = '$_SESSION[AC]' AND S.semester = '$_SESSION[S]'
                                                                             ORDER BY YL.year_id, SEM.sem_id") or die($db->error);
                                                                         while ($row2 = $query1->fetch_array()) {
@@ -345,6 +349,9 @@ if ($_SESSION['role'] == "Student") {
                                                                             <td class="text-sm font-weight-normal">
                                                                                 <input type="text" hidden name="class[]"
                                                                                     value="<?php echo $row2['class_id']; ?>">
+                                                                                <input type="text" hidden
+                                                                                    name="eay_id[]"
+                                                                                    value="<?php echo $row2['eay_id']; ?>">
                                                                                 <div class="form-check">
                                                                                     <input class="form-check-input"
                                                                                         name="index[]" type="checkbox"
@@ -383,6 +390,9 @@ if ($_SESSION['role'] == "Student") {
                                                                             <td class="text-sm font-weight-normal">
                                                                                 <?php echo $row2['room']; ?>
                                                                             </td>
+                                                                            <td class="text-sm font-weight-normal">
+                                                                                <?php echo $row2['eay']; ?>
+                                                                            </td>
                                                                         </tr>
                                                                         <?php } ?>
                                                                     </tbody>
@@ -404,7 +414,7 @@ if ($_SESSION['role'] == "Student") {
                                                 data-type="csv" type="submit" name="delete"><i
                                                     class="fas fa-trash text-sm">
                                                 </i> Delete</button>';
-                                            } elseif ($_SESSION['role'] == "Adviser") {
+                                            } elseif ($_SESSION['role'] == "Adviser" || $_SESSION['role'] == "Registrar") {
                                                 echo '<button class="btn bg-gradient-danger btn-sm export mb-0 mt-sm-0 mt-0"
                                                 data-type="csv" type="submit" name="delete"><i
                                                     class="fas fa-trash text-sm">
@@ -448,16 +458,25 @@ if ($_SESSION['role'] == "Student") {
                                             LEFT JOIN tbl_schedules S ON S.class_id = ES.class_id
                                             LEFT JOIN tbl_students STUD ON STUD.stud_id = ES.stud_id
                                             LEFT JOIN tbl_subjects_new SN ON SN.subj_id = ES.subj_id
-                                            WHERE ES.stud_id = '$stud_id' AND ES.acad_year = '$_SESSION[AC]' AND ES.semester = '$_SESSION[S]' AND SN.course_id = '$course_id'") or die($db->error);
+                                            WHERE ES.stud_id = '$stud_id' AND ES.acad_year = '$_SESSION[AC]' AND ES.semester = '$_SESSION[S]' AND SN.course_id = '$course_id'
+                                            ORDER BY enrolled_subj_id ASC") or die($db->error);
                                         while ($row = $query01->fetch_array()) { ?>
                                         <tr>
                                             <td class="text-sm font-weight-normal">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" name="check[]" type="checkbox"
-                                                        value="<?php echo $row['enrolled_subj_id']; ?>"
-                                                        id="flexCheckDefault2">
-                                                    <?php echo $row['subj_code']; ?>
-                                                </div>
+
+                                                <?php if ($_SESSION['role'] == "Student" && $remark == "Pending") {
+                                                        echo '<div class="form-check"> <input class="form-check-input" name="check[]" type="checkbox"
+                                                        value="' . $row['enrolled_subj_id'] . '"
+                                                        id="flexCheckDefault2">' . $row['subj_code'] . '
+                                                </div>';
+                                                    } elseif ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == "Adviser") {
+                                                        echo '<div class="form-check"> <input class="form-check-input" name="check[]" type="checkbox"
+                                                        value="' . $row['enrolled_subj_id'] . '"
+                                                        id="flexCheckDefault2">' . $row['subj_code'] . '
+                                                </div>';
+                                                    } else {
+                                                        echo $row['subj_code'];
+                                                    } ?>
 
                                             </td>
                                             <td class="text-sm font-weight-normal">
