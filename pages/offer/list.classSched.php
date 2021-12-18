@@ -162,8 +162,9 @@ if (!empty($_GET['CID'])) {
                                                 data-bs-target="#modal-sched<?php echo $id; ?>"><i
                                                     class="text-xs fas fa-edit"> </i>
                                                 Edit</a>
-
-                                            <a class="btn btn-block bg-gradient-danger mb-3 text-xs"
+                                                
+                                            <!-- disable temporarily the delete button -->
+                                            <a class="btn btn-block bg-gradient-danger mb-3 text-xs disabled" 
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#modal-notification<?php echo $id; ?>"><i
                                                     class="text-xs fas fa-trash-alt"></i> Delete</a>

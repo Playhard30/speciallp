@@ -470,15 +470,29 @@ if (empty($row['curri'])) {
     LEFT JOIN tbl_schedules ON tbl_schedules.class_id = tbl_enrolled_subjects.class_id
     LEFT JOIN tbl_faculties_staff ON tbl_faculties_staff.faculty_id = tbl_schedules.faculty_id
     WHERE tbl_enrolled_subjects.stud_id = '$stud_id' AND tbl_enrolled_subjects.acad_year = '$_SESSION[AC]' AND tbl_enrolled_subjects.semester = '$_SESSION[S]' ORDER BY tbl_enrolled_subjects.subj_id") or die(mysqli_error($db));
-    $pdf->SetFont('Arial', '', '8');
+    $pdf->SetFont('Arial', '', '9');
     $y = $pdf->Gety();
     $xy = 3;
     $i = 1;
     while ($row2 = mysqli_fetch_array($sql2)) {
+        $pdf->SetFont('Arial', '', '9');
         $pdf->SetXY(13, $y + $xy);
         $pdf->Cell(3, 3, $i, 0, 0, 'L'); //ndi pa tapos d2 tumigil
+        $fontsize = 9;
+        $tempFontSize = $fontsize;
+        $cellwidth = 16;
+        while ($pdf->GetStringWidth($row2['subj_code']) > $cellwidth) {
+            $pdf->SetFontSize($tempFontSize -= 0.1);
+        }
         $pdf->Cell(34, 3, $row2['subj_code'], 0, 0, 'C'); //ndi pa tapos d2 tumigil
+        $fontsize = 9;
+        $tempFontSize = $fontsize;
+        $cellwidth = 13;
+        while ($pdf->GetStringWidth($row2['day']) > $cellwidth) {
+            $pdf->SetFontSize($tempFontSize -= 0.1);
+        }
         $pdf->Cell(15, 3, $row2['day'], 0, 0, 'C'); //ndi pa tapos d2 tumigil
+        $pdf->SetFont('Arial', '', '8.5');
         $pdf->Cell(18, 3, $row2['time'], 0, 0, 'C'); //ndi pa tapos d2 tumigil
         $pdf->Cell(12, 3, $row2['room'], 0, 0, 'C'); //ndi pa tapos d2 tumigil
         $xy += 3;
@@ -778,19 +792,33 @@ if (empty($row['curri'])) {
     LEFT JOIN tbl_schedules ON tbl_schedules.class_id = tbl_enrolled_subjects.class_id
     LEFT JOIN tbl_faculties_staff ON tbl_faculties_staff.faculty_id = tbl_schedules.faculty_id
     WHERE tbl_enrolled_subjects.stud_id = '$stud_id' AND tbl_enrolled_subjects.acad_year = '$_SESSION[AC]' AND tbl_enrolled_subjects.semester = '$_SESSION[S]' ORDER BY tbl_enrolled_subjects.subj_id") or die(mysqli_error($db));
-    $pdf->SetFont('Arial', '', '8');
+    $pdf->SetFont('Arial', '', '9');
     $y = $pdf->Gety();
     $xy = 3.5;
     $i = 1;
     while ($row3 = mysqli_fetch_array($sql3)) {
+        $pdf->SetFont('Arial', '', '9');
         $pdf->SetXY(13, $y + $xy);
         $pdf->Cell(3, 3.5, $i, 0, 0, 'L');
         $pdf->Cell(41, 3.5, $row3['subj_code'], 0, 0, 'C');
         $pdf->Cell(10, 3.5, $row3['unit_total'], 0, 0, 'C');
+        $fontsize = 9;
+        $tempFontSize = $fontsize;
+        $cellwidth = 13;
+        while ($pdf->GetStringWidth($row3['day']) > $cellwidth) {
+            $pdf->SetFontSize($tempFontSize -= 0.1);
+        }
         $pdf->Cell(15, 3.5, $row3['day'], 0, 0, 'C');
+        $pdf->SetFont('Arial', '', '9');
         $pdf->Cell(17.5, 3.5, $row3['time'], 0, 0, 'C');
         $pdf->Cell(12.5, 3.5, $row3['room'], 0, 0, 'C');
         $pdf->Cell(15, 3.5, '', 0, 0, 'C');
+        $fontsize = 9;
+        $tempFontSize = $fontsize;
+        $cellwidth = 25;
+        while ($pdf->GetStringWidth($row3['fullname']) > $cellwidth) {
+            $pdf->SetFontSize($tempFontSize -= 0.1);
+        }
         $pdf->Cell(28, 3.5, $row3['fullname'], 0, 1, 'C');
         $xy += 3.5;
         $i++;
@@ -1004,9 +1032,17 @@ if (empty($row['curri'])) {
     while ($row4 = mysqli_fetch_array($sql4)) {
         $pdf->SetXY(4, $y + $xy);
         $pdf->Cell(3, 3, $i, 0, 0, 'L');
+        $pdf->SetFont('Arial', '', '6.5');
         $pdf->Cell(32, 3, $row4['subj_code'], 0, 0, 'C');
         $pdf->Cell(10, 3, $row4['unit_total'], 0, 0, 'C');
+        $fontsize = 9;
+        $tempFontSize = $fontsize;
+        $cellwidth = 13;
+        while ($pdf->GetStringWidth($row4['day']) > $cellwidth) {
+            $pdf->SetFontSize($tempFontSize -= 0.1);
+        }
         $pdf->Cell(15, 3, $row4['day'], 0, 0, 'C');
+        $pdf->SetFont('Arial', '', '6.5');
         $pdf->Cell(29.5, 3, $row4['time'], 0, 0, 'C');
         $pdf->Cell(12.5, 3, $row4['room'], 0, 0, 'C');
         $pdf->Cell(15, 3, '', 0, 0, 'C');
@@ -1609,7 +1645,7 @@ $pdf->Cell(35, 4, 'Occupation', 'R', 0, 'L');
 $pdf->Cell(48, 4, '', 'R', 1);
 $fontsize = 8;
 $tempFontSize = $fontsize;
-$cellwidth = 68;
+$cellwidth = 65;
 while ($pdf->GetStringWidth($row['gaddress']) > $cellwidth) {
     $pdf->SetFontSize($tempFontSize -= 0.1);
 }
