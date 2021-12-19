@@ -54,6 +54,7 @@ if ($_SESSION['role'] == "Student") {
                                 while ($row = $getSY->fetch_array()) {
                                     $course_id = $row['course_id'];
                                     $remark = $row['remark'];
+                                    $sy_id = $row['sy_id'];
                                 ?>
 
                             <!-- Profile -->
@@ -179,7 +180,7 @@ if ($_SESSION['role'] == "Student") {
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-8">
+                                <div class="col-sm-12">
                                     <label class="mt-3">Course</label>
                                     <select class="form-control" name="course" id="department">
                                         <?php
@@ -197,6 +198,9 @@ if ($_SESSION['role'] == "Student") {
                                                 ?>
                                     </select>
                                 </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-sm-4">
                                     <label class="mt-3">Year Level</label>
                                     <select class="form-control" name="level" id="year_lvl">
@@ -213,9 +217,6 @@ if ($_SESSION['role'] == "Student") {
                                                 } ?>
                                     </select>
                                 </div>
-                            </div>
-
-                            <div class="row">
                                 <div class="col-sm-4">
                                     <label class="mt-3">Status</label>
                                     <select class="form-control" name="status" id="status">
@@ -240,8 +241,21 @@ if ($_SESSION['role'] == "Student") {
                                                 ?>
                                     </select>
                                 </div>
-                            </div>
+                                <div class="col-sm-4">
+                                    <label class="mt-3">Balik Franciscano</label>
+                                    <select class="form-select" name="bfranciscano" id="dep">
+                                        <?php if ($row['bf'] == "No" || empty($row['bf'])) {
+                                                    echo '<option value="Yes">Yes</option>
+                                           <option selected value="No">No</option>';
+                                                } else {
+                                                    echo '<option selected value="Yes">Yes</option>
+                                                    <option value="No">No</option>';
+                                                } ?>
 
+
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="d-flex justify-content-end mt-4">
                                 <button class="btn bg-gradient-primary m-0 ms-2" type="submit" title="Send"

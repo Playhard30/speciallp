@@ -172,7 +172,8 @@ include '../../includes/session.php';
                                                         data-bs-original-title="Registration Forms">
                                                         <i class="fas fa-file-pdf text-secondary"></i>
                                                     </a>
-                                                    <span data-bs-toggle="tooltip" data-bs-original-title="Delete">
+                                                    <span class="cursor-pointer" data-bs-toggle="tooltip"
+                                                        data-bs-original-title="Delete">
                                                         <a class="mx-2" data-bs-toggle="modal"
                                                             data-bs-target="#modal-delete<?php echo $id; ?>">
                                                             <i class="fas fa-trash" style="color: #c55151"></i>

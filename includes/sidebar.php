@@ -888,6 +888,13 @@
                                 <span class="sidenav-normal font-weight-bold">Subject List</span>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="../offer/list.classSched.php">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal font-weight-bold">Class Schedule</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
@@ -954,6 +961,35 @@
             </li>
 
 
+            <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#OOSubject" class="nav-link" aria-controls="Offer/OpenSubject"
+                role="button" aria-expanded="false">
+                <div
+                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fas fa-book-open text-dark"></i>
+                </div>
+                <span class="nav-link-text ms-1">Offer Subjects</span>
+            </a>
+            <div class="collapse" id="OOSubject">
+                <ul class="nav ms-4 ps-3">
+                    ';
+                $getDep = $db->query("SELECT * FROM tbl_departments RIGHT JOIN tbl_courses ON
+                    tbl_courses.department_id = tbl_departments.department_id") or die($db->error);
+                while ($row = $getDep->fetch_array()) {
+                    $course_abv = $row['course_abv'];
+                    $course_id = $row['course_id'];
+                    echo ' <li class="nav-item">
+                        <a class="nav-link" href="../offer/offer.subjects.php?CID=' . $course_id . '">
+                            <span class="sidenav-mini-icon text-xs"> </span>
+                            <span class="sidenav-normal font-weight-bold">' . $course_abv . '</span>
+                        </a>
+                    </li>';
+                }
+                echo ' </ul>
+            </div>
+        </li>
+        ';
+                echo '
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#forms" class="nav-link" aria-controls="forms" role="button"
                     aria-expanded="false">
@@ -1407,7 +1443,6 @@
                     </div>
                     <span class="nav-link-text ms-1">Offer Subjects</span>
                 </a>
-
                 <div class="collapse" id="OOSubject">
                     <ul class="nav ms-4 ps-3">
                         ';
@@ -2162,7 +2197,7 @@
                     $string = $array[0];
                     if (strpos($string, "200")) {
                         echo '<li class="nav-item">
-                    <a class="nav-link" href="../newcurr/' . $row['course_abv'] . '-2020-2021.php">
+                    <a class="nav-link" href="../newcurr/' . $row['course_abv'] . '-' . $row['eay'] . '.php">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-file-pdf text-dark"></i>
@@ -2172,12 +2207,12 @@
                 </li>';
                     } else {
                         // if URL exist
-                        $url = 'http://localhost/speciallp/pages/oldcurr/curri18-19/' . $row['course_abv'] . '-2018-2019.php';
+                        $url = 'http://localhost/speciallp/pages/oldcurr/' . $row['course_abv'] . '-' . $row['eay'] . '.php';
                         $array = get_headers($url);
                         $string = $array[0];
                         if (strpos($string, "200")) {
                             echo '<li class="nav-item">
-                            <a class="nav-link" href="../newcurr/curri18-19/' . $row['course_abv'] . '-2018-2019.php">
+                            <a class="nav-link" href="../oldcurr/' . $row['course_abv'] . '-' . $row['eay'] . '.php">
                                 <div
                                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="fas fa-file-pdf text-dark"></i>

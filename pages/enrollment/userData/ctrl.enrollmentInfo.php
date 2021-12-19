@@ -35,11 +35,17 @@ if (isset($_POST['addSub'])) {
         $class_id = $_POST['class'];
         $subjects_id = $_POST['subjects'];
         $eay_id = $_POST['eay_id'];
+        $t = true;
         foreach ($index as $i) {
             $query1 = $db->query("INSERT INTO tbl_enrolled_subjects (class_id, stud_id, subj_id, acad_year, semester) VALUES ('$class_id[$i]', '$_SESSION[stud_id]', '$subjects_id[$i]', '$_SESSION[AC]', '$_SESSION[S]')");
+            if ($t == true) {
+                // update the student curri for curriculum of a student
+                $query2 = $db->query("UPDATE tbl_students SET curri = '$eay_id[$i]' WHERE stud_id = '$_SESSION[stud_id]'");
+                $t = false;
+            }
         }
-        // update the student curri for curriculum of a student
-        $query2 = $db->query("UPDATE tbl_students SET curri = '$eay_id[0]' WHERE stud_id = '$_SESSION[stud_id]'");
+
+
         $_SESSION['SASub'] = true;
         if ($_SESSION['role'] == "Student") {
             header("location: ../enrollmentInfo.php");
@@ -69,13 +75,14 @@ if (isset($_POST['update'])) {
     $course_id = $db->real_escape_string($_POST['course']);
     $year_id = $db->real_escape_string($_POST['level']);
     $status = $db->real_escape_string($_POST['status']);
+    $bf = $db->real_escape_string($_POST['bfranciscano']);
     // $ay_id = $_SESSION['AC'];
     // $sem_id = $_SESSION['S'];
     // $date_enrolled = date("Y-m-d");
     // $remark = $db->real_escape_string("Pending");
 
     if (!empty($_POST['course']) && !empty($_POST['level']) && !empty($_POST['status'])) {
-        $q = $db->query("UPDATE tbl_schoolyears SET year_id = '$year_id', course_id = '$course_id', status = '$status' WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
+        $q = $db->query("UPDATE tbl_schoolyears SET year_id = '$year_id', course_id = '$course_id', status = '$status', bf = '$bf' WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
         $_SESSION['successUpdate'] = true;
         header("location: ../enrollmentInfo.php?stud_id=" . $stud_id);
     } else {

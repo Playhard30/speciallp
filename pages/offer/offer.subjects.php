@@ -35,12 +35,24 @@ if (!empty($_GET['CID'])) {
                                     <div class="col-md-7 ms-auto">
                                         <h5 class="mb-0">Subjects List</h5>
 
-                                        <?php if (!empty($_GET['CID'])) {
-                                            $query = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]' AND department_id = '$_SESSION[ADepartment_id]'") or die($db->error);
-                                            while ($row2 = $query->fetch_array()) {
-                                                echo '<p class="text-sm mb-0">
+                                        <?php
+                                        if ($_SESSION['role'] == "Adviser") {
+                                            if (!empty($_GET['CID'])) {
+                                                $query = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]' AND department_id = '$_SESSION[ADepartment_id]'") or die($db->error);
+                                                while ($row2 = $query->fetch_array()) {
+                                                    echo '<p class="text-sm mb-0">
                                                     Offer/Open Subjects for ' . $row2['course'] . '
                                                 </p>';
+                                                }
+                                            }
+                                        } elseif ($_SESSION['role'] == "Registrar") {
+                                            if (!empty($_GET['CID'])) {
+                                                $query = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]'") or die($db->error);
+                                                while ($row2 = $query->fetch_array()) {
+                                                    echo '<p class="text-sm mb-0">
+                                                    Offer/Open Subjects for ' . $row2['course'] . '
+                                                </p>';
+                                                }
                                             }
                                         } ?>
 
@@ -71,11 +83,22 @@ if (!empty($_GET['CID'])) {
                                                     }
                                                 } ?>
                                             </select>
-                                            <?php if (!empty($_GET['CID'])) {
-                                                $getCour = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]' AND department_id = '$_SESSION[ADepartment_id]'") or die($db->error);
-                                                $count1 = $getCour->num_rows;
-                                                if (!empty($_GET['CID']) && $count1 > 0) {
-                                                    echo '<input hidden type="text" name="CID" value="' . $_GET['CID'] . '">';
+                                            <?php
+                                            if ($_SESSION['role'] == "Adviser") {
+                                                if (!empty($_GET['CID'])) {
+                                                    $getCour = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]' AND department_id = '$_SESSION[ADepartment_id]'") or die($db->error);
+                                                    $count1 = $getCour->num_rows;
+                                                    if (!empty($_GET['CID']) && $count1 > 0) {
+                                                        echo '<input hidden type="text" name="CID" value="' . $_GET['CID'] . '">';
+                                                    }
+                                                }
+                                            } elseif ($_SESSION['role'] == "Registrar") {
+                                                if (!empty($_GET['CID'])) {
+                                                    $getCour = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]'") or die($db->error);
+                                                    $count1 = $getCour->num_rows;
+                                                    if (!empty($_GET['CID']) && $count1 > 0) {
+                                                        echo '<input hidden type="text" name="CID" value="' . $_GET['CID'] . '">';
+                                                    }
                                                 }
                                             } ?>
 
