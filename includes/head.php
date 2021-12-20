@@ -34,7 +34,7 @@ require '../../includes/conn.php';
 
     body {
         font-weight: 400;
-        background: url(../../assets/img/curved-images/main.jpg) !important;
+        background: url(../../assets/img/curved-images/main.jpg), #8392ab !important;
         background-repeat: no-repeat !important;
         background-position-y: top !important;
         background-attachment: fixed !important;

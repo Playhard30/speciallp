@@ -18,9 +18,11 @@ session_start();
 if (!empty($_SESSION['role'])) {
     header("location: ../dashboard/index.php");
 }
+if (!isset($_SESSION['email'])) {
+    header('location: reset_password.php');
+}
 unset($_SESSION['username']);
 unset($_SESSION['code']);
-unset($_SESSION['email']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +33,7 @@ unset($_SESSION['email']);
     <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../../assets/img/logos/logo.png">
     <title>
-        Sign In | Saint Francis of Assisi College - Las Piñas
+        Forgot Password | Saint Francis of Assisi College - Las Piñas
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -50,11 +52,11 @@ unset($_SESSION['email']);
     }
 
     .myhover:hover {
-        color: #d36148 !important;
+        color: #ea0606 !important;
     }
 
     .myhover {
-        color: #5eabcb !important;
+        color: skyblue !important;
     }
 
     .form-switch {
@@ -65,10 +67,14 @@ unset($_SESSION['email']);
         border-color: #e08994 !important;
         box-shadow: 0 0 0 1px #ea7381 !important;
     }
+
+    .form-check-input:checked[type="radio"] {
+        background-image: linear-gradient(310deg, #cd7932 0%, #cd7932 100%) !important;
+    }
     </style>
 </head>
 
-<body class="">
+<body class="bg-gray-200">
     <div class="container position-sticky z-index-sticky top-0">
         <div class="row">
             <div class="col-12">
@@ -110,12 +116,12 @@ unset($_SESSION['email']);
                                         Sign In
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link me-2" href="../inquiry/online.inquiry.php">
                                         <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
                                         Online Inquiry
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                             <ul class="navbar-nav d-lg-block d-none">
                                 <li class="nav-item">
@@ -130,81 +136,46 @@ unset($_SESSION['email']);
             </div>
         </div>
     </div>
-    <main class="main-content mt-0">
-        <section>
-            <div class="page-header min-vh-75">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto" style="z-index: 2">
-                            <div class="card card-plain mt-8" style="background-color: rgba(255,255,255, 0.9);">
-                                <div class="card-header pb-0 text-center bg-transparent">
-                                    <h3 class="font-weight-bolder text-danger text-gradient">
-                                        Welcome Franciscans</h3>
-                                    <p class="mb-0">Enter your username and password to sign in</p>
-                                </div>
-
-                                <?php if (isset($_SESSION['sessionP'])) {
-                                    echo '<div class="alert alert-dismissible text-white mt-2 mb-0 " role="alert"
-                                    style="background-color:#f74567;"><span class="alert-icon text-sm"><i
-                                            class="fas fa-exclamation-triangle"> </i> The password you entered is
-                                        incorrect.</span>
-                                    <button type="button" class="btn-close text-lg py-3 opacity-10"
-                                        data-bs-dismiss="alert" aria-label="Close">
+    <main class="main-content main-content-bg mt-0 mb-3">
+        <section class="min-vh-75">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-7 mx-auto">
+                        <div class="card z-index-0 mt-sm-9 mt-9 mb-4">
+                            <div class="card-header text-center pt-4 pb-1">
+                                <img src="../../assets/img/logos/logo.png" alt="SFAC_logo"
+                                    style="width: 100px; height:100px">
+                                <h4 class="font-weight-bolder mb-1">Identify Your Account</h4>
+                                <?php if (isset($_SESSION['empty_username'])) {
+                                    echo '  <div class="alert alert-dismissible fade show text-white" role="alert"
+                                    style="background-color: #f74567">
+                                    <span class="alert-icon text-sm"><i class="fas fa-exclamation-triangle"></i>&nbsp;
+                                        Please select your account!</span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>';
-                                    unset($_SESSION['sessionP']);
-                                } else if (isset($_SESSION['sessionUP'])) {
-                                    echo '<div class="alert alert-dismissible text-white mt-2 mb-0 " role="alert"
-                                    style="background-color:#f74567;"><span class="alert-icon text-sm"><i
-                                            class="fas fa-exclamation-triangle"> </i> Invalid username and password.</span>
-                                    <button type="button" class="btn-close text-lg py-3 opacity-10"
-                                        data-bs-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>';
-                                    unset($_SESSION['sessionUP']);
-                                }
+                                    unset($_SESSION['empty_username']);
+                                } ?>
 
-                                ?>
-                                <div class="card-body">
-                                    <form role="form" action="userData/ctrl.sign-in.php" method="POST">
-                                        <label>Username</label>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" placeholder="Username"
-                                                aria-label="Username" aria-describedby="username-addon" name="username">
-                                        </div>
-                                        <label>Password</label>
-                                        <div class="mb-3">
-                                            <input type="password" class="form-control" placeholder="Password"
-                                                aria-label="Password" aria-describedby="password-addon" name="password">
-                                        </div>
-                                        <div class="form-check form-switch">
-                                            <a href="reset_password.php" class="text-sm myhover">
-                                                forgot password</a>
-                                        </div>
-                                        <div class="text-center">
-                                            <button type="submit" name="signin"
-                                                class="btn bg-gradient-danger w-100 mt-4 mb-0">Sign
-                                                in</button>
-                                        </div>
-                                    </form>
-                                </div><br>
-                                <!-- <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                                    <p class="mb-4 text-sm mx-auto">
-                                        Don't have an account?
-                                        <a href="javascript:;" class="text-info text-gradient font-weight-bold">Sign
-                                            up</a>
-                                    </p>
-                                </div> -->
+                                <p class="mb-0">These accounts matched the email you entered.</p>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8"
-                                style="z-index:1;">
-                                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
-                                    style="background-image:url('../../assets/img/curved-images/sfaclp.jpg'); background-position: 100% 100%; background-repeat: no-repeat;">
-                                </div>
+                            <div class="card-body">
+                                <form role="form" class="row px-4" method="POST" action="userData/ctrl.recover.php">
+                                    <?php $n = 0;
+                                    foreach ($_SESSION['uname'] as $names) {
+                                        $n++;
+                                        echo '<div class="form-check mb-3 col">
+                                        <input class="form-check-input" type="radio"
+                                            id="customRadio' . $n . '" name="username" value="' . $names . '">
+                                        <label class="custom-control-label" for="customRadio' . $n . '">' . $names . '| Username</label> </div>';
+                                    } ?>
+                                    <div class="text-center">
+                                        <button type="submit" name="submit"
+                                            class="btn bg-gradient-danger btn-lg w-100 my-4 mb-2">This is my
+                                            account</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -213,7 +184,7 @@ unset($_SESSION['email']);
         </section>
     </main>
     <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
-    <footer class="footer pt-3" style="background-color: rgba(255,255,255, 0.9);">
+    <footer class="footer pt-3">
         <div class="container-fluid">
             <div class="row my-0">
                 <div class="col-lg-8 mb-4 mx-auto my-0 text-center">

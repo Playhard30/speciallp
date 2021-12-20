@@ -2,11 +2,23 @@
 require '../../../includes/conn.php';
 session_start();
 
-if (isset($_POST['signin'])) {
+if (isset($_POST['signin']) || isset($_SESSION['confirm'])) {
 
-    $username = $db->real_escape_string($_POST['username']);
-    $password = $db->real_escape_string($_POST['password']);
+    // forgot password | confirmation
+    if (isset($_SESSION['confirm'])) {
+        $username = $db->real_escape_string($_SESSION['username']);
+        $password = $db->real_escape_string($_SESSION['password']);
+        unset($_SESSION['username']);
+        unset($_SESSION['password']);
+        unset($_SESSION['confirm']);
+        unset($_SESSION['email']);
+    } else {
+        // sign in
+        $username = $db->real_escape_string($_POST['username']);
+        $password = $db->real_escape_string($_POST['password']);
+    }
 
+    // role 
     $super_admin = mysqli_query($db, "SELECT * FROM tbl_super_admins WHERE username = '$username'");
     $numrow      = mysqli_num_rows($super_admin);
 

@@ -18,9 +18,11 @@ session_start();
 if (!empty($_SESSION['role'])) {
     header("location: ../dashboard/index.php");
 }
-unset($_SESSION['username']);
+if (!isset($_SESSION['username'])) {
+    header('location: reset_password.php');
+}
 unset($_SESSION['code']);
-unset($_SESSION['email']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +33,7 @@ unset($_SESSION['email']);
     <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../../assets/img/logos/logo.png">
     <title>
-        Sign In | Saint Francis of Assisi College - Las Piñas
+        Verification | Saint Francis of Assisi College - Las Piñas
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -68,7 +70,7 @@ unset($_SESSION['email']);
     </style>
 </head>
 
-<body class="">
+<body class="bg-gray-200">
     <div class="container position-sticky z-index-sticky top-0">
         <div class="row">
             <div class="col-12">
@@ -110,12 +112,12 @@ unset($_SESSION['email']);
                                         Sign In
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link me-2" href="../inquiry/online.inquiry.php">
                                         <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
                                         Online Inquiry
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                             <ul class="navbar-nav d-lg-block d-none">
                                 <li class="nav-item">
@@ -130,90 +132,102 @@ unset($_SESSION['email']);
             </div>
         </div>
     </div>
-    <main class="main-content mt-0">
-        <section>
-            <div class="page-header min-vh-75">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto" style="z-index: 2">
-                            <div class="card card-plain mt-8" style="background-color: rgba(255,255,255, 0.9);">
-                                <div class="card-header pb-0 text-center bg-transparent">
-                                    <h3 class="font-weight-bolder text-danger text-gradient">
-                                        Welcome Franciscans</h3>
-                                    <p class="mb-0">Enter your username and password to sign in</p>
-                                </div>
 
-                                <?php if (isset($_SESSION['sessionP'])) {
-                                    echo '<div class="alert alert-dismissible text-white mt-2 mb-0 " role="alert"
-                                    style="background-color:#f74567;"><span class="alert-icon text-sm"><i
-                                            class="fas fa-exclamation-triangle"> </i> The password you entered is
-                                        incorrect.</span>
-                                    <button type="button" class="btn-close text-lg py-3 opacity-10"
-                                        data-bs-dismiss="alert" aria-label="Close">
+    <main class="main-content  mt-0">
+        <div class="page-header min-vh-100">
+            <span class="mask bg-gray-200 opacity-6"></span>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5 col-md-7 mt-8 mb-4">
+                        <div class="card">
+                            <div class="card-body px-lg-5 py-lg-5 text-center">
+                                <div class="info mb-4">
+                                    <img src="../../assets/img/logos/logo.png" alt="SFAC_logo"
+                                        style="width: 100px; height:100px">
+                                    <div class="text-center text-muted mb-4">
+                                        <h2>Verification Code</h2>
+                                        <?php if (isset($_SESSION['error_code'])) {
+                                            echo '  <div class="alert alert-dismissible fade show text-white" role="alert"
+                                    style="background-color: #f74567">
+                                    <span class="alert-icon text-sm"><i class="fas fa-exclamation-triangle"></i>&nbsp;
+                                        Invalid Code. Try again!</span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>';
-                                    unset($_SESSION['sessionP']);
-                                } else if (isset($_SESSION['sessionUP'])) {
-                                    echo '<div class="alert alert-dismissible text-white mt-2 mb-0 " role="alert"
-                                    style="background-color:#f74567;"><span class="alert-icon text-sm"><i
-                                            class="fas fa-exclamation-triangle"> </i> Invalid username and password.</span>
-                                    <button type="button" class="btn-close text-lg py-3 opacity-10"
-                                        data-bs-dismiss="alert" aria-label="Close">
+                                            unset($_SESSION['error_code']);
+                                        } elseif (isset($_SESSION['empty_code'])) {
+                                            echo '  <div class="alert alert-dismissible fade show text-white" role="alert"
+                                    style="background-color: #f74567">
+                                    <span class="alert-icon text-sm"><i class="fas fa-exclamation-triangle"></i>&nbsp;
+                                        Please insert your verification code.</span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>';
-                                    unset($_SESSION['sessionUP']);
-                                }
-
-                                ?>
-                                <div class="card-body">
-                                    <form role="form" action="userData/ctrl.sign-in.php" method="POST">
-                                        <label>Username</label>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" placeholder="Username"
-                                                aria-label="Username" aria-describedby="username-addon" name="username">
-                                        </div>
-                                        <label>Password</label>
-                                        <div class="mb-3">
-                                            <input type="password" class="form-control" placeholder="Password"
-                                                aria-label="Password" aria-describedby="password-addon" name="password">
-                                        </div>
-                                        <div class="form-check form-switch">
-                                            <a href="reset_password.php" class="text-sm myhover">
-                                                forgot password</a>
+                                            unset($_SESSION['empty_code']);
+                                        } ?>
+                                        <p>Enter your 6-digits Verification Code </p>
+                                    </div>
+                                    <form method="POST" action="userData/ctrl.verification.php">
+                                        <div class="row gx-2 gx-sm-3">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input type="text" name="fi" class="form-control form-control-lg"
+                                                        maxlength="1" autocomplete="off" autocapitalize="off">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input type="text" name="se" class="form-control form-control-lg"
+                                                        maxlength="1" autocomplete="off" autocapitalize="off">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input type="text" name="th" class="form-control form-control-lg"
+                                                        maxlength="1" autocomplete="off" autocapitalize="off">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input type="text" name="fo" class="form-control form-control-lg"
+                                                        maxlength="1" autocomplete="off" autocapitalize="off">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input type="text" name="fif" class="form-control form-control-lg"
+                                                        maxlength="1" autocomplete="off" autocapitalize="off">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input type="text" name="si" class="form-control form-control-lg"
+                                                        maxlength="1" autocomplete="off" autocapitalize="off">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" name="signin"
-                                                class="btn bg-gradient-danger w-100 mt-4 mb-0">Sign
-                                                in</button>
+                                            <button type="submit" name="submit"
+                                                class="btn bg-gradient-danger w-100">Send
+                                                code</button>
+                                            <span class="text-muted text-sm">Haven't received it?<a
+                                                    class="myhover text-info"
+                                                    href="userData/ctrl.verification.php?send=1">
+                                                    Resend
+                                                    a new code</a>.</span>
                                         </div>
                                     </form>
-                                </div><br>
-                                <!-- <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                                    <p class="mb-4 text-sm mx-auto">
-                                        Don't have an account?
-                                        <a href="javascript:;" class="text-info text-gradient font-weight-bold">Sign
-                                            up</a>
-                                    </p>
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8"
-                                style="z-index:1;">
-                                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
-                                    style="background-image:url('../../assets/img/curved-images/sfaclp.jpg'); background-position: 100% 100%; background-repeat: no-repeat;">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
     </main>
     <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
-    <footer class="footer pt-3" style="background-color: rgba(255,255,255, 0.9);">
+    <footer class="footer pt-3">
         <div class="container-fluid">
             <div class="row my-0">
                 <div class="col-lg-8 mb-4 mx-auto my-0 text-center">
