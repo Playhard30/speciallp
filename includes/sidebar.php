@@ -2188,6 +2188,15 @@
                 </a>
             </li>';
                 }
+                echo '  <li class="nav-item">
+                <a class="nav-link" href="../student/grade.history.php">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-file-alt text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Grade History</span>
+                </a>
+            </li>';
                 // For curriculum / sidebar
                 $getCourse_id = $db->query("SELECT * FROM tbl_students S LEFT JOIN tbl_courses C USING(course_id) LEFT JOIN tbl_effective_acadyear EA ON S.curri = EA.eay_id WHERE stud_id = '$stud_id'") or die($db->error);
                 while ($row = $getCourse_id->fetch_array()) {

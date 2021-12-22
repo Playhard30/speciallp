@@ -189,61 +189,58 @@ $pdf->Cell(17, 3, 'Rating', 'B', 0, 'C');
 
 //SUBJECT LIST HERE
 
-if (empty($row['curri'])) {
-    $pdf->SetXY(13, 52);
-    $sql = mysqli_query($db, "SELECT *,CONCAT(tbl_faculties_staff.faculty_lastname, ', ', tbl_faculties_staff.faculty_firstname, ' ', tbl_faculties_staff.faculty_middlename)  as fullname, tbl_students.stud_id,tbl_subjects_new.subj_id,tbl_schedules.class_id,tbl_faculties_staff.faculty_id FROM tbl_enrolled_subjects
+$pdf->SetXY(13, 52);
+$sql = mysqli_query($db, "SELECT *,CONCAT(tbl_faculties_staff.faculty_lastname, ', ', tbl_faculties_staff.faculty_firstname, ' ', tbl_faculties_staff.faculty_middlename)  as fullname, tbl_students.stud_id,tbl_subjects_new.subj_id,tbl_schedules.class_id,tbl_faculties_staff.faculty_id FROM tbl_enrolled_subjects
     LEFT JOIN tbl_students ON tbl_students.stud_id = tbl_enrolled_subjects.stud_id
     LEFT JOIN tbl_subjects_new ON tbl_subjects_new.subj_id = tbl_enrolled_subjects.subj_id
     LEFT JOIN tbl_schedules ON tbl_schedules.class_id = tbl_enrolled_subjects.class_id
     LEFT JOIN tbl_faculties_staff ON tbl_faculties_staff.faculty_id = tbl_schedules.faculty_id
     WHERE tbl_enrolled_subjects.stud_id = '$stud_id' AND tbl_enrolled_subjects.acad_year = '$_SESSION[AC]' AND tbl_enrolled_subjects.semester = '$_SESSION[S]' ORDER BY tbl_enrolled_subjects.subj_id") or die(mysqli_error($db));
-    $pdf->SetFont('Arial', '', '9');
-    $y = $pdf->Gety();
-    $xy = 3.5;
-    $i = 1;
-    while ($row1 = mysqli_fetch_array($sql)) {
-        $pdf->SetXY(13, $y + $xy);
-        $pdf->Cell(3, 3.5, $i, 0, 0, 'L');
-        $pdf->Cell(37, 3.5, $row1['subj_code'], 0, 0, 'C');
-        $pdf->Cell(10, 3.5, $row1['unit_total'], 0, 0, 'C');
-        $fontsize = 9;
-        $tempFontSize = $fontsize;
-        $cellwidth = 13;
-        while ($pdf->GetStringWidth($row1['day']) > $cellwidth) {
-            $pdf->SetFontSize($tempFontSize -= 0.1);
-        }
-        $pdf->Cell(13, 3.5, $row1['day'], 0, 0, 'C');
-        $pdf->SetFont('Arial', '', '9');
-        $fontsize = 9;
-        $tempFontSize = $fontsize;
-        $cellwidth = 18;
-        while ($pdf->GetStringWidth($row1['time']) > $cellwidth) {
-            $pdf->SetFontSize($tempFontSize -= 0.1);
-        }
-        $pdf->Cell(22, 3.5, $row1['time'], 0, 0, 'C');
-        $pdf->SetFont('Arial', '', '9');
-        $fontsize = 9;
-        $tempFontSize = $fontsize;
-        $cellwidth = 10;
-        while ($pdf->GetStringWidth($row1['room']) > $cellwidth) {
-            $pdf->SetFontSize($tempFontSize -= 0.1);
-        }
-        $pdf->Cell(10, 3.5, $row1['room'], 0, 0, 'C');
-        $pdf->SetFont('Arial', '', '9');
-        $pdf->Cell(17, 3.5, '', 0, 0, 'C');
-        $fontsize = 9;
-        $tempFontSize = $fontsize;
-        $cellwidth = 25;
-        while ($pdf->GetStringWidth($row1['fullname']) > $cellwidth) {
-            $pdf->SetFontSize($tempFontSize -= 0.1);
-        }
-        $pdf->Cell(30, 3.5, $row1['fullname'], 0, 0, 'C');
-        $pdf->SetFont('Arial', '', '9');
-
-        $xy += 3.5;
-        $i++;
+$pdf->SetFont('Arial', '', '9');
+$y = $pdf->Gety();
+$xy = 3.5;
+$i = 1;
+while ($row1 = mysqli_fetch_array($sql)) {
+    $pdf->SetXY(13, $y + $xy);
+    $pdf->Cell(3, 3.5, $i, 0, 0, 'L');
+    $pdf->Cell(37, 3.5, $row1['subj_code'], 0, 0, 'C');
+    $pdf->Cell(10, 3.5, $row1['unit_total'], 0, 0, 'C');
+    $fontsize = 9;
+    $tempFontSize = $fontsize;
+    $cellwidth = 13;
+    while ($pdf->GetStringWidth($row1['day']) > $cellwidth) {
+        $pdf->SetFontSize($tempFontSize -= 0.1);
     }
-} else {
+    $pdf->Cell(13, 3.5, $row1['day'], 0, 0, 'C');
+    $pdf->SetFont('Arial', '', '9');
+    $fontsize = 9;
+    $tempFontSize = $fontsize;
+    $cellwidth = 18;
+    while ($pdf->GetStringWidth($row1['time']) > $cellwidth) {
+        $pdf->SetFontSize($tempFontSize -= 0.1);
+    }
+    $pdf->Cell(22, 3.5, $row1['time'], 0, 0, 'C');
+    $pdf->SetFont('Arial', '', '9');
+    $fontsize = 9;
+    $tempFontSize = $fontsize;
+    $cellwidth = 10;
+    while ($pdf->GetStringWidth($row1['room']) > $cellwidth) {
+        $pdf->SetFontSize($tempFontSize -= 0.1);
+    }
+    $pdf->Cell(10, 3.5, $row1['room'], 0, 0, 'C');
+    $pdf->SetFont('Arial', '', '9');
+    $pdf->Cell(17, 3.5, '', 0, 0, 'C');
+    $fontsize = 9;
+    $tempFontSize = $fontsize;
+    $cellwidth = 25;
+    while ($pdf->GetStringWidth($row1['fullname']) > $cellwidth) {
+        $pdf->SetFontSize($tempFontSize -= 0.1);
+    }
+    $pdf->Cell(30, 3.5, $row1['fullname'], 0, 0, 'C');
+    $pdf->SetFont('Arial', '', '9');
+
+    $xy += 3.5;
+    $i++;
 }
 
 
@@ -272,7 +269,8 @@ $pdf->Cell(15, 3.5, '(PhP)', 'L,B', 0, 'C');
 $pdf->Cell(40, 3.5, 'Over Printed Name', 'R,L', 0, 'C');
 $pdf->Cell(0, 3.5, '', 'R', 1, 'C');
 if (empty($row['curri'])) {
-    $sum = mysqli_fetch_array(mysqli_query($db, "SELECT SUM(unit_total) as UN FROM tbl_enrolled_subjects LEFT JOIN tbl_subjects_new ON tbl_subjects_new.subj_id = tbl_enrolled_subjects.subj_id where tbl_enrolled_subjects.stud_id = '$stud_id' and tbl_enrolled_subjects.acad_year = '$_SESSION[AC]' and tbl_enrolled_subjects.semester = '$_SESSION[S]' ORDER BY tbl_enrolled_subjects.subj_id"));
+    $query1 = mysqli_query($db, "SELECT SUM(unit_total) AS UN FROM tbl_enrolled_subjects LEFT JOIN tbl_subjects_new ON tbl_subjects_new.subj_id = tbl_enrolled_subjects.subj_id where tbl_enrolled_subjects.stud_id = '$stud_id' and tbl_enrolled_subjects.acad_year = '$_SESSION[AC]' and tbl_enrolled_subjects.semester = '$_SESSION[S]' ORDER BY tbl_enrolled_subjects.subj_id");
+    $sum = $query1->fetch_array();
     $pdf->Cell(19, 7, 'Issued by:', 'L,B', 0, 'C');
     $pdf->Cell(12, 7, '', 'B,L,R', 0, 'C');
     $pdf->Cell(17, 7, $sum['UN'], 'B', 0, 'C');
@@ -280,6 +278,12 @@ if (empty($row['curri'])) {
     $pdf->Cell(40, 7, '', 'R,L,B', 0, 'C');
     $pdf->Cell(0, 4, '', 'R', 1, 'C');
 } else {
+    $pdf->Cell(19, 7, 'Issued by:', 'L,B', 0, 'C');
+    $pdf->Cell(12, 7, '', 'B,L,R', 0, 'C');
+    $pdf->Cell(17, 7, '', 'B', 0, 'C');
+    $pdf->Cell(15, 7, '', 'L,B', 0, 'C');
+    $pdf->Cell(40, 7, '', 'R,L,B', 0, 'C');
+    $pdf->Cell(0, 4, '', 'R', 1, 'C');
 }
 
 
@@ -441,11 +445,12 @@ $pdf->Ln(1);
 $pdf->SetFont('Arial', '', 7);
 $pdf->Cell(37, 0.5, '', 'T,L,R', 0, 'C');
 $pdf->Cell(15, 0.5, '', 'T,L,R', 0, 'C');
-$pdf->Cell(15, 0.5, '', 'T,L,R', 0, 'C');
-$pdf->Cell(15, 0.5, '', 'T,L,R', 0, 'C');
+$pdf->Cell(18, 0.5, '', 'T,L,R', 0, 'C');
+$pdf->Cell(12, 0.5, '', 'T,L,R', 0, 'C');
 $pdf->Cell(20, 0.5, '', 'T,L,R', 0, 'C');
 $pdf->Cell(20, 0.5, '', 'T,L,R', 0, 'C');
 $pdf->Cell(20, 0.5, '', 'T,L,R', 1, 'C');
+
 
 $pdf->Cell(37, 3, 'COURSE NUMBER', 'L,R', 0, 'C');
 $pdf->Cell(15, 6, 'DAYS', 'L,R,B', 0, 'C');
@@ -500,6 +505,8 @@ if (empty($row['curri'])) {
     }
 } else {
 }
+$query1 = mysqli_query($db, "SELECT SUM(unit_total) AS UN FROM tbl_enrolled_subjects LEFT JOIN tbl_subjects_new ON tbl_subjects_new.subj_id = tbl_enrolled_subjects.subj_id where tbl_enrolled_subjects.stud_id = '$stud_id' and tbl_enrolled_subjects.acad_year = '$_SESSION[AC]' and tbl_enrolled_subjects.semester = '$_SESSION[S]' ORDER BY tbl_enrolled_subjects.subj_id");
+$sum = $query1->fetch_array();
 
 $pdf->Rect(13, 51.5, 37, 37);
 $pdf->Rect(50, 51.5, 15, 37);
@@ -825,6 +832,8 @@ if (empty($row['curri'])) {
     }
 } else {
 }
+$query1 = mysqli_query($db, "SELECT SUM(unit_total) AS UN FROM tbl_enrolled_subjects LEFT JOIN tbl_subjects_new ON tbl_subjects_new.subj_id = tbl_enrolled_subjects.subj_id where tbl_enrolled_subjects.stud_id = '$stud_id' and tbl_enrolled_subjects.acad_year = '$_SESSION[AC]' and tbl_enrolled_subjects.semester = '$_SESSION[S]' ORDER BY tbl_enrolled_subjects.subj_id");
+$sum = $query1->fetch_array();
 
 
 $pdf->Rect(13, 55, 44, 42.5);
@@ -1075,6 +1084,8 @@ if (empty($row['curri'])) {
         $i++;
     }
 }
+$query1 = mysqli_query($db, "SELECT SUM(unit_total) AS UN FROM tbl_enrolled_subjects LEFT JOIN tbl_subjects_new ON tbl_subjects_new.subj_id = tbl_enrolled_subjects.subj_id where tbl_enrolled_subjects.stud_id = '$stud_id' and tbl_enrolled_subjects.acad_year = '$_SESSION[AC]' and tbl_enrolled_subjects.semester = '$_SESSION[S]' ORDER BY tbl_enrolled_subjects.subj_id");
+$sum = $query1->fetch_array();
 
 // x, y, width, height
 // Rectangle Course Number

@@ -53,7 +53,7 @@ $(document).ready(function() {
 <script>
 // count | DASHBOARD
 var numState = 1;
-var totalWidget = 5;
+var totalWidget = 15;
 while (numState <= totalWidget) {
     if (document.getElementById('state' + numState)) {
         const countUp = new CountUp('state' + numState, document.getElementById("state" + numState).getAttribute(

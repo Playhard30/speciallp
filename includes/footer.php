@@ -846,8 +846,8 @@ unset($_SESSION['inquiryAdmitted']);
         </div>
         <hr class="info-horizontal dark mt-md-2">
         <div class="row align-items-center justify-content-lg-between">
-            <div class="col-lg-6 mb-lg-0 mb-4">
-                <div class="copyright text-center text-sm text-muted text-lg-start">
+            <div class="col-lg-6 mb-lg-0 mb-2">
+                <div class="copyright text-center text-sm text-muted text-lg-start pb-md-2">
                     &copy; 2021,
                     CompStud.
                 </div>
@@ -855,7 +855,7 @@ unset($_SESSION['inquiryAdmitted']);
             <div class="col-lg-6">
                 <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                     <li class="nav-item">
-                        <a class="nav-link">SFAC - Las Piñas</a>
+                        <a class="nav-link">SFAC <?php echo $sch_ad; ?></a>
                     </li>
                 </ul>
             </div>

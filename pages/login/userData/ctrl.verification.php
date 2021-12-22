@@ -270,6 +270,7 @@ if (isset($_POST['submit']) && !empty($_SESSION['username'])) {
         // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         $mail->send();
         $_SESSION['username'] = $username;
+        $_SESSION['sent_code'] = true;
         header("location: ../verification.php");
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

@@ -166,6 +166,17 @@ unset($_SESSION['code']);
                                     </button>
                                 </div>';
                                             unset($_SESSION['empty_code']);
+                                        } elseif (isset($_SESSION['sent_code'])) {
+                                            echo ' <div class="alert alert-dismissible fade show text-white" role="alert"
+                                            style="background-color: #5da766">
+                                            <span class="alert-icon text-sm"><i class="fas fa-check"></i>&nbsp;
+                                                New code has been successfully sent.</span>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>';
+                                            unset($_SESSION['sent_code']);
                                         } ?>
                                         <p>Enter your 6-digits Verification Code </p>
                                     </div>

@@ -4,6 +4,7 @@
             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                 <?php $getSchool_info1 = $db->query("SELECT * FROM tbl_school_info") or die($db->error);
                 while ($row = $getSchool_info1->fetch_array()) {
+                    $sch_ad = $row['school_address'];
                     echo '  <li class="breadcrumb-item text-sm">
                     <img src="data:image/jpeg;base64,' . base64_encode($row['school_logo']) . '" class="navbar-brand-img h-100" alt="main_logo"
                         style="width: 40px; height: 40px;">
