@@ -370,7 +370,7 @@ include '../../includes/head.php';
                             </div>
                             <hr class="horizontal dark m-0">
                             <div class="text-center">
-                                <a href="#" class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
+                                <a href="" class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
                                     data-bs-placement="top" title="Show More">
                                     <i class="fas fa-chevron-down text-white"></i>
                                 </a>
