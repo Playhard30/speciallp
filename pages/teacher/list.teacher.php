@@ -88,7 +88,7 @@ include '../../includes/session.php';
                                         </td>
                                         <td class="text-sm font-weight-normal">
                                             <a class="btn bg-gradient-primary text-xs"
-                                                href="edit.teacher.php?faculty_id=<?php echo $id; ?>"><i
+                                                href="edit.teacher.php?facultyStaff_id=<?php echo $id; ?>"><i
                                                     class="text-xs fas fa-edit"></i> Edit</a>
 
                                             <a class="btn btn-block bg-gradient-danger mb-3 text-xs"
@@ -126,7 +126,7 @@ include '../../includes/session.php';
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <a href="userData/ctrl.del.teacher.php?faculty_id=<?php echo $id; ?>"
+                                                            <a href="userData/ctrl.del.teacher.php?facultyStaff_id=<?php echo $id; ?>"
                                                                 class="btn btn-white text-white bg-danger">Delete</a>
                                                             <button type="button"
                                                                 class="btn btn-link text-secondary btn-outline-dark ml-auto"

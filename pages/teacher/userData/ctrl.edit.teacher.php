@@ -1,7 +1,7 @@
 <?php
 require '../../../includes/conn.php';
 session_start();
-$faculty_id = $_SESSION['faculty_id'];
+$facultyStaff_id = $_SESSION['facultyStaff_id'];
 
 if (isset($_POST['saveImg'])) {
 
@@ -9,17 +9,17 @@ if (isset($_POST['saveImg'])) {
         $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
         $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
 
-        $updateImg = mysqli_query($db, "UPDATE tbl_faculties_staff SET img = '$image', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
+        $updateImg = mysqli_query($db, "UPDATE tbl_faculties_staff SET img = '$image', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$facultyStaff_id'") or die(mysqli_error($db));
         $_SESSION['successImg'] = true;
-        if ($_SESSION['role'] == "Super Administrator") {
-            header("location: ../edit.teacher.php?faculty_id=" . $faculty_id);
+        if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Adviser") {
+            header("location: ../edit.teacher.php?facultyStaff_id=" . $facultyStaff_id);
         } else {
             header("location: ../edit.teacher.php");
         }
     } else {
         $_SESSION['emptyImg'] = true;
-        if ($_SESSION['role'] == "Super Administrator") {
-            header("location: ../edit.teacher.php?faculty_id=" . $faculty_id);
+        if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Adviser") {
+            header("location: ../edit.teacher.php?facultyStaff_id=" . $facultyStaff_id);
         } else {
             header("location: ../edit.teacher.php");
         }
@@ -47,26 +47,26 @@ if (isset($_POST['save'])) {
         while ($row = mysqli_fetch_array($q)) {
             $getID = $row['faculty_id'];
         }
-        if ($getID == $faculty_id || $check2 < 1) {
-            $updateInfo = mysqli_query($db, " UPDATE tbl_faculties_staff SET faculty_lastname='$lname',faculty_firstname='$fname', faculty_middlename='$mname', faculty_no = '$faculty_no', position = '$position', status = '$status', email='$email', username='$username', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
+        if ($getID == $facultyStaff_id || $check2 < 1) {
+            $updateInfo = mysqli_query($db, " UPDATE tbl_faculties_staff SET faculty_lastname='$lname',faculty_firstname='$fname', faculty_middlename='$mname', faculty_no = '$faculty_no', position = '$position', status = '$status', email='$email', username='$username', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$facultyStaff_id'") or die(mysqli_error($db));
             $_SESSION['successUpdate'] = true;
-            if ($_SESSION['role'] == "Super Administrator") {
-                header("location: ../edit.teacher.php?faculty_id=" . $faculty_id);
+            if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Adviser") {
+                header("location: ../edit.teacher.php?facultyStaff_id=" . $facultyStaff_id);
             } else {
                 header("location: ../edit.teacher.php");
             }
         } else {
             $_SESSION['usernameExist'] = true;
-            if ($_SESSION['role'] == "Super Administrator") {
-                header("location: ../edit.teacher.php?faculty_id=" . $faculty_id);
+            if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Adviser") {
+                header("location: ../edit.teacher.php?facultyStaff_id=" . $facultyStaff_id);
             } else {
                 header("location: ../edit.teacher.php");
             }
         }
     } else {
         $_SESSION['usernameExist'] = true;
-        if ($_SESSION['role'] == "Super Administrator") {
-            header("location: ../edit.teacher.php?faculty_id=" . $faculty_id);
+        if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Adviser") {
+            header("location: ../edit.teacher.php?facultyStaff_id=" . $facultyStaff_id);
         } else {
             header("location: ../edit.teacher.php");
         }
@@ -80,7 +80,7 @@ if (isset($_POST['savePass'])) {
 
         $oldpassword = mysqli_real_escape_string($db, $_POST['oldPass']);
 
-        $checkPass = mysqli_query($db, "SELECT * FROM tbl_faculties_staff WHERE faculty_id = '$faculty_id'");
+        $checkPass = mysqli_query($db, "SELECT * FROM tbl_faculties_staff WHERE faculty_id = '$facultyStaff_id'");
         while ($row = mysqli_fetch_array($checkPass)) {
             $checkHashPass = password_verify($oldpassword, $row['password']);
             if ($checkHashPass == false) {
@@ -95,7 +95,7 @@ if (isset($_POST['savePass'])) {
                 if ($password == $confirmPass) {
                     $hashedPwd = password_hash($confirmPass, PASSWORD_DEFAULT);
 
-                    $updatePass = mysqli_query($db, "UPDATE tbl_faculties_staff SET password='$hashedPwd', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
+                    $updatePass = mysqli_query($db, "UPDATE tbl_faculties_staff SET password='$hashedPwd', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$facultyStaff_id'") or die(mysqli_error($db));
                     $_SESSION['successPass'] = true;
                     header("location: ../edit.teacher.php");
                 } else {
@@ -112,12 +112,12 @@ if (isset($_POST['savePass'])) {
         if ($password == $confirmPass) {
             $hashedPwd = password_hash($confirmPass, PASSWORD_DEFAULT);
 
-            $updatePass = mysqli_query($db, "UPDATE tbl_faculties_staff SET password='$hashedPwd', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$faculty_id'") or die(mysqli_error($db));
+            $updatePass = mysqli_query($db, "UPDATE tbl_faculties_staff SET password='$hashedPwd', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE faculty_id = '$facultyStaff_id'") or die(mysqli_error($db));
             $_SESSION['successPass'] = true;
-            header("location: ../edit.teacher.php?faculty_id=" . $faculty_id);
+            header("location: ../edit.teacher.php?facultyStaff_id=" . $facultyStaff_id);
         } else {
             $_SESSION['newNotMatch'] = true;
-            header("location: ../edit.teacher.php?faculty_id=" . $faculty_id);
+            header("location: ../edit.teacher.php?facultyStaff_id=" . $facultyStaff_id);
         }
     }
 }

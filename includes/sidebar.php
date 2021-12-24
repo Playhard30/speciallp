@@ -1464,7 +1464,6 @@
                 </div>
             </li>
             ';
-
                 if ('CS Department' == $dept_name) {
                     echo '
             <li class="nav-item">

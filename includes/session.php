@@ -63,8 +63,8 @@ if (!empty($_SESSION['role'])) {
             exit();
         }
     } elseif ("Teacher" == $_SESSION['role']) {
-        $faculty_id = $_SESSION['userid'];
-        if (false == $faculty_id) {
+        $facultyStaff_id = $_SESSION['userid'];
+        if (false == $facultyStaff_id) {
             header("location: ../login/sign-in.php");
             exit();
         }
