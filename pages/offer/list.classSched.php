@@ -32,17 +32,33 @@ if (!empty($_GET['CID'])) {
                                     <div class="col-md-12 ms-auto">
                                         <h5 class="mb-0">Subjects List</h5>
 
-                                        <?php if (!empty($_GET['CID'])) {
-                                            $query = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]' AND department_id = '$_SESSION[ADepartment_id]'") or die($db->error);
-                                            while ($row2 = $query->fetch_array()) {
-                                                echo '<p class="text-sm mb-0">
+                                        <?php
+                                        if ($_SESSION['role'] == "Adviser") {
+                                            if (!empty($_GET['CID'])) {
+                                                $query = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]' AND department_id = '$_SESSION[ADepartment_id]'") or die($db->error);
+                                                while ($row2 = $query->fetch_array()) {
+                                                    echo '<p class="text-sm mb-0">
                                                     Class Schedules List for ' . $row2['course'] . '
                                                 </p>';
-                                            }
-                                        } else {
-                                            echo '<p class="text-sm mb-0">
+                                                }
+                                            } else {
+                                                echo '<p class="text-sm mb-0">
                                                     Note: Select Course to show Class Schedules List
                                                 </p>';
+                                            }
+                                        } elseif ($_SESSION['role'] == "Registrar") {
+                                            if (!empty($_GET['CID'])) {
+                                                $query = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]'") or die($db->error);
+                                                while ($row2 = $query->fetch_array()) {
+                                                    echo '<p class="text-sm mb-0">
+                                                    Class Schedules List for ' . $row2['course'] . '
+                                                </p>';
+                                                }
+                                            } else {
+                                                echo '<p class="text-sm mb-0">
+                                                    Note: Select Course to show Class Schedules List
+                                                </p>';
+                                            }
                                         } ?>
 
                                     </div>
@@ -59,10 +75,16 @@ if (!empty($_GET['CID'])) {
                                         <div class="d-flex flex-wrap justify-content-center">
                                             <?php $getDepa = $db->query("SELECT * FROM tbl_departments RIGHT JOIN tbl_courses ON tbl_courses.department_id = tbl_departments.department_id") or die($db->error);
                                             while ($row = $getDepa->fetch_array()) {
-                                                if ($_SESSION['ADepartment_id'] == $row['department_id']) {
-                                                    echo '
+                                                if ($_SESSION['role'] == "Adviser") {
+                                                    if ($row['department_id'] == $_SESSION['ADepartment_id']) {
+                                                        echo '
                                                         <a href="list.classSched.php?CID=' . $row['course_id'] . '" class="btn mt-2 mx-1 bg-gradient-light mb-0">' . $row['course_abv'] . '</a>
                                                         ';
+                                                    }
+                                                } elseif ($_SESSION['role'] == "Registrar") {
+                                                    echo '
+                                                    <a href="list.classSched.php?CID=' . $row['course_id'] . '" class="btn mt-2 mx-1 bg-gradient-light mb-0">' . $row['course_abv'] . '</a>
+                                                    ';
                                                 }
                                             } ?>
                                         </div>
@@ -94,6 +116,8 @@ if (!empty($_GET['CID'])) {
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                             Room</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
+                                            E.A.Y</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                             Instructor</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">
                                             Special Tutorial</th>
@@ -104,21 +128,44 @@ if (!empty($_GET['CID'])) {
                                 </thead>
                                 <tbody>
                                     <?php $m = 0;
-                                    if (!empty($_GET['CID'])) {
-                                        $listSchedule = mysqli_query($db, "SELECT *, CONCAT(TS.faculty_firstname,' ', TS.faculty_lastname) AS fullname FROM tbl_schedules S
+                                    if ($_SESSION['role'] == "Adviser") {
+                                        if (!empty($_GET['CID'])) {
+                                            $listSchedule = mysqli_query($db, "SELECT *, CONCAT(TS.faculty_firstname,' ', TS.faculty_lastname) AS fullname FROM tbl_schedules S
                                                 LEFT JOIN tbl_subjects_new SN ON SN.subj_id = S.subj_id
                                                 LEFT JOIN tbl_faculties_staff TS ON TS.faculty_id = S.faculty_id
                                                 LEFT JOIN tbl_courses C ON C.course_id = SN.course_id
+                                                LEFT JOIN tbl_effective_acadyear EA ON SN.eay_id = EA.eay_id
                                                 WHERE SN.course_id = '$_GET[CID]' AND C.department_id = '$_SESSION[ADepartment_id]' AND acad_year IN ('$_SESSION[AC]') AND semester IN ('$_SESSION[S]')
-                                                ORDER BY eay_id DESC, class_id DESC") or die($db->error);
-                                    } else {
-                                        $listSchedule = mysqli_query($db, "SELECT *, CONCAT(TS.faculty_firstname,' ', TS.faculty_lastname) AS fullname FROM tbl_schedules S
+                                                ORDER BY EA.eay DESC, class_id DESC") or die($db->error);
+                                        } else {
+                                            $listSchedule = mysqli_query($db, "SELECT *, CONCAT(TS.faculty_firstname,' ', TS.faculty_lastname) AS fullname FROM tbl_schedules S
                                                 LEFT JOIN tbl_subjects_new SN ON SN.subj_id = S.subj_id
                                                 LEFT JOIN tbl_faculties_staff TS ON TS.faculty_id = S.faculty_id
                                                 LEFT JOIN tbl_courses C ON C.course_id = SN.course_id
+                                                LEFT JOIN tbl_effective_acadyear EA ON SN.eay_id = EA.eay_id
                                                 WHERE SN.course_id = '0' AND C.department_id = '0' AND acad_year IN ('$_SESSION[AC]') AND semester IN ('$_SESSION[S]')
-                                                ORDER BY eay_id DESC, class_id DESC") or die($db->error);
+                                                ORDER BY EA.eay DESC, class_id DESC") or die($db->error);
+                                        }
+                                    } elseif ($_SESSION['role'] == "Registrar") {
+                                        if (!empty($_GET['CID'])) {
+                                            $listSchedule = mysqli_query($db, "SELECT *, CONCAT(TS.faculty_firstname,' ', TS.faculty_lastname) AS fullname FROM tbl_schedules S
+                                                LEFT JOIN tbl_subjects_new SN ON SN.subj_id = S.subj_id
+                                                LEFT JOIN tbl_faculties_staff TS ON TS.faculty_id = S.faculty_id
+                                                LEFT JOIN tbl_courses C ON C.course_id = SN.course_id
+                                                LEFT JOIN tbl_effective_acadyear EA ON SN.eay_id = EA.eay_id
+                                                WHERE SN.course_id = '$_GET[CID]' AND acad_year IN ('$_SESSION[AC]') AND semester IN ('$_SESSION[S]')
+                                                ORDER BY EA.eay DESC, class_id DESC") or die($db->error);
+                                        } else {
+                                            $listSchedule = mysqli_query($db, "SELECT *, CONCAT(TS.faculty_firstname,' ', TS.faculty_lastname) AS fullname FROM tbl_schedules S
+                                                LEFT JOIN tbl_subjects_new SN ON SN.subj_id = S.subj_id
+                                                LEFT JOIN tbl_faculties_staff TS ON TS.faculty_id = S.faculty_id
+                                                LEFT JOIN tbl_courses C ON C.course_id = SN.course_id
+                                                LEFT JOIN tbl_effective_acadyear EA ON SN.eay_id = EA.eay_id
+                                                WHERE SN.course_id = '0' AND acad_year IN ('$_SESSION[AC]') AND semester IN ('$_SESSION[S]')
+                                                ORDER BY EA.eay DESC, class_id DESC") or die($db->error);
+                                        }
                                     }
+
 
                                     while ($row = mysqli_fetch_array($listSchedule)) {
                                         $m++;
@@ -147,6 +194,9 @@ if (!empty($_GET['CID'])) {
                                             <?php echo $row['room']; ?>
                                         </td>
                                         <td class="text-sm font-weight-normal">
+                                            <?php echo $row['eay']; ?>
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
                                             <?php echo $row['fullname']; ?>
                                         </td>
                                         <td class="text-sm font-weight-normal">
@@ -163,10 +213,13 @@ if (!empty($_GET['CID'])) {
                                                     class="text-xs fas fa-edit"> </i>
                                                 Edit</a>
 
-                                            <a class="btn btn-block bg-gradient-danger mb-3 text-xs"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#modal-notification<?php echo $id; ?>"><i
-                                                    class="text-xs fas fa-trash-alt"></i> Delete</a>
+                                            <!-- disable temporarily the delete button -->
+                                            <?php if ($_SESSION['role'] != "Adviser") {
+                                                    echo '<a class="btn btn-block bg-gradient-danger mb-3 text-xs" data-bs-toggle="modal"
+                                            data-bs-target="#modal-notification<?php echo $id; ?>"><i
+                                                class="text-xs fas fa-trash-alt"></i> Delete</a>';
+                                            } ?>
+
                                         </td>
                                     </tr>
                                     <div class="modal fade" id="modal-sched<?php echo $id; ?>" tabindex="-1"
@@ -304,7 +357,7 @@ if (!empty($_GET['CID'])) {
                                                             type="submit" name="update">Update
                                                         </button>
                                                         <button type="button"
-                                                            class="btn btn-link text-primary btn-outline-primary ml-auto"
+                                                            class="btn btn-link text-black-50 btn-outline-dark ml-auto"
                                                             data-bs-dismiss="modal">Close</button>
                                                     </div>
                                                 </div>

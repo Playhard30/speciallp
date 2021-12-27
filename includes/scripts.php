@@ -37,20 +37,7 @@ $(document).ready(function() {
     }
     load_unseen_notification();
 
-    // for backend of EnrollNow | Inserting data
-    $('.notif_form').on('submit', function(event) {
-        // serialize -> get the id and value of the element 
-        var form_data = $(this).serialize();
-        $.ajax({
-            url: "userData/ctrl.enrollNow.php",
-            method: "POST",
-            data: form_data,
-            success: function(data) {
-                $('.notif_form')[0].reset();
-                load_unseen_notification();
-            }
-        })
-    })
+
     // it update the seen notif | from includes/fetch.php
     $(document).on('click', '.drop-toggle', function() {
         $('.count').html('');
@@ -66,7 +53,7 @@ $(document).ready(function() {
 <script>
 // count | DASHBOARD
 var numState = 1;
-var totalWidget = 5;
+var totalWidget = 15;
 while (numState <= totalWidget) {
     if (document.getElementById('state' + numState)) {
         const countUp = new CountUp('state' + numState, document.getElementById("state" + numState).getAttribute(

@@ -1,6 +1,6 @@
 <aside
     class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 shadow-xl shadow bg-white"
-    data-color="danger">
+    data-color="danger" id="sidenav-main">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
@@ -392,7 +392,7 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                             <span class="sidenav-mini-icon"> </span>
-                            <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                            <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                         </a>
                         <div class="collapse" id="oldcurri">
                             <ul class="nav nav-sm flex-column">
@@ -416,7 +416,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../oldcurr/bsba-om-2018-2019.php">
+                                    <a class="nav-link" href="../oldcurr/BSBA-OM-2018-2019.php">
                                         <span class="sidenav-mini-icon text-xs"> </span>
                                         <span class="sidenav-normal text-black-50">BSBA-OM</span>
                                     </a>
@@ -446,13 +446,13 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../oldcurr/BSED-Mathematics-2018-2019.php">
+                                    <a class="nav-link" href="../oldcurr/BSED-Math-2018-2019.php">
                                         <span class="sidenav-mini-icon text-xs"> </span>
-                                        <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                        <span class="sidenav-normal text-black-50">BSED-Math</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../oldcurr/BSED-SCIENCE-2018-2019.php">
+                                    <a class="nav-link" href="../oldcurr/BSED-Science-2018-2019.php">
                                         <span class="sidenav-mini-icon text-xs"> </span>
                                         <span class="sidenav-normal text-black-50">BSED-Science</span>
                                     </a>
@@ -463,6 +463,7 @@
                                         <span class="sidenav-normal text-black-50">BSED-SS</span>
                                     </a>
                                 </li>
+                                
                                 <li class="nav-item">
                                     <a class="nav-link" href="../oldcurr/BSEE-2018-2019.php">
                                         <span class="sidenav-mini-icon text-xs"> </span>
@@ -476,17 +477,36 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../oldcurr/cs-2018-2019.php">
+                                    <a class="nav-link" href="../oldcurr/BSCS-2018-2019.php">
                                         <span class="sidenav-mini-icon text-xs"> </span>
                                         <span class="sidenav-normal text-black-50">BSCS</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../oldcurr/psych-2018-2019.php">
+                                    <a class="nav-link" href="../oldcurr/BA-Psych-2018-2019.php">
                                         <span class="sidenav-mini-icon text-xs"> </span>
                                         <span class="sidenav-normal text-black-50">BS Psychology</span>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                <a class="nav-link" href="../oldcurr/TCP-2018-2019.php">
+                                    <span class="sidenav-mini-icon text-xs"> </span>
+                                    <span class="sidenav-normal text-black-50">TCP</span>
+                                </a>
+                            </li>
+<li class="nav-item">
+                                <a class="nav-link" href="../oldcurr/BA-Psych-2018-2019.php">
+                                    <span class="sidenav-mini-icon text-xs"> </span>
+                                    <span class="sidenav-normal text-black-50">BS Psychology</span>
+                                </a>
+                            </li>
+
+                                <li class="nav-item">
+                                <a class="nav-link" href="../newcurr/BSN-2018-2019.php">
+                                    <span class="sidenav-mini-icon text-xs"> </span>
+                                    <span class="sidenav-normal text-black-50">BSN</span>
+                                </a>
+                            </li>
                             </ul>
                         </div>
                     </ul>
@@ -498,13 +518,13 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BA.PSYC-2020-2021.php">
+                                        <a class="nav-link" href="../newcurr/BA-Psych-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
                                             <span class="sidenav-normal text-black-50">BA PSYC</span>
                                         </a>
@@ -540,7 +560,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BSED_English-2020-2021.php">
+                                        <a class="nav-link" href="../newcurr/BSED-English-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
                                             <span class="sidenav-normal text-black-50">BSED-English</span>
                                         </a>
@@ -552,9 +572,9 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BSED-Mathematics-2020-2021.php">
+                                        <a class="nav-link" href="../newcurr/BSED-Math-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                            <span class="sidenav-normal text-black-50">BSED-Math</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -576,9 +596,9 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BSFM-2020-2021.php">
+                                        <a class="nav-link" href="../newcurr/BSBA-FM-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">BSFM</span>
+                                            <span class="sidenav-normal text-black-50">BSBA-FM</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -588,9 +608,9 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BSMM-2020-2021.php">
+                                        <a class="nav-link" href="../newcurr/BSBA-MM-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">BSMM</span>
+                                            <span class="sidenav-normal text-black-50">BSBA-MM</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -611,12 +631,7 @@
                                             <span class="sidenav-normal text-black-50">MBA-2</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BSN-2020-2021.php">
-                                            <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">NURS</span>
-                                        </a>
-                                    </li>
+                                   
 
 
                                 </ul>
@@ -803,6 +818,29 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#enrollment" class="nav-link" aria-controls="enrollment"
+                role="button" aria-expanded="false">
+                <div
+                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fas fa-sign-in-alt text-dark"></i>
+                </div>
+                <span class="nav-link-text ms-1">Enrollment</span>
+            </a>
+
+            <div class="collapse" id="enrollment">
+                <ul class="nav ms-4 ps-3">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../enrollment/enrolledStud.php">
+                            <span class="sidenav-mini-icon"> </span>
+                            <span class="sidenav-normal font-weight-bold">Enrolled Students</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </li>
 
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#lists" class="nav-link" aria-controls="lists" role="button"
@@ -848,6 +886,13 @@
                             <a class="nav-link" href="../subject/list.subject.php">
                                 <span class="sidenav-mini-icon"> </span>
                                 <span class="sidenav-normal font-weight-bold">Subject List</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="../offer/list.classSched.php">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal font-weight-bold">Class Schedule</span>
                             </a>
                         </li>
                     </ul>
@@ -916,6 +961,35 @@
             </li>
 
 
+            <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#OOSubject" class="nav-link" aria-controls="Offer/OpenSubject"
+                role="button" aria-expanded="false">
+                <div
+                    class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fas fa-book-open text-dark"></i>
+                </div>
+                <span class="nav-link-text ms-1">Offer Subjects</span>
+            </a>
+            <div class="collapse" id="OOSubject">
+                <ul class="nav ms-4 ps-3">
+                    ';
+                $getDep = $db->query("SELECT * FROM tbl_departments RIGHT JOIN tbl_courses ON
+                    tbl_courses.department_id = tbl_departments.department_id") or die($db->error);
+                while ($row = $getDep->fetch_array()) {
+                    $course_abv = $row['course_abv'];
+                    $course_id = $row['course_id'];
+                    echo ' <li class="nav-item">
+                        <a class="nav-link" href="../offer/offer.subjects.php?CID=' . $course_id . '">
+                            <span class="sidenav-mini-icon text-xs"> </span>
+                            <span class="sidenav-normal font-weight-bold">' . $course_abv . '</span>
+                        </a>
+                    </li>';
+                }
+                echo ' </ul>
+            </div>
+        </li>
+        ';
+                echo '
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#forms" class="nav-link" aria-controls="forms" role="button"
                     aria-expanded="false">
@@ -989,7 +1063,7 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                             <span class="sidenav-mini-icon"> </span>
-                            <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                            <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                         </a>
                         <div class="collapse" id="oldcurri">
                             <ul class="nav nav-sm flex-column">
@@ -1043,13 +1117,13 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../oldcurr/BSED-Mathematics-2018-2019.php">
+                                    <a class="nav-link" href="../oldcurr/BSED-Math-2018-2019.php">
                                         <span class="sidenav-mini-icon text-xs"> </span>
-                                        <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                        <span class="sidenav-normal text-black-50">BSED-Math</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../oldcurr/BSED-SCIENCE-2018-2019.php">
+                                    <a class="nav-link" href="../oldcurr/BSED-Science-2018-2019.php">
                                         <span class="sidenav-mini-icon text-xs"> </span>
                                         <span class="sidenav-normal text-black-50">BSED-Science</span>
                                     </a>
@@ -1060,6 +1134,7 @@
                                         <span class="sidenav-normal text-black-50">BSED-SS</span>
                                     </a>
                                 </li>
+                                
                                 <li class="nav-item">
                                     <a class="nav-link" href="../oldcurr/BSEE-2018-2019.php">
                                         <span class="sidenav-mini-icon text-xs"> </span>
@@ -1073,17 +1148,30 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../oldcurr/cs-2018-2019.php">
+                                    <a class="nav-link" href="../oldcurr/BSCS-2018-2019.php">
                                         <span class="sidenav-mini-icon text-xs"> </span>
                                         <span class="sidenav-normal text-black-50">BSCS</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../oldcurr/psych-2018-2019.php">
+                                    <a class="nav-link" href="../oldcurr/BA-Psych-2018-2019.php">
                                         <span class="sidenav-mini-icon text-xs"> </span>
                                         <span class="sidenav-normal text-black-50">BS Psychology</span>
                                     </a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../oldcurr/TCP-2018-2019.php">
+                                        <span class="sidenav-mini-icon text-xs"> </span>
+                                        <span class="sidenav-normal text-black-50">TCP</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BSN-2018-2019.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BSN</span>
+                                        </a>
+                                    </li>
                             </ul>
                         </div>
                     </ul>
@@ -1095,13 +1183,13 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BA.PSYC-2020-2021.php">
+                                        <a class="nav-link" href="../newcurr/BA-Psych-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
                                             <span class="sidenav-normal text-black-50">BA PSYC</span>
                                         </a>
@@ -1137,7 +1225,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BSED_English-2020-2021.php">
+                                        <a class="nav-link" href="../newcurr/BSED-English-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
                                             <span class="sidenav-normal text-black-50">BSED-English</span>
                                         </a>
@@ -1149,9 +1237,9 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BSED-Mathematics-2020-2021.php">
+                                        <a class="nav-link" href="../newcurr/BSED-Math-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                            <span class="sidenav-normal text-black-50">BSED-Math</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -1173,9 +1261,9 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BSFM-2020-2021.php">
+                                        <a class="nav-link" href="../newcurr/BSBA-FM-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">BSFM</span>
+                                            <span class="sidenav-normal text-black-50">BSBA-FM</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -1185,9 +1273,9 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BSMM-2020-2021.php">
+                                        <a class="nav-link" href="../newcurr/BSBA-MM-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">BSMM</span>
+                                            <span class="sidenav-normal text-black-50">BSBA-MM</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -1208,12 +1296,7 @@
                                             <span class="sidenav-normal text-black-50">MBA-2</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BSN-2020-2021.php">
-                                            <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">NURS</span>
-                                        </a>
-                                    </li>
+                                    
 
 
                                 </ul>
@@ -1360,7 +1443,6 @@
                     </div>
                     <span class="nav-link-text ms-1">Offer Subjects</span>
                 </a>
-
                 <div class="collapse" id="OOSubject">
                     <ul class="nav ms-4 ps-3">
                         ';
@@ -1382,7 +1464,6 @@
                 </div>
             </li>
             ';
-
                 if ('CS Department' == $dept_name) {
                     echo '
             <li class="nav-item">
@@ -1401,13 +1482,13 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../oldcurr/cs-2018-2019.php">
+                                        <a class="nav-link" href="../oldcurr/BSCS-2018-2019.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
                                             <span class="sidenav-normal text-black-50">BSCS</span>
                                         </a>
@@ -1425,7 +1506,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1463,7 +1544,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1500,7 +1581,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1563,7 +1644,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1587,13 +1668,13 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../oldcurr/BSED-Mathematics-2018-2019.php">
+                                        <a class="nav-link" href="../oldcurr/BSED-Math-2018-2019.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                            <span class="sidenav-normal text-black-50">BSED-Math</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../oldcurr/BSED-SCIENCE-2018-2019.php">
+                                        <a class="nav-link" href="../oldcurr/BSED-Science-2018-2019.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
                                             <span class="sidenav-normal text-black-50">BSED-Science</span>
                                         </a>
@@ -1602,6 +1683,18 @@
                                         <a class="nav-link" href="../oldcurr/BSED-Social-Studies-2018-2019.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
                                             <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../oldcurr/TCP-2018-2019.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">TCP</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../oldcurr/BA-Psych-2018-2019.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BA-PSYCH</span>
                                         </a>
                                     </li>
 
@@ -1619,7 +1712,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1645,7 +1738,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="../newcurr/BSED-Math-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">BSED-Mathematics</span>
+                                            <span class="sidenav-normal text-black-50">BSED-Math</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -1658,6 +1751,12 @@
                                         <a class="nav-link" href="../newcurr/BSED-SS-2020-2021.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
                                             <span class="sidenav-normal text-black-50">BSED-SS</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../newcurr/BA-Psych-2020-2021.php">
+                                            <span class="sidenav-mini-icon text-xs"> </span>
+                                            <span class="sidenav-normal text-black-50">BA-PSYCH</span>
                                         </a>
                                     </li>
 
@@ -1688,7 +1787,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1715,7 +1814,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1754,7 +1853,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1776,7 +1875,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1809,7 +1908,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1827,7 +1926,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1861,7 +1960,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1901,7 +2000,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1952,7 +2051,7 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#oldcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">Old Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2018_Curriculum</span>
                             </a>
                             <div class="collapse" id="oldcurri">
                                 <ul class="nav nav-sm flex-column">
@@ -1972,15 +2071,15 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" aria-expanded="false" href="#newcurri">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal font-weight-bold">New Curriculum</span>
+                                <span class="sidenav-normal font-weight-bold">2020_Curriculum</span>
                             </a>
                             <div class="collapse" id="newcurri">
                                 <ul class="nav nav-sm flex-column">
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="../newcurr/BSN-2020-2021.php">
+                                        <a class="nav-link" href="../newcurr/BSN-2018-2019.php">
                                             <span class="sidenav-mini-icon text-xs"> </span>
-                                            <span class="sidenav-normal text-black-50">BS Nursing</span>
+                                            <span class="sidenav-normal text-black-50">BSN</span>
                                         </a>
                                     </li>
 
@@ -2088,16 +2187,25 @@
                 </a>
             </li>';
                 }
+                echo '  <li class="nav-item">
+                <a class="nav-link" href="../student/grade.history.php">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-file-alt text-dark"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Grade History</span>
+                </a>
+            </li>';
                 // For curriculum / sidebar
-                $getCourse_id = $db->query("SELECT * FROM tbl_students S LEFT JOIN tbl_courses C USING(course_id) WHERE stud_id = '$stud_id'") or die($db->error);
+                $getCourse_id = $db->query("SELECT * FROM tbl_students S LEFT JOIN tbl_courses C USING(course_id) LEFT JOIN tbl_effective_acadyear EA ON S.curri = EA.eay_id WHERE stud_id = '$stud_id'") or die($db->error);
                 while ($row = $getCourse_id->fetch_array()) {
                     // if URL exist
-                    $url = 'http://localhost/speciallp/pages/newcurr/' . $row['course_abv'] . '-2020-2021.php';
+                    $url = 'http://localhost/speciallp/pages/newcurr/' . $row['course_abv'] . '-' . $row['eay'] . '.php';
                     $array = get_headers($url);
                     $string = $array[0];
                     if (strpos($string, "200")) {
                         echo '<li class="nav-item">
-                    <a class="nav-link" href="../newcurr/' . $row['course_abv'] . '-2020-2021.php">
+                    <a class="nav-link" href="../newcurr/' . $row['course_abv'] . '-' . $row['eay'] . '.php">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-file-pdf text-dark"></i>
@@ -2107,12 +2215,12 @@
                 </li>';
                     } else {
                         // if URL exist
-                        $url = 'http://localhost/speciallp/pages/newcurr/curri18-19/' . $row['course_abv'] . '-2018-2019.php';
+                        $url = 'http://localhost/speciallp/pages/oldcurr/' . $row['course_abv'] . '-' . $row['eay'] . '.php';
                         $array = get_headers($url);
                         $string = $array[0];
                         if (strpos($string, "200")) {
                             echo '<li class="nav-item">
-                            <a class="nav-link" href="../newcurr/curri18-19/' . $row['course_abv'] . '-2018-2019.php">
+                            <a class="nav-link" href="../oldcurr/' . $row['course_abv'] . '-' . $row['eay'] . '.php">
                                 <div
                                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="fas fa-file-pdf text-dark"></i>
@@ -2133,11 +2241,10 @@
     <div class="sidenav-footer mx-3">
         <hr class="horizontal dark">
         <?php if ("Super Administrator" == $_SESSION['role']) {
-            echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="#" data-bs-toggle="tooltip"
-            data-bs-placement="top" title="Sidebar Settings" data-container="body" data-animation="true"><i class="fa fa-cog"></i></a>
-        <a class="btn bg-gradient-light mt-2 mb-3  border-radius-md mx-3" href="../super_admin/edit.SA.php" data-bs-toggle="tooltip"
+            echo '<div class="text-center">
+            <a class="btn bg-gradient-light mt-2 mb-3 px-6 border-radius-md mx-3" href="../super_admin/edit.SA.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Edit Account" data-container="body" data-animation="true"><i
-                class="fas fa-user-edit"></i></a>';
+                class="fas fa-user-edit"></i></a></div>';
         } elseif ($_SESSION['role'] == "Dean") {
             echo '<a class="btn bg-gradient-light mt-2 mb-3 border-radius-md mx-4" href="../report/send.report.php" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Send Report" data-container="body" data-animation="true"><i class="fas fa-paper-plane"></i></a>

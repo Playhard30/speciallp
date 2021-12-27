@@ -52,16 +52,22 @@ if (isset($_POST['submit'])) {
     $updated_by = $_SESSION['name'] . " <br> (" . $_SESSION['role'] . ")";
 
 
-
+    // check Student number
     $result = $db->query("SELECT * FROM tbl_students WHERE stud_no = '$stud_no'") or die($db->error);
     $count = $result->num_rows;
     while ($row = $result->fetch_array()) {
         $checkStud = $row['stud_id'];
     }
+    // check schoolyear course
+    $result2 = $db->query("SELECT * FROM tbl_schoolyears WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
+    $count2 = $result2->num_rows;
 
     if ($count < 1 || $checkStud == $stud_id) {
         if ('Registrar' == $_SESSION['role'] || $_SESSION['role'] == 'Adviser') {
             $query = mysqli_query($db, "UPDATE tbl_students SET stud_no = '$stud_no', course_id = '$course', gender_id = '$gender', lastname = '$lastname', firstname = '$firstname', middlename = '$middlename', address = '$address', birthdate = '$birthdate', birthplace = '$birthplace', age = '$age', religion = '$religion', citizenship = '$citizenship', civilstatus = '$civilstatus', contact = '$contact', email = '$email', flastname = '$flastname', ffirstname = '$ffirstname',fmiddlename = '$fmiddlename', fage = '$fage', foccupation = '$foccupation', mlastname = '$mlastname', mfirstname = '$mfirstname', mmiddlename = '$mmiddlename', mage ='$mage', moccupation = '$moccupation', familyincome = '$familyincome', nosiblings = '$nosiblings', glastname = '$glastname', gfirstname = '$gfirstname', gmiddlename = '$gmiddlename', goccupation = '$goccupation', relationship = '$relationship', gaddress = '$gaddress', elem = '$elem', elemSY = '$elemSY', elemAddress = '$elemAddress', hs = '$hs', hsSY = '$hsSY', hsAddress = '$hsAddress', lastschool = '$lastschool', course_year = '$course_year', lastSY = '$lastSY', lastAddress = '$lastAddress', updated_by = '$updated_by', last_updated = CURRENT_TIMESTAMP WHERE stud_id = '$stud_id' ") or die(mysqli_error($db));
+            if ($count2 > 0) {
+                $query2 = $db->query("UPDATE tbl_schoolyears SET course_id = '$course' WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
+            }
             $_SESSION['successUpdate'] = true;
             header("location: ../edit.student.php?stud_id=" . $stud_id);
         } else {

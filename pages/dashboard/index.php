@@ -37,8 +37,9 @@ include '../../includes/head.php';
         <!-- End Navbar -->
 
         <!-- Start Container -->
-        <?php if ("Registrar" == $_SESSION['role'] || "Admission" == $_SESSION['role']) { ?>
-        <div class="container-fluid py-4 mb-11">
+        <!-- REGISTRAR, ADMISSION -->
+        <?php if ($_SESSION['role'] != "Student") { ?>
+        <div class="container-fluid py-4 mb-4">
             <!-- first row -->
             <div class="row">
                 <!-- Enrolled students -->
@@ -46,7 +47,8 @@ include '../../includes/head.php';
                     <div class="card bg-white shadow move-on-hover">
                         <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
                             style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
-                            <span class="mask bg-gradient-dark opacity-6"></span>
+                            <span class="mask bg-gradient-dark opacity-3"><i
+                                    class="fas fa-users text-7xl p-1"></i></span>
                             <div class="card-body position-relative z-index-2 p-1">
                                 <div class="text-center">
                                     <h6 class="mb-0 text-white font-weight-bold mb-2">
@@ -67,8 +69,8 @@ include '../../includes/head.php';
                             </div>
                             <hr class="horizontal dark m-0">
                             <div class="text-center">
-                                <a href="#" class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Show More">
+                                <a href="enrolledStud.php" class="position-relative w-100 text-center py-1"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
                                     <i class="fas fa-chevron-down text-white"></i>
                                 </a>
                             </div>
@@ -82,7 +84,8 @@ include '../../includes/head.php';
                     <div class="card bg-white shadow move-on-hover">
                         <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
                             style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
-                            <span class="mask bg-gradient-dark opacity-6"></span>
+                            <span class="mask bg-gradient-dark opacity-3"><i
+                                    class="fas fa-user-friends text-7xl p-1"></i></span>
                             <div class="card-body position-relative z-index-2 p-1">
                                 <div class="text-center">
                                     <h6 class="mb-0 text-white font-weight-bold mb-2">
@@ -103,8 +106,8 @@ include '../../includes/head.php';
                             </div>
                             <hr class="horizontal dark m-0">
                             <div class="text-center">
-                                <a href="#" class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Show More">
+                                <a href="enrolledNewStud.php" class="position-relative w-100 text-center py-1"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
                                     <i class="fas fa-chevron-down text-white"></i>
                                 </a>
                             </div>
@@ -118,7 +121,8 @@ include '../../includes/head.php';
                     <div class="card bg-white shadow move-on-hover">
                         <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
                             style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
-                            <span class="mask bg-gradient-dark opacity-6"></span>
+                            <span class="mask bg-gradient-dark opacity-3"><i
+                                    class="fas fa-user-friends text-7xl p-1"></i></span>
                             <div class="card-body position-relative z-index-2 p-1">
                                 <div class="text-center">
                                     <h6 class="mb-0 text-white font-weight-bold mb-2">
@@ -139,8 +143,8 @@ include '../../includes/head.php';
                             </div>
                             <hr class="horizontal dark m-0">
                             <div class="text-center">
-                                <a href="#" class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Show More">
+                                <a href="enrolledOldStud.php" class="position-relative w-100 text-center py-1"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
                                     <i class="fas fa-chevron-down text-white"></i>
                                 </a>
                             </div>
@@ -154,7 +158,8 @@ include '../../includes/head.php';
                     <div class="card bg-white shadow move-on-hover">
                         <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
                             style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
-                            <span class="mask bg-gradient-dark opacity-6"></span>
+                            <span class="mask bg-gradient-dark opacity-3"><i
+                                    class="fas fa-user-clock text-7xl p-1"></i></span>
                             <div class="card-body position-relative z-index-2 p-1">
                                 <div class="text-center">
                                     <h6 class="mb-0 text-white font-weight-bold mb-2">
@@ -175,8 +180,8 @@ include '../../includes/head.php';
                             </div>
                             <hr class="horizontal dark m-0">
                             <div class="text-center">
-                                <a href="#" class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Show More">
+                                <a href="pendingStud.php" class="position-relative w-100 text-center py-1"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
                                     <i class="fas fa-chevron-down text-white"></i>
                                 </a>
                             </div>
@@ -185,15 +190,51 @@ include '../../includes/head.php';
                 </div>
             </div>
             <!-- End Pending Enrollees -->
-
             <!-- second row -->
             <div class="row">
-                <!-- Online inquiry -->
+                <!-- Dropped Students -->
                 <div class="col-xl-3 col-sm-6 mb-3">
                     <div class="card bg-white shadow move-on-hover">
                         <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
                             style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
-                            <span class="mask bg-gradient-dark opacity-6"></span>
+                            <span class="mask bg-gradient-dark opacity-3"><i
+                                    class="fas fa-user-slash text-7xl p-1"></i></span>
+                            <div class="card-body position-relative z-index-2 p-1">
+                                <div class="text-center">
+                                    <h6 class="mb-0 text-white font-weight-bold mb-2">
+                                        Dropped Students
+                                    </h6>
+
+                                    <?php
+                                        $DSCount = mysqli_query($db, "SELECT COUNT(SY.sy_id) AS total FROM tbl_schoolyears SY WHERE remark IN ('Dropped') AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
+                                        $actualCount = mysqli_fetch_array($DSCount);
+                                        ?>
+                                    <h3 class="text-white text-center mb-0 mt-n2" id="state5"
+                                        countTo="<?php echo $actualCount[0]; ?>">
+                                    </h3>
+                                    <p class="text-sm mb-0 text-white">Students</p>
+
+
+                                </div>
+                            </div>
+                            <hr class="horizontal dark m-0">
+                            <div class="text-center">
+                                <a class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
+                                    data-bs-placement="top" title="Show More">
+                                    <i class="fas fa-chevron-down text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Dropped Students -->
+                <!-- Online Inquiry -->
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card bg-white shadow move-on-hover">
+                        <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
+                            style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
+                            <span class="mask bg-gradient-dark opacity-3"><i
+                                    class="fas fa-globe-asia text-7xl p-1"></i></span>
                             <div class="card-body position-relative z-index-2 p-1">
                                 <div class="text-center">
                                     <h6 class="mb-0 text-white font-weight-bold mb-2">
@@ -201,10 +242,10 @@ include '../../includes/head.php';
                                     </h6>
 
                                     <?php
-                                        $orCount = mysqli_query($db, "SELECT COUNT(or_id) FROM tbl_online_registrations WHERE status IN ('Pending') ") or die($db->error);
+                                        $orCount = mysqli_query($db, "SELECT COUNT(or_id) FROM tbl_online_registrations WHERE status IN ('Pending') AND acad_year = '$_SESSION[AC]' AND semester = '$_SESSION[S]'") or die($db->error);
                                         $actualCount = mysqli_fetch_array($orCount);
                                         ?>
-                                    <h3 class="text-white text-center mb-0 mt-n2" id="state5"
+                                    <h3 class="text-white text-center mb-0 mt-n2" id="state6"
                                         countTo="<?php echo $actualCount[0]; ?>">
                                     </h3>
                                     <p class="text-sm mb-0 text-white">Students</p>
@@ -222,7 +263,106 @@ include '../../includes/head.php';
                         </div>
                     </div>
                 </div>
-                <!-- End Online inquiry -->
+                <!-- End Online Inquiry -->
+                <!-- balik franciscano -->
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card bg-white shadow move-on-hover">
+                        <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
+                            style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
+                            <span class="mask bg-gradient-dark opacity-3"><i
+                                    class="fas fa-user-friends text-7xl p-1"></i></span>
+                            <div class="card-body position-relative z-index-2 p-1">
+                                <div class="text-center">
+                                    <h6 class="mb-0 text-white font-weight-bold mb-2">
+                                        Balik Franciscano
+                                    </h6>
+
+                                    <?php
+                                        $bfCount = mysqli_query($db, "SELECT COUNT(sy_id) FROM tbl_schoolyears WHERE bf = 'Yes' AND sem_id = '$_SESSION[S]' AND ay_id = '$_SESSION[AC]' ") or die($db->error);
+                                        $actualCount = mysqli_fetch_array($bfCount);
+                                        ?>
+                                    <h3 class="text-white text-center mb-0 mt-n2" id="state15"
+                                        countTo="<?php echo $actualCount[0]; ?>">
+                                    </h3>
+                                    <p class="text-sm mb-0 text-white">Students</p>
+
+
+                                </div>
+                            </div>
+                            <hr class="horizontal dark m-0">
+                            <div class="text-center">
+                                <a href="#" class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
+                                    data-bs-placement="top" title="Show More">
+                                    <i class="fas fa-chevron-down text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End balik franciscano -->
+            </div>
+            <!-- third row  -->
+            <div class="row">
+                <?php
+                    // icon
+                    $icon1 = '<i class="fas fa-laptop-code text-7xl p-1"></i>';
+                    $icon2 = '<i class="fas fa-chart-line text-7xl p-1"></i>';
+                    $icon3 = '<i class="fas fa-chalkboard-teacher text-7xl p-1"></i>';
+                    $icon4 = '<i class="fas fa-utensils text-7xl p-1"></i>';
+                    $icon5 = '<i class="fas fa-sort-amount-up text-7xl p-1"></i>';
+                    $icon6 = '<i class="fas fa-user-friends text-7xl p-1"></i>';
+                    $icon7 = '<i class="fas fa-calculator text-7xl p-1"></i>';
+                    $icon8 = '<i class="fas fa-first-aid text-7xl p-1"></i>';
+
+                    // title
+                    $Dep1 = 'SCS';
+                    $Dep2 = 'SBA';
+                    $Dep3 = 'SELA';
+                    $Dep4 = 'SHM';
+                    $Dep5 = 'Bridging';
+                    $Dep6 = 'LA';
+                    $Dep7 = 'SENG';
+                    $Dep8 = 'SN';
+
+                    $c = 0; // count
+                    $prev_widget = 6; // number of 1st and 2nd row widget
+                    $getAllDepartment = $db->query("SELECT * FROM tbl_departments");
+                    while ($row = $getAllDepartment->fetch_array()) {
+                        $c++;
+                        $prev_widget++;
+                        echo '
+                        <div class="col-xl-3 col-sm-6 mb-3">
+                            <div class="card bg-white shadow move-on-hover">
+                                <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
+                                    style="background-image: url(../../assets/img/curved-images/curved5.jpg)">
+                                    <span class="mask bg-gradient-dark opacity-3">' . ${"icon$c"} . '</span>
+                                    <div class="card-body position-relative z-index-2 p-1">
+                                        <div class="text-center">
+                                            <h6 class="mb-0 text-white font-weight-bold mb-2">
+                                            Enrolled Students in <br> (' . ${"Dep$c"} . ')
+                                            </h6>
+                                            ';
+                        $getStud = $db->query("SELECT * FROM tbl_schoolyears S LEFT JOIN tbl_courses C USING(course_id) WHERE remark IN ('Approved') AND department_id = '$row[department_id]'  AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'");
+                        $actualCount = $getStud->num_rows;
+                        echo '
+                                            <h3 class="text-white text-center mb-0 mt-n2" id="state' . $prev_widget . '"
+                                                countTo="' . $actualCount . '">
+                                            </h3>
+                                                <p class="text-sm mb-0 text-white">Students</p>
+                                         </div>
+                                     </div>
+                                     <hr class="horizontal dark m-0">
+                                     <div class="text-center">
+                                         <a href="' . ${"Dep$c"} . '.php" class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
+                                         data-bs-placement="top" title="Show More">
+                                         <i class="fas fa-chevron-down text-white"></i>
+                                        </a>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>';
+                    } ?>
+
             </div>
         </div>
         <!-- End Container -->
@@ -266,7 +406,7 @@ include '../../includes/head.php';
                             </div>
                             <hr class="horizontal dark m-0">
                             <div class="text-center">
-                                <a href="#" class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
+                                <a href="" class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
                                     data-bs-placement="top" title="Show More">
                                     <i class="fas fa-chevron-down text-white"></i>
                                 </a>
@@ -288,8 +428,11 @@ include '../../includes/head.php';
                                     </h6>
 
                                     <?php
-                                        $ESubCount = mysqli_query($db, "SELECT COUNT(ES.enrolled_subj_id) FROM tbl_enrolled_subjects ES WHERE stud_id IN ('$stud_id') AND acad_year = '$_SESSION[AC]' AND semester = '$_SESSION[S]'") or die($db->error);
-                                        $actualCount = mysqli_fetch_array($ESubCount);
+                                        if (!empty($SCourse_id)) {
+                                            $ESubCount = mysqli_query($db, "SELECT COUNT(ES.enrolled_subj_id) FROM tbl_enrolled_subjects ES LEFT JOIN tbl_subjects_new SN USING(subj_id) WHERE stud_id IN ('$stud_id') AND acad_year = '$_SESSION[AC]' AND semester = '$_SESSION[S]' AND course_id IN ('$SCourse_id')") or die($db->error);
+                                            $actualCount = mysqli_fetch_array($ESubCount);
+                                        }
+
                                         ?>
                                     <h3 class="text-white text-center mb-0 mt-n2" id="state2"
                                         countTo="<?php echo $actualCount[0]; ?>">
@@ -301,7 +444,8 @@ include '../../includes/head.php';
                             </div>
                             <hr class="horizontal dark m-0">
                             <div class="text-center">
-                                <a href="#" class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
+                                <a href="../enrollment/enrollmentInfo.php"
+                                    class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
                                     data-bs-placement="top" title="Show More">
                                     <i class="fas fa-chevron-down text-white"></i>
                                 </a>
@@ -313,15 +457,15 @@ include '../../includes/head.php';
 
             </div>
         </div>
-        <!-- End Container -->
         <?php } ?>
         <!-- End Container -->
-
         <!-- footer -->
         <?php include '../../includes/footer.php'; ?>
         <!-- End footer -->
         </div>
     </main>
+
+
     <!-- School Settings -->
     <?php if ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == "Super Administrator") { ?>
     <div class="fixed-plugin">

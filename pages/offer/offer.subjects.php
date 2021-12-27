@@ -35,19 +35,30 @@ if (!empty($_GET['CID'])) {
                                     <div class="col-md-7 ms-auto">
                                         <h5 class="mb-0">Subjects List</h5>
 
-                                        <?php if (!empty($_GET['CID'])) {
-                                            $query = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]' AND department_id = '$_SESSION[ADepartment_id]'") or die($db->error);
-                                            while ($row2 = $query->fetch_array()) {
-                                                echo '<p class="text-sm mb-0">
+                                        <?php
+                                        if ($_SESSION['role'] == "Adviser") {
+                                            if (!empty($_GET['CID'])) {
+                                                $query = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]' AND department_id = '$_SESSION[ADepartment_id]'") or die($db->error);
+                                                while ($row2 = $query->fetch_array()) {
+                                                    echo '<p class="text-sm mb-0">
                                                     Offer/Open Subjects for ' . $row2['course'] . '
                                                 </p>';
+                                                }
+                                            }
+                                        } elseif ($_SESSION['role'] == "Registrar") {
+                                            if (!empty($_GET['CID'])) {
+                                                $query = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]'") or die($db->error);
+                                                while ($row2 = $query->fetch_array()) {
+                                                    echo '<p class="text-sm mb-0">
+                                                    Offer/Open Subjects for ' . $row2['course'] . '
+                                                </p>';
+                                                }
                                             }
                                         } ?>
 
                                     </div>
 
                                     <div class="col-md-3 px-0 g-0 mt-3 my-lg-0">
-
                                         <div class="my-auto">
                                             <select class="form-control" name="eay" id="academic_year">
                                                 <?php
@@ -72,21 +83,30 @@ if (!empty($_GET['CID'])) {
                                                     }
                                                 } ?>
                                             </select>
-
-                                            <?php if (!empty($_GET['CID'])) {
-                                                $getCour = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]' AND department_id = '$_SESSION[ADepartment_id]'") or die($db->error);
-                                                $count1 = $getCour->num_rows;
-                                                if (!empty($_GET['CID']) && $count1 > 0) {
-                                                    echo '<input hidden type="text" name="CID" value="' . $_GET['CID'] . '">';
+                                            <?php
+                                            if ($_SESSION['role'] == "Adviser") {
+                                                if (!empty($_GET['CID'])) {
+                                                    $getCour = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]' AND department_id = '$_SESSION[ADepartment_id]'") or die($db->error);
+                                                    $count1 = $getCour->num_rows;
+                                                    if (!empty($_GET['CID']) && $count1 > 0) {
+                                                        echo '<input hidden type="text" name="CID" value="' . $_GET['CID'] . '">';
+                                                    }
+                                                }
+                                            } elseif ($_SESSION['role'] == "Registrar") {
+                                                if (!empty($_GET['CID'])) {
+                                                    $getCour = $db->query("SELECT * FROM tbl_courses WHERE course_id = '$_GET[CID]'") or die($db->error);
+                                                    $count1 = $getCour->num_rows;
+                                                    if (!empty($_GET['CID']) && $count1 > 0) {
+                                                        echo '<input hidden type="text" name="CID" value="' . $_GET['CID'] . '">';
+                                                    }
                                                 }
                                             } ?>
 
                                         </div>
-
-
                                     </div>
-                                    <div class="col-md-2 px-0 g-0 text-center mt-3 my-lg-0">
-                                        <button type="submit" class="btn bg-gradient-dark"><i class="fas fa-eye"> </i>
+                                    <div class="col-md-2 px-0 g-0 text-center mt-0 mt-md-3 my-lg-0">
+                                        <button type="submit" class="btn bg-gradient-dark"><i class="fas fa-eye">
+                                            </i>
                                             &nbsp;Show</button>
                                     </div>
                                 </div>
@@ -309,6 +329,7 @@ if (!empty($_GET['CID'])) {
                                                 data-bs-target="#modal-petitioned"><i class="fas fa-plus"> </i>
                                                 Petitioned Subject</a>
                                         </th>
+                                        <th></th>
                                         <th></th>
                                         <th></th>
                                         <th></th>

@@ -3,11 +3,15 @@ session_start();
 require '../../includes/conn.php';
 include '../../includes/head.php';
 include '../../includes/session.php';
-if ($_SESSION['role'] == "Super Administrator") {
-    $faculty_id = $_GET['faculty_id'];
+if ($_SESSION['role'] == "Super Administrator" || $_SESSION['role'] == "Adviser") {
+    if (!empty($_GET['facultyStaff_id'])) {
+        $facultyStaff_id = $_GET['facultyStaff_id'];
+    } else {
+        header("location: ../error/error-404.php");
+    }
 }
 
-$_SESSION['faculty_id'] = $faculty_id;
+$_SESSION['facultyStaff_id'] = $facultyStaff_id;
 ?>
 
 
@@ -29,7 +33,7 @@ $_SESSION['faculty_id'] = $faculty_id;
                         <div class="col-sm-auto col-4">
                             <div class="avatar avatar-xl position-relative">
                                 <?php
-                                $getUserData = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties_staff.faculty_firstname, ' ', tbl_faculties_staff.faculty_middlename, ' ', tbl_faculties_staff.faculty_lastname) AS fullname FROM tbl_faculties_staff WHERE faculty_id = '$faculty_id'");
+                                $getUserData = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties_staff.faculty_firstname, ' ', tbl_faculties_staff.faculty_middlename, ' ', tbl_faculties_staff.faculty_lastname) AS fullname FROM tbl_faculties_staff WHERE faculty_id = '$facultyStaff_id'");
                                 while ($row = mysqli_fetch_array($getUserData)) {
                                     if (!empty($row['img'])) {
                                         echo '<img src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" alt="bruce"
@@ -135,7 +139,7 @@ $_SESSION['faculty_id'] = $faculty_id;
                                 <label class="form-label mt-4">Employment Status</label>
                                 <select class="form-control" required name="status" id="status">
 
-                                    <?php $getUserData = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties_staff.faculty_firstname, ' ', tbl_faculties_staff.faculty_middlename, ' ', tbl_faculties_staff.faculty_lastname) AS fullname FROM tbl_faculties_staff WHERE faculty_id = '$faculty_id'");
+                                    <?php $getUserData = mysqli_query($db, "SELECT *, CONCAT(tbl_faculties_staff.faculty_firstname, ' ', tbl_faculties_staff.faculty_middlename, ' ', tbl_faculties_staff.faculty_lastname) AS fullname FROM tbl_faculties_staff WHERE faculty_id = '$facultyStaff_id'");
                                     while ($row3 = mysqli_fetch_array($getUserData)) {
                                         if ($row3['status'] == "Full-time") {
                                             echo '<option value="' . $row3['status'] . '" selected>' . $row3['status'] . '

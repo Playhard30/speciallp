@@ -103,7 +103,7 @@ $_SESSION['stud_id'] = $stud_id;
                             <div class="col-sm-4">
                                 <label class="form-label mt-4">Student ID No.</label>
                                 <div class="input-group">
-                                    <?php if ("Registrar" == $_SESSION['role'] || $_SESSION['role'] == "Adviser") {
+                                    <?php if ("Registrar" == $_SESSION['role']) {
                                         echo ' <input name="stud_no" required type="text" placeholder="Student Number" class="form-control" value="' . $row['stud_no'] . '">';
                                     } else {
                                         echo ' <input name="stud_no" type="text" required placeholder="Student Number" readonly class="form-control" value="' . $row['stud_no'] . '">';
@@ -122,9 +122,11 @@ $_SESSION['stud_id'] = $stud_id;
                                             while ($row1 = mysqli_fetch_array($getCourse)) {
                                                 echo '<option selected value="' . $row1['course_id'] . '">' . $row1['course'] . '</option>';
                                             }
-                                            $getCourse = mysqli_query($db, "SELECT * FROM tbl_courses WHERE course_id NOT IN ('$row[course_id]')");
-                                            while ($row2 = mysqli_fetch_array($getCourse)) {
-                                                echo '<option value="' . $row2['course_id'] . '">' . $row2['course'] . '</option>';
+                                            if ("Registrar" == $_SESSION['role']) {
+                                                $getCourse = mysqli_query($db, "SELECT * FROM tbl_courses WHERE course_id NOT IN ('$row[course_id]')");
+                                                while ($row2 = mysqli_fetch_array($getCourse)) {
+                                                    echo '<option value="' . $row2['course_id'] . '">' . $row2['course'] . '</option>';
+                                                }
                                             }
                                         }
 

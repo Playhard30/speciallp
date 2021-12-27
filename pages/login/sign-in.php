@@ -18,6 +18,9 @@ session_start();
 if (!empty($_SESSION['role'])) {
     header("location: ../dashboard/index.php");
 }
+unset($_SESSION['username']);
+unset($_SESSION['code']);
+unset($_SESSION['email']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,11 +50,11 @@ if (!empty($_SESSION['role'])) {
     }
 
     .myhover:hover {
-        color: #ea0606 !important;
+        color: #d36148 !important;
     }
 
     .myhover {
-        color: skyblue !important;
+        color: #5eabcb !important;
     }
 
     .form-switch {
@@ -177,7 +180,7 @@ if (!empty($_SESSION['role'])) {
                                                 aria-label="Password" aria-describedby="password-addon" name="password">
                                         </div>
                                         <div class="form-check form-switch">
-                                            <a href="#" class="text-sm myhover">
+                                            <a href="reset_password.php" class="text-sm myhover">
                                                 forgot password</a>
                                         </div>
                                         <div class="text-center">

@@ -28,6 +28,26 @@ include '../../includes/session.php';
                                 <?php echo $_SESSION['AC'] . ', ' . $_SESSION['S']; ?></p>
                         </div>
                         <hr class="horizontal dark mt-0">
+                        <div class="row d-flex justify-content-center mx-4">
+                            <div class="col-md-6 m-1 ">
+                                <form method="GET">
+                                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-text text-body"><i class  ="fas fa-search"
+                                                            aria-hidden="true"></i></span> -->
+                                            <input type="text" class="form-control" name="search"
+                                                placeholder="Search Student"
+                                                <?php if (!empty($_GET['search'])) {
+                                                                                                                                    echo 'value="' . $_GET['search'] . '"';
+                                                                                                                                }  ?>>
+                                            <button class="btn-sm btn bg-gradient-dark ms-auto mb-0" type="submit"
+                                                title="Send"><i class="fas fa-search text-lg"
+                                                    aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="table-responsive px-4 my-4">
                             <table class=" table table-hover responsive nowrap m-0" id="datatable-basic"
                                 style="width: 100%;">
@@ -60,18 +80,25 @@ include '../../includes/session.php';
                                 <tbody>
 
                                     <?php
+                                    if (isset($_GET['search'])) {
 
-                                    // Query Pending Students
-                                    $pendStud = $db->query("SELECT *, CONCAT(S.firstname, ' ', S.middlename, ' ', S.lastname) AS fullname
+                                        $_GET['search'] = addslashes($_GET['search']);
+
+                                        // Query Pending Students
+                                        $pendStud = $db->query("SELECT *, CONCAT(S.firstname, ' ', S.middlename, ' ', S.lastname) AS fullname
                                             FROM tbl_schoolyears SY
                                             LEFT JOIN tbl_courses C USING(course_id)
                                             LEFT JOIN tbl_students S USING(stud_id)
                                             LEFT JOIN tbl_year_levels YL USING(year_id)
-                                            WHERE (remark IN ('Pending') OR remark IN ('Checked') OR remark IN ('Canceled')) AND C.department_id IN ('$_SESSION[ADepartment_id]') AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')
-                                            ORDER BY sy_id") or die($db->error);
-                                    while ($row = $pendStud->fetch_array()) {
-                                        $id = $row['sy_id'];
-                                        $stud_id = $row['stud_id'];
+                                            WHERE (remark IN ('Pending') OR remark IN ('Checked') OR remark IN ('Canceled') OR remark IN ('Disapproved')) AND C.department_id IN ('$_SESSION[ADepartment_id]') AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]') AND 
+                                            (firstname LIKE '%$_GET[search]%' OR
+                                            middlename LIKE '%$_GET[search]%' OR
+                                            lastname LIKE '%$_GET[search]%' OR
+                                            stud_no LIKE '%$_GET[search]%')
+                                            ORDER BY sy_id DESC, remark DESC") or die($db->error);
+                                        while ($row = $pendStud->fetch_array()) {
+                                            $id = $row['sy_id'];
+                                            $stud_id = $row['stud_id'];
 
                                     ?>
                                     <!-- ROWS -->
@@ -79,10 +106,10 @@ include '../../includes/session.php';
                                         <td></td>
                                         <td class="text-sm font-weight-normal">
                                             <?php if (empty($row['img'])) {
-                                                    echo '<img class="border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="../../assets/img/illustrations/user_prof.jpg"/>';
-                                                } else {
-                                                    echo ' <img class=" border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" "/>';
-                                                } ?>
+                                                        echo '<img class="border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="../../assets/img/illustrations/user_prof.jpg"/>';
+                                                    } else {
+                                                        echo ' <img class=" border-radius-lg shadow-sm zoom" style="height:80px; width:80px;" src="data:image/jpeg;base64,' . base64_encode($row['img']) . '" "/>';
+                                                    } ?>
                                         </td>
 
                                         <td class="text-sm font-weight-normal">
@@ -101,17 +128,18 @@ include '../../includes/session.php';
                                         </td>
                                         <td class="text-sm font-weight-normal">
                                             <div class="d-flex align-items-center">
-                                                <button
-                                                    class="btn btn-icon-only btn-rounded btn-outline-warning mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
-                                                    <?php if ($row['remark'] == "Pending") {
-                                                                                                                                                                                            echo 'style="color: #ce7e00; border-color:#ce7e00"><i class="fas fa-spinner"
+                                                <button <?php if ($row['remark'] == "Pending") {
+                                                                    echo 'class="btn btn-icon-only btn-rounded btn-outline-warning mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
+                                                                                                                                                                                            style="color: #ce7e00; border-color:#ce7e00"><i class="fas fa-spinner"
                                                                                                                                                                                                     aria-hidden="true"></i>';
-                                                                                                                                                                                        } elseif ($row['remark'] == 'Checked') {
-                                                                                                                                                                                            echo 'style="color: #38761d; border-color:#38761d"><i
+                                                                } elseif ($row['remark'] == 'Checked') {
+                                                                    echo 'class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
+                                                                                                                                                                                            style="color: #38761d; border-color:#38761d"><i
                                                                 class="fas fa-check" aria-hidden="true"></i>';
-                                                                                                                                                                                        } elseif ($row['remark'] == 'Canceled') {
-                                                                                                                                                                                            echo 'style="color: #990000; border-color:#990000"><i class="fas fa-times" aria-hidden="true"></i>';
-                                                                                                                                                                                        } ?> </button>
+                                                                } elseif ($row['remark'] == 'Canceled' || $row['remark'] == "Disapproved") {
+                                                                    echo 'class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"
+                                                                style="color: #990000; border-color:#990000"><i class="fas fa-times" aria-hidden="true"></i>';
+                                                                } ?> </button>
                                                     <span><?php echo $row['remark']; ?></span>
                                             </div>
 
@@ -123,11 +151,12 @@ include '../../includes/session.php';
 
                                             <div class="d-flex align-items-center">
 
-                                                <a href="userData/ctrl.edit.pendingStud.php?id=<?php echo $id . '&remark=' . $row['remark'];  ?>"
+                                                <a name="approval"
+                                                    href="userData/ctrl.edit.pendingStud.php?id=<?php echo $id . '&remark=' . $row['remark'] . '&search=' . $_GET['search'];  ?>"
                                                     class="mx-2" data-bs-toggle="tooltip"
                                                     <?php if ($row['remark'] == 'Pending' || $row['remark'] == 'Canceled') {
-                                                                                                                                                                                                echo 'data-bs-original-title="Check"><i class="fas fa-check" style="color:#8fce00"></i>';
-                                                                                                                                                                                            } elseif ($row['remark'] == 'Checked') echo 'data-bs-original-title="Uncheck"><i class="fas fa-times" style="color:#ce7e00"></i>'; ?>
+                                                                                                                                                                                                                                                    echo 'data-bs-original-title="Check"><i class="fas fa-check text-success"></i>';
+                                                                                                                                                                                                                                                } elseif ($row['remark'] == 'Checked' || $row['remark'] == 'Disapproved') echo 'data-bs-original-title="Uncheck"><i class="fas fa-times text-danger" ></i>'; ?>
                                                     </a>
 
                                                     <a href="../enrollment/enrollmentInfo.php?stud_id=<?php echo $stud_id; ?>"
@@ -135,15 +164,21 @@ include '../../includes/session.php';
                                                         data-bs-original-title="Enrollment Info.">
                                                         <i class="fas fa-globe text-secondary"></i>
                                                     </a>
+                                                    <a href="../forms/data/pre-with-data.php?stud_id=<?php echo $stud_id;  ?>"
+                                                        class="mx-2" data-bs-toggle="tooltip"
+                                                        data-bs-original-title="Pre-Enrollment Form">
+                                                        <i class="fas fa-file-pdf text-secondary"></i>
+                                                    </a>
                                                     <a href="../forms/data/dars.php?stud_id=<?php echo $stud_id;  ?>"
                                                         class="mx-2" data-bs-toggle="tooltip"
                                                         data-bs-original-title="Registration Forms">
                                                         <i class="fas fa-file-pdf text-secondary"></i>
                                                     </a>
-                                                    <span data-bs-toggle="tooltip" data-bs-original-title="Delete">
+                                                    <span class="cursor-pointer" data-bs-toggle="tooltip"
+                                                        data-bs-original-title="Delete">
                                                         <a class="mx-2" data-bs-toggle="modal"
                                                             data-bs-target="#modal-delete<?php echo $id; ?>">
-                                                            <i class="fas fa-trash text-secondary"></i>
+                                                            <i class="fas fa-trash" style="color: #c55151"></i>
                                                         </a>
                                                     </span>
                                             </div>
@@ -181,7 +216,7 @@ include '../../includes/session.php';
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <a href="userData/ctrl.del.pendingStud.php?id=<?php echo $id; ?>"
+                                                    <a href="userData/ctrl.del.pendingStud.php?id=<?php echo $id . '&search=' . $_GET['search']; ?>"
                                                         class="btn btn-white text-white bg-danger">Delete</a>
                                                     <button type="button"
                                                         class="btn btn-link text-secondary btn-outline-dark ml-auto"
@@ -191,6 +226,7 @@ include '../../includes/session.php';
                                         </div>
                                     </div>
                                     <?php }
+                                    }
                                     ?>
                                 </tbody>
                             </table>

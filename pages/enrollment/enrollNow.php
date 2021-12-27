@@ -36,7 +36,7 @@ if ($count > 0) {
                         <h5 class="mb-0">Enrollment Form</h5>
                         <p class="text-sm mb-0">Please fill out all fields!</p>
                         <hr class="horizontal dark my-3">
-                        <form method="POST" class="notif_form">
+                        <form method="POST" action="userData/ctrl.enrollNow.php">
                             <?php $getStud = $db->query("SELECT *, CONCAT(S.firstname, ' ', S.middlename, ' ', S.lastname) AS fullname FROM tbl_students S WHERE stud_id = '$stud_id' ") or die($db->error);
                             while ($row = $getStud->fetch_array()) { ?>
                             <div class="row">
