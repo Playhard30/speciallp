@@ -10,18 +10,18 @@ include '../../includes/session.php';
 
 <?php
 
-if (isset($_GET['ElectroEng'])) {
-    $course_id = $_GET['ElectroEng'];
+if (isset($_GET['BSECE'])) {
+    $courseEnrollee_id = $_GET['BSECE'];
     $course_name = "Electronic Engineering";
-    $color_card = "#d9534f";
-} elseif (isset($_GET['ElectricEng'])) {
-    $course_id = $_GET['ElectricEng'];
+
+} elseif (isset($_GET['BSEE'])) {
+    $courseEnrollee_id = $_GET['BSEE'];
     $course_name = "Electrical Engineering";
-    $color_card = "#5bc0de";
+
 } else {
-    $course_id = 17;
+    $courseEnrollee_id = 17;
     $course_name = "Computer Engineering";
-    $color_card = "#5cb85c";
+   
 }
 
 ?>
@@ -40,9 +40,9 @@ if (isset($_GET['ElectroEng'])) {
                 <div class="col-12"  >
                     <div class="card shadow shadow-xl" >
                         <!-- Card header -->
-                        <div class="card-header m-1 my-0" style="background-image: linear-gradient(<?php echo $color_card;?>, white)"> 
+                        <div class="card-header m-1 my-0"> 
                             <div class="row mb-0">
-                                <div class="col">
+                                <div class="col mx-0">
                                     <h5 class="mb-0 ">List of <?php echo $course_name;?> Enrollees</h5>
                                     <p class="text-sm mb-0">for Academic Year
                                     <?php echo $_SESSION['AC'] . ', ' . $_SESSION['S']; 
@@ -50,26 +50,52 @@ if (isset($_GET['ElectroEng'])) {
                                 </div>
                                 <div class="col">
                                     <div class="text-end">
-                                    <form action="SENG.php" method="GET">
-                                        <button class="btn btn-icon btn-3 btn-success" value="17" name="ComEng">
-                                            <span class="btn-inner--icon"><i class="fas fa-laptop"></i></span>
-                                            <span class="btn-inner--text">Computer Engineering</span>
-                                        </button>
-                                        <button class="btn btn-icon btn-3 btn-danger" value="16" name="ElectroEng">
-                                            <span class="btn-inner--icon"><i class="fas fa-laptop"></i></span>
-                                            <span class="btn-inner--text">Electronics Engineering</span>
-                                        </button>
-                                        <button class="btn btn-icon btn-3 btn-info" value="15" name="ElectricEng">
-                                            <span class="btn-inner--icon"><i class="fas fa-laptop"></i></span>
-                                            <span class="btn-inner--text">Electrical Engineering</span>
-                                            
-                                        </button>
+                                        <button class="btn btn-icon btn-3 btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="btn-inner--icon"><i class="fas fa-sliders-h"></i></span>
+                                        <span class="btn-inner--text">Filter</span>
+                                    </button>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="collapse" id="navbarToggleExternalContent">
+                                <div class="col p-4 ">
+                                    <form action="SENG.php" method="GET">
+                                        <div class="row justify-content-md-center">
+                                            <?php
+                                            
+                                            $ENGcourses = mysqli_query($db, "SELECT * FROM tbl_courses WHERE department_id = 9");
+                                            while ($displayENGcourses = mysqli_fetch_array($ENGcourses)) {
+
+                                                $countTotal = mysqli_query($db, "SELECT COUNT(sy_id) FROM tbl_schoolyears WHERE remark = 'Approved' AND course_id = '$displayENGcourses[course_id]' AND sem_id = '$_SESSION[S]' AND ay_id = '$_SESSION[AC]' ") or die($db->error);
+                                                $actualCountTotal = mysqli_fetch_array($countTotal);
+
+                                                $countNew = mysqli_query($db, "SELECT COUNT(sy_id) FROM tbl_schoolyears WHERE remark = 'Approved' AND status = 'New' AND course_id = '$displayENGcourses[course_id]' AND sem_id = '$_SESSION[S]' AND ay_id = '$_SESSION[AC]' ") or die($db->error);
+                                                $actualCountNew = mysqli_fetch_array($countNew);
+
+                                                $countOld = mysqli_query($db, "SELECT COUNT(sy_id) FROM tbl_schoolyears WHERE remark = 'Approved' AND status = 'Old' AND course_id = '$displayENGcourses[course_id]' AND sem_id = '$_SESSION[S]' AND ay_id = '$_SESSION[AC]' ") or die($db->error);
+                                                $actualCountOld = mysqli_fetch_array($countOld);
+
+                                                echo'
+                                                <div class="col col-sm-auto">
+                                                    <button class="btn btn-icon btn-3 btn-dark" value="'.$displayENGcourses['course_id'].'" name="'.$displayENGcourses['course_abv'].'">
+                                                        <span class="btn-inner--icon"><i class="fas fa-laptop"></i></span>
+                                                        <span class="btn-inner--text">'.$displayENGcourses['course_abv'].'</span>
+                                                        <p class="text-sm text-nowrap mb-0">
+                                                            <b>New:</b> '.$actualCountNew[0].'
+                                                            <b>Old:</b> '.$actualCountOld[0].'
+                                                            <b>Total:</b> '.$actualCountTotal[0].'
+                                                        </p>
+                                                    </button>
+                                                    
+                                                </div>
+                                                ';
+                                            }
+ 
+                                            ?>
+                                        </div>
                                     </form>
                                 </div>
-                            
-                            
-                                
                             </div>
                         </div>
                         <hr class="horizontal dark mt-0">
@@ -108,7 +134,7 @@ if (isset($_GET['ElectroEng'])) {
                                             LEFT JOIN tbl_courses C USING(course_id)
                                             LEFT JOIN tbl_students S USING(stud_id)
                                             LEFT JOIN tbl_year_levels YL USING(year_id)
-                                            WHERE (remark IN ('Approved') OR remark IN ('Checked')) AND SY.course_id IN ('$course_id') AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')
+                                            WHERE remark IN ('Approved') AND SY.course_id IN ('$courseEnrollee_id') AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')
                                             ORDER BY sy_id ") or die($db->error);
 
                                     while ($row = $pendStud->fetch_array()) {

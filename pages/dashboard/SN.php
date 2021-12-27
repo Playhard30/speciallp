@@ -23,10 +23,50 @@ include '../../includes/session.php';
                 <div class="col-12">
                     <div class="card shadow shadow-xl">
                         <!-- Card header -->
-                        <div class="card-header m-1 my-0">
-                            <h5 class="mb-0 ">Enrolled SN Students List</h5>
-                            <p class="text-sm mb-0">for Academic Year
-                                <?php echo $_SESSION['AC'] . ', ' . $_SESSION['S']; ?></p>
+                        <div class="card-header m-1 my-0"> 
+                            <div class="row mb-0">
+                                <div class="col mx-0">
+                                    <h5 class="mb-0 ">List of Nursing Enrollees</h5>
+                                    <p class="text-sm mb-0">for Academic Year
+                                    <?php echo $_SESSION['AC'] . ', ' . $_SESSION['S']; 
+                                    ?></p>
+                                </div>
+                                <div class="col text-end">
+                                        <div class="row">
+                                            <?php
+                                            $NURcourses = mysqli_query($db, "SELECT * FROM tbl_courses WHERE department_id = 10");
+                                            while ($displayNURcourses = mysqli_fetch_array($NURcourses)) {
+
+                                                $countTotal = mysqli_query($db, "SELECT COUNT(sy_id) FROM tbl_schoolyears WHERE remark = 'Approved' AND course_id = '$displayNURcourses[course_id]' AND sem_id = '$_SESSION[S]' AND ay_id = '$_SESSION[AC]' ") or die($db->error);
+                                                $actualCountTotal = mysqli_fetch_array($countTotal);
+
+                                                $countNew = mysqli_query($db, "SELECT COUNT(sy_id) FROM tbl_schoolyears WHERE remark = 'Approved' AND status = 'New' AND course_id = '$displayNURcourses[course_id]' AND sem_id = '$_SESSION[S]' AND ay_id = '$_SESSION[AC]' ") or die($db->error);
+                                                $actualCountNew = mysqli_fetch_array($countNew);
+
+                                                $countOld = mysqli_query($db, "SELECT COUNT(sy_id) FROM tbl_schoolyears WHERE remark = 'Approved' AND status = 'Old' AND course_id = '$displayNURcourses[course_id]' AND sem_id = '$_SESSION[S]' AND ay_id = '$_SESSION[AC]' ") or die($db->error);
+                                                $actualCountOld = mysqli_fetch_array($countOld);
+
+                                                echo'
+                                                <div class="col">
+                                                    <button class="btn btn-icon btn-3 btn-dark" value="'.$displayNURcourses['course_id'].'" name="'.$displayNURcourses['course_abv'].'">
+                                                        <span class="btn-inner--icon"><i class="fas fa-laptop"></i></span>
+                                                        <span class="btn-inner--text">'.$displayNURcourses['course_abv'].'</span>
+                                                        <p class="text-sm mb-0">
+                                                            <b>New:</b> '.$actualCountNew[0].'
+                                                            <b>Old:</b> '.$actualCountOld[0].'
+                                                            <b>Total:</b> '.$actualCountTotal[0].'
+                                                        </p>
+                                                    </button>
+                                                    
+                                                </div>
+                                                ';
+                                            }
+ 
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                           
                         </div>
                         <hr class="horizontal dark mt-0">
                         <div class="table-responsive px-4 my-4">
