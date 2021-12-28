@@ -65,37 +65,6 @@ include '../../includes/session.php';
                                         $id = $row['or_id'];
                                     ?>
 
-<<<<<<< HEAD
-                                            <tr>
-                                                <td></td>
-                                                <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['fullname']; ?></td>
-                                                <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['course_abv'].' - '.$row['year_abv']; ?></td>
-                                                <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['semester'].', '. $row['acad_year']; ?></td>
-                                                <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['contact']; ?></td>
-                                                <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['email']; ?></td>
-                                                <?php
-                                                    if ($row['status'] == "Pending") {
-                                                        ?>
-                                                            <td class="text-sm font-weight-normal"><span class="badge badge-danger"><?php echo $row['status']; ?></span></td>
-                                                        <?php
-                                                    } else {
-                                                        ?>
-                                                            <td class="text-sm font-weight-normal"><span class="badge badge-success"><?php echo $row['status']; ?></span></td>
-                                                        <?php
-                                                    }
-                                                ?>
-                                                
-                                                
-                                                <td class="text-sm font-weight-normal">
-                                                    <a class="btn bg-gradient-success text-xs"
-                                                        href="edit.inquiry.php?or_id=<?php echo $id; ?>"><i
-                                                            class="text-xs fas fa-edit"></i> Admit</a>
-=======
                                     <tr>
                                         <td></td>
                                         <td class="text-sm font-weight-normal">
@@ -124,7 +93,6 @@ include '../../includes/session.php';
                                         <?php
                                             }
                                             ?>
->>>>>>> 867389b12561aa3f91c02c8f84c888e15c8ef4e6
 
                                         <td class="text-sm font-weight-normal">
                                             <?php if ($row['status'] == "Pending") { ?>
