@@ -93,17 +93,6 @@ $_POST['stud_id'] = $stud_id;
                         $academic_year = mysqli_real_escape_string($db, $_POST['academic_year']);
                         $semester = mysqli_real_escape_string($db, $_POST['semester']);
 
-                        $query01 = $db->query("SELECT * FROM tbl_enrolled_subjects ES
-                            LEFT JOIN tbl_schedules S ON S.class_id = ES.class_id
-                            LEFT JOIN tbl_students STUD ON STUD.stud_id = ES.stud_id
-                            LEFT JOIN tbl_subjects_new SN ON SN.subj_id = ES.subj_id
-                            WHERE ES.stud_id = '$stud_id' AND ES.acad_year = '$academic_year' AND ES.semester = '$semester'") or die($db->error);
-
-
-
-                        while ($row = $query01->fetch_array()) {
-
-
                     ?>
 
                     <div class="card shadow shadow-xl mt-4">
@@ -114,7 +103,7 @@ $_POST['stud_id'] = $stud_id;
                                 <div>
                                     <h5 class="mb-0">List of Subject's Grade</h5>
                                     <p class="text-sm mb-0">
-                                        Verify carefully your subject/s to be Enrolled
+                                        from <?php echo $semester .', '.$academic_year; ?>
                                     </p>
                                 </div>
                             </div>
@@ -141,7 +130,18 @@ $_POST['stud_id'] = $stud_id;
                                 </thead>
                                 <tbody>
                                     <?php
-                                            ?>
+                                    
+                                        $query01 = $db->query("SELECT * FROM tbl_enrolled_subjects ES
+                                            LEFT JOIN tbl_schedules S ON S.class_id = ES.class_id
+                                            LEFT JOIN tbl_students STUD ON STUD.stud_id = ES.stud_id
+                                            LEFT JOIN tbl_subjects_new SN ON SN.subj_id = ES.subj_id
+                                            WHERE ES.stud_id = '$stud_id' AND ES.acad_year = '$academic_year' AND ES.semester = '$semester'") or die($db->error);
+
+
+
+                                        while ($row = $query01->fetch_array()) {
+
+                                    ?>
                                     <tr>
                                         <td class="text-sm font-weight-normal">
                                             <?php echo $row['subj_code']; ?>
@@ -159,7 +159,11 @@ $_POST['stud_id'] = $stud_id;
                                             <?php echo $row['numgrade']; ?>
                                         </td>
                                     </tr>
+                                    <?php
 
+                                        }
+
+                                    ?>
                                 </tbody>
                                 <tfoot>
                                     <?php $query02 = $db->query("SELECT SUM(unit_total) AS TU FROM tbl_enrolled_subjects ES
@@ -180,8 +184,7 @@ $_POST['stud_id'] = $stud_id;
                                         <th></th>
                                         <th></th>
                                     </tr>
-                                    <?php }
-                                        } ?>
+                                    <?php } ?>
                                 </tfoot>
                             </table>
                         </div>

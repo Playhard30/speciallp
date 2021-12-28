@@ -3,6 +3,8 @@ session_start();
 include '../../includes/head.php';
 include '../../includes/session.php';
 
+$course = 0;
+
 if (isset($_GET['BSCS'])) {
     $course = $_GET['BSCS'];
 } elseif (isset($_GET['BSBA-MM'])) {
@@ -49,19 +51,38 @@ if (isset($_GET['BSCS'])) {
     <?php include '../../includes/sidebar.php'; ?>
     <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
         <!-- Navbar -->
-        <?php include '../../includes/navbar-title.php'; ?>
-        <h6 class="font-weight-bolder mb-0">View Subject List</h6>
-        <?php include '../../includes/navbar.php'; ?>
-        <!-- End Navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+            navbar-scroll="true">
+            <div class="container-fluid py-1 px-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                        <li class="breadcrumb-item text-sm">
+                            <img src="../../assets/img/logos/logo.png" class="navbar-brand-img h-100" alt="main_logo"
+                                style="width: 40px; height: 40px;">
+                        </li>
+                        <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">SFAC Las Piñas</li>
+                    </ol>
+                    <h6 class="font-weight-bolder mb-0">View Subject List</h6>
+                    
+                </nav>
+                <?php include '../../includes/navbar.php'; ?>
+                <!-- End Navbar -->
 
-        <div class="container-fluid py-4">
-            <div class="row mb-5">
-                <div class="col-12">
-                    <div class="card shadow shadow-xl">
-                        <!-- Card header -->
-                        <div class="card-header">
-                            <h5 class="mb-0">Subject List</h5>
-                            <!-- <p class="text-sm mb-0">
+                <div class="container-fluid py-4">
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card shadow shadow-xl">
+                                <!-- Card header -->
+                                <div class="card-header">
+                                <?php
+                                    if (!empty($course)) {
+                                        ?><h5 class="mb-0">Subject List  for <?php echo $course;?></h5><?php
+                                    } else {
+                                        ?><h5 class="mb-0">Subject List</h5><?php
+                                    }
+                                ?>
+                                 
+                                    <!-- <p class="text-sm mb-0">
                                         A lightweight, extendable, dependency-free javascript HTML table plugin.
                                     </p> -->
                         </div>

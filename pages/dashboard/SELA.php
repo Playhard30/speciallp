@@ -11,37 +11,37 @@ include '../../includes/session.php';
 <?php
 
 if (isset($_GET['BEED'])) {
-    $course_id = $_GET['BEED'];
+    $courseEnrollee_id = $_GET['BEED'];
     $course_name = "Elementary Education";
-    $color_card = "#d9534f";
+    
 } elseif (isset($_GET['BSED-Filipino'])) {
-    $course_id = $_GET['BSED-Filipino'];
+    $courseEnrollee_id = $_GET['BSED-Filipino'];
     $course_name = "Secondary Education - Filipino";
-    $color_card = "#5bc0de";
+    
 } elseif (isset($_GET['BSED-Math'])) {
-    $course_id = $_GET['BSED-Math'];
+    $courseEnrollee_id = $_GET['BSED-Math'];
     $course_name = "Secondary Education - Math";
-    $color_card = "#f0ad4e";
+    
 } elseif (isset($_GET['BSED-English'])) {
-    $course_id = $_GET['BSED-English'];
+    $courseEnrollee_id = $_GET['BSED-English'];
     $course_name = "Secondary Education - English";
-    $color_card = "#f76ed7";
+    
 } elseif (isset($_GET['BSED-SS'])) {
-    $course_id = $_GET['BSED-SS'];
+    $courseEnrollee_id = $_GET['BSED-SS'];
     $course_name = "Secondary Education - Social Studies";
-    $color_card = "#8392ab";
+    
 } elseif (isset($_GET['BSED-Science'])) {
-    $course_id = $_GET['BSED-Science'];
+    $courseEnrollee_id = $_GET['BSED-Science'];
     $course_name = "Secondary Education - Science";
-    $color_card = "#6d84ab";
+    
 } elseif (isset($_GET['BA-Psych'])) {
-    $course_id = $_GET['BA-Psych'];
+    $courseEnrollee_id = $_GET['BA-Psych'];
     $course_name = "BA Psychology";
-    $color_card = "#5bc0de";
+    
 } else {
-    $course_id = 20;
+    $courseEnrollee_id = 20;
     $course_name = "Teacher Certificate Program";
-    $color_card = "#28a745";
+    
 }
 
 ?>
@@ -60,9 +60,9 @@ if (isset($_GET['BEED'])) {
                 <div class="col-12"  >
                     <div class="card shadow shadow-xl" >
                         <!-- Card header -->
-                        <div class="card-header m-1 my-0" style="background-image: linear-gradient(<?php echo $color_card;?>, white)"> 
+                        <div class="card-header m-1 my-0"> 
                             <div class="row mb-0">
-                                <div class="col">
+                                <div class="col mx-0">
                                     <h5 class="mb-0 ">List of <?php echo $course_name;?> Enrollees</h5>
                                     <p class="text-sm mb-0">for Academic Year
                                     <?php echo $_SESSION['AC'] . ', ' . $_SESSION['S']; 
@@ -70,46 +70,52 @@ if (isset($_GET['BEED'])) {
                                 </div>
                                 <div class="col">
                                     <div class="text-end">
-                                    <form action="SELA.php" method="GET">
-                                        <button class="btn btn-icon btn-3 btn-success" value="20" name="TCP">
-                                            <span class="btn-inner--icon"><i class="fas fa-laptop"></i></span>
-                                            <span class="btn-inner--text">TCP</span>
-                                        </button>
-                                        <button class="btn btn-icon btn-3 btn-danger" value="9" name="BEED">
-                                            <span class="btn-inner--icon"><i class="fas fa-laptop"></i></span>
-                                            <span class="btn-inner--text">Elementary Education</span>
-                                        </button>
-                                        <button class="btn btn-icon btn-3 btn-info" value="6" name="BSED-Filipino">
-                                            <span class="btn-inner--icon"><i class="fas fa-laptop"></i></span>
-                                            <span class="btn-inner--text">SED - Filipino</span>
-                                        </button>
-                                        <button class="btn btn-icon btn-3 btn-warning" value="7" name="BSED-Math">
-                                            <span class="btn-inner--icon"><i class="fas fa-laptop"></i></span>
-                                            <span class="btn-inner--text">SED - Math</span>
-                                        </button>
-                                        <button class="btn btn-icon btn-3 btn-primary" value="8" name="BSED-English">
-                                            <span class="btn-inner--icon"><i class="fas fa-laptop"></i></span>
-                                            <span class="btn-inner--text">SED - English</span>
-                                        </button>
-                                        <button class="btn btn-icon btn-3 btn-secondary" value="13" name="BSED-SS">
-                                            <span class="btn-inner--icon"><i class="fas fa-laptop"></i></span>
-                                            <span class="btn-inner--text">SED - Social Studies</span>
-                                        </button>
-                                        <button class="btn btn-icon btn-3 btn-dark" value="12" name="BSED-Science">
-                                            <span class="btn-inner--icon"><i class="fas fa-laptop"></i></span>
-                                            <span class="btn-inner--text">SED - Science</span>
-                                        </button>
-                                        <button class="btn btn-icon btn-3 btn-info" value="18" name="BA-Psych">
-                                            <span class="btn-inner--icon"><i class="fas fa-laptop"></i></span>
-                                            <span class="btn-inner--text">Psychology</span>
-                                        </button>
-                                        
+                                        <button class="btn btn-icon btn-3 btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="btn-inner--icon"><i class="fas fa-sliders-h"></i></span>
+                                        <span class="btn-inner--text">Filter</span>
+                                    </button>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="collapse" id="navbarToggleExternalContent">
+                                <div class="col p-4 ">
+                                    <form action="SELA.php" method="GET">
+                                        <div class="row justify-content-md-center">
+                                            <?php
+                                            
+                                            $EDUcourses = mysqli_query($db, "SELECT * FROM tbl_courses WHERE department_id = 5");
+                                            while ($displayEDUcourses = mysqli_fetch_array($EDUcourses)) {
+
+                                                $countTotal = mysqli_query($db, "SELECT COUNT(sy_id) FROM tbl_schoolyears WHERE remark = 'Approved' AND course_id = '$displayEDUcourses[course_id]' AND sem_id = '$_SESSION[S]' AND ay_id = '$_SESSION[AC]' ") or die($db->error);
+                                                $actualCountTotal = mysqli_fetch_array($countTotal);
+
+                                                $countNew = mysqli_query($db, "SELECT COUNT(sy_id) FROM tbl_schoolyears WHERE remark = 'Approved' AND status = 'New' AND course_id = '$displayEDUcourses[course_id]' AND sem_id = '$_SESSION[S]' AND ay_id = '$_SESSION[AC]' ") or die($db->error);
+                                                $actualCountNew = mysqli_fetch_array($countNew);
+
+                                                $countOld = mysqli_query($db, "SELECT COUNT(sy_id) FROM tbl_schoolyears WHERE remark = 'Approved' AND status = 'Old' AND course_id = '$displayEDUcourses[course_id]' AND sem_id = '$_SESSION[S]' AND ay_id = '$_SESSION[AC]' ") or die($db->error);
+                                                $actualCountOld = mysqli_fetch_array($countOld);
+
+                                                echo'
+                                                <div class="col col-sm-auto">
+                                                    <button class="btn btn-icon btn-3 btn-dark" value="'.$displayEDUcourses['course_id'].'" name="'.$displayEDUcourses['course_abv'].'">
+                                                        <span class="btn-inner--icon"><i class="fas fa-laptop"></i></span>
+                                                        <span class="btn-inner--text">'.$displayEDUcourses['course_abv'].'</span>
+                                                        <p class="text-sm text-nowrap mb-0">
+                                                            <b>New:</b> '.$actualCountNew[0].'
+                                                            <b>Old:</b> '.$actualCountOld[0].'
+                                                            <b>Total:</b> '.$actualCountTotal[0].'
+                                                        </p>
+                                                    </button>
+                                                    
+                                                </div>
+                                                ';
+                                            }
+ 
+                                            ?>
+                                        </div>
                                     </form>
                                 </div>
-                            
-                            
-                                
                             </div>
                         </div>
                         <hr class="horizontal dark mt-0">
@@ -148,7 +154,7 @@ if (isset($_GET['BEED'])) {
                                             LEFT JOIN tbl_courses C USING(course_id)
                                             LEFT JOIN tbl_students S USING(stud_id)
                                             LEFT JOIN tbl_year_levels YL USING(year_id)
-                                            WHERE (remark IN ('Approved') OR remark IN ('Checked')) AND SY.course_id IN ('$course_id') AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')
+                                            WHERE remark IN ('Approved') AND SY.course_id IN ('$courseEnrollee_id') AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')
                                             ORDER BY sy_id ") or die($db->error);
 
                                     while ($row = $pendStud->fetch_array()) {
