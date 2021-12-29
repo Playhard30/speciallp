@@ -65,37 +65,6 @@ include '../../includes/session.php';
                                         $id = $row['or_id'];
                                     ?>
 
-<<<<<<< HEAD
-                                            <tr>
-                                                <td></td>
-                                                <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['fullname']; ?></td>
-                                                <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['course_abv'].' - '.$row['year_abv']; ?></td>
-                                                <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['semester'].', '. $row['acad_year']; ?></td>
-                                                <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['contact']; ?></td>
-                                                <td class="text-sm font-weight-normal">
-                                                    <?php echo $row['email']; ?></td>
-                                                <?php
-                                                    if ($row['status'] == "Pending") {
-                                                        ?>
-                                                            <td class="text-sm font-weight-normal"><span class="badge badge-danger"><?php echo $row['status']; ?></span></td>
-                                                        <?php
-                                                    } else {
-                                                        ?>
-                                                            <td class="text-sm font-weight-normal"><span class="badge badge-success"><?php echo $row['status']; ?></span></td>
-                                                        <?php
-                                                    }
-                                                ?>
-                                                
-                                                
-                                                <td class="text-sm font-weight-normal">
-                                                    <a class="btn bg-gradient-success text-xs"
-                                                        href="edit.inquiry.php?or_id=<?php echo $id; ?>"><i
-                                                            class="text-xs fas fa-edit"></i> Admit</a>
-=======
                                     <tr>
                                         <td></td>
                                         <td class="text-sm font-weight-normal">
@@ -124,7 +93,6 @@ include '../../includes/session.php';
                                         <?php
                                             }
                                             ?>
->>>>>>> 867389b12561aa3f91c02c8f84c888e15c8ef4e6
 
                                         <td class="text-sm font-weight-normal">
                                             <?php if ($row['status'] == "Pending") { ?>
@@ -137,44 +105,48 @@ include '../../includes/session.php';
                                                 data-bs-target="#modal-notification<?php echo $id; ?>"><i
                                                     class="text-xs fas fa-trash-alt"></i>
                                                 Delete</a>
-                                        </td>
-                                    </tr>
-                                    <div class="modal fade" id="modal-notification<?php echo $id; ?>" tabindex="-1"
-                                        role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
-                                        <div class="modal-dialog modal-danger modal-dialog-centered modal-"
-                                            role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h6 class="modal-title text-danger" id="modal-title-notification"><i
-                                                            class="fas fa-exclamation-triangle"> </i>
-                                                        Warning
-                                                    </h6>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">×</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="py-3 text-center">
-                                                        <i class="fas fa-trash-alt text-9xl"></i>
-                                                        <h4 class="text-gradient text-danger mt-4">
-                                                            Delete Enrollee!</h4>
-                                                        <p>Are you sure you want to delete
-                                                            <br>
-                                                            <i><b><?php echo $row['fullname']; ?></b></i>?
-                                                        </p>
+
+
+                                            <div class="modal fade" id="modal-notification<?php echo $id; ?>"
+                                                tabindex="-1" role="dialog" aria-labelledby="modal-notification"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog modal-danger modal-dialog-centered modal-"
+                                                    role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h6 class="modal-title text-danger"
+                                                                id="modal-title-notification"><i
+                                                                    class="fas fa-exclamation-triangle"> </i>
+                                                                Warning
+                                                            </h6>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="py-3 text-center">
+                                                                <i class="fas fa-trash-alt text-9xl"></i>
+                                                                <h4 class="text-gradient text-danger mt-4">
+                                                                    Delete Enrollee!</h4>
+                                                                <p>Are you sure you want to delete
+                                                                    <br>
+                                                                    <i><b><?php echo $row['fullname']; ?></b></i>?
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="inquiryData/ctrl.del.inquiry.php?or_id=<?php echo $id; ?>"
+                                                                class="btn btn-white text-white bg-danger">Delete</a>
+                                                            <button type="button"
+                                                                class="btn btn-link text-secondary btn-outline-dark ml-auto"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <a href="inquiryData/ctrl.del.inquiry.php?or_id=<?php echo $id; ?>"
-                                                        class="btn btn-white text-white bg-danger">Delete</a>
-                                                    <button type="button"
-                                                        class="btn btn-link text-secondary btn-outline-dark ml-auto"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </td>
+                                    </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>

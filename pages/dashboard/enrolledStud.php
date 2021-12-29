@@ -117,7 +117,7 @@ include '../../includes/session.php';
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <a class="btn btn-block bg-gradient-danger mb-3 text-xs"
+                                            <a class="btn btn-block bg-gradient-danger mb-3 text-xs disabled"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#modal-notification<?php echo $id; ?>"><i
                                                     class="fas fa-user-slash"></i>&nbsp; Drop</a>
