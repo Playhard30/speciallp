@@ -119,9 +119,12 @@ include '../../includes/session.php';
                                             </div>
                                             <?php 
 
-                                                if ($_SESSION['role'] = "Registrar") {
+                                                if ($_SESSION['role'] == "Registrar") {
+                                                    
                                                     $href = "";
+
                                                 } else {
+
                                                     $href = "disabled";
                                                 }
                                                 
