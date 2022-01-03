@@ -278,7 +278,7 @@ include '../../includes/head.php';
                                     </h6>
 
                                     <?php
-                                        $bfCount = mysqli_query($db, "SELECT COUNT(sy_id) FROM tbl_schoolyears WHERE bf = 'Yes' AND sem_id = '$_SESSION[S]' AND ay_id = '$_SESSION[AC]' ") or die($db->error);
+                                        $bfCount = mysqli_query($db, "SELECT COUNT(sy_id) FROM tbl_schoolyears WHERE bf = 'Yes' AND remark = 'Approved' AND sem_id = '$_SESSION[S]' AND ay_id = '$_SESSION[AC]' ") or die($db->error);
                                         $actualCount = mysqli_fetch_array($bfCount);
                                         ?>
                                     <h3 class="text-white text-center mb-0 mt-n2" id="state15"
@@ -291,8 +291,8 @@ include '../../includes/head.php';
                             </div>
                             <hr class="horizontal dark m-0">
                             <div class="text-center">
-                                <a href="#" class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Show More">
+                                <a href="balik_franciscano.php" class="position-relative w-100 text-center py-1"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
                                     <i class="fas fa-chevron-down text-white"></i>
                                 </a>
                             </div>
