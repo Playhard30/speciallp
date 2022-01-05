@@ -4,7 +4,7 @@ require '../../includes/conn.php';
 include '../../includes/head.php';
 include '../../includes/session.php';
 
-if ('Registrar' == $_SESSION['role'] || $_SESSION['role'] == "Adviser") {
+if ('Registrar' == $_SESSION['role'] || $_SESSION['role'] == "Adviser" || $_SESSION['role'] == "Super Administrator") {
     $stud_id = $_GET['stud_id'];
     echo '<title>
     Edit Student | SFAC - Las Piñas
@@ -27,7 +27,7 @@ $_SESSION['stud_id'] = $stud_id;
     <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
         <!-- Navbar -->
         <?php include '../../includes/navbar-title.php'; ?>
-        <?php if ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == "Adviser") {
+        <?php if ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == "Adviser" || $_SESSION['role'] == "Super Administrator") {
             echo '<h6 class="font-weight-bolder mb-0">Edit Student Information</h6>';
         } elseif ($_SESSION['role'] == "Student") {
             echo '<h6 class="font-weight-bolder mb-0">Personal Information</h6>';
@@ -39,7 +39,7 @@ $_SESSION['stud_id'] = $stud_id;
         <div class="container-fluid py-4">
             <div class="col-lg-11 mt-lg-0 my-4 mx-auto mb-5">
                 <!-- Card Profile -->
-                <?php if ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == "Adviser") { ?>
+                <?php if ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == "Adviser" || $_SESSION['role'] == "Super Administrator") { ?>
                 <div class="card card-body" id="profile">
                     <div class="row justify-content-center align-items-center">
                         <div class="col-sm-auto col-4">
@@ -112,7 +112,7 @@ $_SESSION['stud_id'] = $stud_id;
                                 </div>
                             </div>
 
-                            <?php if ("Registrar" == $_SESSION['role'] || $_SESSION['role'] == "Adviser") {
+                            <?php if ("Registrar" == $_SESSION['role'] || $_SESSION['role'] == "Adviser" || $_SESSION['role'] == "Super Administrator") {
                                         echo '
                                                 <div class="col-sm-8">
                                                 <label class="form-label mt-4">Course</label>
@@ -271,7 +271,7 @@ $_SESSION['stud_id'] = $stud_id;
                                         placeholder="Contact Number" value="<?php echo $row['contact']; ?>">
                                 </div>
                             </div>
-                            <?php if ("Registrar" == $_SESSION['role'] || $_SESSION['role'] == "Adviser") {
+                            <?php if ("Registrar" == $_SESSION['role'] || $_SESSION['role'] == "Adviser" || $_SESSION['role'] == "Super Administrator") {
                                         echo '  <div class="col-sm-8">
                                                 <label class="form-label mt-4">Email Address</label>
                                                 <div class="input-group">
@@ -553,7 +553,7 @@ $_SESSION['stud_id'] = $stud_id;
                     </div>
                 </form>
 
-                <?php if ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == "Adviser") { ?>
+                <?php if ($_SESSION['role'] == "Registrar" || $_SESSION['role'] == "Adviser" || $_SESSION['role'] == "Super Administrator") { ?>
                 <form method="POST" enctype="multipart/form-data" action="userData/ctrl.edit.student.php"
                     class="card mt-4" id="account_details">
                     <div class="card-header text-center">

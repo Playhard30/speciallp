@@ -130,17 +130,18 @@ session_start();
             <section class="min-vh-100">
                 <div class="page-header align-items-start min-vh-50 pt-5 pb-1 m-3 border-radius-lg">
 
-                    <div class="container">
+                    <div class="container p-0 px-lg-3">
                         <div class="row justify-content-center">
                             <div class="col-lg-5 text-center mx-auto">
                                 <h1 class="text-dark mb-2 mt-5">Online Registration</h1>
                                 <p class="text-lead text-dark">Please fill out the form.</p>
                             </div>
                         </div>
-                        <div class="container-fluid py-4">
+                        <div class="container-fluid p-0 px-lg-2">
                             <div class="col-lg-11 mt-lg-0 mt-4 mx-auto">
                                 <form method="POST" enctype="multipart/form-data"
-                                    action="inquiryData/ctrl.add.inquiry.php" class="card mt-4" id="basic-info">
+                                    action="inquiryData/ctrl.add.inquiry.php" class="card mt-4" id="basic-info"
+                                    style="">
                                     <div class="card-header text-center pb-0">
                                         <h5>Personal Data</h5>
                                     </div>
