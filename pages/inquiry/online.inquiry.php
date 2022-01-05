@@ -127,6 +127,7 @@ session_start();
                     </div>
                 </nav>
             </div>
+            <!-- section -->
             <section class="min-vh-100">
                 <div class="page-header align-items-start min-vh-50 pt-5 pb-1 m-3 border-radius-lg">
 
