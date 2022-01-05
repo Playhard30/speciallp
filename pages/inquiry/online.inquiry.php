@@ -141,8 +141,7 @@ session_start();
                         <div class="container-fluid p-0 px-lg-2">
                             <div class="col-lg-11 mt-lg-0 mt-4 mx-auto">
                                 <form method="POST" enctype="multipart/form-data"
-                                    action="inquiryData/ctrl.add.inquiry.php" class="card mt-4" id="basic-info"
-                                    style="">
+                                    action="inquiryData/ctrl.add.inquiry.php" class="card mt-4" id="basic-info">
                                     <div class="card-header text-center pb-0">
                                         <h5>Personal Data</h5>
                                     </div>
