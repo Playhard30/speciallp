@@ -153,6 +153,45 @@ include '../../includes/head.php';
                 </div>
                 <!-- End Old Students -->
 
+                <!-- transferee -->
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card bg-white shadow move-on-hover">
+                        <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
+                            style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
+                            <span class="mask bg-gradient-dark opacity-3"><i
+                                    class="fas fa-exchange-alt text-7xl p-1"></i></span>
+                            <div class="card-body position-relative z-index-2 p-1">
+                                <div class="text-center">
+                                    <h6 class="mb-0 text-white font-weight-bold mb-2">
+                                        Transferee
+                                    </h6>
+
+                                    <?php
+                                        $ETSCount = mysqli_query($db, "SELECT COUNT(SY.sy_id) AS total FROM tbl_schoolyears SY WHERE remark = 'Approved' AND status = 'Transferee' AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
+                                        $actualCount = mysqli_fetch_array($ETSCount);
+                                        ?>
+                                    <h3 class="text-white text-center mb-0 mt-n2" id="state4"
+                                        countTo="<?php echo $actualCount[0]; ?>">
+                                    </h3>
+                                    <p class="text-sm mb-0 text-white">Students</p>
+
+
+                                </div>
+                            </div>
+                            <hr class="horizontal dark m-0">
+                            <div class="text-center">
+                                <a href="transferee.php" class="position-relative w-100 text-center py-1"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Show More">
+                                    <i class="fas fa-chevron-down text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- transferee -->
+            <!-- second row -->
+            <div class="row">
                 <!-- Pending Enrollees -->
                 <div class="col-xl-3 col-sm-6 mb-3">
                     <div class="card bg-white shadow move-on-hover">
@@ -170,7 +209,7 @@ include '../../includes/head.php';
                                         $OESCount = mysqli_query($db, "SELECT COUNT(SY.sy_id) AS total FROM tbl_schoolyears SY WHERE remark IN ('Pending', 'Canceled') AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
                                         $actualCount = mysqli_fetch_array($OESCount);
                                         ?>
-                                    <h3 class="text-white text-center mb-0 mt-n2" id="state4"
+                                    <h3 class="text-white text-center mb-0 mt-n2" id="state5"
                                         countTo="<?php echo $actualCount[0]; ?>">
                                     </h3>
                                     <p class="text-sm mb-0 text-white">Students</p>
@@ -188,46 +227,8 @@ include '../../includes/head.php';
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- End Pending Enrollees -->
-            <!-- second row -->
-            <div class="row">
-                <!-- Dropped Students -->
-                <div class="col-xl-3 col-sm-6 mb-3">
-                    <div class="card bg-white shadow move-on-hover">
-                        <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
-                            style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
-                            <span class="mask bg-gradient-dark opacity-3"><i
-                                    class="fas fa-user-slash text-7xl p-1"></i></span>
-                            <div class="card-body position-relative z-index-2 p-1">
-                                <div class="text-center">
-                                    <h6 class="mb-0 text-white font-weight-bold mb-2">
-                                        Dropped Students
-                                    </h6>
+                <!-- End Pending Enrollees -->
 
-                                    <?php
-                                        $DSCount = mysqli_query($db, "SELECT COUNT(SY.sy_id) AS total FROM tbl_schoolyears SY WHERE remark IN ('Dropped') AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
-                                        $actualCount = mysqli_fetch_array($DSCount);
-                                        ?>
-                                    <h3 class="text-white text-center mb-0 mt-n2" id="state5"
-                                        countTo="<?php echo $actualCount[0]; ?>">
-                                    </h3>
-                                    <p class="text-sm mb-0 text-white">Students</p>
-
-
-                                </div>
-                            </div>
-                            <hr class="horizontal dark m-0">
-                            <div class="text-center">
-                                <a class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Show More">
-                                    <i class="fas fa-chevron-down text-white"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Dropped Students -->
                 <!-- Online Inquiry -->
                 <div class="col-xl-3 col-sm-6 mb-3">
                     <div class="card bg-white shadow move-on-hover">
@@ -281,7 +282,7 @@ include '../../includes/head.php';
                                         $bfCount = mysqli_query($db, "SELECT COUNT(sy_id) FROM tbl_schoolyears WHERE bf = 'Yes' AND remark = 'Approved' AND sem_id = '$_SESSION[S]' AND ay_id = '$_SESSION[AC]' ") or die($db->error);
                                         $actualCount = mysqli_fetch_array($bfCount);
                                         ?>
-                                    <h3 class="text-white text-center mb-0 mt-n2" id="state15"
+                                    <h3 class="text-white text-center mb-0 mt-n2" id="state7"
                                         countTo="<?php echo $actualCount[0]; ?>">
                                     </h3>
                                     <p class="text-sm mb-0 text-white">Students</p>
@@ -300,6 +301,43 @@ include '../../includes/head.php';
                     </div>
                 </div>
                 <!-- End balik franciscano -->
+
+                <!-- Dropped Students -->
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card bg-white shadow move-on-hover">
+                        <div class="overflow-hidden position-relative border-radius-lg bg-cover p-3"
+                            style="background-image: url('../../assets/img/curved-images/curved5.jpg')">
+                            <span class="mask bg-gradient-dark opacity-3"><i
+                                    class="fas fa-user-slash text-7xl p-1"></i></span>
+                            <div class="card-body position-relative z-index-2 p-1">
+                                <div class="text-center">
+                                    <h6 class="mb-0 text-white font-weight-bold mb-2">
+                                        Dropped Students
+                                    </h6>
+
+                                    <?php
+                                        $DSCount = mysqli_query($db, "SELECT COUNT(SY.sy_id) AS total FROM tbl_schoolyears SY WHERE remark IN ('Dropped') AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
+                                        $actualCount = mysqli_fetch_array($DSCount);
+                                        ?>
+                                    <h3 class="text-white text-center mb-0 mt-n2" id="state8"
+                                        countTo="<?php echo $actualCount[0]; ?>">
+                                    </h3>
+                                    <p class="text-sm mb-0 text-white">Students</p>
+
+
+                                </div>
+                            </div>
+                            <hr class="horizontal dark m-0">
+                            <div class="text-center">
+                                <a class="position-relative w-100 text-center py-1" data-bs-toggle="tooltip"
+                                    data-bs-placement="top" title="Show More">
+                                    <i class="fas fa-chevron-down text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Dropped Students -->
             </div>
             <!-- third row  -->
             <div class="row">
@@ -325,7 +363,7 @@ include '../../includes/head.php';
                     $Dep8 = 'SN';
 
                     $c = 0; // count
-                    $prev_widget = 6; // number of 1st and 2nd row widget
+                    $prev_widget = 9; // number of 1st and 2nd row widget
                     $getAllDepartment = $db->query("SELECT * FROM tbl_departments");
                     while ($row = $getAllDepartment->fetch_array()) {
                         $c++;
