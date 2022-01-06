@@ -64,7 +64,7 @@ include '../../includes/session.php';
                                             LEFT JOIN tbl_courses ON tbl_courses.course_id = tbl_schoolyears.course_id
                                             LEFT JOIN tbl_year_levels ON tbl_year_levels.year_id = tbl_schoolyears.year_id
                                             LEFT JOIN tbl_genders ON tbl_genders.gender_id = tbl_students.gender_id
-                                            WHERE remark IN ('Approved') AND status = 'Transferee' AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')
+                                            WHERE remark IN ('Approved') AND transferee = 'Yes' AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')
                                             ORDER BY stud_no DESC"
                                     ) or die(mysqli_error($db));
                                     while ($row = mysqli_fetch_array($studentList)) {

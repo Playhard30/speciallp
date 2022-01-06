@@ -167,7 +167,7 @@ include '../../includes/head.php';
                                     </h6>
 
                                     <?php
-                                        $ETSCount = mysqli_query($db, "SELECT COUNT(SY.sy_id) AS total FROM tbl_schoolyears SY WHERE remark = 'Approved' AND status = 'Transferee' AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
+                                        $ETSCount = mysqli_query($db, "SELECT COUNT(SY.sy_id) AS total FROM tbl_schoolyears SY WHERE remark = 'Approved' AND transferee = 'Yes' AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
                                         $actualCount = mysqli_fetch_array($ETSCount);
                                         ?>
                                     <h3 class="text-white text-center mb-0 mt-n2" id="state4"

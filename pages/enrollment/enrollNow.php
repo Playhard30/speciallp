@@ -98,7 +98,6 @@ if ($count > 0) {
                                         <option value="" selected disabled>Select Status</option>
                                         <option value="New">New Student</option>
                                         <option value="Old">Old Student</option>
-                                        <option value="Transferee">Transferee</option>
                                     </select>
                                 </div>
                             </div>

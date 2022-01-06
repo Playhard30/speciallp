@@ -76,13 +76,14 @@ if (isset($_POST['update'])) {
     $year_id = $db->real_escape_string($_POST['level']);
     $status = $db->real_escape_string($_POST['status']);
     $bf = $db->real_escape_string($_POST['bfranciscano']);
+    $transferee = $db->real_escape_string($_POST['transferee']);
     // $ay_id = $_SESSION['AC'];
     // $sem_id = $_SESSION['S'];
     // $date_enrolled = date("Y-m-d");
     // $remark = $db->real_escape_string("Pending");
 
     if (!empty($_POST['course']) && !empty($_POST['level']) && !empty($_POST['status'])) {
-        $q = $db->query("UPDATE tbl_schoolyears SET year_id = '$year_id', course_id = '$course_id', status = '$status', bf = '$bf' WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
+        $q = $db->query("UPDATE tbl_schoolyears SET year_id = '$year_id', course_id = '$course_id', status = '$status', bf = '$bf', transferee = '$transferee' WHERE stud_id = '$stud_id' AND ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'") or die($db->error);
         $_SESSION['successUpdate'] = true;
         header("location: ../enrollmentInfo.php?stud_id=" . $stud_id);
     } else {

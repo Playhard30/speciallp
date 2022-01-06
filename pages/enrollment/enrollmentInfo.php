@@ -180,7 +180,7 @@ if ($_SESSION['role'] == "Student") {
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-8">
                                     <label class="mt-3">Course</label>
                                     <select class="form-control" name="course" id="department">
                                         <?php
@@ -198,9 +198,7 @@ if ($_SESSION['role'] == "Student") {
                                                 ?>
                                     </select>
                                 </div>
-                            </div>
 
-                            <div class="row">
                                 <div class="col-sm-4">
                                     <label class="mt-3">Year Level</label>
                                     <select class="form-control" name="level" id="year_lvl">
@@ -217,6 +215,10 @@ if ($_SESSION['role'] == "Student") {
                                                 } ?>
                                     </select>
                                 </div>
+                            </div>
+
+                            <div class="row">
+
                                 <div class="col-sm-4">
                                     <label class="mt-3">Status</label>
                                     <select class="form-control" name="status" id="status">
@@ -224,23 +226,35 @@ if ($_SESSION['role'] == "Student") {
                                                 if ($row['status'] == "New") {
                                                     echo '<option selected disabled value="New">New Student</option>
                                                          <option value="Old">Old Student</option>
-                                                         <option value="Transferee">Transferee</option>';
+                                                         ';
                                                 } elseif ($row['status'] == "Old") {
                                                     echo '<option selected disabled value="Old">Old Student</option>
                                                     <option value="New">New Student</option>
-                                                      <option value="Transferee">Transferee</option>';
-                                                } elseif ($row['status'] == "Transferee") {
-                                                    echo '<option selected disabled value="Transferee">Transferee</option>
-                                                    <option value="New">New Student</option>
-                                                    <option value="Old">Old Student</option>';
+                                                      ';
                                                 } else {
                                                     echo '<option value="New">New Student</option>
                                                     <option value="Old">Old Student</option>
-                                                    <option value="Transferee">Transferee</option>';
+                                                    ';
                                                 }
                                                 ?>
                                     </select>
                                 </div>
+
+                                <div class="col-sm-4">
+                                    <label class="mt-3">Transferee</label>
+                                    <select class="form-select" name="transferee" id="curri">
+                                        <?php if ($row['transferee'] == "No" || empty($row['transferee'])) {
+                                                    echo '<option value="Yes">Yes</option>
+                                           <option selected value="No">No</option>';
+                                                } else {
+                                                    echo '<option selected value="Yes">Yes</option>
+                                                    <option value="No">No</option>';
+                                                } ?>
+
+
+                                    </select>
+                                </div>
+
                                 <div class="col-sm-4">
                                     <label class="mt-3">Balik Franciscano</label>
                                     <select class="form-select" name="bfranciscano" id="dep">
