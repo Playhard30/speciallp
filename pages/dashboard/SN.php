@@ -4,7 +4,7 @@ include '../../includes/head.php';
 include '../../includes/session.php';
 ?>
 <title>
-    Enrolled SN Students | SFAC - Las Piñas
+    Enrolled SON Students | SFAC - Las Piñas
 </title>
 </head>
 
@@ -15,7 +15,7 @@ include '../../includes/session.php';
     <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
         <!-- Navbar -->
         <?php include '../../includes/navbar-title.php'; ?>
-        <h6 class="font-weight-bolder mb-0">View Enrolled SN Students</h6>
+        <h6 class="font-weight-bolder mb-0">View Enrolled SON Students</h6>
         <?php include '../../includes/navbar.php'; ?>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
