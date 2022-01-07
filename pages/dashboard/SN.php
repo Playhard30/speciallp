@@ -103,7 +103,7 @@ include '../../includes/session.php';
                                             LEFT JOIN tbl_courses C USING(course_id)
                                             LEFT JOIN tbl_students S USING(stud_id)
                                             LEFT JOIN tbl_year_levels YL USING(year_id)
-                                            WHERE remark IN ('Approved') AND C.course_id = '10' AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')
+                                            WHERE remark IN ('Approved') AND C.course_id = '19' AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')
                                             ORDER BY sy_id ") or die($db->error);
 
                                     while ($row = $pendStud->fetch_array()) {
