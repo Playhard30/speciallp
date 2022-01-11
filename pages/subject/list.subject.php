@@ -33,8 +33,8 @@ if (isset($_GET['BSCS'])) {
     $course = $_GET['BSCpE'];
 } elseif (isset($_GET['BSED-Science'])) {
     $course = $_GET['BSED-Science'];
-} elseif (isset($_GET['BA-Psychology'])) {
-    $course = $_GET['BA-Psychology'];
+} elseif (isset($_GET['BA-Psych'])) {
+    $course = $_GET['BA-Psych'];
 } elseif (isset($_GET['BSN'])) {
     $course = $_GET['BSN'];
 } elseif (isset($_GET['BEED'])) {
@@ -146,9 +146,9 @@ if (isset($_GET['BSCS'])) {
                                     <span class="btn-inner--icon"><i class="fas fa-user-nurse"></i></span>
                                     <span class="btn-inner--text">BSN</span>
                                 </button>
-                                <button class="btn btn-icon btn-3 btn-info" value="BA-Psychology" name="BA-Psychology">
+                                <button class="btn btn-icon btn-3 btn-info" value="BA-Psych" name="BA-Psych">
                                     <span class="btn-inner--icon"><i class="fas fa-notes-medical"></i></span>
-                                    <span class="btn-inner--text">BA-Psychology</span>
+                                    <span class="btn-inner--text">BA-Psych</span>
                                 </button>
                                 <button class="btn btn-icon btn-3 btn-info" value="BSEE" name="BSEE">
                                     <span class="btn-inner--icon"><i class="fas fa-bolt"></i></span>
