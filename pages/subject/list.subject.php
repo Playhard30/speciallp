@@ -15,8 +15,8 @@ if (isset($_GET['BSCS'])) {
     $course = $_GET['TCP'];
 } elseif (isset($_GET['BSHM'])) {
     $course = $_GET['BSHM'];
-} elseif (isset($_GET['BSED-Social Studies'])) {
-    $course = $_GET['BSED-Social Studies'];
+} elseif (isset($_GET['BSED-SS'])) {
+    $course = $_GET['BSED-SS'];
 } elseif (isset($_GET['BSED-English'])) {
     $course = $_GET['BSED-English'];
 } elseif (isset($_GET['BSED-Filipino'])) {
@@ -129,10 +129,10 @@ if (isset($_GET['BSCS'])) {
                                     <span class="btn-inner--icon"><i class="fas fa-chalkboard-teacher"></i></span>
                                     <span class="btn-inner--text">BSED-Math</span>
                                 </button>
-                                <button class="btn btn-icon btn-3 btn-info" value="BSED-Social Studies"
-                                    name="BSED-Social Studies">
+                                <button class="btn btn-icon btn-3 btn-info" value="BSED-SS"
+                                    name="BSED-SS">
                                     <span class="btn-inner--icon"><i class="fas fa-chalkboard-teacher"></i></span>
-                                    <span class="btn-inner--text">BSED-Social Studies</span>
+                                    <span class="btn-inner--text">BSED-SS</span>
                                 </button>
                                 <button class="btn btn-icon btn-3 btn-info" value="BSBA-OM" name="BSBA-OM">
                                     <span class="btn-inner--icon"><i class="fas fa-hard-hat"></i></span>
