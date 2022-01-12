@@ -340,7 +340,7 @@ $pdf ->Cell(23 ,5,'ROOM',0,1,'C');
 
 
 //INSERT SUBJECT ENROLLED BY STUDENTS
-if (empty($row['curri'])) {
+
 $pdf->SetXY(10,163);
 $pdf->SetFont('Arial','','9');
 
@@ -378,8 +378,7 @@ while ($pdf->GetStringWidth($row1['subj_desc']) > $cellwidth){
         $pdf ->Cell(23 ,7,$row1['room'],0,1,'C');
         $xy += 7;
     }
-}else{
-}
+
 
 
 //CODE
@@ -467,7 +466,26 @@ $pdf->Line(133,254,156,254);
 $pdf->Line(159,254,182,254);
 $pdf->Line(185,254,208,254);
 
-$pdf->SetY(256);
+$query1 = mysqli_query($db,"SELECT SUM(unit_total) as UN FROM tbl_enrolled_subjects
+LEFT JOIN tbl_students ON tbl_students.stud_id = tbl_enrolled_subjects.stud_id
+    LEFT JOIN tbl_subjects_new ON tbl_subjects_new.subj_id = tbl_enrolled_subjects.subj_id
+    LEFT JOIN tbl_schedules ON tbl_schedules.class_id = tbl_enrolled_subjects.class_id
+    
+ WHERE tbl_enrolled_subjects.stud_id = '$_GET[stud_id]' AND tbl_enrolled_subjects.acad_year = '$_SESSION[AC]' AND tbl_enrolled_subjects.semester = '$_SESSION[S]' ORDER BY subj_code")or die(mysqli_error($db));
+
+$sum = $query1->fetch_array();
+
+$pdf->SetY(254);
+$pdf->SetFont('Arial','B','9');
+$pdf ->Cell(20 ,7,'',0,0,'C');
+$pdf ->Cell(3 ,7,'',0,0,'C');
+$pdf ->Cell(75 ,7,'TOTAL UNITS',0,0,'R');
+$pdf ->Cell(3 ,7,'',0,0,'C');
+$pdf ->Cell(19 ,7,$sum['UN'],0,0,'C');
+$pdf ->Cell(3 ,7,'',0,0,'C');
+
+$pdf->SetY(263);
+
 $pdf->SetFont('Arial','I','10');
 $pdf ->Cell(200 ,5,'I hereby declare that all pre - requisite subjects were already taken and passed in accordance with the curriculum prescribed by',0,1);
 $pdf ->Cell(200 ,5,'Saint Francis of Assisi College and the Commision on Higher Education.',0,1,'C');
