@@ -468,12 +468,12 @@ include '../../includes/head.php';
                                     <?php
                                         if (!empty($SCourse_id)) {
                                             $ESubCount = mysqli_query($db, "SELECT COUNT(ES.enrolled_subj_id) FROM tbl_enrolled_subjects ES LEFT JOIN tbl_subjects_new SN USING(subj_id) WHERE stud_id IN ('$stud_id') AND acad_year = '$_SESSION[AC]' AND semester = '$_SESSION[S]' AND course_id IN ('$SCourse_id')") or die($db->error);
-                                            $actualCount = mysqli_fetch_array($ESubCount);
+                                            $actualSubCount = mysqli_fetch_array($ESubCount);
                                         }
 
                                         ?>
                                     <h3 class="text-white text-center mb-0 mt-n2" id="state2"
-                                        countTo="<?php echo $actualCount[0]; ?>">
+                                        countTo="<?php echo $actualSubCount[0]; ?>">
                                     </h3>
                                     <p class="text-sm mb-0 text-white">Subjects</p>
 

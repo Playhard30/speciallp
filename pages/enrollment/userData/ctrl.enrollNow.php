@@ -5,14 +5,6 @@ $stud_id = $_SESSION['stud_id'];
 
 if (isset($_POST['stud_no'])) {
 
-    $getCourse = $db->query("SELECT course_id FROM tbl_students WHERE stud_id = '$stud_id'") or die($db->error);
-    while ($row = $getCourse->fetch_array()) {
-        if ($row['course_id'] == 0) {
-            $CCourse_id = $db->real_escape_string($_POST['course']);
-            $query = $db->query("UPDATE tbl_students SET course_id = '$CCourse_id' WHERE stud_id = '$stud_id'") or die($db->error);
-        }
-    }
-
     $course_id = $db->real_escape_string($_POST['course']);
     $year_id = $db->real_escape_string($_POST['level']);
     $status = $db->real_escape_string($_POST['status']);
@@ -23,6 +15,9 @@ if (isset($_POST['stud_no'])) {
 
     if (!empty($_POST['course']) && !empty($_POST['level']) && !empty($_POST['status'])) {
         $q = $db->query("INSERT INTO tbl_schoolyears (ay_id, year_id, sem_id, course_id, stud_id, date_enrolled, status, remark) VALUES ('$ay_id', '$year_id', '$sem_id', '$course_id', '$stud_id', '$date_enrolled', '$status', '$remark')") or die($db->error);
+
+        // update course_id on tbl_students
+        $query = $db->query("UPDATE tbl_students SET course_id = '$course_id' WHERE stud_id = '$stud_id'") or die($db->error);
 
         $q2 = $db->query("INSERT INTO tbl_notifications (sy_id) SELECT tbl_schoolyears WHERE stud_id = '$stud_id' AND ay_id = '$ay_id' AND sem_id = '$sem_id'");
         if ($q2) {
