@@ -360,7 +360,7 @@ include '../../includes/head.php';
                     $Dep5 = 'Bridging';
                     $Dep6 = 'LA';
                     $Dep7 = 'SENG';
-                    $Dep8 = 'SN';
+                    $Dep8 = 'SON';
 
                     $c = 0; // count
                     $prev_widget = 9; // number of 1st and 2nd row widget
