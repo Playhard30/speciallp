@@ -1,7 +1,11 @@
 <?php
 session_start();
+if (empty($_SESSION['role'])) {
+    header("location: ./../../login/sign-in.php");
+} else if (empty($_GET['stud_id'])) {
+    header("location: ./../../error/error-404.php");
+}
 require '../../../includes/conn.php';
-include '../../../includes/session.php';
 require('../../fpdf/fpdf.php');
 
 $stud_id = $_GET['stud_id'];
@@ -10,6 +14,17 @@ if ($_SESSION['role'] == "Student") {
     $stud_id = $_SESSION['stud_id'];
 }
 
+// Active Acadyear & Semester
+$getAAcadYear = $db->query("SELECT * FROM tbl_active_acads AC LEFT JOIN tbl_acadyears A ON A.ay_id = AC.ay_id") or die($db->error);
+while ($row = $getAAcadYear->fetch_array()) {
+    $_SESSION['AC'] = $row['academic_year'];
+    $_SESSION['AYear'] = $row['ay_id'];
+}
+$getASem = $db->query("SELECT * FROM tbl_active_sem ASEM LEFT JOIN tbl_semesters S ON S.sem_id = ASEM.sem_id") or die($db->error);
+while ($row = $getASem->fetch_array()) {
+    $_SESSION['S'] = $row['semester'];
+    $_SESSION['ASem'] = $row['sem_id'];
+}
 
 class PDF extends FPDF
 {
