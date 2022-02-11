@@ -119,7 +119,7 @@ unset($_SESSION['email']);
                             </ul>
                             <ul class="navbar-nav d-lg-block d-none">
                                 <li class="nav-item">
-                                    <a href="#" class="btn btn-sm btn-round mb-0 me-1 text-white font-weight-bold"
+                                    <a href="https://stfrancisbacoor.com" class="btn btn-sm btn-round mb-0 me-1 text-white font-weight-bold"
                                         style="background-color: #d62121 !important;">Home</a>
                                 </li>
                             </ul>

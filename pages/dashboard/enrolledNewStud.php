@@ -29,6 +29,28 @@ include '../../includes/session.php';
                                 <?php echo $_SESSION['AC'] . ', ' . $_SESSION['S']; ?></p>
                         </div>
                         <hr class="horizontal dark mt-0">
+
+                        <div class="row d-flex justify-content-center mx-4">
+                            <div class="col-md-6 m-1 ">
+                                <form method="GET" action="enrolledNewStud.php">
+                                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-text text-body"><i class  ="fas fa-search"
+                                                            aria-hidden="true"></i></span> -->
+                                            <input type="text" class="form-control" name="search_text"
+                                                placeholder="Search Student"
+                                                <?php if (!empty($_GET['search_text'])) {
+                                                                                                                                        echo 'value="' . $_GET['search_text'] . '"';
+                                                                                                                                    }  ?>>
+                                            <button class="btn-sm btn bg-gradient-dark ms-auto mb-0" type="submit"
+                                                title="Send" name="search"><i class="fas fa-search text-lg"
+                                                    aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
                         <div class="table-responsive px-4 my-4">
                             <table class=" table table-hover responsive nowrap m-0" id="datatable-basic"
                                 style="width: 100%;">
@@ -56,6 +78,8 @@ include '../../includes/session.php';
                                 </thead>
                                 <tbody>
                                     <?php
+                                    if (isset($_GET['search'])) {
+                                        $_GET['search_text'] = addslashes($_GET['search_text']);
                                     $studentList = mysqli_query(
                                         $db,
                                         "SELECT *,CONCAT(tbl_students.lastname, ', ', tbl_students.firstname, ' ', tbl_students.middlename)  as fullname
@@ -64,7 +88,12 @@ include '../../includes/session.php';
                                             LEFT JOIN tbl_courses ON tbl_courses.course_id = tbl_schoolyears.course_id
                                             LEFT JOIN tbl_year_levels ON tbl_year_levels.year_id = tbl_schoolyears.year_id
                                             LEFT JOIN tbl_genders ON tbl_genders.gender_id = tbl_students.gender_id
-                                            WHERE remark IN ('Approved') AND status = 'New' AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]')
+                                            WHERE remark IN ('Approved') AND status = 'New' AND ay_id IN ('$_SESSION[AC]') AND sem_id IN ('$_SESSION[S]') AND
+                                            (firstname LIKE '%$_GET[search_text]%' OR
+                                            middlename LIKE '%$_GET[search_text]%' OR
+                                            lastname LIKE '%$_GET[search_text]%' OR
+                                            course_abv LIKE '%$_GET[search_text]%' OR
+                                            stud_no LIKE '%$_GET[search_text]%')
                                             ORDER BY stud_no DESC"
                                     ) or die(mysqli_error($db));
                                     while ($row = mysqli_fetch_array($studentList)) {
@@ -165,7 +194,7 @@ include '../../includes/session.php';
                                             </div> -->
                                         </td>
                                     </tr>
-                                    <?php }
+                                    <?php } }
                                     ?>
                                 </tbody>
                             </table>
