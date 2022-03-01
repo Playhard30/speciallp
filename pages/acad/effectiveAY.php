@@ -45,7 +45,7 @@ include '../../includes/session.php';
                     <div class="card shadow shadow-xl mt-4">
                         <!-- Card header -->
                         <div class="card-header">
-                            <h5 class="mb-0 font-weight-bolder">Effectve Academic Years List</h5>
+                            <h5 class="mb-0 font-weight-bolder">Effective Academic Years List</h5>
                             <p class="text-sm mb-0">
                                 This is a list of Effective Academic Year
                             </p>

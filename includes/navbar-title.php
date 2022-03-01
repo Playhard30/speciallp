@@ -11,4 +11,16 @@
                 </li>
                 <li class=" text-sm text-dark mt-2 ms-2" aria-current="page">' . $row['school_name'] . ' ' . $row['school_address'] . '</li>
             </ol>';
-                } ?>
+                }
+                // to update course_id from tbl_students and tbl_schoolyears
+                $query_get_course_id = $db->query("SELECT course_id, stud_id FROM tbl_schoolyears WHERE ay_id = '$_SESSION[AC]' AND sem_id = '$_SESSION[S]'");
+                while ($row = $query_get_course_id->fetch_array()) {
+                    $query_get_course_id2 = $db->query("SELECT course_id, stud_id FROM tbl_students WHERE stud_id = '$row[stud_id]'");
+                    $row2 = $query_get_course_id2->fetch_array();
+                    if (!empty($row2['stud_id'])) {
+                        if ($row['course_id'] != $row2['course_id']) {
+                            $query_update_course_id = $db->query("UPDATE tbl_students SET course_id = '$row[course_id]' WHERE stud_id = '$row[stud_id]'");
+                        }
+                    }
+                }
+                ?>

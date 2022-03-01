@@ -65,9 +65,9 @@ if ($count > 0) {
                                         <?php
                                             if ($row['course_id'] == 0) {
                                                 $getCourse = $db->query("SELECT * FROM tbl_courses");
-                                                while ($row1 = $getCourse->fetch_array()) {
-                                                    echo '<option value="' . $row1['course_id'] . '">' .
-                                                        $row1['course'] . '</option>';
+                                                while ($row2 = $getCourse->fetch_array()) {
+                                                    echo '<option value="' . $row2['course_id'] . '">' .
+                                                        $row2['course'] . '</option>';
                                                 }
                                             } else {
                                                 $getCourse = $db->query("SELECT * FROM tbl_courses WHERE course_id IN ('$row[course_id]')");

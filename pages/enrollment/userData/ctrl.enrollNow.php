@@ -17,19 +17,26 @@ if (isset($_POST['stud_no'])) {
         $q = $db->query("INSERT INTO tbl_schoolyears (ay_id, year_id, sem_id, course_id, stud_id, date_enrolled, status, remark) VALUES ('$ay_id', '$year_id', '$sem_id', '$course_id', '$stud_id', '$date_enrolled', '$status', '$remark')") or die($db->error);
 
         // update course_id on tbl_students
-        $query = $db->query("UPDATE tbl_students SET course_id = '$course_id' WHERE stud_id = '$stud_id'") or die($db->error);
+        if ($q) {
+            $query = $db->query("UPDATE tbl_students SET course_id = '$course_id' WHERE stud_id = '$stud_id'") or die($db->error);
+            sleep(2);
+        }
 
-        $q2 = $db->query("INSERT INTO tbl_notifications (sy_id) SELECT tbl_schoolyears WHERE stud_id = '$stud_id' AND ay_id = '$ay_id' AND sem_id = '$sem_id'");
+        $q2 = $db->query("INSERT INTO tbl_notifications (sy_id) SELECT sy_id FROM tbl_schoolyears WHERE stud_id = '$stud_id' AND ay_id = '$ay_id' AND sem_id = '$sem_id'");
         if ($q2) {
             $_SESSION['enroll_success'] = true;
+            unset($_POST['stud_no']);
             header("location: ../enrollmentInfo.php");
         } else {
             $q2 = $db->query("INSERT INTO tbl_notifications (sy_id) SELECT sy_id FROM tbl_schoolyears WHERE stud_id = '$stud_id' AND ay_id = '$ay_id' AND sem_id = '$sem_id'") or die($db->error);
             $_SESSION['enroll_success'] = true;
+            unset($_POST['stud_no']);
             header("location: ../enrollmentInfo.php");
         }
     } else {
         $_SESSION['fill-select'] = true;
+        unset($_POST['stud_no']);
         header("location: ../enrollNow.php");
     }
+    unset($_POST['stud_no']);
 }

@@ -384,7 +384,19 @@ if ($_SESSION['role'] == "Student") {
                                                                                     <input class="form-check-input"
                                                                                         name="index[]" type="checkbox"
                                                                                         value="<?php echo $i; ?>"
-                                                                                        id="flexCheckDefault1">
+                                                                                        id="flexCheckDefault1"
+                                                                                        <?php
+
+
+                                                                                                                                                                                                        $remarks = $db->query("SELECT remarks FROM tbl_enrolled_subjects WHERE subj_id = '$row2[subj_id]' AND stud_id = '$stud_id'");
+                                                                                                                                                                                                        $get_remarks = $remarks->fetch_array();
+                                                                                                                                                                                                        if (!empty($get_remarks)) {
+                                                                                                                                                                                                            if ($get_remarks['remarks'] == "Passed" || $get_remarks['remarks'] == "INC") {
+                                                                                                                                                                                                                echo "disabled";
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                        ?>>
                                                                                     <?php echo $row2['subj_code']; ?>
                                                                                 </div>
                                                                                 <input type="text" hidden
